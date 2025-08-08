@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from '@emotion/react';
-import styles from './CSSShowcase.module.css';
+/* import styles from './CSSShowcase.module.css'; */
 
 interface CSSShowcaseProps {
   title?: string;
@@ -9,7 +9,7 @@ interface CSSShowcaseProps {
 /**
  * Comprehensive component demonstrating all CSS approaches:
  * 1. Tailwind CSS (utility classes)
- * 2. CSS Modules (scoped styles)
+ * 2. CSS Modules (scoped styles) TODO: not working at the moment
  * 3. Emotion CSS-in-JS (dynamic styles)
  * 4. Regular CSS classes (global styles)
  */
@@ -34,7 +34,7 @@ const CSSShowcase: React.FC<CSSShowcaseProps> = ({ title = 'CSS Approaches Demo'
 
   const demos = [
     { id: 'tailwind', label: 'Tailwind CSS', color: 'blue' },
-    { id: 'modules', label: 'CSS Modules', color: 'green' },
+    /* { id: 'modules', label: 'CSS Modules', color: 'green' }, */
     { id: 'emotion', label: 'Emotion CSS', color: 'purple' },
     { id: 'global', label: 'Global CSS', color: 'red' },
   ];
@@ -97,7 +97,7 @@ const CSSShowcase: React.FC<CSSShowcaseProps> = ({ title = 'CSS Approaches Demo'
         </div>
 
         {/* CSS Modules Demo */}
-        <div
+        {/* <div
           className={`transition-all duration-300 ${
             activeDemo === 'modules' ? 'ring-4 ring-green-400' : ''
           }`}
@@ -118,7 +118,7 @@ const CSSShowcase: React.FC<CSSShowcaseProps> = ({ title = 'CSS Approaches Demo'
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Emotion CSS-in-JS Demo */}
         <div

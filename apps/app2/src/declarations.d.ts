@@ -3,9 +3,15 @@ declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.png';
 
-// to be able to import CSS files
+// CSS Modules typings
+declare module '*.module.css' {
+  const classes: { [className: string]: string };
+  export default classes;
+}
+
+// Global CSS imports (side-effectful CSS like Tailwind)
 declare module '*.css' {
-  const content: { [className: string]: string };
+  const content: string;
   export default content;
 }
 

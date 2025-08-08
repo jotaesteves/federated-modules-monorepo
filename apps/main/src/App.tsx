@@ -11,6 +11,8 @@ import Root from './pages/Root/Root';
  */
 const App1 = React.lazy(() => import('app1/App1'));
 const App2 = React.lazy(() => import('app2/App2'));
+// Add CSS demo page (local)
+const CSSDemo = React.lazy(() => import('./pages/CSSDemo'));
 
 const Spinner = () => (
   <div className="flex items-center gap-2 text-slate-500">
@@ -135,6 +137,23 @@ const App: React.FC = () => {
                 >
                   <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
                     <App2 />
+                  </div>
+                </React.Suspense>
+              }
+            />
+            {/* CSS demo page */}
+            <Route
+              path="/css-demo"
+              element={
+                <React.Suspense
+                  fallback={
+                    <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
+                      <Spinner />
+                    </div>
+                  }
+                >
+                  <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                    <CSSDemo />
                   </div>
                 </React.Suspense>
               }

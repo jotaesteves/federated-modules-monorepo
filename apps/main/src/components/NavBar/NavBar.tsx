@@ -1,4 +1,3 @@
-// copied from https://mui.com/material-ui/guides/routing/#tabs
 import * as React from 'react';
 import { Route, Routes, Link, matchPath, useLocation } from 'react-router-dom';
 
@@ -21,7 +20,7 @@ function MyTabs() {
   // This means that if you have nested routes like:
   // users, users/new, users/edit.
   // Then the order should be ['users/add', 'users/edit', 'users'].
-  const routeMatch = useRouteMatch(['/app-1/*', '/app-2/*', '/']);
+  const routeMatch = useRouteMatch(['/app-1/*', '/app-2/*', '/css-demo', '/']);
   const currentTab = routeMatch?.pattern?.path ?? '/';
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
@@ -57,6 +56,11 @@ function MyTabs() {
         <li>
           <Link to="/app-2" style={tabStyle(currentTab === '/app-2/*')}>
             App 2
+          </Link>
+        </li>
+        <li>
+          <Link to="/css-demo" style={tabStyle(currentTab === '/css-demo')}>
+            CSS Demo
           </Link>
         </li>
       </ul>
