@@ -2,7 +2,7 @@
   "name": "react-monorepo-starter",
   "version": "0.1.0",
   "description": "Monorepo to bootstrap React app with module federation and shared components",
-  "author": "Bohdan Koval <bohkoval@gmail.com>",
+  "author": "Jorge Esteves <jorge.esteves@itsector.pt>",
   "private": true,
   "workspaces": [
     "apps/*",

@@ -1,0 +1,311 @@
+# Azure DevOps Pipeline for Federated Modules Monorepo
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+      - feature/*
+
+pr:
+  branches:
+    include:
+      - main
+      - develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  BUCKET_NAME: 'federated-web-app-bucket'
+  AWS_DEFAULT_REGION: $(AWS_DEFAULT_REGION)
+  PNPM_CACHE_FOLDER: $(Pipeline.Workspace)/.pnpm-store
+
+stages:
+  - stage: Lint
+    displayName: 'Lint Stage'
+    jobs:
+      - job: Lint
+        displayName: 'Lint Code'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              wget -qO /tmp/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64"
+              chmod +x /tmp/pnpm
+              sudo mv /tmp/pnpm /usr/local/bin/pnpm
+              pnpm config set store-dir $(PNPM_CACHE_FOLDER)
+            displayName: 'Install pnpm'
+
+          - task: Cache@2
+            inputs:
+              key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+              path: $(PNPM_CACHE_FOLDER)
+            displayName: 'Cache pnpm packages'
+
+          - script: |
+              pnpm install
+              pnpm lint
+            displayName: 'Install dependencies and run lint'
+
+  - stage: Build
+    displayName: 'Build Stage'
+    dependsOn: Lint
+    jobs:
+      - job: Build
+        displayName: 'Build Applications'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              wget -qO /tmp/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64"
+              chmod +x /tmp/pnpm
+              sudo mv /tmp/pnpm /usr/local/bin/pnpm
+              pnpm config set store-dir $(PNPM_CACHE_FOLDER)
+            displayName: 'Install pnpm'
+
+          - task: Cache@2
+            inputs:
+              key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+              path: $(PNPM_CACHE_FOLDER)
+            displayName: 'Cache pnpm packages'
+
+          - script: |
+              pnpm install
+              pnpm build
+            displayName: 'Install dependencies and build'
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              targetPath: '$(System.DefaultWorkingDirectory)'
+              artifact: 'build-output'
+              publishLocation: 'pipeline'
+            displayName: 'Publish build artifacts'
+
+  - stage: Test
+    displayName: 'Test Stage'
+    dependsOn: Build
+    jobs:
+      - job: UnitTests
+        displayName: 'Unit Tests'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              wget -qO /tmp/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64"
+              chmod +x /tmp/pnpm
+              sudo mv /tmp/pnpm /usr/local/bin/pnpm
+              pnpm config set store-dir $(PNPM_CACHE_FOLDER)
+            displayName: 'Install pnpm'
+
+          - task: Cache@2
+            inputs:
+              key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+              path: $(PNPM_CACHE_FOLDER)
+            displayName: 'Cache pnpm packages'
+
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'build-output'
+              targetPath: '$(System.DefaultWorkingDirectory)'
+            displayName: 'Download build artifacts'
+
+          - script: |
+              pnpm install
+              pnpm test:ci
+            displayName: 'Run unit tests'
+
+      - job: InfraTests
+        displayName: 'Infrastructure Tests'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              wget -qO /tmp/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64"
+              chmod +x /tmp/pnpm
+              sudo mv /tmp/pnpm /usr/local/bin/pnpm
+              pnpm config set store-dir $(PNPM_CACHE_FOLDER)
+            displayName: 'Install pnpm'
+
+          - task: Cache@2
+            inputs:
+              key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+              path: $(PNPM_CACHE_FOLDER)
+            displayName: 'Cache pnpm packages'
+
+          - script: |
+              pnpm install
+              cd infra
+              pnpm infra:test:ci
+            displayName: 'Run infrastructure tests'
+
+  - stage: E2E
+    displayName: 'E2E Tests Stage'
+    dependsOn: Build
+    jobs:
+      - job: E2ETests
+        displayName: 'End-to-End Tests'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              wget -qO /tmp/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64"
+              chmod +x /tmp/pnpm
+              sudo mv /tmp/pnpm /usr/local/bin/pnpm
+              pnpm config set store-dir $(PNPM_CACHE_FOLDER)
+            displayName: 'Install pnpm'
+
+          - script: |
+              # Install Playwright dependencies
+              npx playwright install-deps
+            displayName: 'Install Playwright dependencies'
+
+          - task: Cache@2
+            inputs:
+              key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+              path: $(PNPM_CACHE_FOLDER)
+            displayName: 'Cache pnpm packages'
+
+          - task: DownloadPipelineArtifact@2
+            inputs:
+              buildType: 'current'
+              artifactName: 'build-output'
+              targetPath: '$(System.DefaultWorkingDirectory)'
+            displayName: 'Download build artifacts'
+
+          - script: |
+              pnpm install
+              pnpm e2e
+            displayName: 'Run E2E tests'
+
+          - task: PublishTestResults@2
+            condition: succeededOrFailed()
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: 'e2e/test-results/results.xml'
+              mergeTestResults: true
+              failTaskOnFailedTests: true
+            displayName: 'Publish E2E test results'
+
+          - task: PublishPipelineArtifact@1
+            condition: succeededOrFailed()
+            inputs:
+              targetPath: 'e2e/playwright-report'
+              artifact: 'playwright-report'
+              publishLocation: 'pipeline'
+            displayName: 'Publish Playwright report'
+
+  - stage: Deploy
+    displayName: 'Deploy Stage'
+    dependsOn:
+      - Build
+      - Test
+      - E2E
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+    jobs:
+      - deployment: DeployInfra
+        displayName: 'Deploy Infrastructure'
+        environment: 'production'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: NodeTool@0
+                  inputs:
+                    versionSpec: '18.x'
+                  displayName: 'Install Node.js'
+
+                - script: |
+                    wget -qO /tmp/pnpm "https://github.com/pnpm/pnpm/releases/latest/download/pnpm-linuxstatic-x64"
+                    chmod +x /tmp/pnpm
+                    sudo mv /tmp/pnpm /usr/local/bin/pnpm
+                    pnpm config set store-dir $(PNPM_CACHE_FOLDER)
+                  displayName: 'Install pnpm'
+
+                - task: Cache@2
+                  inputs:
+                    key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+                    path: $(PNPM_CACHE_FOLDER)
+                  displayName: 'Cache pnpm packages'
+
+                - script: |
+                    # Install AWS CLI
+                    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                    unzip awscliv2.zip
+                    sudo ./aws/install
+                  displayName: 'Install AWS CLI'
+
+                - script: |
+                    pnpm install
+                    cd infra
+                    pnpm infra:diff
+                    pnpm infra:deploy -- --parameters bucketName=$(BUCKET_NAME)
+                  displayName: 'Deploy infrastructure'
+                  env:
+                    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+                    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+                    AWS_DEFAULT_REGION: $(AWS_DEFAULT_REGION)
+
+      - deployment: DeployApps
+        displayName: 'Deploy Applications'
+        environment: 'production'
+        dependsOn: DeployInfra
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: DownloadPipelineArtifact@2
+                  inputs:
+                    buildType: 'current'
+                    artifactName: 'build-output'
+                    targetPath: '$(System.DefaultWorkingDirectory)'
+                  displayName: 'Download build artifacts'
+
+                - script: |
+                    # Install AWS CLI
+                    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+                    unzip awscliv2.zip
+                    sudo ./aws/install
+                  displayName: 'Install AWS CLI'
+
+                - script: |
+                    # Deploy main app (to root)
+                    aws s3 sync apps/main/dist s3://$(BUCKET_NAME)/
+
+                    # Deploy app1
+                    aws s3 sync apps/app1/dist s3://$(BUCKET_NAME)/apps/app1/dist
+
+                    # Deploy app2
+                    aws s3 sync apps/app2/dist s3://$(BUCKET_NAME)/apps/app2/dist
+
+                    # Deploy shared package
+                    aws s3 sync packages/shared/dist s3://$(BUCKET_NAME)/packages/shared/dist
+
+                    # Get CloudFront distribution ID and invalidate cache
+                    CLOUDFRONT_ID=$(aws cloudfront list-distributions --query "DistributionList.Items[*].{id:Id,origin:Origins.Items[0].Id,domainName:Origins.Items[0].DomainName}[?domainName=='$(BUCKET_NAME).s3.$(AWS_DEFAULT_REGION).amazonaws.com'].id" --output text)
+
+                    if [ ! -z "$CLOUDFRONT_ID" ]; then
+                      aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+                    else
+                      echo "CloudFront distribution not found"
+                    fi
+                  displayName: 'Deploy all applications to S3 and invalidate CloudFront'
+                  env:
+                    AWS_ACCESS_KEY_ID: $(AWS_ACCESS_KEY_ID)
+                    AWS_SECRET_ACCESS_KEY: $(AWS_SECRET_ACCESS_KEY)
+                    AWS_DEFAULT_REGION: $(AWS_DEFAULT_REGION)
