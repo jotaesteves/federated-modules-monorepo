@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Global, css } from '@emotion/react';
 import { fontFamily } from './utils';
-import TailwindProvider from './TailwindProvider';
+// Tailwind v3 entry + theme tokens
+import './global-import';
 
 const GlobalStyles: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
-    <TailwindProvider>
+    <>
       <Global
         styles={css`
           html,
@@ -15,7 +16,7 @@ const GlobalStyles: React.FC<{ children?: React.ReactNode }> = ({ children }) =>
         `}
       />
       {children}
-    </TailwindProvider>
+    </>
   );
 };
 

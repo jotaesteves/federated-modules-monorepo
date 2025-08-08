@@ -3,8 +3,20 @@
   "exclude": ["build", "dist", "coverage", "node_modules"],
   "extends": "@config/tsconfig",
   "compilerOptions": {
+    "moduleResolution": "Node16",
+    "module": "Node16",
     "baseUrl": ".",
-    "paths": {},
-    "moduleResolution": "node16"
+    "paths": {
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@config/*": ["./src/config/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@types/*": ["./src/types/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@ui/*": ["./src/components/ui/*"]
+    }
   }
 }

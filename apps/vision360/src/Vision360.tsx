@@ -5,6 +5,11 @@ import Page1 from './pages/page1/Page1';
 import Page2 from './pages/page2/Page2';
 import Button from 'shared/components/Button';
 import { swapObjectKeyValue } from 'shared/utils/transformations';
+import PersonalData from '../../vision360/src/components/cards/PersonalData';
+import EstateAndProducts from '../../vision360/src/components/cards/EstateAndProducts';
+import ChannelsAndServices from '../../vision360/src/components/cards/ChannelsAndServices';
+import Incidents from '../../vision360/src/components/cards/Incidents';
+import LastContact from '../../vision360/src/components/cards/LastContact';
 
 const App1: React.FC = () => {
   const obj = { a: 'x', b: 'y', c: 'z' };
@@ -19,38 +24,28 @@ const App1: React.FC = () => {
       <Helmet>
         <title>Visao 360</title>
       </Helmet>
-      <div className="p-6">
-        <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-          <h1 className="text-2xl font-semibold tracking-tight">
-            This is the very beginning of app1
-          </h1>
-          <p className="mt-1 text-sm text-slate-600">This remote exposes two nested pages.</p>
-
-          <div className="mt-4 flex items-center gap-3">
-            <Button>Shared Button app1 root</Button>
-            <nav className="ml-auto text-sm">
-              <ul className="flex items-center gap-3">
-                <li>
-                  <Link className="text-sky-600 hover:text-sky-700" to="page-1">
-                    Go to page-1
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-sky-600 hover:text-sky-700" to="page-2">
-                    Go to page-2
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+      <div className="p-2">
+        <div className="grid grid-cols-5 grid-rows-5 gap-2 mb-6">
+          {/* div1 */}
+          <div className="row-span-4">
+            <PersonalData />
           </div>
-        </div>
-
-        <div className="mt-6">
-          <Routes>
-            <Route path="page-1/*" element={<Page1 />} />
-            <Route path="page-2/*" element={<Page2 />} />
-            <Route path="*" element={<Page2 />} />
-          </Routes>
+          {/* div2 */}
+          <div className="col-span-3 row-span-2">
+            <EstateAndProducts />
+          </div>
+          {/* div3 */}
+          <div className="col-start-5 row-span-2">
+            <LastContact />
+          </div>
+          {/* div4 */}
+          <div className="col-span-3 row-span-2 col-start-2 row-start-3">
+            <ChannelsAndServices />
+          </div>
+          {/* div5 */}
+          <div className="col-start-5 row-start-3 row-span-2">
+            <Incidents />
+          </div>
         </div>
       </div>
     </>

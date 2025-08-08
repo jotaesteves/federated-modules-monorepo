@@ -137,8 +137,7 @@ Edit `packages/shared/tailwind.config.js` and add the new app to `content` so Ta
 
 Notes:
 
-- Use `text-primary-500` / `border-primary-500` style utilities unless you define a `DEFAULT` shade in `theme.extend.colors.primary.DEFAULT`.
-- Tailwind is loaded via `shared/styles/Global` → `TailwindProvider` which imports `tailwind.css`. Do not import Tailwind CSS twice in the app.
+- Use `text-primary-500` / `border-primary-500` style utilities unless you define a `DEFAULT` shade in `theme.extend.colors.primary.DEFAULT`.`tailwind.css`. Do not import Tailwind CSS twice in the app.
 
 ## 8) App entry files
 

@@ -1,3 +1,2 @@
-export { default as GlobalStyles } from './Global';
-export { default as TailwindProvider } from './TailwindProvider';
+export { default as GlobalStyles } from './GlobalStyles';
 export { fontFamily } from './utils';

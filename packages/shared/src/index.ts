@@ -7,7 +7,7 @@ export { default as MicroFrontendProvider } from './providers/MicroFrontendProvi
 export { default as eventBus } from './shared/eventBus';
 
 // Export styles for easier importing
-export { default as Global } from './styles/Global';
+export { default as GlobalStyles } from './styles/GlobalStyles';
 
 // Import global demo styles
 export * from './styles';

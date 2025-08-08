@@ -1,9 +1,9 @@
 export enum Apps {
+  main,
   shared,
+  header,
   vision360,
   app2,
-  main,
-  header,
   footer,
 }
 

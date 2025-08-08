@@ -25,29 +25,46 @@ const getCommonConfig = (): webpack.Configuration => ({
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
+      // CSS Modules (files ending with .module.css)
+      {
+        test: /\.module\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              // Use the shared package's postcss.config.js for all apps
+              postcssOptions: {
+                config: path.resolve(__dirname, '../../shared/postcss.config.js'),
+              },
+            },
+          },
+        ],
+      },
+      // Regular CSS files (including Tailwind)
       {
         test: /\.css$/,
-        oneOf: [
-          // CSS Modules (files ending with .module.css)
+        exclude: /\.module\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
           {
-            test: /\.module\.css$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: {
-                  modules: {
-                    localIdentName: '[name]__[local]__[hash:base64:5]',
-                  },
-                  importLoaders: 1,
-                },
+            loader: 'postcss-loader',
+            options: {
+              // Use the shared package's postcss.config.js for all apps
+              postcssOptions: {
+                config: path.resolve(__dirname, '../../shared/postcss.config.js'),
               },
-              'postcss-loader',
-            ],
-          },
-          // Regular CSS files (including Tailwind)
-          {
-            use: ['style-loader', 'css-loader', 'postcss-loader'],
+            },
           },
         ],
       },
