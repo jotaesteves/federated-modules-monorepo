@@ -8,13 +8,13 @@ import getCommonConfig, { getCommonModuleFederationConfig } from './webpack.comm
 
 const getDevConfig = (): webpack.Configuration =>
   merge(
-    getDevCommonConfig({ port: getAppModuleFederationConfig(Apps.app1).devPort }),
+    getDevCommonConfig({ port: getAppModuleFederationConfig(Apps['vision360']).devPort }),
     getCommonConfig(),
     {
       plugins: [
         new webpack.container.ModuleFederationPlugin({
           ...getCommonModuleFederationConfig(),
-          remotes: getAppModuleFederationConfig(Apps.app1).remotes?.dev,
+          remotes: getAppModuleFederationConfig(Apps['vision360']).remotes?.dev,
         }),
       ],
     }

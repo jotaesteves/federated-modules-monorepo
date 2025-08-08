@@ -20,3 +20,11 @@ declare module '*.css?raw' {
   const content: string;
   export default content;
 }
+
+// Module Federation remotes typings
+import type { ComponentType } from 'react';
+
+declare module 'Vision360/Vision360' {
+  const Component: ComponentType<unknown>;
+  export default Component;
+}

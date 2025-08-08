@@ -9,7 +9,7 @@ import { FooterTag } from '../types';
  */
 export const getPageLabel = (page: string): string => {
   const pageLabels: Record<string, string> = {
-    '360vision': 'Visão 360',
+    Vision360: 'Visão 360',
     personalData: 'Dados Pessoais',
     assetsProducts: 'Patrimônio e Produtos',
     channelsAndServices: 'Canais e Serviços',
@@ -33,7 +33,7 @@ export const getUniqueHistory = (history: string[]): string[] => {
 /**
  * Converts history array to FooterTag array
  */
-export const historyToFooterTags = (history: string[], maxTags: number = 5): FooterTag[] => {
+export const historyToFooterTags = (history: string[], maxTags = 5): FooterTag[] => {
   const uniqueHistory = getUniqueHistory(history);
 
   return uniqueHistory.slice(-maxTags).map((page) => ({

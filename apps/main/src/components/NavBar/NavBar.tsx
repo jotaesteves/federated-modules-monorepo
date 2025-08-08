@@ -20,7 +20,7 @@ function MyTabs() {
   // This means that if you have nested routes like:
   // users, users/new, users/edit.
   // Then the order should be ['users/add', 'users/edit', 'users'].
-  const routeMatch = useRouteMatch(['/app-1/*', '/app-2/*', '/css-demo', '/']);
+  const routeMatch = useRouteMatch(['/vision-360/*', '/app-2/*', '/css-demo', '/']);
   const currentTab = routeMatch?.pattern?.path ?? '/';
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
@@ -49,8 +49,8 @@ function MyTabs() {
           </Link>
         </li>
         <li>
-          <Link to="/app-1" style={tabStyle(currentTab === '/app-1/*')}>
-            App 1
+          <Link to="/vision-360" style={tabStyle(currentTab === '/vision-360/*')}>
+            Vision 360
           </Link>
         </li>
         <li>

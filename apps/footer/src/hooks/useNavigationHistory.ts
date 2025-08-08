@@ -10,7 +10,7 @@ const getPageLabel = (page: string): string => {
     'historico-interacoes': 'Histórico',
     'patrimonio-e-produtos': 'Patrimônio',
     'visao-360': 'Visão 360',
-    '360vision': 'Visão 360',
+    Vision360: 'Visão 360',
     personalData: 'Dados Pessoais',
     assetsProducts: 'Patrimônio e Produtos',
     channelsAndServices: 'Canais e Serviços',

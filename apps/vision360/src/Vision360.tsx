@@ -17,7 +17,7 @@ const App1: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>App1 title</title>
+        <title>Visao 360</title>
       </Helmet>
       <div className="p-6">
         <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">

@@ -9,13 +9,13 @@ import {
 import { dependencies } from '../package.json';
 
 export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig => ({
-  ...getAppModuleFederationConfig(Apps.app1).baseConfig,
+  ...getAppModuleFederationConfig(Apps['vision360']).baseConfig,
   shared: getSharedModulesConfig(dependencies),
 });
 
 const getCommonConfig = (): webpack.Configuration => ({
   module: {
-    rules: [getDtsModuleConfig(Apps.app1)],
+    rules: [getDtsModuleConfig(Apps['vision360'])],
   },
 });
 

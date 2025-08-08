@@ -24,73 +24,6 @@ importers:
       serve: 14.2.4
       turbo: 1.13.4
 
-  apps/app1:
-    specifiers:
-      '@babel/core': ^7.20.12
-      '@config/babel-config': workspace*
-      '@config/jest-config': workspace:*
-      '@config/tsconfig': workspace:*
-      '@config/webpack-config': workspace:*
-      '@emotion/react': ^11.10.5
-      '@emotion/styled': ^11.10.5
-      '@tanstack/react-query': ^4.22.0
-      '@testing-library/jest-dom': ^5.16.5
-      '@testing-library/react': ^13.4.0
-      '@types/jest': ^29.2.5
-      '@types/node': ^18.11.18
-      '@types/react': ^18.0.26
-      '@types/react-dom': ^18.0.10
-      '@types/react-helmet': ^6.1.6
-      '@types/webpack': ^5.28.0
-      babel-loader: ^9.1.2
-      dts-loader: ^0.1.8
-      eslint: ^8.32.0
-      jest: ^29.3.1
-      jest-environment-jsdom: ^29.3.1
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      react-helmet: ^6.1.0
-      react-router-dom: ^6.6.2
-      rimraf: ^4.0.7
-      ts-node: ^10.9.1
-      typescript: ^4.9.4
-      webpack: ^5.75.0
-      webpack-cli: ^5.0.1
-      webpack-merge: ^5.8.0
-    dependencies:
-      '@emotion/react': 11.14.0_slmofdmvhg5ve3dprq2qc77rkq
-      '@emotion/styled': 11.14.1_t5x3phpo6ioyei4q6jooeh2wyu
-      '@tanstack/react-query': 4.40.1_nnrd3gsncyragczmpvfhocinkq
-      react: 18.3.1
-      react-dom: 18.3.1_react@18.3.1
-      react-helmet: 6.1.0_react@18.3.1
-      react-router-dom: 6.30.1_nnrd3gsncyragczmpvfhocinkq
-    devDependencies:
-      '@babel/core': 7.28.0
-      '@config/babel-config': link:../../packages/@config/babel-config
-      '@config/jest-config': link:../../packages/@config/jest-config
-      '@config/tsconfig': link:../../packages/@config/tsconfig
-      '@config/webpack-config': link:../../packages/@config/webpack-config
-      '@testing-library/jest-dom': 5.17.0
-      '@testing-library/react': 13.4.0_kpg3w6by3gljrceryzwgexu7qy
-      '@types/jest': 29.5.14
-      '@types/node': 18.19.121
-      '@types/react': 18.3.23
-      '@types/react-dom': 18.3.7_@types+react@18.3.23
-      '@types/react-helmet': 6.1.11
-      '@types/webpack': 5.28.5_webpack-cli@5.1.4
-      babel-loader: 9.2.1_qei5qb5qztd3qvtzzhjd3otjc4
-      dts-loader: 0.1.8
-      eslint: 8.57.1
-      jest: 29.7.0_nvjclefigimwvoq54grsbgxhby
-      jest-environment-jsdom: 29.7.0
-      rimraf: 4.4.1
-      ts-node: 10.9.2_bhsahx5llgtlob7nmt5bm3iuty
-      typescript: 4.9.5
-      webpack: 5.101.0_webpack-cli@5.1.4
-      webpack-cli: 5.1.4_webpack@5.101.0
-      webpack-merge: 5.10.0
-
   apps/app2:
     specifiers:
       '@babel/core': ^7.20.12
@@ -361,6 +294,73 @@ importers:
       webpack-cli: 5.1.4_webpack@5.101.0
       webpack-merge: 5.10.0
 
+  apps/vision360:
+    specifiers:
+      '@babel/core': ^7.20.12
+      '@config/babel-config': workspace*
+      '@config/jest-config': workspace:*
+      '@config/tsconfig': workspace:*
+      '@config/webpack-config': workspace:*
+      '@emotion/react': ^11.10.5
+      '@emotion/styled': ^11.10.5
+      '@tanstack/react-query': ^4.22.0
+      '@testing-library/jest-dom': ^5.16.5
+      '@testing-library/react': ^13.4.0
+      '@types/jest': ^29.2.5
+      '@types/node': ^18.11.18
+      '@types/react': ^18.0.26
+      '@types/react-dom': ^18.0.10
+      '@types/react-helmet': ^6.1.6
+      '@types/webpack': ^5.28.0
+      babel-loader: ^9.1.2
+      dts-loader: ^0.1.8
+      eslint: ^8.32.0
+      jest: ^29.3.1
+      jest-environment-jsdom: ^29.3.1
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-helmet: ^6.1.0
+      react-router-dom: ^6.6.2
+      rimraf: ^4.0.7
+      ts-node: ^10.9.1
+      typescript: ^4.9.4
+      webpack: ^5.75.0
+      webpack-cli: ^5.0.1
+      webpack-merge: ^5.8.0
+    dependencies:
+      '@emotion/react': 11.14.0_slmofdmvhg5ve3dprq2qc77rkq
+      '@emotion/styled': 11.14.1_t5x3phpo6ioyei4q6jooeh2wyu
+      '@tanstack/react-query': 4.40.1_nnrd3gsncyragczmpvfhocinkq
+      react: 18.3.1
+      react-dom: 18.3.1_react@18.3.1
+      react-helmet: 6.1.0_react@18.3.1
+      react-router-dom: 6.30.1_nnrd3gsncyragczmpvfhocinkq
+    devDependencies:
+      '@babel/core': 7.28.0
+      '@config/babel-config': link:../../packages/@config/babel-config
+      '@config/jest-config': link:../../packages/@config/jest-config
+      '@config/tsconfig': link:../../packages/@config/tsconfig
+      '@config/webpack-config': link:../../packages/@config/webpack-config
+      '@testing-library/jest-dom': 5.17.0
+      '@testing-library/react': 13.4.0_kpg3w6by3gljrceryzwgexu7qy
+      '@types/jest': 29.5.14
+      '@types/node': 18.19.121
+      '@types/react': 18.3.23
+      '@types/react-dom': 18.3.7_@types+react@18.3.23
+      '@types/react-helmet': 6.1.11
+      '@types/webpack': 5.28.5_webpack-cli@5.1.4
+      babel-loader: 9.2.1_qei5qb5qztd3qvtzzhjd3otjc4
+      dts-loader: 0.1.8
+      eslint: 8.57.1
+      jest: 29.7.0_nvjclefigimwvoq54grsbgxhby
+      jest-environment-jsdom: 29.7.0
+      rimraf: 4.4.1
+      ts-node: 10.9.2_bhsahx5llgtlob7nmt5bm3iuty
+      typescript: 4.9.5
+      webpack: 5.101.0_webpack-cli@5.1.4
+      webpack-cli: 5.1.4_webpack@5.101.0
+      webpack-merge: 5.10.0
+
   e2e:
     specifiers:
       '@playwright/test': ^1.29.2
@@ -612,9 +612,6 @@ packages:
   /@aws-cdk/cloud-assembly-schema/48.3.0:
     resolution: {integrity: sha512-6R7aMNXeVnXGMOXgspwMmpVi1rmgRReGKYt7yl22ZKNZN/whJqdnV2C6O2CI2lnj5Th/SlgQWsuEQOMM3TI5RQ==}
     engines: {node: '>= 18.0.0'}
-    dependencies:
-      jsonschema: 1.4.1
-      semver: 7.7.2
     dev: false
     bundledDependencies:
       - jsonschema
@@ -6619,10 +6616,6 @@ packages:
   /jsonpointer/5.0.1:
     resolution: {integrity: sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==}
     engines: {node: '>=0.10.0'}
-    dev: false
-
-  /jsonschema/1.4.1:
-    resolution: {integrity: sha512-S6cATIPVv1z0IlxdN+zUk5EPjkGCdnhN4wVSBlvoUO1tOLJootbo9CquNJmbIh4yikWHiUedhRYrNPn1arpEmQ==}
     dev: false
 
   /jsx-ast-utils/3.3.5:

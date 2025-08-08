@@ -8,7 +8,7 @@ import Root from './pages/Root/Root';
  * if safe import is needed (in case of remote bundle loading fails)
  * consider using FederatedBoundary https://github.com/module-federation/universe/tree/main/packages/utilities#react-utilities
  */
-const App1 = React.lazy(() => import('app1/App1'));
+const Vision360 = React.lazy(() => import('vision360/Vision360'));
 const App2 = React.lazy(() => import('app2/App2'));
 // Add CSS demo page (local)
 const CSSDemo = React.lazy(() => import('./pages/CSSDemo'));
@@ -68,7 +68,7 @@ const App: React.FC = () => {
             <Routes>
               {/* Use absolute paths to ensure matching */}
               <Route
-                path="/app-1/*"
+                path="/vision-360/*"
                 element={
                   <React.Suspense
                     fallback={
@@ -78,7 +78,7 @@ const App: React.FC = () => {
                     }
                   >
                     <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-                      <App1 />
+                      <Vision360 />
                     </div>
                   </React.Suspense>
                 }

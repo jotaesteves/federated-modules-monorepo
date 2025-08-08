@@ -1,8 +1,8 @@
 {
-  "name": "app1",
+  "name": "Vision360",
   "version": "0.1.0",
-  "main": "./src/App1.tsx",
-  "types": "./src/App1.tsx",
+  "main": "./src/Vision360.tsx",
+  "types": "./src/Vision360.tsx",
   "scripts": {
     "analyze": "webpack --config webpack/webpack.prod.ts --env analyze",
     "predev": "rimraf dist",

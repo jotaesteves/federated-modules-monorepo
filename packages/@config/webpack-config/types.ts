@@ -9,6 +9,27 @@ export type AppModuleFederationConfig = {
     name: string;
     filename: string;
     exposes?: Record<string, string>;
+    // Allow configuring the library to avoid invalid identifier errors for names starting with a number
+    library?: {
+      type:
+        | 'var'
+        | 'module'
+        | 'assign'
+        | 'this'
+        | 'window'
+        | 'self'
+        | 'global'
+        | 'commonjs'
+        | 'commonjs2'
+        | 'amd'
+        | 'amd-require'
+        | 'umd'
+        | 'umd2'
+        | 'jsonp'
+        | 'system'
+        | string;
+      name: string;
+    };
   };
   remotes?: {
     dev: Record<string, string>;

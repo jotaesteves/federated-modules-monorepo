@@ -12,9 +12,9 @@ const getProdConfig = (env: Record<string, string | boolean>): webpack.Configura
     plugins: [
       new webpack.container.ModuleFederationPlugin({
         ...getCommonModuleFederationConfig(),
-        remotes: getAppModuleFederationConfig(Apps.app1).remotes?.prod,
+        remotes: getAppModuleFederationConfig(Apps['vision360']).remotes?.prod,
       }),
-      ...(env.analyze ? [getBundleAnalyzerPlugin(Apps.app1)] : []),
+      ...(env.analyze ? [getBundleAnalyzerPlugin(Apps['vision360'])] : []),
     ],
   });
 };

@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from 'shared/queries/client';
 import Global from 'shared/styles/Global';
-import App1 from './App1';
+import FullVision from './Vision360';
 
 const container = document.getElementById('app');
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -13,7 +13,7 @@ root.render(
     <Global />
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <App1 />
+        <FullVision />
       </BrowserRouter>
     </QueryClientProvider>
   </>
