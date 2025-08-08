@@ -1,0 +1,110 @@
+/* Example CSS Module for components */
+.button {
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px 0 rgba(102, 126, 234, 0.3);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px 0 rgba(102, 126, 234, 0.4);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.buttonLarge {
+  composes: button;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+}
+
+.buttonSmall {
+  composes: button;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+}
+
+.cardBody {
+  padding: 20px;
+}
+
+.cardFooter {
+  background: #f8f9fa;
+  padding: 15px 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Animation classes */
+.fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.slideInUp {
+  animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .cardHeader,
+  .cardBody,
+  .cardFooter {
+    padding: 15px;
+  }
+}

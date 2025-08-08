@@ -4,6 +4,7 @@
   "extends": "@config/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {}
+    "paths": {},
+    "moduleResolution": "node16"
   }
 }

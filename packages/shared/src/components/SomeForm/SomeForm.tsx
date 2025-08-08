@@ -1,16 +1,17 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import { SubmitHandler, useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import Button from '../Button/Button';
+import InputWithLabel from '../InputWithLabel/InputWithLabel';
 
 const userFormSchema = z.object({
   firstName: z.string().min(1, { message: 'First name is required' }),
   lastName: z.string(),
-  email: z.string().min(1, { message: 'Email is required' }).email({
-    message: 'Must be a valid email',
-  }),
+  email: z
+    .string()
+    .min(1, { message: 'Email is required' })
+    .email({ message: 'Must be a valid email' }),
 });
 
 type UserFormSchema = z.infer<typeof userFormSchema>;
@@ -41,29 +42,52 @@ const SomeForm: React.FC = () => {
         <Controller
           name="firstName"
           control={control}
-          render={({ field }) => <TextField {...field} />}
+          render={({ field: { ref, ...field } }) => (
+            <InputWithLabel
+              id="firstName"
+              label="First name"
+              autoComplete="given-name"
+              ref={ref}
+              errorMessage={errors.firstName?.message}
+              {...field}
+            />
+          )}
         />
-        {errors.firstName?.message && (
-          <div style={{ color: 'red' }}>{errors.firstName?.message}</div>
-        )}
       </div>
       <div>
         <Controller
           name="lastName"
           control={control}
-          render={({ field }) => <TextField {...field} />}
+          render={({ field: { ref, ...field } }) => (
+            <InputWithLabel
+              id="lastName"
+              label="Last name"
+              autoComplete="family-name"
+              ref={ref}
+              errorMessage={errors.lastName?.message}
+              {...field}
+            />
+          )}
         />
-        {errors.lastName?.message && <div style={{ color: 'red' }}>{errors.lastName?.message}</div>}
       </div>
       <div>
         <Controller
           name="email"
           control={control}
-          render={({ field }) => <TextField {...field} />}
+          render={({ field: { ref, ...field } }) => (
+            <InputWithLabel
+              id="email"
+              label="Email"
+              type="email"
+              autoComplete="email"
+              ref={ref}
+              errorMessage={errors.email?.message}
+              {...field}
+            />
+          )}
         />
-        {errors.email?.message && <div style={{ color: 'red' }}>{errors.email?.message}</div>}
       </div>
-      <div>
+      <div style={{ marginTop: 12 }}>
         <Button type="submit">Submit Form</Button>
       </div>
     </form>

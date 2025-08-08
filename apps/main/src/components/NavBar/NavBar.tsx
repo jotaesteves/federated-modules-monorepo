@@ -1,9 +1,5 @@
 // copied from https://mui.com/material-ui/guides/routing/#tabs
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import { Route, Routes, Link, matchPath, useLocation } from 'react-router-dom';
 
 function useRouteMatch(patterns: readonly string[]) {
@@ -26,14 +22,45 @@ function MyTabs() {
   // users, users/new, users/edit.
   // Then the order should be ['users/add', 'users/edit', 'users'].
   const routeMatch = useRouteMatch(['/app-1/*', '/app-2/*', '/']);
-  const currentTab = routeMatch?.pattern?.path;
+  const currentTab = routeMatch?.pattern?.path ?? '/';
+
+  const tabStyle = (active: boolean): React.CSSProperties => ({
+    padding: '8px 12px',
+    borderBottom: active ? '2px solid #1976d2' : '2px solid transparent',
+    color: active ? '#1976d2' : 'inherit',
+    textDecoration: 'none',
+    display: 'inline-block',
+  });
 
   return (
-    <Tabs value={currentTab}>
-      <Tab label="Root" value="/" to="/" component={Link} />
-      <Tab label="App 1" value="/app-1/*" to="/app-1" component={Link} />
-      <Tab label="App 2" value="/app-2/*" to="/app-2" component={Link} />
-    </Tabs>
+    <nav aria-label="Primary">
+      <ul
+        style={{
+          listStyle: 'none',
+          display: 'flex',
+          gap: 16,
+          padding: 0,
+          margin: 0,
+          borderBottom: '1px solid #e0e0e0',
+        }}
+      >
+        <li>
+          <Link to="/" style={tabStyle(currentTab === '/')}>
+            Root
+          </Link>
+        </li>
+        <li>
+          <Link to="/app-1" style={tabStyle(currentTab === '/app-1/*')}>
+            App 1
+          </Link>
+        </li>
+        <li>
+          <Link to="/app-2" style={tabStyle(currentTab === '/app-2/*')}>
+            App 2
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 }
 
@@ -41,19 +68,19 @@ function CurrentRoute() {
   const location = useLocation();
 
   return (
-    <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
+    <p style={{ paddingBottom: 8, color: 'rgba(0,0,0,0.6)', margin: 0 }}>
       Current route: {location.pathname}
-    </Typography>
+    </p>
   );
 }
 
 const NavBar: React.FC = () => (
-  <Box sx={{ width: '100%' }}>
+  <div style={{ width: '100%' }}>
     <Routes>
       <Route path="*" element={<CurrentRoute />} />
     </Routes>
     <MyTabs />
-  </Box>
+  </div>
 );
 
 export default NavBar;

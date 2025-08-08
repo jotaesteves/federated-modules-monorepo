@@ -35,8 +35,11 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/InputWithLabel': './src/components/InputWithLabel/InputWithLabel',
         './components/MemeImage': './src/components/MemeImage/MemeImage',
         './components/SomeForm': './src/components/SomeForm/SomeForm',
+        './components/ExampleCard': './src/components/ExampleCard/ExampleCard',
+        './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
         './styles/Global': './src/styles/Global',
-        './styles/muiTheme': './src/styles/muiTheme',
+        // Expose a JS wrapper that imports Tailwind CSS, instead of raw CSS
+        './styles/tailwind': './src/styles/tailwind-import',
         './utils/transformations': './src/utils/transformations/transformations',
         './utils/api': './src/utils/api/api',
         './queries/client': './src/queries/client',

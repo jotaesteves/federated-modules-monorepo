@@ -12,7 +12,6 @@ export enum SharedModule {
   'react-helmet' = 'react-helmet',
   '@emotion/react' = '@emotion/react',
   '@emotion/styled' = '@emotion/styled',
-  '@mui/material' = '@mui/material',
   'zustand' = 'zustand',
   '@tanstack/react-query' = '@tanstack/react-query',
   '@hookform/resolvers' = '@hookform/resolvers',

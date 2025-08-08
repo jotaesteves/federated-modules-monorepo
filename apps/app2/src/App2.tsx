@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Divider from '@mui/material/Divider';
 import Page1 from './pages/page1/Page1';
 import Page2 from './pages/page2/Page2';
 import Button from 'shared/components/Button';
@@ -18,7 +17,6 @@ const App2: React.FC = () => {
           <p>And some button below (from shared):</p>
           <Button>Shared Button app2 root</Button>
         </div>
-        <Divider sx={{ marginTop: 2, marginBottom: 2 }} />
         <Routes>
           <Route path="page-1/*" element={<Page1 />} />
           <Route path="page-2/*" element={<Page2 />} />

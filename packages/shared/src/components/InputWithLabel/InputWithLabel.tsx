@@ -1,34 +1,55 @@
 import React from 'react';
-import { styled } from '@mui/material/styles';
-import InputBase from '@mui/material/InputBase';
-import InputLabel from '@mui/material/InputLabel';
+import './InputWithLabel.css';
 
-const Input = styled(InputBase)(({ theme }) => ({
-  'label + &': {
-    marginTop: 0,
-  },
-  '& .MuiInputBase-input': {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    width: 'auto',
-    padding: '10px 12px',
-    transition: theme.transitions.create(['border-color', 'background-color', 'box-shadow']),
-    '&:focus': {
-      borderColor: theme.palette.primary.main,
+export type InputWithLabelProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  label: string;
+  id?: string;
+  labelClassName?: string;
+  inputClassName?: string;
+  error?: boolean;
+  errorMessage?: string;
+};
+
+const InputWithLabel = React.forwardRef<HTMLInputElement, InputWithLabelProps>(
+  (
+    {
+      label,
+      id = 'input-with-label',
+      labelClassName = '',
+      inputClassName = '',
+      className = '',
+      error = false,
+      errorMessage,
+      ...inputProps
     },
-  },
-}));
+    ref
+  ) => {
+    const inputHasError = error || Boolean(errorMessage);
+    const errorId = `${id}-error`;
 
-const InputWithLabel: React.FC<{ label: string }> = ({ label }) => (
-  <>
-    <InputLabel shrink htmlFor="input-with-label">
-      {label}
-    </InputLabel>
-    <Input id="input-with-label" />
-  </>
+    return (
+      <div className={`input-with-label ${className}`.trim()}>
+        <label className={`input-label ${labelClassName}`.trim()} htmlFor={id}>
+          {label}
+        </label>
+        <input
+          id={id}
+          ref={ref}
+          className={`input ${inputHasError ? 'error' : ''} ${inputClassName}`.trim()}
+          aria-invalid={inputHasError || undefined}
+          aria-describedby={inputHasError ? errorId : inputProps['aria-describedby']}
+          {...inputProps}
+        />
+        {inputHasError && (
+          <div id={errorId} className="input-error" role="alert" aria-live="polite">
+            {errorMessage}
+          </div>
+        )}
+      </div>
+    );
+  }
 );
+
+InputWithLabel.displayName = 'InputWithLabel';
 
 export default InputWithLabel;

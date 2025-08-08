@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Global, css } from '@emotion/react';
-import CssBaseline from '@mui/material/CssBaseline';
 import { fontFamily } from './utils';
+import TailwindProvider from './TailwindProvider';
 
-const GlobalStyles: React.FC = () => {
+const GlobalStyles: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
-    <>
-      <CssBaseline />
+    <TailwindProvider>
       <Global
         styles={css`
           html,
@@ -15,7 +14,8 @@ const GlobalStyles: React.FC = () => {
           }
         `}
       />
-    </>
+      {children}
+    </TailwindProvider>
   );
 };
 

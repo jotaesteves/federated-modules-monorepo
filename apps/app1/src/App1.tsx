@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Divider from '@mui/material/Divider';
 import Page1 from './pages/page1/Page1';
 import Page2 from './pages/page2/Page2';
 import Button from 'shared/components/Button';
@@ -20,18 +19,39 @@ const App1: React.FC = () => {
       <Helmet>
         <title>App1 title</title>
       </Helmet>
-      <div>
-        <div>
-          <h1>This is the very beginning of app1</h1>
-          <p>And some button below (from shared):</p>
-          <Button>Shared Button app1 root</Button>
+      <div className="p-6">
+        <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+          <h1 className="text-2xl font-semibold tracking-tight">
+            This is the very beginning of app1
+          </h1>
+          <p className="mt-1 text-sm text-slate-600">This remote exposes two nested pages.</p>
+
+          <div className="mt-4 flex items-center gap-3">
+            <Button>Shared Button app1 root</Button>
+            <nav className="ml-auto text-sm">
+              <ul className="flex items-center gap-3">
+                <li>
+                  <Link className="text-sky-600 hover:text-sky-700" to="page-1">
+                    Go to page-1
+                  </Link>
+                </li>
+                <li>
+                  <Link className="text-sky-600 hover:text-sky-700" to="page-2">
+                    Go to page-2
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <Divider sx={{ marginTop: 2, marginBottom: 2 }} />
-        <Routes>
-          <Route path="page-1/*" element={<Page1 />} />
-          <Route path="page-2/*" element={<Page2 />} />
-          <Route path="*" element={<Page2 />} />
-        </Routes>
+
+        <div className="mt-6">
+          <Routes>
+            <Route path="page-1/*" element={<Page1 />} />
+            <Route path="page-2/*" element={<Page2 />} />
+            <Route path="*" element={<Page2 />} />
+          </Routes>
+        </div>
       </div>
     </>
   );
