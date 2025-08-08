@@ -1,5 +1,7 @@
 import * as React from 'react';
-import './tailwind.css';
+// Import the main globals.css which contains the @theme and Tailwind configuration
+import './globals.css';
+import './global-demo.css';
 
 /**
  * TailwindProvider component that loads Tailwind CSS styles

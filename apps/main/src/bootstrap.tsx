@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, useNavigate } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from 'shared/queries/client';
-import Global from 'shared/styles/Global';
+import GlobalStyles from 'shared/styles/Global';
 import App from './App';
 import { MicroFrontendProvider } from 'shared/providers/MicroFrontendProvider';
 
@@ -21,7 +21,6 @@ const root = createRoot(container!);
 
 function NavigationBridge({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Install global navigation helpers so shared globalStore can navigate via router
   if (typeof window !== 'undefined') {
@@ -56,7 +55,7 @@ function NavigationBridge({ children }: { children: React.ReactNode }) {
 
 root.render(
   <>
-    <Global />
+    <GlobalStyles />
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <MicroFrontendProvider>
