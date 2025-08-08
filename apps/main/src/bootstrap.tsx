@@ -3,8 +3,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from 'shared/queries/client';
 import Global from 'shared/styles/Global';
-// Import Tailwind CSS styles via JS wrapper to prevent double-processing
-import 'shared/styles/tailwind';
 import App from './App';
 
 const container = document.getElementById('app');

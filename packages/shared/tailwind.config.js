@@ -4,12 +4,15 @@ export const content = [
   './src/**/*.{js,ts,jsx,tsx}',
 
   // Specific app source files (avoid scanning dist and node_modules)
+  '../../apps/header/src/**/*.{js,ts,jsx,tsx}',
   '../../apps/app1/src/**/*.{js,ts,jsx,tsx}',
   '../../apps/app2/src/**/*.{js,ts,jsx,tsx}',
   '../../apps/main/src/**/*.{js,ts,jsx,tsx}',
+  '../../apps/footer/src/**/*.{js,ts,jsx,tsx}',
 
   // Public HTML files
   '../../apps/*/public/index.html',
+  '../../apps/footer/public/index.html',
   './public/index.html',
 ];
 export const theme = {

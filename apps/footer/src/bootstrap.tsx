@@ -3,17 +3,22 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from 'shared/queries/client';
 import Global from 'shared/styles/Global';
-import App1 from './App1';
+
+import Footer from './Footer';
+import { Helmet } from 'react-helmet';
 
 const container = document.getElementById('app');
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = createRoot(container!);
 root.render(
   <>
+    <Helmet>
+      <title>Footer App</title>
+    </Helmet>
     <Global />
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <App1 />
+        <Footer />
       </BrowserRouter>
     </QueryClientProvider>
   </>

@@ -3,6 +3,8 @@ export enum Apps {
   app1,
   app2,
   main,
+  header,
+  footer,
 }
 
 export enum SharedModule {
