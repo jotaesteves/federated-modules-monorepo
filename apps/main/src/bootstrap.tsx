@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useNavigate } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from 'shared/queries/client';
-import GlobalStyles from 'shared/styles/Global';
+import GlobalStylesProvider from 'shared/styles/Global';
 import App from './App';
 import { MicroFrontendProvider } from 'shared/providers/MicroFrontendProvider';
 
@@ -55,15 +55,16 @@ function NavigationBridge({ children }: { children: React.ReactNode }) {
 
 root.render(
   <>
-    <GlobalStyles />
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <MicroFrontendProvider>
-          <NavigationBridge>
-            <App />
-          </NavigationBridge>
-        </MicroFrontendProvider>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <GlobalStylesProvider>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <MicroFrontendProvider>
+            <NavigationBridge>
+              <App />
+            </NavigationBridge>
+          </MicroFrontendProvider>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </GlobalStylesProvider>
   </>
 );

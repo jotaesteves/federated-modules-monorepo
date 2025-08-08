@@ -39,14 +39,34 @@ const getCommonConfig = (): webpack.Configuration => ({
               importLoaders: 1,
             },
           },
-          'postcss-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              // Use the shared package's postcss.config.js for all apps
+              postcssOptions: {
+                config: path.resolve(__dirname, '../../shared/postcss.config.js'),
+              },
+            },
+          },
         ],
       },
       // Regular CSS files (including Tailwind)
       {
         test: /\.css$/,
         exclude: /\.module\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              // Use the shared package's postcss.config.js for all apps
+              postcssOptions: {
+                config: path.resolve(__dirname, '../../shared/postcss.config.js'),
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|jpeg)/,

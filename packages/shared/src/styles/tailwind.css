@@ -1,9 +1,0 @@
-@import 'tailwindcss';
-
-/* Custom base styles */
-@layer base {
-  html,
-  body {
-    @apply antialiased;
-  }
-}

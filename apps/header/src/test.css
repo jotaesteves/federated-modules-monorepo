@@ -1,0 +1,10 @@
+/* Test CSS file to verify PostCSS processing in header app */
+@import 'tailwindcss';
+
+.test-tailwind {
+  @apply bg-red-500 text-white p-4;
+}
+
+.test-custom-primary {
+  @apply bg-primary-500 text-white;
+}
