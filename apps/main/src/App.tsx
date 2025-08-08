@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useCountStore } from 'shared/stores/count';
-import NavBar from './components/NavBar/NavBar';
+// import NavBar from './components/NavBar/NavBar';
 import Root from './pages/Root/Root';
 
 /**
@@ -14,6 +14,7 @@ const App2 = React.lazy(() => import('app2/App2'));
 const CSSDemo = React.lazy(() => import('./pages/CSSDemo'));
 const Header = React.lazy(() => import('header/Header'));
 const Footer = React.lazy(() => import('footer/Footer'));
+const Sidebar = React.lazy(() => import('header/Sidebar'));
 
 const Spinner = () => (
   <div className="flex items-center gap-2 text-slate-500">
@@ -36,94 +37,82 @@ const Spinner = () => (
 const App: React.FC = () => {
   const { count } = useCountStore();
   return (
-    <>
+    <div className="flex min-h-screen flex-col bg-slate-50 text-slate-900">
       <Header />
-      <div className="min-h-screen bg-slate-50 text-slate-900">
-        <div className="mx-auto max-w-5xl px-4 py-8">
-          <header className="mb-6">
-            <h1 className="text-3xl font-bold tracking-tight">This is the main app</h1>
-            <p className="mt-1 text-sm text-slate-600">
-              Host shell that mounts remote microfrontends.
-            </p>
-          </header>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            {/* Counter card */}
-            <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-              <h2 className="text-sm font-semibold text-slate-700">Counter</h2>
-              <p className="mt-2 text-2xl font-semibold">{count}</p>
-            </section>
-          </div>
-
-          <div className="mt-10">
+      <div className="flex-1 min-h-0">
+        <div className="mx-auto h-full">
+          {/*   <div className="mt-10">
             <p className="mb-3 text-sm text-slate-600">
-              Below is NavBar (host), tabs navigate to remote apps mounted via Module Federation.
+            Below is NavBar (host), tabs navigate to remote apps mounted via Module Federation.
             </p>
             <div className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
-              <NavBar />
+            <NavBar />
             </div>
-          </div>
+            </div> */}
 
-          <main className="mt-6">
-            <Routes>
-              {/* Use absolute paths to ensure matching */}
-              <Route
-                path="/vision-360/*"
-                element={
-                  <React.Suspense
-                    fallback={
-                      <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
-                        <Spinner />
+          <main style={{ height: '75vh' }} className="flex overflow-scroll min-h-0">
+            <Sidebar />
+            <div className="flex-1 min-h-0">
+              <Routes>
+                {/* Use absolute paths to ensure matching */}
+                <Route
+                  path="/vision-360/*"
+                  element={
+                    <React.Suspense
+                      fallback={
+                        <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
+                          <Spinner />
+                        </div>
+                      }
+                    >
+                      <div className="rounded-lg border border-slate-200 bg-gray-100 shadow-sm w-full">
+                        <Vision360 />
                       </div>
-                    }
-                  >
-                    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-                      <Vision360 />
-                    </div>
-                  </React.Suspense>
-                }
-              />
-              <Route
-                path="/app-2/*"
-                element={
-                  <React.Suspense
-                    fallback={
-                      <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
-                        <Spinner />
+                    </React.Suspense>
+                  }
+                />
+                <Route
+                  path="/app-2/*"
+                  element={
+                    <React.Suspense
+                      fallback={
+                        <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
+                          <Spinner />
+                        </div>
+                      }
+                    >
+                      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <App2 />
                       </div>
-                    }
-                  >
-                    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-                      <App2 />
-                    </div>
-                  </React.Suspense>
-                }
-              />
-              {/* CSS demo page */}
-              <Route
-                path="/css-demo"
-                element={
-                  <React.Suspense
-                    fallback={
-                      <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
-                        <Spinner />
+                    </React.Suspense>
+                  }
+                />
+                {/* CSS demo page */}
+                <Route
+                  path="/css-demo"
+                  element={
+                    <React.Suspense
+                      fallback={
+                        <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
+                          <Spinner />
+                        </div>
+                      }
+                    >
+                      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <CSSDemo />
                       </div>
-                    }
-                  >
-                    <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-                      <CSSDemo />
-                    </div>
-                  </React.Suspense>
-                }
-              />
-              <Route path="*" element={<Root />} />
-            </Routes>
+                    </React.Suspense>
+                  }
+                />
+                <Route path="*" element={<Root />} />
+              </Routes>
+            </div>
           </main>
         </div>
       </div>
 
       <Footer />
-    </>
+    </div>
   );
 };
 

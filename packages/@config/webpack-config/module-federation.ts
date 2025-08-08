@@ -107,6 +107,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Header': './src/Header',
+        './Sidebar': './src/Sidebar',
       },
     },
     remotes: {

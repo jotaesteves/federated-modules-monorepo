@@ -20,7 +20,7 @@ export interface CardProps extends CardBaseProps {
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ title, description, footer, children, className, ...props }, ref) => (
-    <UICard ref={ref} className={className} {...props}>
+    <UICard ref={ref} className={className + ` bg-white`} {...props}>
       {(title || description) && (
         <CardHeader>
           {title && <CardTitle>{title}</CardTitle>}

@@ -6,6 +6,7 @@ import 'shared/styles/global-import';
 
 import Header from './Header';
 import { Helmet } from 'react-helmet';
+import SideBarNav from './Sidebar';
 
 const container = document.getElementById('app');
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -18,6 +19,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Header />
+        <SideBarNav />
       </BrowserRouter>
     </QueryClientProvider>
   </>
