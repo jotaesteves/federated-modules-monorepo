@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Spinner from '../../components/common/Spinner';
+import Spinner from 'shared/components/Spinner';
 
 const PersonalData = React.lazy(() => import('personalData/PersonalData'));
 

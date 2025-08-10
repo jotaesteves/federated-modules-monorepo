@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Outlet } from 'react-router-dom';
-import Spinner from '../components/common/Spinner';
+import Spinner from 'shared/components/Spinner';
 import { SidebarProvider } from 'shared/components/ui';
 
 import Page from '../pages/Definicoes/Definicoes';

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'shared/components/Button';
-import MemeImage from 'shared/components/MemeImage';
 import SomeForm from 'shared/components/SomeForm';
 
 const Page1: React.FC = () => (
@@ -11,10 +10,6 @@ const Page1: React.FC = () => (
 
     <div className="mt-4">
       <Button>This is great meme</Button>
-    </div>
-
-    <div className="mt-4">
-      <MemeImage />
     </div>
 
     <div className="mt-6">

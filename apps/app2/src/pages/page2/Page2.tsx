@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'shared/components/Button';
-import MemeImage from 'shared/components/MemeImage';
 import { useCountStore } from 'shared/stores/count';
 import useFilms from 'shared/queries/useFilms';
 import Image from '../../assets/images/meme2.jpg';
@@ -17,9 +16,6 @@ const Page1: React.FC = () => {
         <Button onClick={increment}>Wow! Great memes! - increment</Button>
         <Button onClick={decrement}>No! Bad memes! - decrement</Button>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}></div>
-        <div>
-          <MemeImage />
-        </div>
         <div>
           <img src={Image} alt="Meme 2" />
         </div>

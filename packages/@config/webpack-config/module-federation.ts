@@ -45,10 +45,10 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       exposes: {
         './components/Button': './src/components/Button/Button',
         './components/InputWithLabel': './src/components/InputWithLabel/InputWithLabel',
-        './components/MemeImage': './src/components/MemeImage/MemeImage',
         './components/SomeForm': './src/components/SomeForm/SomeForm',
         './components/Card': './src/components/Card/Card',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
+        './components/Spinner': './src/components/Spinner/Spinner',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',

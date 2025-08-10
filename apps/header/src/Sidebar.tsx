@@ -81,7 +81,7 @@ const SideBarNav: React.FC = () => {
 
   return (
     <nav
-      className={`relative justify-between flex flex-col items-start p-2 space-y-2 bg-white h-full transition-all duration-300 shadow-lg border-r border-gray-200 ${
+      className={`relative justify-between flex flex-col items-start p-2 space-y-2 bg-white h-full transition-all duration-300 shadow-lg border-r border-gray-200 overflow-hidden ${
         expanded ? 'w-56' : 'w-16'
       }`}
       onMouseEnter={() => setExpanded(true)}
@@ -89,14 +89,15 @@ const SideBarNav: React.FC = () => {
       style={{
         minWidth: expanded ? '14rem' : '4rem',
         maxWidth: expanded ? '14rem' : '4rem',
+        minHeight: '100%',
       }}
     >
-      <div>
+      <div className="flex-1 overflow-y-auto min-h-0">
         {sidebarItems.map((item) => (
           <SideBarNavItem key={item.label} {...item} expanded={expanded} />
         ))}
       </div>
-      <div className="mt-auto flex flex-col items-start space-y-2 w-full">
+      <div className="flex flex-col items-start space-y-2 w-full flex-shrink-0">
         {bottomSidebarItems.map((item) => (
           <SideBarNavItem key={item.label} {...item} expanded={expanded} />
         ))}

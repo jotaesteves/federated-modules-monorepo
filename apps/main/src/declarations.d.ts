@@ -64,6 +64,12 @@ declare module 'shared/components/app-sidebar' {
   export default AppSidebarComponent;
 }
 
+declare module 'shared/components/Spinner' {
+  import type { ComponentType } from 'react';
+  const SpinnerComponent: ComponentType<unknown>;
+  export default SpinnerComponent;
+}
+
 declare module 'shared/components/ui' {
   import type { ComponentType } from 'react';
   export const SidebarProvider: ComponentType<{ children: React.ReactNode }>;
