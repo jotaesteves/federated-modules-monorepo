@@ -17,7 +17,7 @@ module.exports = {
     '../../apps/*/public/index.html',
     './public/index.html',
   ],
-  darkMode: 'class',
+  darkMode: ['class', 'class'],
   theme: {
     extend: {
       fontFamily: {
@@ -27,13 +27,12 @@ module.exports = {
           'Helvetica',
           'Arial',
           'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
+          'Apple Color Emoji"',
+          'Segoe UI Emoji"',
+          'Segoe UI Symbol"',
         ],
       },
       colors: {
-        // ShadCN UI colors using CSS variables
         background: 'oklch(var(--background) / <alpha-value>)',
         foreground: 'oklch(var(--foreground) / <alpha-value>)',
         card: 'oklch(var(--card) / <alpha-value>)',
@@ -41,7 +40,6 @@ module.exports = {
         popover: 'oklch(var(--popover) / <alpha-value>)',
         'popover-foreground': 'oklch(var(--popover-foreground) / <alpha-value>)',
         primary: {
-          // Brand colors
           50: '#ffe6f1',
           100: '#ffb3d2',
           200: '#ff80b3',
@@ -53,7 +51,6 @@ module.exports = {
           800: '#640334',
           900: '#3e0222',
           950: '#210112',
-          // ShadCN primary
           DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
           foreground: 'oklch(var(--primary-foreground) / <alpha-value>)',
         },
@@ -73,7 +70,16 @@ module.exports = {
         'chart-3': 'oklch(var(--chart-3) / <alpha-value>)',
         'chart-4': 'oklch(var(--chart-4) / <alpha-value>)',
         'chart-5': 'oklch(var(--chart-5) / <alpha-value>)',
-        sidebar: 'oklch(var(--sidebar) / <alpha-value>)',
+        sidebar: {
+          DEFAULT: 'hsl(var(--sidebar-background))',
+          foreground: 'hsl(var(--sidebar-foreground))',
+          primary: 'hsl(var(--sidebar-primary))',
+          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
+          accent: 'hsl(var(--sidebar-accent))',
+          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
+          border: 'hsl(var(--sidebar-border))',
+          ring: 'hsl(var(--sidebar-ring))',
+        },
         'sidebar-foreground': 'oklch(var(--sidebar-foreground) / <alpha-value>)',
         'sidebar-primary': 'oklch(var(--sidebar-primary) / <alpha-value>)',
         'sidebar-primary-foreground': 'oklch(var(--sidebar-primary-foreground) / <alpha-value>)',

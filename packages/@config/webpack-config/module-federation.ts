@@ -49,6 +49,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/SomeForm': './src/components/SomeForm/SomeForm',
         './components/Card': './src/components/Card/Card',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
+        './components/app-sidebar': './src/components/app-sidebar',
+        './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
         './styles/global-import': './src/styles/global-import',
         './utils/transformations': './src/utils/transformations/transformations',
