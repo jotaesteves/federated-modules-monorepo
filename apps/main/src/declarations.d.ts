@@ -22,9 +22,70 @@ declare module '*.css?raw' {
 }
 
 // Module Federation remotes typings
-import type { ComponentType } from 'react';
+declare module 'vision360/Vision360' {
+  import type { ComponentType } from 'react';
+  const Vision360Component: ComponentType<unknown>;
+  export default Vision360Component;
+}
 
-declare module 'Vision360/Vision360' {
-  const Component: ComponentType<unknown>;
-  export default Component;
+declare module 'app2/App2' {
+  import type { ComponentType } from 'react';
+  const App2Component: ComponentType<unknown>;
+  export default App2Component;
+}
+
+declare module 'personalData/PersonalData' {
+  import type { ComponentType } from 'react';
+  const PersonalDataComponent: ComponentType<unknown>;
+  export default PersonalDataComponent;
+}
+
+declare module 'header/Header' {
+  import type { ComponentType } from 'react';
+  const HeaderComponent: ComponentType<unknown>;
+  export default HeaderComponent;
+}
+
+declare module 'header/Sidebar' {
+  import type { ComponentType } from 'react';
+  const SidebarComponent: ComponentType<unknown>;
+  export default SidebarComponent;
+}
+
+declare module 'footer/Footer' {
+  import type { ComponentType } from 'react';
+  const FooterComponent: ComponentType<unknown>;
+  export default FooterComponent;
+}
+
+declare module 'shared/components/app-sidebar' {
+  import type { ComponentType } from 'react';
+  const AppSidebarComponent: ComponentType<unknown>;
+  export default AppSidebarComponent;
+}
+
+declare module 'shared/components/Spinner' {
+  import type { ComponentType } from 'react';
+  const SpinnerComponent: ComponentType<unknown>;
+  export default SpinnerComponent;
+}
+
+declare module 'shared/components/ui' {
+  import type { ComponentType } from 'react';
+  export const SidebarProvider: ComponentType<{ children: React.ReactNode }>;
+  export const SidebarInset: ComponentType<unknown>;
+  export const SidebarTrigger: ComponentType<unknown>;
+  export const Breadcrumb: ComponentType<unknown>;
+  export const BreadcrumbItem: ComponentType<unknown>;
+  export const BreadcrumbLink: ComponentType<unknown>;
+  export const BreadcrumbList: ComponentType<unknown>;
+  export const BreadcrumbPage: ComponentType<unknown>;
+  export const BreadcrumbSeparator: ComponentType<unknown>;
+  export const Separator: ComponentType<unknown>;
+  export const Card: ComponentType<unknown>;
+  export const CardHeader: ComponentType<unknown>;
+  export const CardTitle: ComponentType<unknown>;
+  export const CardContent: ComponentType<unknown>;
+  export const CardFooter: ComponentType<unknown>;
+  export const CardDescription: ComponentType<unknown>;
 }

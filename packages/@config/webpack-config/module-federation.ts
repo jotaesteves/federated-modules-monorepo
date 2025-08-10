@@ -21,6 +21,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         app2: 'app2@http://localhost:3003/remoteEntry.js',
         header: 'header@http://localhost:3004/remoteEntry.js',
         footer: 'footer@http://localhost:3005/remoteEntry.js',
+        personalData: 'personalData@http://localhost:3006/remoteEntry.js',
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -31,6 +32,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         app2: `app2@${hostBaseUrl}apps/app2/dist/remoteEntry.js`,
         header: `header@${hostBaseUrl}apps/header/dist/remoteEntry.js`,
         footer: `footer@${hostBaseUrl}apps/footer/dist/remoteEntry.js`,
+        personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
       },
     },
   },
@@ -43,10 +45,12 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       exposes: {
         './components/Button': './src/components/Button/Button',
         './components/InputWithLabel': './src/components/InputWithLabel/InputWithLabel',
-        './components/MemeImage': './src/components/MemeImage/MemeImage',
         './components/SomeForm': './src/components/SomeForm/SomeForm',
         './components/Card': './src/components/Card/Card',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
+        './components/Spinner': './src/components/Spinner/Spinner',
+        './components/app-sidebar': './src/components/app-sidebar',
+        './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
         './styles/global-import': './src/styles/global-import',
         './utils/transformations': './src/utils/transformations/transformations',
@@ -127,6 +131,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Footer': './src/Footer',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: 'shared@http://localhost:3001/remoteEntry.js',
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.personalData]: {
+    devPort: 3006,
+    analyzerPort: 4006,
+    baseConfig: {
+      name: 'personalData',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './PersonalData': './src/PersonalData',
       },
     },
     remotes: {
