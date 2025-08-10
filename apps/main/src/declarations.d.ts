@@ -24,7 +24,32 @@ declare module '*.css?raw' {
 // Module Federation remotes typings
 import type { ComponentType } from 'react';
 
-declare module 'Vision360/Vision360' {
+declare module 'vision360/Vision360' {
+  const Component: ComponentType<unknown>;
+  export default Component;
+}
+
+declare module 'app2/App2' {
+  const Component: ComponentType<unknown>;
+  export default Component;
+}
+
+declare module 'personalData/PersonalData' {
+  const Component: ComponentType<unknown>;
+  export default Component;
+}
+
+declare module 'header/Header' {
+  const Component: ComponentType<unknown>;
+  export default Component;
+}
+
+declare module 'header/Sidebar' {
+  const Component: ComponentType<unknown>;
+  export default Component;
+}
+
+declare module 'footer/Footer' {
   const Component: ComponentType<unknown>;
   export default Component;
 }

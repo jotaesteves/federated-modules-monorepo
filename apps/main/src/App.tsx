@@ -8,8 +8,10 @@ import Root from './pages/Root/Root';
  * if safe import is needed (in case of remote bundle loading fails)
  * consider using FederatedBoundary https://github.com/module-federation/universe/tree/main/packages/utilities#react-utilities
  */
+
 const Vision360 = React.lazy(() => import('vision360/Vision360'));
 const App2 = React.lazy(() => import('app2/App2'));
+const PersonalData = React.lazy(() => import('personalData/PersonalData'));
 // Add CSS demo page (local)
 const CSSDemo = React.lazy(() => import('./pages/CSSDemo'));
 const Header = React.lazy(() => import('header/Header'));
@@ -67,6 +69,22 @@ const App: React.FC = () => {
                     >
                       <div className="rounded-lg border border-slate-200 bg-gray-100 shadow-sm w-full">
                         <Vision360 />
+                      </div>
+                    </React.Suspense>
+                  }
+                />
+                <Route
+                  path="/personal-data/*"
+                  element={
+                    <React.Suspense
+                      fallback={
+                        <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
+                          <Spinner />
+                        </div>
+                      }
+                    >
+                      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+                        <PersonalData />
                       </div>
                     </React.Suspense>
                   }

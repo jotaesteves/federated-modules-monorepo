@@ -5,13 +5,13 @@ import Page1 from './pages/page1/Page1';
 import Page2 from './pages/page2/Page2';
 import Button from 'shared/components/Button';
 import { swapObjectKeyValue } from 'shared/utils/transformations';
-import PersonalData from '../../vision360/src/components/cards/PersonalData';
-import EstateAndProducts from '../../vision360/src/components/cards/EstateAndProducts';
-import ChannelsAndServices from '../../vision360/src/components/cards/ChannelsAndServices';
-import Incidents from '../../vision360/src/components/cards/Incidents';
-import LastContact from '../../vision360/src/components/cards/LastContact';
+import PersonalDataCard from './components/cards/PersonalData';
+import EstateAndProducts from './components/cards/EstateAndProducts';
+import ChannelsAndServices from './components/cards/ChannelsAndServices';
+import Incidents from './components/cards/Incidents';
+import LastContact from './components/cards/LastContact';
 
-const App1: React.FC = () => {
+const PersonalData: React.FC = () => {
   const obj = { a: 'x', b: 'y', c: 'z' };
   console.log(
     'app1 swapObjectKeyValue demo',
@@ -22,13 +22,13 @@ const App1: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Visao 360</title>
+        <title>Personal Data</title>
       </Helmet>
       <div className="p-2">
-        <div className="grid grid-cols-5 grid-rows-4 gap-2 mb-6">
+        <div className="grid grid-cols-5 grid-rows-5 gap-2 mb-6">
           {/* div1 */}
           <div className="row-span-4">
-            <PersonalData />
+            <PersonalDataCard />
           </div>
           {/* div2 */}
           <div className="col-span-3 row-span-2">
@@ -52,4 +52,4 @@ const App1: React.FC = () => {
   );
 };
 
-export default App1;
+export default PersonalData;

@@ -5,6 +5,7 @@ export enum Apps {
   vision360,
   app2,
   footer,
+  personalData,
 }
 
 export enum SharedModule {
