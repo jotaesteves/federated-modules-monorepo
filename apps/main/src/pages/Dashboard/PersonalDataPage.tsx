@@ -7,12 +7,12 @@ export const PersonalDataPage: React.FC = () => {
   return (
     <React.Suspense
       fallback={
-        <div className="rounded-lg border border-slate-200 bg-white p-6 text-center shadow-sm">
+        <div className=" bg-white p-6 text-center">
           <Spinner />
         </div>
       }
     >
-      <div className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+      <div className=" bg-gray-100">
         <PersonalData />
       </div>
     </React.Suspense>

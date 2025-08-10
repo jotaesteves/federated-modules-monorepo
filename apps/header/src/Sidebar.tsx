@@ -81,7 +81,7 @@ const SideBarNav: React.FC = () => {
 
   return (
     <nav
-      className={`relative justify-between flex flex-col items-start p-2 space-y-2 bg-white h-full transition-all duration-300 shadow-lg border-r border-gray-200 overflow-hidden ${
+      className={`relative justify-between flex flex-col items-start p-2 space-y-2 bg-white h-full transition-all duration-300 border-r border-gray-200 overflow-hidden ${
         expanded ? 'w-56' : 'w-16'
       }`}
       onMouseEnter={() => setExpanded(true)}

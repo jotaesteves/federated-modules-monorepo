@@ -25,7 +25,7 @@ const PersonalData: React.FC = () => {
         <title>Personal Data</title>
       </Helmet>
       <div className="p-2">
-        <div className="grid grid-cols-5 grid-rows-5 gap-2 mb-6">
+        <div className="grid grid-cols-5 grid-rows-4 gap-2">
           {/* div1 */}
           <div className="row-span-4">
             <PersonalDataCard />
