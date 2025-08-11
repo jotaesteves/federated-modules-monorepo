@@ -6,6 +6,7 @@ export enum Apps {
   app2,
   footer,
   personalData,
+  assetsProducts,
 }
 
 export enum SharedModule {

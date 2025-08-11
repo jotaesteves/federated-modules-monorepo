@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "pipeline": {
+  "tasks": {
     "analyze": {
       "dependsOn": ["^analyze"],
       "persistent": true

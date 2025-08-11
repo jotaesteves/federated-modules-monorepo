@@ -1,8 +1,8 @@
 {
-  "name": "app2",
+  "name": "assetsProducts",
   "version": "0.1.0",
-  "main": "./src/App2.tsx",
-  "types": "./src/App2.tsx",
+  "main": "./src/AssetsProducts.tsx",
+  "types": "./src/AssetsProducts.tsx",
   "scripts": {
     "analyze": "webpack --config webpack/webpack.prod.ts --env analyze",
     "predev": "rimraf dist",

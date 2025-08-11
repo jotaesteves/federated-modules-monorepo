@@ -40,6 +40,12 @@ declare module 'personalData/PersonalData' {
   export default PersonalDataComponent;
 }
 
+declare module 'assetsProducts/AssetsProducts' {
+  import type { ComponentType } from 'react';
+  const AssetsProductsComponent: ComponentType<unknown>;
+  export default AssetsProductsComponent;
+}
+
 declare module 'header/Header' {
   import type { ComponentType } from 'react';
   const HeaderComponent: ComponentType<unknown>;

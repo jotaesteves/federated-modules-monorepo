@@ -40,11 +40,11 @@ This guide explains how to add a new MicroFrontend (MF) to this monorepo. Exampl
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "shared/*": ["../../packages/shared/.wp_federation/shared/*"]
-    }
+      "shared/*": ["../../packages/shared/.wp_federation/shared/*"],
+    },
   },
   "include": ["**/*", "package.json"],
-  "exclude": ["build", "dist", "coverage", "node_modules"]
+  "exclude": ["build", "dist", "coverage", "node_modules"],
 }
 ```
 
@@ -53,11 +53,9 @@ This guide explains how to add a new MicroFrontend (MF) to this monorepo. Exampl
 Update the three webpack files under `apps/app3/webpack/` to reference the new enum value (added in step 5):
 
 - `webpack.common.ts`
-
   - Replace usages of `Apps.header` with `Apps.app3` in `getAppModuleFederationConfig(Apps.app3)` and `getDtsModuleConfig(Apps.app3)` calls.
 
 - `webpack.dev.ts`
-
   - Replace `Apps.header` with `Apps.app3` in the dev config and Module Federation plugin.
 
 - `webpack.prod.ts`
