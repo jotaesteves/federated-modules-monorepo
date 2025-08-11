@@ -12,7 +12,7 @@ interface AccountData {
   status: 'active' | 'inactive';
 }
 
-interface ProductSectionProps {
+interface ActivesSectionProps {
   accounts?: AccountData[];
 }
 
@@ -33,7 +33,7 @@ const defaultAccounts: AccountData[] = [
   },
 ];
 
-export const ProductSection: React.FC<ProductSectionProps> = ({ accounts = defaultAccounts }) => {
+export const ActivesSection: React.FC<ActivesSectionProps> = ({ accounts = defaultAccounts }) => {
   return (
     <div className="grid gap-2 content-start">
       <CardAccordion

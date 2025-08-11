@@ -1,6 +1,7 @@
 import React from 'react';
 import { AssetsHeader } from '../AssetsHeader/AssetsHeader';
-import { ProductSection } from '../ProductSection/ProductSection';
+import { ActivesSection } from '../ActivesSection/ActivesSection';
+import { PassivesSection } from '../PassivesSection/PassivesSection';
 
 interface AssetsColumnsProps {
   leftTitle?: string;
@@ -16,10 +17,10 @@ export const AssetsColumns: React.FC<AssetsColumnsProps> = ({
       <AssetsHeader leftTitle={leftTitle} rightTitle={rightTitle} />
 
       {/* Column 1 - Assets */}
-      <ProductSection />
+      <ActivesSection />
 
       {/* Column 2 - Liabilities */}
-      <ProductSection />
+      <PassivesSection />
     </div>
   );
 };
