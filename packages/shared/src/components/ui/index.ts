@@ -17,3 +17,4 @@ export {
   BreadcrumbSeparator,
 } from './breadcrumb';
 export { Separator } from './separator';
+export { Badge, badgeVariants } from './badge';

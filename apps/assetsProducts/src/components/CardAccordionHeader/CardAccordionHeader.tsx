@@ -3,8 +3,8 @@ import React from 'react';
 interface CardAccordionHeaderProps {
   icon?: React.ReactNode;
   title: string;
-  value: string;
-  currency: string;
+  value?: string;
+  currency?: string;
 }
 
 export const CardAccordionHeader: React.FC<CardAccordionHeaderProps> = ({

@@ -10,7 +10,7 @@ export const CardAccordion = ({ header, children }: CardAccordionProps) => {
     <Accordion type="single" collapsible defaultValue="single">
       <AccordionItem value="single">
         <AccordionTrigger className="min-h-12">{header}</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-4 text-balance">{children}</AccordionContent>
+        <AccordionContent className="flex flex-col gap-2 text-balance">{children}</AccordionContent>
       </AccordionItem>
     </Accordion>
   );
