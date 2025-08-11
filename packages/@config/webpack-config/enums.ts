@@ -7,6 +7,7 @@ export enum Apps {
   footer,
   personalData,
   assetsProducts,
+  channelsAndServices,
 }
 
 export enum SharedModule {

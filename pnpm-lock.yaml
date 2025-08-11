@@ -230,6 +230,103 @@ importers:
         specifier: ^5.8.0
         version: 5.10.0
 
+  apps/channelsAndServices:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.14.0
+        version: 11.14.0(@types/react@19.1.9)(react@19.1.1)
+      '@emotion/styled':
+        specifier: ^11.14.0
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.1.9)(react@19.1.1))(@types/react@19.1.9)(react@19.1.1)
+      '@tanstack/react-query':
+        specifier: ^5.62.8
+        version: 5.84.2(react@19.1.1)
+      react:
+        specifier: ^19.0.0
+        version: 19.1.1
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.1.1(react@19.1.1)
+      react-helmet:
+        specifier: ^6.1.0
+        version: 6.1.0(react@19.1.1)
+      react-router-dom:
+        specifier: ^7.1.1
+        version: 7.8.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.20.12
+        version: 7.28.0
+      '@config/babel-config':
+        specifier: workspace:*
+        version: link:../../packages/@config/babel-config
+      '@config/jest-config':
+        specifier: workspace:*
+        version: link:../../packages/@config/jest-config
+      '@config/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/@config/tsconfig
+      '@config/webpack-config':
+        specifier: workspace:*
+        version: link:../../packages/@config/webpack-config
+      '@testing-library/jest-dom':
+        specifier: ^5.16.5
+        version: 5.17.0
+      '@testing-library/react':
+        specifier: ^16.1.0
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.1.7(@types/react@19.1.9))(@types/react@19.1.9)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      '@types/jest':
+        specifier: ^29.2.5
+        version: 29.5.14
+      '@types/node':
+        specifier: ^18.11.18
+        version: 18.19.122
+      '@types/react':
+        specifier: ^19.0.2
+        version: 19.1.9
+      '@types/react-dom':
+        specifier: ^19.0.2
+        version: 19.1.7(@types/react@19.1.9)
+      '@types/react-helmet':
+        specifier: ^6.1.6
+        version: 6.1.11
+      '@types/webpack':
+        specifier: ^5.28.0
+        version: 5.28.5(webpack-cli@5.1.4)
+      babel-loader:
+        specifier: ^9.1.2
+        version: 9.2.1(@babel/core@7.28.0)(webpack@5.101.0)
+      dts-loader:
+        specifier: ^0.1.8
+        version: 0.1.8
+      eslint:
+        specifier: ^9.17.0
+        version: 9.33.0(jiti@1.21.7)
+      jest:
+        specifier: ^29.3.1
+        version: 29.7.0(@types/node@18.19.122)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@types/node@18.19.122)(typescript@5.9.2))
+      jest-environment-jsdom:
+        specifier: ^29.3.1
+        version: 29.7.0
+      rimraf:
+        specifier: ^4.0.7
+        version: 4.4.1
+      ts-node:
+        specifier: ^10.9.1
+        version: 10.9.2(@types/node@18.19.122)(typescript@5.9.2)
+      typescript:
+        specifier: ^5.7.2
+        version: 5.9.2
+      webpack:
+        specifier: ^5.97.1
+        version: 5.101.0(webpack-cli@5.1.4)
+      webpack-cli:
+        specifier: ^5.0.1
+        version: 5.1.4(webpack@5.101.0)
+      webpack-merge:
+        specifier: ^5.8.0
+        version: 5.10.0
+
   apps/footer:
     dependencies:
       '@emotion/react':

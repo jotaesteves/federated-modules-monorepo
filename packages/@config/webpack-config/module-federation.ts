@@ -20,6 +20,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         footer: 'footer@http://localhost:3005/remoteEntry.js',
         personalData: 'personalData@http://localhost:3006/remoteEntry.js',
         assetsProducts: 'assetsProducts@http://localhost:3007/remoteEntry.js',
+        channelsAndServices: 'channelsAndServices@http://localhost:3008/remoteEntry.js',
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -29,6 +30,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         footer: `footer@${hostBaseUrl}apps/footer/dist/remoteEntry.js`,
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
+        channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
       },
     },
   },
@@ -167,6 +169,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './AssetsProducts': './src/AssetsProducts',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: 'shared@http://localhost:3001/remoteEntry.js',
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.channelsAndServices]: {
+    devPort: 3008,
+    analyzerPort: 4008,
+    baseConfig: {
+      name: 'channelsAndServices',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './ChannelsAndServices': './src/ChannelsAndServices',
       },
     },
     remotes: {

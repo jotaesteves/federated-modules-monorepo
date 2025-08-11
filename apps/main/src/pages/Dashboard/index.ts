@@ -1,4 +1,5 @@
-export { default as Vision360Page } from './Vision360Page';
-export { default as PersonalDataPage } from './PersonalDataPage';
-export { default as App2Page } from './App2Page';
-export { default as AssetsProductsPage } from './AssetsProductsPage';
+export { Vision360Page } from './Vision360Page';
+export { PersonalDataPage } from './PersonalDataPage';
+export { App2Page } from './App2Page';
+export { AssetsProductsPage } from './AssetsProductsPage';
+export { ChannelsAndServicesPage } from './ChannelsAndServicesPage';
