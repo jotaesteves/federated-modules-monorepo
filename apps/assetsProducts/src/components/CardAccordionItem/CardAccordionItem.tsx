@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { cn } from 'shared/lib/utils';
+import { useAssets, ItemData } from '../../context/AssetsContext';
 
 interface CardAccordionItemProps {
   children: React.ReactNode;
+  itemData?: ItemData;
 }
 
-export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children }) => {
-  const [isActive, setIsActive] = useState(false);
+export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, itemData }) => {
+  const { activeItem, setActiveItem } = useAssets();
+  const isActive = activeItem?.id === itemData?.id;
 
   const handleClick = () => {
-    setIsActive(!isActive);
+    if (itemData) {
+      // If clicking on the already active item, deactivate it
+      if (isActive) {
+        setActiveItem(null);
+      } else {
+        setActiveItem(itemData);
+      }
+    }
   };
 
   return (

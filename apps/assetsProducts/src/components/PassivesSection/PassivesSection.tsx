@@ -3,6 +3,7 @@ import CardAccordion from 'shared/components/CardAccordion';
 import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 import { Badge } from 'shared/components/ui';
+import { ItemData, createUniqueId } from '../../context/AssetsContext';
 
 interface LoanAccountData {
   id: string;
@@ -85,26 +86,37 @@ export const PassivesSection: React.FC<PassivesSectionProps> = ({
           <CardAccordionHeader icon={'💰'} title="Empréstimos" value="-16.272.24" currency="MZN" />
         }
       >
-        {loanAccounts.map((account) => (
-          <CardAccordionItem key={account.id}>
-            <div className="flex flex-col w-full space-y-1">
-              <h3 className="text-sm font-bold">{account.name}</h3>
-              <p> Número de conta - {account.accountNumber}</p>
-              <div className="flex justify-between items-center">
-                <p className="text-xs text-gray-500">Valor inicial</p>
-                <p className="text-xs text-gray-500 text-right">Valor Remanescente</p>
+        {loanAccounts.map((account) => {
+          const itemData: ItemData = {
+            id: createUniqueId('loan', 'passives', account.id),
+            originalId: account.id,
+            type: 'loan',
+            category: 'passives',
+            name: account.name,
+            data: account,
+          };
+
+          return (
+            <CardAccordionItem key={account.id} itemData={itemData}>
+              <div className="flex flex-col w-full space-y-1">
+                <h3 className="text-sm font-bold">{account.name}</h3>
+                <p> Número de conta - {account.accountNumber}</p>
+                <div className="flex justify-between items-center">
+                  <p className="text-xs text-gray-500">Valor inicial</p>
+                  <p className="text-xs text-gray-500 text-right">Valor Remanescente</p>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <p>
+                    {account.initialValue} {account.currency}
+                  </p>
+                  <p className="text-right">
+                    {account.remainingValue} {account.currency}
+                  </p>
+                </div>
               </div>
-              <div className="flex justify-between text-xs">
-                <p>
-                  {account.initialValue} {account.currency}
-                </p>
-                <p className="text-right">
-                  {account.remainingValue} {account.currency}
-                </p>
-              </div>
-            </div>
-          </CardAccordionItem>
-        ))}
+            </CardAccordionItem>
+          );
+        })}
       </CardAccordion>
 
       <CardAccordion
@@ -117,34 +129,45 @@ export const PassivesSection: React.FC<PassivesSectionProps> = ({
           />
         }
       >
-        {creditCards.map((account) => (
-          <CardAccordionItem key={`deposit-${account.id}`}>
-            <div className="flex flex-col w-full space-y-1">
-              <div className="flex justify-between items-center">
-                <p className="text-xs font-medium">{account.name}</p>
-                <p className="text-xs text-gray-500 text-right">{account.cardNumber}</p>
+        {creditCards.map((account) => {
+          const itemData: ItemData = {
+            id: createUniqueId('credit-card', 'passives', account.id),
+            originalId: account.id,
+            type: 'credit-card',
+            category: 'passives',
+            name: account.name,
+            data: account,
+          };
+
+          return (
+            <CardAccordionItem key={`deposit-${account.id}`} itemData={itemData}>
+              <div className="flex flex-col w-full space-y-1">
+                <div className="flex justify-between items-center">
+                  <p className="text-xs font-medium">{account.name}</p>
+                  <p className="text-xs text-gray-500 text-right">{account.cardNumber}</p>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <p>
+                    <Badge variant={account.status}>{account.status.toUpperCase()}</Badge>
+                  </p>
+                  <p className="text-right">Nº de Conta - {account.accountNumber}</p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500"></p>
+                  <p className="text-xs text-gray-500 text-right">
+                    Limite Utilizado ({account.initialValue} {account.currency})
+                  </p>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500"></p>
+                  <p className="text-xs text-gray-500 text-right">
+                    {account.initialValue} | {account.remainingValue}
+                  </p>
+                </div>
               </div>
-              <div className="flex justify-between text-xs">
-                <p>
-                  <Badge variant={account.status}>{account.status.toUpperCase()}</Badge>
-                </p>
-                <p className="text-right">Nº de Conta - {account.accountNumber}</p>
-              </div>
-              <div>
-                <p className="text-xs text-gray-500"></p>
-                <p className="text-xs text-gray-500 text-right">
-                  Limite Utilizado ({account.initialValue} {account.currency})
-                </p>
-              </div>
-              <div>
-                <p className="text-xs text-gray-500"></p>
-                <p className="text-xs text-gray-500 text-right">
-                  {account.initialValue} | {account.remainingValue}
-                </p>
-              </div>
-            </div>
-          </CardAccordionItem>
-        ))}
+            </CardAccordionItem>
+          );
+        })}
       </CardAccordion>
     </div>
   );

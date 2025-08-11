@@ -12,7 +12,7 @@ export const AssetsProductsPage: React.FC = () => {
         </div>
       }
     >
-      <div className=" bg-gray-100 h-full overflow-y-scroll">
+      <div className=" bg-gray-100 h-full">
         <AssetsProducts />
       </div>
     </React.Suspense>
