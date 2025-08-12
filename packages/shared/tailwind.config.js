@@ -7,7 +7,6 @@ module.exports = {
 
     // Specific app source files (avoid scanning dist and node_modules)
     '../../apps/header/src/**/*.{js,ts,jsx,tsx}',
-    '../../apps/app2/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/main/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/footer/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/vision360/src/**/*.{js,ts,jsx,tsx}',

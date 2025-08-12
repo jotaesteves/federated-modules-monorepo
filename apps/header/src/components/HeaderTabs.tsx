@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const tabs = [
-  { value: 'Vision360', label: 'Visao 360', path: '/vision-360' },
+  { value: 'vision360', label: 'Visao 360', path: '/vision-360' },
   { value: 'personalData', label: 'Dados Pessoais', path: '/personal-data' },
   { value: 'assetsProducts', label: 'Patrimonio e Productos', path: '/assets-products' },
   { value: 'channelsAndServices', label: 'Canais e Serviços', path: '/channels-and-services' },

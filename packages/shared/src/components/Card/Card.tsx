@@ -12,6 +12,7 @@ import {
 export type CardBaseProps = Omit<React.ComponentPropsWithoutRef<typeof UICard>, 'title'>;
 
 export interface CardProps extends CardBaseProps {
+  icon?: React.ReactNode;
   title?: React.ReactNode;
   description?: React.ReactNode;
   footer?: React.ReactNode;
@@ -19,11 +20,16 @@ export interface CardProps extends CardBaseProps {
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, footer, children, className, ...props }, ref) => (
+  ({ icon, title, description, footer, children, className, ...props }, ref) => (
     <UICard ref={ref} className={className + ` bg-white`} {...props}>
-      {(title || description) && (
+      {(icon || title || description) && (
         <CardHeader>
-          {title && <CardTitle>{title}</CardTitle>}
+          {(icon || title) && (
+            <CardTitle className="flex items-center gap-2">
+              {icon && <span className="flex-shrink-0">{icon}</span>}
+              {title}
+            </CardTitle>
+          )}
           {description && <CardDescription>{description}</CardDescription>}
         </CardHeader>
       )}

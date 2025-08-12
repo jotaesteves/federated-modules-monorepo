@@ -22,7 +22,7 @@ const PersonalData: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Personal Data</title>
+        <title>Dados Pessoais</title>
       </Helmet>
       <div className="p-2">
         <div className="grid grid-cols-5 grid-rows-4 gap-2">

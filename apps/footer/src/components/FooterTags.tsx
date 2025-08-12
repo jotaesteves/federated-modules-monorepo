@@ -6,11 +6,7 @@ const FooterTags: React.FC<FooterTagsProps> = ({ tags, onTagClose }) => {
   const { currentPage, navigateTo } = useNavigation();
 
   // Default tags if none provided
-  const defaultTags: FooterTag[] = [
-    { id: 'default-home', label: 'Home', page: 'home' },
-    { id: 'default-about', label: 'Sobre', page: 'about' },
-    { id: 'default-contact', label: 'Contato', page: 'contact' },
-  ];
+  const defaultTags: FooterTag[] = [{ id: 'default-home', label: 'Root Example', page: 'home' }];
 
   // Use provided tags, or default tags if no tags provided
   const tagsToDisplay = tags && tags.length > 0 ? tags : defaultTags;

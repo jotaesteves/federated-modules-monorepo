@@ -10,7 +10,6 @@ import SidebarLayout from './layouts/SidebarLayout';
 import {
   Vision360Page,
   PersonalDataPage,
-  App2Page,
   AssetsProductsPage,
   ChannelsAndServicesPage,
 } from './pages/Dashboard';
@@ -26,7 +25,6 @@ const App: React.FC = () => {
     <Routes>
       {/* Dashboard routes with DashboardLayout */}
       <Route path="/" element={<DashboardLayout />}>
-        <Route path="app-2/*" element={<App2Page />} />
         <Route path="vision-360/*" element={<Vision360Page />} />
         <Route path="personal-data/*" element={<PersonalDataPage />} />
         <Route path="assets-products/*" element={<AssetsProductsPage />} />
@@ -35,8 +33,8 @@ const App: React.FC = () => {
       </Route>
 
       {/* Settings routes with BaseLayout */}
-      <Route path="/settings" element={<BaseLayout />}>
-        <Route path="css-demo" element={<CSSDemo />} />
+      <Route path="/pesquisa" element={<BaseLayout />}>
+        <Route index element={<CSSDemo />} />
       </Route>
 
       <Route path="/definicoes" element={<SidebarLayout />} />

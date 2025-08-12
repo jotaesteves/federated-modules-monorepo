@@ -10,10 +10,10 @@ const Vision360: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Visao 360</title>
+        <title>Visão 360</title>
       </Helmet>
       <div className="p-2">
-        <div className="grid grid-cols-5 grid-rows-4 gap-2 mb-6">
+        <div className="grid grid-cols-5 grid-rows-4 gap-2">
           {/* div1 */}
           <div className="row-span-4">
             <PersonalData />
