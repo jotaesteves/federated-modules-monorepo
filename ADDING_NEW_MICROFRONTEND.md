@@ -70,8 +70,6 @@ Edit `packages/@config/webpack-config/enums.ts` and append the new app to the `A
 ```ts
 export enum Apps {
   shared,
-  app1,
-  app2,
   main,
   header,
   app3, // new

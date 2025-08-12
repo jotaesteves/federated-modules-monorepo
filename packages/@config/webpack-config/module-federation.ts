@@ -15,7 +15,6 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       dev: {
         shared: 'shared@http://localhost:3001/remoteEntry.js',
         vision360: 'vision360@http://localhost:3002/remoteEntry.js',
-        app2: 'app2@http://localhost:3003/remoteEntry.js',
         header: 'header@http://localhost:3004/remoteEntry.js',
         footer: 'footer@http://localhost:3005/remoteEntry.js',
         personalData: 'personalData@http://localhost:3006/remoteEntry.js',
@@ -25,7 +24,6 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
         vision360: `vision360@${hostBaseUrl}apps/vision360/dist/remoteEntry.js`,
-        app2: `app2@${hostBaseUrl}apps/app2/dist/remoteEntry.js`,
         header: `header@${hostBaseUrl}apps/header/dist/remoteEntry.js`,
         footer: `footer@${hostBaseUrl}apps/footer/dist/remoteEntry.js`,
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
@@ -73,25 +71,6 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Vision360': './src/Vision360',
-      },
-    },
-    remotes: {
-      dev: {
-        shared: 'shared@http://localhost:3001/remoteEntry.js',
-      },
-      prod: {
-        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
-      },
-    },
-  },
-  [Apps.app2]: {
-    devPort: 3003,
-    analyzerPort: 4003,
-    baseConfig: {
-      name: 'app2',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './App2': './src/App2',
       },
     },
     remotes: {

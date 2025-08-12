@@ -28,12 +28,6 @@ declare module 'vision360/Vision360' {
   export default Vision360Component;
 }
 
-declare module 'app2/App2' {
-  import type { ComponentType } from 'react';
-  const App2Component: ComponentType<unknown>;
-  export default App2Component;
-}
-
 declare module 'personalData/PersonalData' {
   import type { ComponentType } from 'react';
   const PersonalDataComponent: ComponentType<unknown>;
