@@ -78,5 +78,13 @@
     "**/build/**": true,
     "**/.turbo/**": true,
     "**/coverage/**": true
-  }
+  },
+
+  // Git input validation
+  "git.useEditorAsCommitInput": true,
+  "git.inputValidation": "both",
+  "git.inputValidationSubjectLength": 72,
+
+  // SCM input placeholder
+  "scm.inputPlaceholder": "type(scope): short summary — use .gitmessage template for details"
 }
