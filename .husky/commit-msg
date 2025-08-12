@@ -18,8 +18,9 @@ if is_windows || [[ -n "$WINDIR" ]] || [[ -n "$SYSTEMROOT" ]]; then
     exit 1
   fi
 
-  # Run lint-staged
-  pnpm exec lint-staged
+  # Run commitlint
+  pnpm --no-install commitlint --edit $1
+
 else
   # macOS/Linux environment - full setup
   echo "Running on Unix-like environment (macOS/Linux)"
@@ -46,5 +47,6 @@ else
     exit 1
   fi
 
-  pnpm exec lint-staged
+  # Run commitlint
+  pnpm --no-install commitlint --edit $1
 fi

@@ -33,7 +33,9 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.1",
     "@config/eslint-config": "workspace:*",
+    "commitlint": "^19.8.1",
     "cross-env": "^7.0.3",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
