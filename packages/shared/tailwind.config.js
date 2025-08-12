@@ -22,8 +22,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          'Inter',
-          'Roboto',
+          'Montserrat',
           'Helvetica',
           'Arial',
           'sans-serif',

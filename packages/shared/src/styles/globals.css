@@ -13,7 +13,7 @@
   /* Custom font loading - integrates with existing font setup */
   body {
     font-family:
-      Inter, Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      Montserrat, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
       'Segoe UI Symbol';
   }
   :root {
