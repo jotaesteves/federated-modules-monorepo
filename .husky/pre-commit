@@ -1,9 +1,28 @@
-# Detect operating system
-if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" || "$OSTYPE" == "cygwin" ]]; then
-  # Windows environment - simple execution
+# Detect operating system and handle Windows environments
+is_windows() {
+  case "$OSTYPE" in
+    msys*|mingw*|cygwin*|win32*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# Check if we're on Windows
+if is_windows || [[ -n "$WINDIR" ]] || [[ -n "$SYSTEMROOT" ]]; then
+  # Windows environment - simple execution with error handling
+  echo "Running on Windows environment"
+
+  # Check if pnpm is available
+  if ! command -v pnpm >/dev/null 2>&1; then
+    echo "Error: pnpm not found. Please ensure pnpm is installed and in your PATH."
+    echo "You can install it with: npm install -g pnpm"
+    exit 1
+  fi
+
+  # Run lint-staged
   pnpm exec lint-staged
 else
   # macOS/Linux environment - full setup
+  echo "Running on Unix-like environment (macOS/Linux)"
 
   # Load nvm (adjust if you don't use it)
   export NVM_DIR="$HOME/.nvm"
