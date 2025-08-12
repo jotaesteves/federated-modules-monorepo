@@ -65,7 +65,7 @@ The app in general (and each separate sub-app in particular) are built on top of
 - [Playwright](https://playwright.dev/) - for e2e tests
 - [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html) (v2) - IaC to deploy the built application(s) on AWS: CloudFront + S3
 - [ESLint](https://eslint.org/docs/latest/) + [Prettier](https://prettier.io/docs/en/index.html) + [lint-staged](https://github.com/okonet/lint-staged) + [husky](https://github.com/typicode/husky) - for code quality and better DevExperience
-- [PWA](https://web.dev/progressive-web-apps/) experience with the help of [workbox-webpack-plugin](https://github.com/googlechrome/workbox) (v6+) (which provides service worker) and `manifest.json` file - only for main app
+- [PWA](https://web.dev/progressive-web-apps/) experience with the help of [workbox-webpack-plugin](https://github.com/googlechrome/workbox) (v6+) (which provides service worker) and `manifest.json` file - only for main app.
 
 ## Apps and Packages
 
