@@ -18,7 +18,6 @@ src/
 │   ├── Dashboard/        # Dashboard-related pages
 │   │   ├── Vision360Page.tsx
 │   │   ├── PersonalDataPage.tsx
-│   │   ├── App2Page.tsx
 │   │   └── index.ts
 │   ├── Settings/         # Settings-related pages
 │   │   ├── CSSDemo/
@@ -41,7 +40,9 @@ src/
   - Includes Header, Sidebar, and Footer components
   - Responsive sidebar layout
   - Scrollable content area
-- **Used for**: Dashboard pages (Vision360, Personal Data, App2)
+- **Used for**: Dashboard pages (Vision360, Personal Data, etc.)
+
+```tsx
 
 ### BaseLayout
 
@@ -58,7 +59,6 @@ src/
 
 - **Vision360Page**: Renders the Vision360 microfrontend
 - **PersonalDataPage**: Renders the PersonalData microfrontend
-- **App2Page**: Renders the App2 microfrontend
 
 ### Settings Pages
 
@@ -67,33 +67,34 @@ src/
 ## Routing Structure
 
 ```
+
 / (DashboardLayout)
-├── /vision-360/* → Vision360Page
-├── /personal-data/* → PersonalDataPage
-├── /app-2/* → App2Page
+├── /vision-360/_→ Vision360Page
+├── /personal-data/_ → PersonalDataPage
 └── / → Root (index)
 
 /settings (BaseLayout)
 └── /css-demo → CSSDemo
 
-/* → Root (catch-all)
+/\* → Root (catch-all)
+
 ```
 
 ## Adding New Pages
 
-### To add a new dashboard page:
+### To add a new dashboard page
 
 1. Create component in `pages/Dashboard/NewPage.tsx`
 2. Export in `pages/Dashboard/index.ts`
 3. Add route in `App.tsx` under DashboardLayout
 
-### To add a new settings page:
+### To add a new settings page
 
 1. Create component in `pages/Settings/NewPage.tsx`
 2. Export in `pages/Settings/index.ts`
 3. Add route in `App.tsx` under BaseLayout
 
-### To add a new layout:
+### To add a new layout
 
 1. Create component in `layouts/NewLayout.tsx`
 2. Export in `layouts/index.ts`
@@ -106,3 +107,4 @@ src/
 3. **Maintainability**: Organized file structure with logical grouping
 4. **Reusability**: Layouts can be reused across different page types
 5. **Type Safety**: Better TypeScript support with organized imports
+```

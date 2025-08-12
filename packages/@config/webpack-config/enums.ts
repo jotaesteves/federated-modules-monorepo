@@ -3,7 +3,6 @@ export enum Apps {
   shared,
   header,
   vision360,
-  app2,
   footer,
   personalData,
   assetsProducts,

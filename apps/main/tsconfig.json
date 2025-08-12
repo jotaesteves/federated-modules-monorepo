@@ -8,8 +8,7 @@
       "shared/*": ["../../packages/shared/.wp_federation/shared/*"],
       "vision360/*": ["../../apps/vision360/.wp_federation/vision360/*"],
       "header/*": ["../../apps/header/.wp_federation/header/*"],
-      "footer/*": ["../../apps/footer/.wp_federation/footer/*"],
-      "app2/*": ["../../apps/app2/.wp_federation/app2/*"]
+      "footer/*": ["../../apps/footer/.wp_federation/footer/*"]
     }
   }
 }
