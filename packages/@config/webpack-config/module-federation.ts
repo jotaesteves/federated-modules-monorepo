@@ -60,6 +60,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './hooks/useMicroFrontend': './src/hooks/useMicroFrontend',
         './shared/eventBus': './src/shared/eventBus',
         './lib/utils': './src/lib/utils',
+        './assets/icons': './src/assets/icons',
       },
     },
   },
