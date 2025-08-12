@@ -3,7 +3,7 @@ import Card from 'shared/components/Card';
 export default function PersonalData() {
   return (
     <Card title="Dados Pessoais" className="h-full">
-      <p>nome completo</p>
+      <p className="text-sm font-bold text-gray-50">nome completo</p>
       <h4>Nome Sobrenome</h4>
       <br />
       <p>CIF</p>
