@@ -54,6 +54,10 @@ module.exports = {
           DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
           foreground: 'oklch(var(--primary-foreground) / <alpha-value>)',
         },
+        gray: {
+          50: '#2E364191',
+          DEFAULT: '#2E364191',
+        },
         secondary: 'oklch(var(--secondary) / <alpha-value>)',
         'secondary-foreground': 'oklch(var(--secondary-foreground) / <alpha-value>)',
         muted: 'oklch(var(--muted) / <alpha-value>)',
