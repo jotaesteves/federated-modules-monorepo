@@ -1,26 +1,50 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+# Detect operating system and handle Windows environments
+is_windows() {
+  case "$OSTYPE" in
+    msys*|mingw*|cygwin*|win32*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
 
-# Load nvm (adjust if you don't use it)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[ -f .nvmrc ] && nvm use >/dev/null 2>&1
+# Check if we're on Windows
+if is_windows || [[ -n "$WINDIR" ]] || [[ -n "$SYSTEMROOT" ]]; then
+  # Windows environment - simple execution with error handling
+  echo "Running on Windows environment"
 
-# Ensure PNPM_HOME in PATH
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-# Optionally enable corepack (safe no-op if already enabled)
-if ! command -v pnpm >/dev/null 2>&1; then
-  if command -v corepack >/dev/null 2>&1; then
-    corepack enable >/dev/null 2>&1
+  # Check if pnpm is available
+  if ! command -v pnpm >/dev/null 2>&1; then
+    echo "Error: pnpm not found. Please ensure pnpm is installed and in your PATH."
+    echo "You can install it with: npm install -g pnpm"
+    exit 1
   fi
-fi
 
-# Fallback if still no pnpm
-if ! command -v pnpm >/dev/null 2>&1; then
-  echo "pnpm not found; aborting pre-commit (ensure PNPM_HOME or install pnpm)"
-  exit 1
-fi
+  # Run lint-staged
+  pnpm exec lint-staged
+else
+  # macOS/Linux environment - full setup
+  echo "Running on Unix-like environment (macOS/Linux)"
 
-pnpm exec lint-staged
+  # Load nvm (adjust if you don't use it)
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+  [ -f .nvmrc ] && nvm use >/dev/null 2>&1
+
+  # Ensure PNPM_HOME in PATH
+  export PNPM_HOME="$HOME/.local/share/pnpm"
+  export PATH="$PNPM_HOME:$PATH"
+
+  # Optionally enable corepack (safe no-op if already enabled)
+  if ! command -v pnpm >/dev/null 2>&1; then
+    if command -v corepack >/dev/null 2>&1; then
+      corepack enable >/dev/null 2>&1
+    fi
+  fi
+
+  # Fallback if still no pnpm
+  if ! command -v pnpm >/dev/null 2>&1; then
+    echo "pnpm not found; aborting pre-commit (ensure PNPM_HOME or install pnpm)"
+    exit 1
+  fi
+
+  pnpm exec lint-staged
+fi
