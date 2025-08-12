@@ -1,6 +1,5 @@
 export const fontFamily = [
-  'Inter',
-  'Roboto',
+  'Montserrat',
   'Helvetica',
   'Arial',
   'sans-serif',
