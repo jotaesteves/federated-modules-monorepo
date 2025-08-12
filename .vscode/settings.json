@@ -1,5 +1,82 @@
 {
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[json]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  "prettier.requireConfig": true,
+
+  // ESLint (monorepo-friendly)
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.useFlatConfig": false,
+
+  // TypeScript
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+
+  // Tailwind CSS IntelliSense
+  "tailwindCSS.emmetCompletions": true,
+  "editor.quickSuggestions": { "strings": true },
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.classRegex": [
+    "cva\\(([^)]*)\\)",
+    "cx\\(([^)]*)\\)",
+    "clsx\\(([^)]*)\\)",
+    "classnames\\(([^)]*)\\)"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "typescriptreact": "html"
+  },
+  "tailwindCSS.experimental.configFile": "packages/shared/tailwind.config.js",
+
+  // React & Emmet
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+
+  // Jest (new setting)
+  "jest.runMode": "watch",
+
+  // Pretty TypeScript Errors
+  "pretty-ts-errors.enabled": true,
+
+  // Dotenv
+  "files.associations": {
+    "*.env": "dotenv",
+    "*.env.*": "dotenv"
+  },
+
+  // Monorepo noise reduction
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.turbo": true,
+    "**/coverage": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.turbo/**": true,
+    "**/coverage/**": true
   }
 }
