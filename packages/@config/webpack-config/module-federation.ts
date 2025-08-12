@@ -46,6 +46,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/CardAccordion': './src/components/CardAccordion/CardAccordion',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
         './components/Spinner': './src/components/Spinner/Spinner',
+        './components/Icon': './src/components/Icon/Icon',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
