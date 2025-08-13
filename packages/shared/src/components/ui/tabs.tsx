@@ -28,7 +28,8 @@ const TabsTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       // Do not stretch to full width so the underline matches label width
-      'inline-flex items-center justify-start whitespace-nowrap py-1 text-sm text-gray-500 font-semibold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 border-b-2 border-b-transparent data-[state=active]:bg-white data-[state=active]:text-primary-500 data-[state=active]:border-b-primary-500',
+      // Rounded underline via pseudo-element
+      'relative inline-flex items-center justify-start whitespace-nowrap py-1 text-sm text-gray-500 font-semibold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 after:absolute after:left-0 after:bottom-[-1px] after:h-[3px] after:w-full after:rounded-full after:bg-primary-500 after:content-[""] after:opacity-0 after:transition after:duration-200 data-[state=active]:text-primary-500 data-[state=active]:after:opacity-100',
       className
     )}
     {...props}

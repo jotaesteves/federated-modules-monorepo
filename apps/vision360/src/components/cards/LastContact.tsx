@@ -1,4 +1,3 @@
-import * as React from 'react';
 import CardTabs, { CardTabItem } from 'shared/components/CardTabs';
 
 const tabs: CardTabItem[] = [
@@ -26,21 +25,13 @@ const tabs: CardTabItem[] = [
 
 const LastContact: React.FC = () => {
   return (
-    <>
-      {/* <Card icon="↺" title="Últimos contactos" className="h-full">
-      <p className="text-sm text-muted-foreground">Data: 2025-08-01</p>
-      <p className="text-sm text-muted-foreground">Canal: Phone</p>
-      <p className="text-sm text-muted-foreground">Agente: John Doe</p>
-      <p className="text-sm text-muted-foreground">Assunto: Account inquiry</p>
-    </Card> */}
-      <CardTabs
-        title="Últimos contactos"
-        icon={<span>↺</span>}
-        tabs={tabs}
-        defaultValue="overview"
-        className="w-full"
-      />
-    </>
+    <CardTabs
+      title="Últimos contactos"
+      icon={<span>↺</span>}
+      tabs={tabs}
+      defaultValue="calls"
+      className="w-full"
+    />
   );
 };
 

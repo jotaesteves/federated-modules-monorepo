@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Card, { CardProps } from './Card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
 
