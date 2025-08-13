@@ -13,7 +13,7 @@ import {
 } from '@/assets/icons';
 import * as React from 'react';
 
-interface IconProps {
+export interface IconProps {
   type:
     | 'contact'
     | 'graph'
