@@ -52,11 +52,17 @@ module.exports = {
           300: '#D1D5DB',
           400: '#9CA3AF',
           500: '#7C7F86', // used
-          600: '#4B5563',
+          600: '#5E5E5E', // used
           700: '#374151',
           800: '#2E3641', // font color primary
           900: '#111827',
           DEFAULT: '#7C7F86',
+        },
+        green: {
+          DEFAULT: '#25B917',
+        },
+        blue: {
+          DEFAULT: '#0052B4',
         },
       },
       borderRadius: {
