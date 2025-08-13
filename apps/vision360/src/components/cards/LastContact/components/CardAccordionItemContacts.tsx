@@ -44,11 +44,11 @@ export const CardAccordionItemContacts: React.FC<CardAccordionItemContactsProps>
       >
         <div className="flex flex-col">
           {body.map(({ icon: itemIcon, label, value }, index) => (
-            <div key={index} className="flex text-[#2E3641] items-center">
+            <div key={index} className="flex text-gray-800 items-center">
               <Icon type={itemIcon} />
               <div className="flex justify-between items-center w-full">
                 <p>{label}</p>
-                {value && <span className="text-[#5E5E5E]">{value}</span>}
+                {value && <span className="text-gray-600">{value}</span>}
               </div>
             </div>
           ))}
