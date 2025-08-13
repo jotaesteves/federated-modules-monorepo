@@ -27,7 +27,8 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      'inline-flex w-full items-center justify-start whitespace-nowrap py-1 text-sm text-gray-500 font-semibold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-white data-[state=active]:text-primary-500',
+      // Do not stretch to full width so the underline matches label width
+      'inline-flex items-center justify-start whitespace-nowrap py-1 text-sm text-gray-500 font-semibold transition-all focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 border-b-2 border-b-transparent data-[state=active]:bg-white data-[state=active]:text-primary-500 data-[state=active]:border-b-primary-500',
       className
     )}
     {...props}

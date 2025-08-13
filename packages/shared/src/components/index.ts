@@ -6,7 +6,6 @@ export { default as SomeForm } from './SomeForm/SomeForm';
 export { default as CSSShowcase } from './CSSShowcase/CSSShowcase';
 export { default as Card } from './Card/Card';
 export { default as CardTabs } from './Card/CardTabs';
-export { default as CardTabsExample } from './Card/CardTabsExample';
 export type { CardTabsProps, CardTabItem } from './Card/CardTabs';
 export { default as appSidebar } from './app-sidebar';
 
