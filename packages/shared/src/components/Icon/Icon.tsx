@@ -6,18 +6,32 @@ import {
   PinIcon,
   RiskIcon,
   UserIcon,
+  PhoneCallIcon,
+  MakePhoneCallIcon,
+  CallCenterWorkerIcon,
+  RingCallIcon,
 } from '@/assets/icons';
-import { clsx } from 'clsx';
 import * as React from 'react';
 
 interface IconProps {
-  type: 'contact' | 'graph' | 'documentation' | 'person' | 'pin' | 'risk' | 'user';
-  backgroundColor?: string;
+  type:
+    | 'contact'
+    | 'graph'
+    | 'documentation'
+    | 'person'
+    | 'pin'
+    | 'risk'
+    | 'user'
+    | 'phoneCall'
+    | 'makePhoneCall'
+    | 'ringCall'
+    | 'callCenterWorker';
   rounded?: boolean;
   size?: 'sm' | 'lg';
+  className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ type, backgroundColor, rounded, size = 'lg' }) => {
+const Icon: React.FC<IconProps> = ({ type, rounded, size = 'lg', className }) => {
   const iconsMap: Record<IconProps['type'], React.FC> = {
     graph: GraphIcon,
     contact: ContactIcon,
@@ -26,6 +40,10 @@ const Icon: React.FC<IconProps> = ({ type, backgroundColor, rounded, size = 'lg'
     pin: PinIcon,
     risk: RiskIcon,
     user: UserIcon,
+    phoneCall: PhoneCallIcon,
+    makePhoneCall: MakePhoneCallIcon,
+    ringCall: RingCallIcon,
+    callCenterWorker: CallCenterWorkerIcon,
   };
 
   const IconComponent = iconsMap[type];
@@ -39,10 +57,9 @@ const Icon: React.FC<IconProps> = ({ type, backgroundColor, rounded, size = 'lg'
   };
 
   const radiusClasses = rounded ? 'rounded-full' : 'rounded-sm';
-  const backgroundClasses = backgroundColor ? `bg-${backgroundColor}` : '';
 
   return (
-    <span className={`${baseClasses} ${sizeClasses[size]} ${radiusClasses} ${backgroundClasses}`}>
+    <span className={`${baseClasses} ${sizeClasses[size]} ${radiusClasses} ${className}`}>
       <IconComponent />
     </span>
   );
