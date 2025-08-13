@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { FooterTag } from '../types';
+import type { FooterTag } from '../types';
 import { getGlobalStore } from '../utils/navigationUtils';
 
 // Helper function to get a user-friendly label for a page
@@ -74,7 +74,7 @@ export function useNavigationHistory() {
         const newHistoryTags: FooterTag[] = recentPages.map((page: string) => ({
           id: `history-${page}`,
           label: getPageLabel(page),
-          page: page,
+          page,
           isFromHistory: true,
         }));
 
