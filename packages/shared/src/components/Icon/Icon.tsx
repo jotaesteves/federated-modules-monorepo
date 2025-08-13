@@ -49,7 +49,7 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size, className }) => {
   const IconComponent = iconsMap[type];
   if (!IconComponent) return null;
 
-  const baseClasses = 'inline-flex items-center justify-center p-[6px]';
+  const baseClasses = 'inline-flex items-center justify-center p-[6px] h-fit';
 
   const sizeClasses = {
     sm: 'w-8 h-8',
