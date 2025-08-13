@@ -118,6 +118,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    h4 {
+      @apply text-[15px];
+    }
   }
 
   :root {
