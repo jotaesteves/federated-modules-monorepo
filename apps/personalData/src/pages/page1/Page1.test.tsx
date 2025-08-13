@@ -1,7 +1,8 @@
-import { MemoryRouter } from 'react-router-dom';
-import { render } from '@testing-library/react';
 import { QueryClientProvider } from '@tanstack/react-query';
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import queryClient from 'shared/queries/client';
+
 import Page1 from './Page1';
 
 describe('<Page1 />', () => {

@@ -1,4 +1,5 @@
-import('./bootstrap');
+/* eslint-disable no-console */
+void import('./bootstrap');
 
 // Register service worker only in production builds
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
