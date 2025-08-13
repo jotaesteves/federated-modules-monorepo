@@ -1,31 +1,195 @@
 /* eslint-env node */
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  extends: [
-    'turbo',
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:react/jsx-runtime',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/recommended',
-    'prettier',
-  ],
-  overrides: [],
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  plugins: ['react', '@typescript-eslint', 'jsx-a11y'],
-  rules: {
-    'linebreak-style': ['error', 'unix'],
-  },
-  settings: {
-    react: {
-      version: 'detect',
+const js = require('@eslint/js');
+const typescript = require('@typescript-eslint/eslint-plugin');
+const typescriptParser = require('@typescript-eslint/parser');
+const jestDom = require('eslint-plugin-jest-dom');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
+const playwright = require('eslint-plugin-playwright');
+const react = require('eslint-plugin-react');
+const reactHooks = require('eslint-plugin-react-hooks');
+const testingLibrary = require('eslint-plugin-testing-library');
+const unusedImports = require('eslint-plugin-unused-imports');
+const globals = require('globals');
+
+module.exports = [
+  // Base configuration for all files
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2021,
+      },
+    },
+    plugins: {
+      '@typescript-eslint': typescript,
+      react,
+      'react-hooks': reactHooks,
+      'jsx-a11y': jsxA11y,
+      'unused-imports': unusedImports,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+
+      // General
+      'no-console': 'warn',
+      'no-var': 'error',
+      'prefer-const': 'warn',
+      'object-shorthand': 'error',
+      'linebreak-style': ['error', 'unix'],
+
+      // React
+      'react/react-in-jsx-scope': 'off',
+      'react/prop-types': 'off',
+      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-vars': 'error',
+
+      // React hooks
+      'react-hooks/rules-of-hooks': 'error',
+      'react-hooks/exhaustive-deps': 'warn',
+
+      // TypeScript
+      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
+      '@typescript-eslint/no-explicit-any': 'warn',
+
+      // Imports
+
+      // Unused imports/vars
+      'unused-imports/no-unused-imports': 'warn',
+      'unused-imports/no-unused-vars': [
+        'warn',
+        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+      ],
+
+      // Accessibility
+      'jsx-a11y/alt-text': 'warn',
+      'jsx-a11y/anchor-has-content': 'warn',
+      'jsx-a11y/anchor-is-valid': 'warn',
+      'jsx-a11y/aria-props': 'warn',
+      'jsx-a11y/aria-proptypes': 'warn',
+      'jsx-a11y/aria-unsupported-elements': 'warn',
+      'jsx-a11y/click-events-have-key-events': 'warn',
+      'jsx-a11y/heading-has-content': 'warn',
+      'jsx-a11y/img-redundant-alt': 'warn',
+      'jsx-a11y/interactive-supports-focus': 'warn',
+      'jsx-a11y/label-has-associated-control': 'warn',
+      'jsx-a11y/mouse-events-have-key-events': 'warn',
+      'jsx-a11y/no-access-key': 'warn',
+      'jsx-a11y/no-autofocus': 'warn',
+      'jsx-a11y/no-distracting-elements': 'warn',
+      'jsx-a11y/no-redundant-roles': 'warn',
+      'jsx-a11y/role-has-required-aria-props': 'warn',
+      'jsx-a11y/role-supports-aria-props': 'warn',
+      'jsx-a11y/scope': 'warn',
+    },
+    settings: {
+      react: { version: 'detect' },
+      'import/resolver': {
+        typescript: { project: true },
+        node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+      },
     },
   },
-};
+
+  // TypeScript files with stricter type-aware rules
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        project: true,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'warn',
+      '@typescript-eslint/no-misused-promises': 'warn',
+    },
+  },
+
+  // Test files
+  {
+    files: ['**/*.{test,spec}.{js,jsx,ts,tsx}', '**/tests/**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      'testing-library': testingLibrary,
+      'jest-dom': jestDom,
+    },
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+    rules: {
+      // Testing Library rules
+      'testing-library/await-async-queries': 'error',
+      'testing-library/no-await-sync-queries': 'error',
+      'testing-library/no-debugging-utils': 'warn',
+      'testing-library/no-dom-import': 'error',
+
+      // Jest DOM rules
+      'jest-dom/prefer-checked': 'error',
+      'jest-dom/prefer-enabled-disabled': 'error',
+      'jest-dom/prefer-required': 'error',
+      'jest-dom/prefer-to-have-attribute': 'error',
+    },
+  },
+
+  // Playwright E2E files
+  {
+    files: ['e2e/**/*.{js,ts,jsx,tsx}', '**/*.e2e.{js,ts,jsx,tsx}'],
+    plugins: {
+      playwright,
+    },
+    rules: {
+      'playwright/expect-expect': 'error',
+      'playwright/max-nested-describe': 'warn',
+      'playwright/missing-playwright-await': 'error',
+      'playwright/no-conditional-in-test': 'warn',
+      'playwright/no-element-handle': 'warn',
+      'playwright/no-eval': 'error',
+      'playwright/no-focused-test': 'error',
+      'playwright/no-force-option': 'warn',
+      'playwright/no-nested-step': 'warn',
+      'playwright/no-networkidle': 'error',
+      'playwright/no-page-pause': 'warn',
+      'playwright/no-restricted-matchers': 'error',
+      'playwright/no-skipped-test': 'warn',
+      'playwright/no-unsafe-references': 'error',
+      'playwright/no-useless-await': 'error',
+      'playwright/no-useless-not': 'error',
+      'playwright/no-wait-for-timeout': 'error',
+      'playwright/prefer-lowercase-title': 'error',
+      'playwright/prefer-strict-equal': 'error',
+      'playwright/prefer-to-be': 'error',
+      'playwright/prefer-to-contain': 'error',
+      'playwright/prefer-to-have-count': 'error',
+      'playwright/prefer-to-have-length': 'error',
+      'playwright/require-top-level-describe': 'error',
+      'playwright/valid-describe-callback': 'error',
+      'playwright/valid-expect': 'error',
+      'playwright/valid-title': 'error',
+    },
+  },
+
+  // Node configuration files
+  {
+    files: [
+      '**/*.config.{js,cjs,mjs,ts}',
+      '**/webpack/**/*.{js,ts}',
+      '**/scripts/**/*.{js,ts}',
+      '**/.eslintrc.*',
+      '**/eslint.config.*',
+    ],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+];
