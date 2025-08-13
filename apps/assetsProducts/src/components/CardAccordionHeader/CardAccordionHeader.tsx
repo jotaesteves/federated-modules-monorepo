@@ -15,10 +15,10 @@ export const CardAccordionHeader: React.FC<CardAccordionHeaderProps> = ({
 }) => {
   return (
     <div className="flex items-center justify-between w-full">
-      <h2 className="text-md font-bold flex items-center gap-2">
+      <h4 className="text-base font-bold flex items-center gap-2">
         <span className="text-2xl">{icon}</span>
         {title}
-      </h2>
+      </h4>
       <p className="text-md font-bold">
         {value} <span className="text-xs font-normal text-gray-500">{currency}</span>
       </p>
