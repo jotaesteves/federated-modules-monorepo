@@ -43,11 +43,12 @@ module.exports = [
       'prefer-const': 'warn',
       'object-shorthand': 'error',
       'linebreak-style': ['error', 'unix'],
+      'no-undef': 'off', // Disable no-undef for React/JSX in TypeScript files
 
       // React
-      'react/react-in-jsx-scope': 'off',
+      'react/react-in-jsx-scope': 'off', // Not needed with new JSX transform
       'react/prop-types': 'off',
-      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-react': 'off', // Not needed with new JSX transform
       'react/jsx-uses-vars': 'error',
 
       // React hooks
@@ -97,7 +98,10 @@ module.exports = [
       'jsx-a11y/scope': 'warn',
     },
     settings: {
-      react: { version: 'detect' },
+      react: {
+        version: 'detect',
+        runtime: 'automatic', // Use the new JSX transform
+      },
       'import/resolver': {
         typescript: { project: true },
         node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
