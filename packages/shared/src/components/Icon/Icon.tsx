@@ -31,7 +31,7 @@ interface IconProps {
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ type, rounded, size = 'lg', className }) => {
+const Icon: React.FC<IconProps> = ({ type, rounded, size, className }) => {
   const iconsMap: Record<IconProps['type'], React.FC> = {
     graph: GraphIcon,
     contact: ContactIcon,
@@ -59,7 +59,7 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'lg', className }) =>
   const radiusClasses = rounded ? 'rounded-full' : 'rounded-sm';
 
   return (
-    <span className={`${baseClasses} ${sizeClasses[size]} ${radiusClasses} ${className}`}>
+    <span className={`${baseClasses} ${sizeClasses} ${radiusClasses} ${className}`}>
       <IconComponent />
     </span>
   );
