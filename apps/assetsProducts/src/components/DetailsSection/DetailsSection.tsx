@@ -1,4 +1,5 @@
 import React from 'react';
+import { AssetsBreadcrumbs } from '../AssetsBreadcrumbs/AssetsBreadcrumbs';
 
 interface DetailsSectionProps {
   title?: string;
@@ -11,6 +12,7 @@ export const DetailsSection: React.FC<DetailsSectionProps> = ({ title = 'Detalhe
       <div className="sticky top-0 left-0 right-0 z-10 bg-gray-100 p-[4px] rounded-t-xl border-b border-primary-500 flex-shrink-0">
         <h2 className="text-lg font-semibold text-left">{title}</h2>
       </div>
+      <AssetsBreadcrumbs />
       <section className="bg-white flex-1 overflow-y-auto min-h-0">{children}</section>
     </div>
   );
