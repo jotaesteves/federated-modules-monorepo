@@ -6,10 +6,11 @@
 /* Custom base styles */
 
 @layer base {
-
   html,
   body {
-    font-family: Montserrat, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family:
+      Montserrat, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol';
     @apply antialiased;
   }
 
@@ -37,4 +38,4 @@
   }
 }
 
-@import "tw-animate-css";
+@import 'tw-animate-css';
