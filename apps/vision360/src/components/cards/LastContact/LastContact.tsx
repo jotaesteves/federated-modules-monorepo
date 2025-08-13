@@ -29,7 +29,7 @@ const tabs: CardTabItem[] = [
 
 const LastContact: React.FC = () => {
   return (
-    <CardTabs icon="👤↺" title="Últimos contactos" className="h-full" tabs={tabs} defaultValue="" />
+    <CardTabs icon="👤↺" title="Últimos contactos" className="h-full" tabs={tabs} defaultValue="calls" />
   );
 };
 
