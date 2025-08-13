@@ -47,8 +47,16 @@ module.exports = {
           DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
         },
         gray: {
-          50: '#2E364191',
-          DEFAULT: '#2E364191',
+          100: '#F3F3F8',
+          200: '#E5E7EB', // used
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#7C7F86', // used
+          600: '#4B5563',
+          700: '#374151',
+          800: '#2E3641', // font color primary
+          900: '#111827',
+          DEFAULT: '#7C7F86',
         },
       },
       borderRadius: {
