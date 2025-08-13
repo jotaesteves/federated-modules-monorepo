@@ -57,6 +57,7 @@ module.exports = {
           50: '#2E364191',
           DEFAULT: '#2E364191',
         },
+
         secondary: 'oklch(var(--secondary) / <alpha-value>)',
         'secondary-foreground': 'oklch(var(--secondary-foreground) / <alpha-value>)',
         muted: 'oklch(var(--muted) / <alpha-value>)',
@@ -137,6 +138,10 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      fontSize: {
+        base: '0.9375rem',
+        '2xl': '1.5625rem',
       },
     },
   },

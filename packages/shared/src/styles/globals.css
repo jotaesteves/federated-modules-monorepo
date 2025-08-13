@@ -117,7 +117,25 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-base;
+    h1 {
+      @apply text-3xl;
+    }
+    h2 {
+      @apply text-2xl;
+    }
+    h3 {
+      @apply text-[22px];
+    }
+    h4 {
+      @apply text-[20px];
+    }
+    h5 {
+      @apply text-lg;
+    }
+    p {
+      @apply text-base;
+    }
   }
 
   :root {
