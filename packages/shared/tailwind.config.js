@@ -58,6 +58,12 @@ module.exports = {
           900: '#111827',
           DEFAULT: '#7C7F86',
         },
+        green: {
+          DEFAULT: '#25B917',
+        },
+        blue: {
+          DEFAULT: '#0052B4',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
