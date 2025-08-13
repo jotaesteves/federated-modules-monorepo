@@ -1,24 +1,13 @@
 import * as React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import Page1 from './pages/page1/Page1';
-import Page2 from './pages/page2/Page2';
-import Button from 'shared/components/Button';
-import { swapObjectKeyValue } from 'shared/utils/transformations';
-import PersonalDataCard from './components/cards/PersonalData';
-import EstateAndProducts from './components/cards/EstateAndProducts';
+
 import ChannelsAndServices from './components/cards/ChannelsAndServices';
+import EstateAndProducts from './components/cards/EstateAndProducts';
 import Incidents from './components/cards/Incidents';
 import LastContact from './components/cards/LastContact';
+import PersonalDataCard from './components/cards/PersonalData';
 
 const PersonalData: React.FC = () => {
-  const obj = { a: 'x', b: 'y', c: 'z' };
-  console.log(
-    'app1 swapObjectKeyValue demo',
-    JSON.stringify(obj),
-    JSON.stringify(swapObjectKeyValue(obj))
-  );
-
   return (
     <>
       <Helmet>

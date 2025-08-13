@@ -22,8 +22,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          'Inter',
-          'Roboto',
+          'Montserrat',
           'Helvetica',
           'Arial',
           'sans-serif',
@@ -53,6 +52,10 @@ module.exports = {
           950: '#210112',
           DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
           foreground: 'oklch(var(--primary-foreground) / <alpha-value>)',
+        },
+        gray: {
+          50: '#2E364191',
+          DEFAULT: '#2E364191',
         },
         secondary: 'oklch(var(--secondary) / <alpha-value>)',
         'secondary-foreground': 'oklch(var(--secondary-foreground) / <alpha-value>)',

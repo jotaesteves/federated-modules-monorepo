@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import PersonalData from '../../vision360/src/components/cards/PersonalData';
-import EstateAndProducts from '../../vision360/src/components/cards/EstateAndProducts';
+
 import ChannelsAndServices from '../../vision360/src/components/cards/ChannelsAndServices';
+import EstateAndProducts from '../../vision360/src/components/cards/EstateAndProducts';
 import Incidents from '../../vision360/src/components/cards/Incidents';
 import LastContact from '../../vision360/src/components/cards/LastContact';
+import PersonalData from '../../vision360/src/components/cards/PersonalData';
 
 const Vision360: React.FC = () => {
   return (

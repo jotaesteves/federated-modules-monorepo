@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from 'shared/components/Button';
 import InputWithLabel from 'shared/components/InputWithLabel';
-import { useCountStore } from 'shared/stores/count';
 import useFilms from 'shared/queries/useFilms';
+import { useCountStore } from 'shared/stores/count';
 
 const Page1: React.FC = () => {
   const { increment, decrement } = useCountStore();

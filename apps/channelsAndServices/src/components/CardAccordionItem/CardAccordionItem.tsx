@@ -1,6 +1,7 @@
 import React from 'react';
 import { cn } from 'shared/lib/utils';
-import { useChannelsServices, ItemData } from '../../context/ChannelsServicesContext';
+import type { ItemData } from '../../context/ChannelsServicesContext';
+import { useChannelsServices } from '../../context/ChannelsServicesContext';
 
 interface CardAccordionItemProps {
   children: React.ReactNode;

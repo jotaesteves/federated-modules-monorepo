@@ -3,7 +3,8 @@ import CardAccordion from 'shared/components/CardAccordion';
 import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 import { Badge } from 'shared/components/ui';
-import { ItemData, createUniqueId } from '../../context/ChannelsServicesContext';
+import type { ItemData } from '../../context/ChannelsServicesContext';
+import { createUniqueId } from '../../context/ChannelsServicesContext';
 
 interface ServicesSectionData {
   id: string;
