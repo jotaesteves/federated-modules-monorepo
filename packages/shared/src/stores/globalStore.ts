@@ -19,7 +19,7 @@ export interface GlobalState {
   language: 'en' | 'es' | 'fr';
 
   // Shared data between microfrontends
-  sharedData: Record<string, any>;
+  sharedData: Record<string, unknown>;
 
   // Loading states
   isLoading: boolean;
@@ -44,8 +44,8 @@ export interface GlobalActions {
   setLanguage: (language: GlobalState['language']) => void;
 
   // Shared data actions
-  setSharedData: (key: string, value: any) => void;
-  getSharedData: (key: string) => any;
+  setSharedData: (key: string, value: unknown) => void;
+  getSharedData: (key: string) => unknown;
   clearSharedData: (key?: string) => void;
 
   // Loading actions
@@ -97,7 +97,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
       if (typeof window !== 'undefined' && window.microFrontendEventBus) {
         window.microFrontendEventBus.emit({
           type: 'NAVIGATION_CHANGE',
-          payload: { page: page as any },
+          payload: { page },
         });
       }
     },
@@ -175,7 +175,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
     },
 
     // Shared data actions
-    setSharedData: (key: string, value: any) => {
+    setSharedData: (key: string, value: unknown) => {
       set((state) => ({
         sharedData: {
           ...state.sharedData,
@@ -236,7 +236,7 @@ useGlobalStore.subscribe(
     if (typeof window !== 'undefined' && window.microFrontendEventBus) {
       window.microFrontendEventBus.emit({
         type: 'NAVIGATION_CHANGE',
-        payload: { page: currentPage as any },
+        payload: { page: currentPage },
       });
     }
   }

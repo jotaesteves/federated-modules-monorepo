@@ -55,7 +55,7 @@ module.exports = [
       'react-hooks/exhaustive-deps': 'warn',
 
       // TypeScript
-      '@typescript-eslint/no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'off', // Handled in TypeScript-specific config
       '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
       '@typescript-eslint/no-explicit-any': 'warn',
 
@@ -65,7 +65,14 @@ module.exports = [
       'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': [
         'warn',
-        { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' },
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+          // Don't report unused parameters in interface/type definitions
+          ignoreRestSiblings: true,
+        },
       ],
 
       // Accessibility
@@ -110,6 +117,29 @@ module.exports = [
     rules: {
       '@typescript-eslint/no-floating-promises': 'warn',
       '@typescript-eslint/no-misused-promises': 'warn',
+      // Turn off the base rule as it can report incorrect errors in TypeScript
+      'no-unused-vars': 'off',
+      // Override the unused-imports rule for TypeScript files to be more lenient with interface signatures
+      'unused-imports/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'none', // Don't check function arguments in TS files (common in interfaces)
+          ignoreRestSiblings: true,
+        },
+      ],
+      // Use TypeScript-specific no-unused-vars rule which better handles interfaces
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'none', // Don't report unused parameters
+          ignoreRestSiblings: true,
+          argsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 
