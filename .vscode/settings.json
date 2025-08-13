@@ -20,7 +20,7 @@
   // ESLint (monorepo-friendly)
   "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "eslint.workingDirectories": [{ "mode": "auto" }],
-  "eslint.useFlatConfig": false,
+  "eslint.useFlatConfig": true,
 
   // TypeScript
   "typescript.tsdk": "node_modules/typescript/lib",
