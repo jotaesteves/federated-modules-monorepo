@@ -2,7 +2,7 @@ import React from 'react';
 import './Footer.css';
 import { useTheme } from './store/microFrontendStore';
 import { FooterTags } from './components';
-import { FooterTag } from './types';
+import type { FooterTag } from './types';
 import { useNavigationHistory } from './hooks';
 
 interface FooterProps {

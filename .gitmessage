@@ -1,0 +1,47 @@
+# Conventional Commits v1 — Commit Message Template
+# ----------------------------------------------------------------------------
+# Format:
+#   type[optional scope][!]: short summary
+#
+# Body (optional):
+#   - Use imperative, present tense: “add” not “added” nor “adds”.
+#   - Keep the summary under ~72 chars.
+#   - Explain what and why vs. how.
+#
+# Footers (optional):
+#   - Closes #123
+#   - Relates #456
+#   - Co-authored-by: Name <email>
+#
+# Breaking changes:
+#   - Indicate with ! after the scope, and add a footer:
+#     BREAKING CHANGE: describe the breaking change
+# ----------------------------------------------------------------------------
+# Allowed types:
+# - feat:     A new feature
+# - fix:      A bug fix
+# - docs:     Documentation only changes
+# - style:    Changes that do not affect meaning of the code (white-space, formatting, etc)
+# - refactor: A code change that neither fixes a bug nor adds a feature
+# - perf:     A code change that improves performance
+# - test:     Adding or correcting tests
+# - build:    Changes that affect the build system or external dependencies
+# - ci:       Changes to CI configuration files and scripts
+# - chore:    Other changes that don't modify src or test files
+# - revert:   Reverts a previous commit
+# ----------------------------------------------------------------------------
+# Examples:
+#   feat(header): add sticky behavior on scroll
+#   fix(footer)!: correct layout overflow on mobile
+#
+#   BREAKING CHANGE: footer CSS variables renamed to --app-footer-*.
+#   Closes #321
+# ----------------------------------------------------------------------------
+# Write your commit message below. Lines starting with '#' are ignored.
+#
+# Template to follow:
+#   type(scope): short summary
+#
+#   [optional body]
+#
+#   [optional footer(s)]

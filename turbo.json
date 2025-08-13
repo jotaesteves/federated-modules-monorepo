@@ -20,10 +20,12 @@
     },
     "start": { "persistent": true },
     "lint": {
-      "dependsOn": ["^lint"]
+      "dependsOn": ["^lint"],
+      "passThroughEnv": ["CI"]
     },
     "lint:fix": {
-      "dependsOn": ["^lint:fix"]
+      "dependsOn": ["^lint:fix"],
+      "passThroughEnv": ["CI"]
     },
     "format": {},
     "test": {

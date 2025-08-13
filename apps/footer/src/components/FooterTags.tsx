@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigation } from '../store/microFrontendStore';
-import { FooterTag, FooterTagsProps } from '../types';
+import type { FooterTag, FooterTagsProps } from '../types';
 
 const FooterTags: React.FC<FooterTagsProps> = ({ tags, onTagClose }) => {
   const { currentPage, navigateTo } = useNavigation();

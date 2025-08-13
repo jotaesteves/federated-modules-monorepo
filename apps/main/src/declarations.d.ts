@@ -24,54 +24,63 @@ declare module '*.css?raw' {
 // Module Federation remotes typings
 declare module 'vision360/Vision360' {
   import type { ComponentType } from 'react';
+
   const Vision360Component: ComponentType<unknown>;
   export default Vision360Component;
 }
 
 declare module 'personalData/PersonalData' {
   import type { ComponentType } from 'react';
+
   const PersonalDataComponent: ComponentType<unknown>;
   export default PersonalDataComponent;
 }
 
 declare module 'assetsProducts/AssetsProducts' {
   import type { ComponentType } from 'react';
+
   const AssetsProductsComponent: ComponentType<unknown>;
   export default AssetsProductsComponent;
 }
 
 declare module 'header/Header' {
   import type { ComponentType } from 'react';
+
   const HeaderComponent: ComponentType<unknown>;
   export default HeaderComponent;
 }
 
 declare module 'header/Sidebar' {
   import type { ComponentType } from 'react';
+
   const SidebarComponent: ComponentType<unknown>;
   export default SidebarComponent;
 }
 
 declare module 'footer/Footer' {
   import type { ComponentType } from 'react';
+
   const FooterComponent: ComponentType<unknown>;
   export default FooterComponent;
 }
 
 declare module 'shared/components/app-sidebar' {
   import type { ComponentType } from 'react';
+
   const AppSidebarComponent: ComponentType<unknown>;
   export default AppSidebarComponent;
 }
 
 declare module 'shared/components/Spinner' {
   import type { ComponentType } from 'react';
+
   const SpinnerComponent: ComponentType<unknown>;
   export default SpinnerComponent;
 }
 
 declare module 'shared/components/ui' {
   import type { ComponentType } from 'react';
+
   export const SidebarProvider: ComponentType<{ children: React.ReactNode }>;
   export const SidebarInset: ComponentType<unknown>;
   export const SidebarTrigger: ComponentType<unknown>;

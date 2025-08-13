@@ -1,4 +1,4 @@
-import { FooterTag } from '../types';
+import type { FooterTag } from '../types';
 
 /**
  * Utility functions for working with navigation history in the footer
@@ -39,7 +39,7 @@ export const historyToFooterTags = (history: string[], maxTags = 5): FooterTag[]
   return uniqueHistory.slice(-maxTags).map((page) => ({
     id: page,
     label: getPageLabel(page),
-    page: page,
+    page,
     isFromHistory: true,
   }));
 };

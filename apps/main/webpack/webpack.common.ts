@@ -1,6 +1,6 @@
-import * as webpack from 'webpack';
+import type * as webpack from 'webpack';
 import { getSharedModulesConfig } from '@config/webpack-config/utils';
-import { CommonModuleFederationConfig } from '@config/webpack-config/types';
+import type { CommonModuleFederationConfig } from '@config/webpack-config/types';
 import { Apps } from '@config/webpack-config/enums';
 import {
   getAppModuleFederationConfig,
