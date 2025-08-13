@@ -9,7 +9,7 @@ interface CardAccordionItemProps {
 }
 
 export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, itemData }) => {
-  const { activeItem, setActiveItem } = useAssets();
+  const { activeItem, setActiveItem, updateBreadcrumbsForItem } = useAssets();
   const isActive = activeItem?.id === itemData?.id;
 
   const handleClick = () => {
@@ -19,6 +19,7 @@ export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, 
         setActiveItem(null);
       } else {
         setActiveItem(itemData);
+        updateBreadcrumbsForItem(itemData);
       }
     }
   };

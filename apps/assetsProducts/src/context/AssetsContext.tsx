@@ -52,10 +52,10 @@ export const AssetsProvider: React.FC<AssetsProviderProps> = ({ children }) => {
   const getTypeDisplayName = (type: ItemData['type']) => {
     const typeMap: Record<ItemData['type'], string> = {
       account: 'Conta à Ordem',
-      deposit: 'Depósitos a Prazo',
-      'debit-card': 'Cartões de Débito',
-      loan: 'Empréstimos',
-      'credit-card': 'Cartões de Crédito',
+      deposit: 'Depósito a Prazo',
+      'debit-card': 'Cartão de Débito',
+      loan: 'Empréstimo',
+      'credit-card': 'Cartão de Crédito',
     };
     return typeMap[type];
   };

@@ -16,13 +16,13 @@ export const AssetsBreadcrumbs: React.FC = () => {
   }
 
   return (
-    <div className="mb-4 px-2">
+    <div className="px-2">
       <Breadcrumb>
         <BreadcrumbList>
           {breadcrumbs.items.map((item, index) => (
             <React.Fragment key={`${item.label}-${index}`}>
               <BreadcrumbItem>
-                <BreadcrumbPage className="font-medium text-primary-600">
+                <BreadcrumbPage className="font-medium text-xs">
                   {item.label}
                 </BreadcrumbPage>
               </BreadcrumbItem>
