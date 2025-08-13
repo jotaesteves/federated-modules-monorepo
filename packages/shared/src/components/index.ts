@@ -7,6 +7,8 @@ export { default as CSSShowcase } from './CSSShowcase/CSSShowcase';
 export { default as Card } from './Card/Card';
 export { default as CardTabs } from './Card/CardTabs';
 export type { CardTabsProps, CardTabItem } from './Card/CardTabs';
+export { default as Icon } from './Icon/Icon';
+
 export { default as appSidebar } from './app-sidebar';
 
 // ShadCN UI components

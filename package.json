@@ -22,6 +22,9 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
+    "lint:all": "turbo lint --continue",
+    "lint:fix:all": "turbo lint:fix --continue",
+    "lint:script": "node scripts/lint-all.js",
     "test": "turbo test",
     "test:ci": "turbo test:ci",
     "test:watch": "turbo test:watch",
@@ -29,18 +32,21 @@
     "e2e": "npm-run-all build:local e2e:start",
     "e2e:show-report": "turbo e2e:show-report",
     "format": "prettier --config ./.prettierrc.json --write .",
-    "clean": "rimraf apps/*/node_modules packages/*/node_modules pnpm-lock.yaml node_modules"
+    "clean": "rimraf apps/*/node_modules packages/*/node_modules pnpm-lock.yaml node_modules",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^19.8.1",
     "@config/eslint-config": "workspace:*",
+    "commitlint": "^19.8.1",
     "cross-env": "^7.0.3",
     "husky": "^9.1.7",
-    "lint-staged": "^15.2.10",
+    "lint-staged": "^15.5.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^3.4.2",
+    "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "serve": "^14.2.4",
-    "turbo": "^2.3.3"
+    "turbo": "^2.5.5"
   },
   "engines": {
     "node": ">=18.0.0",

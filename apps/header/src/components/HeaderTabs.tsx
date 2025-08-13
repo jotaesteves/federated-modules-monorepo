@@ -14,10 +14,12 @@ const HeaderTabs: React.FC = () => {
   const location = useLocation();
 
   // Access the global store from the host app
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const globalStore = (window as any)?.globalMicroFrontendStore;
 
   // Compute initial active tab from global store or current URL
   const getInitialActiveTab = (): string | null => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const store = (window as any)?.globalMicroFrontendStore;
     const storePage = store?.getState?.().currentPage;
     if (storePage && tabs.some((t) => t.value === storePage)) return storePage;
@@ -38,6 +40,7 @@ const HeaderTabs: React.FC = () => {
       }
 
       const unsubscribe = globalStore.subscribe(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (state: any) => state.currentPage,
         (currentPage: string) => {
           if (tabs.some((tab) => tab.value === currentPage)) {

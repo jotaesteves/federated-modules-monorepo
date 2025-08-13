@@ -1,5 +1,157 @@
 {
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "always",
+    "source.fixAll.eslint": "always"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.requireConfig": true,
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "eslint.useFlatConfig": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.tsserver.maxTsServerMemory": 4096,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "tailwindCSS.emmetCompletions": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.classRegex": [
+    "cva\\(([^)]*)\\)",
+    "cx\\(([^)]*)\\)",
+    "clsx\\(([^)]*)\\)",
+    "classnames\\(([^)]*)\\)"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "typescriptreact": "html"
+  },
+  "tailwindCSS.experimental.configFile": "packages/shared/tailwind.config.js",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "jest.runMode": "watch",
+  "pretty-ts-errors.enabled": true,
+  "files.associations": {
+    "*.env": "dotenv",
+    "*.env.*": "dotenv"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/node_modules/**": true,
+    "**/dist": true,
+    "**/dist/**": true,
+    "**/build": true,
+    "**/build/**": true,
+    "**/.turbo": true,
+    "**/.turbo/**": true,
+    "**/coverage": true,
+    "**/coverage/**": true,
+    "**/.wp_federation": true,
+    "**/.wp_federation/**": true,
+    "**/playwright-report": true,
+    "**/playwright-report/**": true,
+    "**/test-results": true,
+    "**/test-results/**": true,
+    "**/.next": true,
+    "**/.next/**": true,
+    "**/out": true,
+    "**/out/**": true,
+    "**/.cache": true,
+    "**/.cache/**": true,
+    "**/tmp": true,
+    "**/tmp/**": true,
+    "**/temp": true,
+    "**/temp/**": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.env.local": true,
+    "**/.env.*.local": true,
+    "**/pnpm-lock.yaml": true,
+    "**/package-lock.json": true,
+    "**/yarn.lock": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/.turbo/**": true,
+    "**/coverage/**": true,
+    "**/.wp_federation/**": true,
+    "**/playwright-report/**": true,
+    "**/test-results/**": true,
+    "**/.next/**": true,
+    "**/out/**": true,
+    "**/.cache/**": true,
+    "**/tmp/**": true,
+    "**/temp/**": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true
+  },
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/node_modules/**": true,
+    "**/dist": true,
+    "**/dist/**": true,
+    "**/build": true,
+    "**/build/**": true,
+    "**/.turbo": true,
+    "**/.turbo/**": true,
+    "**/coverage": true,
+    "**/coverage/**": true,
+    "**/.wp_federation": true,
+    "**/.wp_federation/**": true,
+    "**/playwright-report": true,
+    "**/playwright-report/**": true,
+    "**/test-results": true,
+    "**/test-results/**": true,
+    "**/.next": true,
+    "**/.next/**": true,
+    "**/out": true,
+    "**/out/**": true,
+    "**/.cache": true,
+    "**/.cache/**": true,
+    "**/tmp": true,
+    "**/tmp/**": true,
+    "**/temp": true,
+    "**/temp/**": true
+  },
+  "git.useEditorAsCommitInput": true,
+  "git.inputValidation": "both",
+  "git.inputValidationSubjectLength": 72,
+  "scm.inputPlaceholder": "type(scope): short summary — use .gitmessage template for details"
 }

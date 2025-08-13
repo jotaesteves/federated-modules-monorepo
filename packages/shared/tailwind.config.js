@@ -22,8 +22,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          'Inter',
-          'Roboto',
+          'Montserrat',
           'Helvetica',
           'Arial',
           'sans-serif',
@@ -33,12 +32,6 @@ module.exports = {
         ],
       },
       colors: {
-        background: 'oklch(var(--background) / <alpha-value>)',
-        foreground: 'oklch(var(--foreground) / <alpha-value>)',
-        card: 'oklch(var(--card) / <alpha-value>)',
-        'card-foreground': 'oklch(var(--card-foreground) / <alpha-value>)',
-        popover: 'oklch(var(--popover) / <alpha-value>)',
-        'popover-foreground': 'oklch(var(--popover-foreground) / <alpha-value>)',
         primary: {
           50: '#ffe6f1',
           100: '#ffb3d2',
@@ -52,7 +45,6 @@ module.exports = {
           900: '#3e0222',
           950: '#210112',
           DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
-          foreground: 'oklch(var(--primary-foreground) / <alpha-value>)',
         },
         gray: {
           100: '#F3F3F8',
@@ -64,41 +56,8 @@ module.exports = {
           700: '#374151',
           800: '#2E3641', // font color primary
           900: '#111827',
-          DEFAULT: 'oklch(var(--gray) / <alpha-value>)',
+          DEFAULT: '#7C7F86',
         },
-        secondary: 'oklch(var(--secondary) / <alpha-value>)',
-        'secondary-foreground': 'oklch(var(--secondary-foreground) / <alpha-value>)',
-        muted: 'oklch(var(--muted) / <alpha-value>)',
-        'muted-foreground': 'oklch(var(--muted-foreground) / <alpha-value>)',
-        accent: 'oklch(var(--accent) / <alpha-value>)',
-        'accent-foreground': 'oklch(var(--accent-foreground) / <alpha-value>)',
-        destructive: 'oklch(var(--destructive) / <alpha-value>)',
-        'destructive-foreground': 'oklch(var(--destructive-foreground) / <alpha-value>)',
-        border: 'oklch(var(--border) / <alpha-value>)',
-        input: 'oklch(var(--input) / <alpha-value>)',
-        ring: 'oklch(var(--ring) / <alpha-value>)',
-        'chart-1': 'oklch(var(--chart-1) / <alpha-value>)',
-        'chart-2': 'oklch(var(--chart-2) / <alpha-value>)',
-        'chart-3': 'oklch(var(--chart-3) / <alpha-value>)',
-        'chart-4': 'oklch(var(--chart-4) / <alpha-value>)',
-        'chart-5': 'oklch(var(--chart-5) / <alpha-value>)',
-        sidebar: {
-          DEFAULT: 'hsl(var(--sidebar-background))',
-          foreground: 'hsl(var(--sidebar-foreground))',
-          primary: 'hsl(var(--sidebar-primary))',
-          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-          accent: 'hsl(var(--sidebar-accent))',
-          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-          border: 'hsl(var(--sidebar-border))',
-          ring: 'hsl(var(--sidebar-ring))',
-        },
-        'sidebar-foreground': 'oklch(var(--sidebar-foreground) / <alpha-value>)',
-        'sidebar-primary': 'oklch(var(--sidebar-primary) / <alpha-value>)',
-        'sidebar-primary-foreground': 'oklch(var(--sidebar-primary-foreground) / <alpha-value>)',
-        'sidebar-accent': 'oklch(var(--sidebar-accent) / <alpha-value>)',
-        'sidebar-accent-foreground': 'oklch(var(--sidebar-accent-foreground) / <alpha-value>)',
-        'sidebar-border': 'oklch(var(--sidebar-border) / <alpha-value>)',
-        'sidebar-ring': 'oklch(var(--sidebar-ring) / <alpha-value>)',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -107,11 +66,9 @@ module.exports = {
         xl: 'calc(var(--radius) + 4px)',
       },
       gridTemplateColumns: {
-        // Add 24-column grid
         24: 'repeat(24, minmax(0, 1fr))',
       },
       gridColumn: {
-        // Add spans for 24-column grid
         'span-13': 'span 13 / span 13',
         'span-14': 'span 14 / span 14',
         'span-15': 'span 15 / span 15',
@@ -146,6 +103,10 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+      fontSize: {
+        base: '0.9375rem',
+        '2xl': '1.5625rem',
       },
     },
   },
