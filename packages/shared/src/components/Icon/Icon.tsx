@@ -16,6 +16,8 @@ import {
   CallDotsIcon,
   MessageCircleDotsIcon,
   EmailIcon,
+  MessageIcon,
+  HistoryIcon,
 } from '@/assets/icons';
 import { cn } from '@/lib/utils';
 
@@ -37,6 +39,8 @@ const iconsMap = {
   callDots: CallDotsIcon,
   messageCircleDots: MessageCircleDotsIcon,
   email: EmailIcon,
+  message: MessageIcon,
+  history: HistoryIcon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;

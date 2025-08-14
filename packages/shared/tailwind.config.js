@@ -73,6 +73,9 @@ module.exports = {
           500: '#FF810A',
           DEFAULT: '#FF5900',
         },
+        purple: {
+          DEFAULT: '#9747FF',
+        },
       },
       gridTemplateColumns: {
         24: 'repeat(24, minmax(0, 1fr))',

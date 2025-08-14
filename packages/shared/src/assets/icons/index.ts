@@ -17,3 +17,5 @@ export * from './PinIcon';
 export * from './RingCallIcon';
 export * from './RiskIcon';
 export * from './UserIcon';
+export * from './HistoryIcon';
+export * from './MessageIcon';
