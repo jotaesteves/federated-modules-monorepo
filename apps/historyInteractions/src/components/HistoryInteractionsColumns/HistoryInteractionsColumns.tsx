@@ -1,4 +1,3 @@
-import React from 'react';
 import { ColumnsHeader } from './ColumnsHeader/ColumnsHeader';
 import { OccurrencesSection } from './OccurrencesSection/OccurrencesSection';
 import { CommunicationsSection } from './CommunicationsSection/CommunicationsSection';

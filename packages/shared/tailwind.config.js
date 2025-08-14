@@ -110,6 +110,7 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       fontSize: {
+        '2xs': '0.625rem',
         base: '0.9375rem',
         '2xl': '1.5625rem',
       },

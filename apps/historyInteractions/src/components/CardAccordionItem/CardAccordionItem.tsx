@@ -9,17 +9,16 @@ interface CardAccordionItemProps {
 }
 
 export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, itemData }) => {
-  const { activeItem, setActiveItem, updateBreadcrumbsForItem } = useHistoryInteractions();
+  const { activeItem, openItemDetails, closeItemDetails } = useHistoryInteractions();
   const isActive = activeItem?.id === itemData?.id;
 
   const handleClick = () => {
     if (itemData) {
       // If clicking on the already active item, deactivate it
       if (isActive) {
-        setActiveItem(null);
+        closeItemDetails();
       } else {
-        setActiveItem(itemData);
-        updateBreadcrumbsForItem(itemData);
+        openItemDetails(itemData);
       }
     }
   };
