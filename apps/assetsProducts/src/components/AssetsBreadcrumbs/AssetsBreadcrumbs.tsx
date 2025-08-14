@@ -22,9 +22,7 @@ export const AssetsBreadcrumbs: React.FC = () => {
           {breadcrumbs.items.map((item, index) => (
             <React.Fragment key={`${item.label}-${index}`}>
               <BreadcrumbItem>
-                <BreadcrumbPage className="font-medium text-xs">
-                  {item.label}
-                </BreadcrumbPage>
+                <BreadcrumbPage className="font-medium text-xs">{item.label}</BreadcrumbPage>
               </BreadcrumbItem>
               {index < breadcrumbs.items.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>
