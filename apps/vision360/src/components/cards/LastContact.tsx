@@ -1,4 +1,5 @@
 import CardTabs, { CardTabItem } from 'shared/components/CardTabs';
+import Icon from 'shared/components/Icon';
 
 const tabs: CardTabItem[] = [
   {
@@ -27,7 +28,7 @@ const LastContact: React.FC = () => {
   return (
     <CardTabs
       title="Últimos contactos"
-      icon={<span>↺</span>}
+      icon={<Icon type="history" className="bg-purple" />}
       tabs={tabs}
       defaultValue="calls"
       className="w-full"
