@@ -3,9 +3,9 @@ import { Helmet } from 'react-helmet';
 
 import ChannelsAndServices from '../../vision360/src/components/cards/ChannelsAndServices';
 import EstateAndProducts from '../../vision360/src/components/cards/EstateAndProducts';
-import Incidents from '../../vision360/src/components/cards/Incidents';
 import LastContact from './components/cards/LastContact/LastContact';
 import PersonalData from '../../vision360/src/components/cards/PersonalData';
+import Incidents from 'src/components/cards/Incidents/Incidents';
 
 const Vision360: React.FC = () => {
   return (
