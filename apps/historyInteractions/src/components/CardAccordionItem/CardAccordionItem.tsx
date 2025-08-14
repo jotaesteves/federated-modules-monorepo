@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from 'shared/lib/utils';
-import type { ItemData } from '../../context/CommunicationsContext';
-import { useAssets } from '../../context/CommunicationsContext';
+import type { ItemData } from '../../context/HistoryInteractionsContext';
+import { useAssets } from '../../context/HistoryInteractionsContext';
 
 interface CardAccordionItemProps {
   children: React.ReactNode;

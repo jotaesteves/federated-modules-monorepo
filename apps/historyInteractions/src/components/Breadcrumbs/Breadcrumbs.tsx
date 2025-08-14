@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,10 +6,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from 'shared/components/ui';
-import { useAssets } from '../../context/CommunicationsContext';
+import { useHistoryInteractions } from '../../context/HistoryInteractionsContext';
 
-export const AssetsBreadcrumbs: React.FC = () => {
-  const { breadcrumbs, activeItem } = useAssets();
+export const Breadcrumbs: React.FC = () => {
+  const { breadcrumbs, activeItem } = useHistoryInteractions();
 
   if (!activeItem || breadcrumbs.items.length === 0) {
     return null;

@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState, type ReactNode } from 'react';
+import * as React from 'react';
+import { createContext, useContext, useState, type ReactNode, type FC } from 'react';
 
 export interface ItemData {
   id: string; // This will be a unique identifier combining type, category, and original id
   originalId: string; // The original ID from the data
-  type: 'calls' | 'sms-push' | 'emails' | 'complains' | 'incidents' | 'memos';
+  type: 'calls' | 'smsPush' | 'emails' | 'complains' | 'incidents' | 'memos';
   category: 'communications' | 'occurrences';
   name: string;
   data: any;
@@ -30,13 +31,13 @@ interface CommunicationsContextType {
   updateBreadcrumbsForItem: (item: ItemData) => void;
 }
 
-const CommunicationsContext = createContext<CommunicationsContextType | undefined>(undefined);
+const HistoryInteractionsContext = createContext<CommunicationsContextType | undefined>(undefined);
 
-interface CommunicationsProviderProps {
+interface HistoryInteractionsProviderProps {
   children: ReactNode;
 }
 
-export const CommunicationsProvider: React.FC<CommunicationsProviderProps> = ({ children }) => {
+export const HistoryInteractionsProvider: FC<HistoryInteractionsProviderProps> = ({ children }) => {
   const [activeItem, setActiveItem] = useState<ItemData | null>(null);
   const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbState>({ items: [] });
 
@@ -51,7 +52,7 @@ export const CommunicationsProvider: React.FC<CommunicationsProviderProps> = ({ 
   const getTypeDisplayName = (type: ItemData['type']) => {
     const typeMap: Record<ItemData['type'], string> = {
       calls: 'Chamadas',
-      'sms-push': 'SMS/Push',
+      smsPush: 'SMS/Push',
       emails: 'E-mails',
       complains: 'Reclamações',
       incidents: 'Incidentes',
@@ -69,7 +70,7 @@ export const CommunicationsProvider: React.FC<CommunicationsProviderProps> = ({ 
   };
 
   return (
-    <CommunicationsContext.Provider
+    <HistoryInteractionsContext.Provider
       value={{
         activeItem,
         setActiveItem,
@@ -79,14 +80,14 @@ export const CommunicationsProvider: React.FC<CommunicationsProviderProps> = ({ 
       }}
     >
       {children}
-    </CommunicationsContext.Provider>
+    </HistoryInteractionsContext.Provider>
   );
 };
 
-export const useCommunications = () => {
-  const context = useContext(CommunicationsContext);
+export const useHistoryInteractions = () => {
+  const context = useContext(HistoryInteractionsContext);
   if (context === undefined) {
-    throw new Error('useCommunications must be used within a CommunicationsProvider');
+    throw new Error('useHistoryInteractions must be used within a HistoryInteractionsProvider');
   }
   return context;
 };

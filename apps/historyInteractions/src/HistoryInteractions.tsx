@@ -22,19 +22,8 @@ const HistoryInteractions: React.FC = () => {
           <h1 className="text-3xl font-bold text-gray-900 mb-6">Histórico de Interações</h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            {/* Filters */}
-            <div className="lg:col-span-1">
-              <InteractionFilters filters={filters} onFiltersChange={setFilters} />
-            </div>
-
             {/* Main content */}
-            <div className="lg:col-span-3 space-y-6">
-              {/* Stats */}
-              <InteractionStats filters={filters} />
-
-              {/* Interactions list */}
-              <InteractionsList filters={filters} />
-            </div>
+            <div className="lg:col-span-3 space-y-6">{/* TODO: Insert content here */}</div>
           </div>
         </div>
       </div>
