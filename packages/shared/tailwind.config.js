@@ -4,6 +4,8 @@ module.exports = {
   content: [
     // Shared package content only
     './src/**/*.{js,ts,jsx,tsx}',
+    './packages/*/src/**/*.{js,ts,jsx,tsx,mdx}',
+    './apps/*/src/**/*.{js,ts,jsx,tsx,mdx}',
 
     // Specific app source files (avoid scanning dist and node_modules)
     '../../apps/header/src/**/*.{js,ts,jsx,tsx}',
@@ -67,12 +69,9 @@ module.exports = {
         red: {
           DEFAULT: '#D1005D',
         },
-      },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-        xl: 'calc(var(--radius) + 4px)',
+        purple: {
+          DEFAULT: '#9747FF',
+        },
       },
       gridTemplateColumns: {
         24: 'repeat(24, minmax(0, 1fr))',

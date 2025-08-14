@@ -8,6 +8,7 @@ import {
 } from 'src/components/cards/LastContact/mockData/mockData';
 import { CardItemMessages } from 'src/components/cards/LastContact/components/CardItemMessages';
 import React from 'react';
+import Icon from 'shared/components/Icon';
 
 const tabs: CardTabItem[] = [
   {
@@ -43,11 +44,11 @@ const tabs: CardTabItem[] = [
 const LastContact: React.FC = () => {
   return (
     <CardTabs
-      icon="👤↺"
       title="Últimos contactos"
-      className="h-full"
+      icon={<Icon type="history" className="bg-purple" size="lg" />}
       tabs={tabs}
       defaultValue="calls"
+      className="w-full"
     />
   );
 };
