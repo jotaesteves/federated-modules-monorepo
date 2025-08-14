@@ -14,3 +14,8 @@ export { BellIcon } from './BellIcon';
 export { ShoppingBagIcon } from './ShoppingBagIcon';
 export { PersonMaleIcon } from './PersonMaleIcon';
 export { PersonMalePolygonIcon } from './PersonMalePolygonIcon';
+export { PauseIcon } from './PauseIcon';
+export { SendIcon } from './SendIcon';
+export { ShareIcon } from './ShareIcon';
+export { CallBackIcon } from './CallBackIcon';
+export { DialPadIcon } from './DialPadIcon';

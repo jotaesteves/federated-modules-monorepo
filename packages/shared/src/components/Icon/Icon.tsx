@@ -15,6 +15,11 @@ import {
   ShoppingBagIcon,
   PersonMaleIcon,
   PersonMalePolygonIcon,
+  PauseIcon,
+  SendIcon,
+  ShareIcon,
+  CallBackIcon,
+  DialPadIcon,
 } from '@/assets/icons';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
@@ -36,7 +41,13 @@ export interface IconProps {
     | 'bell'
     | 'shoppingBag'
     | 'personMale'
-    | 'personMalePolygon';
+    | 'personMalePolygon'
+    | 'pause'
+    | 'send'
+    | 'share'
+    | 'callback'
+    | 'dialPad';
+
   rounded?: boolean;
   size?: 'sm' | 'lg';
   className?: string;
@@ -60,6 +71,11 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) =>
     shoppingBag: ShoppingBagIcon,
     personMale: PersonMaleIcon,
     personMalePolygon: PersonMalePolygonIcon,
+    pause: PauseIcon,
+    send: SendIcon,
+    share: ShareIcon,
+    callback: CallBackIcon,
+    dialPad: DialPadIcon,
   };
 
   const IconComponent = iconsMap[type];
