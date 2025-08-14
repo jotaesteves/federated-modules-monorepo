@@ -22,3 +22,5 @@ export * from './MessageIcon';
 export * from './CellPhoneIcon';
 export * from './BellIcon';
 export * from './ShoppingBagIcon';
+export * from './PersonMaleIcon';
+export * from './PersonMalePolygonIcon';

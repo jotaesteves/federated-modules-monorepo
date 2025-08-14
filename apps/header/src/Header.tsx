@@ -106,17 +106,20 @@ const Header: React.FC = () => {
         </div>
 
         {/* Vertical line */}
-        <div className="border-l border-gray-300 h-12 mx-4"></div>
+        <div className="border-l border-gray-300 h-[5.6875rem] ml-[1.8125rem] mt-[19px]"></div>
 
-        {/* Right section (30%) - user profile and controls */}
-        <div className="flex items-center justify-start" style={{ width: '30%' }}>
+        <div className="flex items-center justify-start pl-[36px]" style={{ width: '30%' }}>
           {/* User dropdown */}
           <div className="relative">
             <button
-              className="w-8 h-8 rounded-md border border-gray-300 flex items-center text-gray-600 hover:text-blue-600 hover:border-blue-300 transition-colors"
+              className="w-[3.5rem] h-[3.5rem] rounded-md border border-primary-500 flex items-center"
               onClick={toggleUserDropdown}
             >
-              <span className="mx-auto">👤</span>
+              <Icon
+                type="personMale"
+                className="text-zinc-700 items-end p-0 w-[2.1875rem] h-[2.1875rem]"
+              />
+              <Icon type="personMalePolygon" className="p-0 flex-start items-end pb-1" />
             </button>
 
             {/* User dropdown menu */}
@@ -144,33 +147,33 @@ const Header: React.FC = () => {
           </div>
 
           {/* Call center controls - rounded pill shaped with 5 circles inside */}
-          <div className="ml-4 bg-primary-500 rounded-full px-2 py-2 flex items-center space-x-2">
+          <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2">
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Pause"
             >
               <span>⏸︎</span>
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
             >
               <span>↗️</span>
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Send"
             >
               <span>📤</span>
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Call"
             >
               <span>📞</span>
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Phone"
             >
               <span>☎️</span>
