@@ -47,7 +47,6 @@ module.exports = {
           950: '#210112',
           DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
         },
-
         gray: {
           100: '#F3F3F8',
           200: '#E5E7EB', // used
@@ -118,29 +117,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    /* 
-    function ({addUtilities}){
-      const newUtilities = {
-        ".scrollbar.thin" : {
-          scrollbarWidth: "thin",
-          scrollbarColor: "#D1005D"
-        },
-        ".scrollbar-webkit": {
-          "&::-webkit-scrollbar" : {
-            width: "4px"
-          },
-          "&::-webkit-scrollbar-track" : {
-            background: "#f1f1f1"
-          },
-          "&::-webkit-scrollbar-thumb" : {
-            backgroundColor: "#D1005D",
-            borderRadius: "20px",
-            border: "1px solid white"
-          },
-        }
-      }
-      addUtilities(newUtilities, ["responsive", "hover"])
-    } */
-  ],
+  plugins: [],
 };
