@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { createContext, useContext, useState, type ReactNode, type FC } from 'react';
 
 export interface ItemData {
@@ -6,8 +5,6 @@ export interface ItemData {
   originalId: string; // The original ID from the data
   type: 'calls' | 'sms-push' | 'emails' | 'complains' | 'incidents' | 'memos';
   category: 'communications' | 'occurrences';
-  name: string;
-  data: any;
 }
 
 export interface BreadCrumbItem {

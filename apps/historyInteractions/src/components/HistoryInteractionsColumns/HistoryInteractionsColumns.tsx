@@ -16,10 +16,7 @@ export const HistoryInteractionsColumns: React.FC<HistoryInteractionsColumnsProp
     <div className="col-span-14 grid grid-cols-2 gap-2 overflow-y-auto h-full relative content-start">
       <ColumnsHeader leftTitle={leftTitle} rightTitle={rightTitle} />
 
-      {/* Column 1 - Communications */}
       <CommunicationsSection />
-
-      {/* Column 2 - OccurrencesSection */}
       <OccurrencesSection />
     </div>
   );

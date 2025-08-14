@@ -32,7 +32,9 @@ export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, 
         isActive && 'border-l-primary-500 bg-gray-100 border-l-8 shadow-sm'
       )}
     >
-      <div className="flex items-center justify-between w-full">{children}</div>
+      <div className="flex flex-col items-center justify-between w-full gap-[1.875rem]">
+        {children}
+      </div>
     </div>
   );
 };

@@ -9,3 +9,4 @@ export { PhoneCallIcon } from './PhoneCallIcon';
 export { MakePhoneCallIcon } from './MakePhoneCallIcon';
 export { RingCallIcon } from './RingCallIcon';
 export { CallCenterWorkerIcon } from './CallCenterWorkerIcon';
+export { LogoIcon } from './LogoIcon';

@@ -5,123 +5,80 @@ import { CardAccordionItem } from '../../CardAccordionItem/CardAccordionItem';
 import { Badge } from 'shared/components/ui';
 import type { ItemData } from '../../../context/HistoryInteractionsContext';
 import { createUniqueId } from '../../../context/HistoryInteractionsContext';
-
-interface AccountData {
-  id: string;
-  cellphoneNumber: string;
-  cellphoneStatus: 'active' | 'inactive';
-  simSwapStatus: 'blocked' | 'unblocked';
-  simSwapDate: string;
-  transactionalLimit: string;
-  rechargeLimit: string;
-  currency: string;
-  name?: string; // Optional field for account name
-}
+import {
+  mockCallData,
+  mockSmsData,
+  mockEmailData,
+  type CallData,
+  type SmsData,
+  type EmailData,
+} from '../mock-data/mock-communication-data';
+import { LogoIcon } from 'shared/assets/icons';
 
 interface CommunicationsSectionProps {
-  accounts?: AccountData[];
+  calls?: CallData[];
+  smsPush?: SmsData[];
+  emails: EmailData[];
 }
 
-const defaultMobileAccounts: AccountData[] = [
-  {
-    id: '73653476234',
-    cellphoneNumber: '84 1234 5678',
-    cellphoneStatus: 'active',
-    simSwapStatus: 'blocked',
-    simSwapDate: '2025-05-20',
-    transactionalLimit: '450.000,24',
-    rechargeLimit: '2.000,24',
-    currency: 'MZN',
-    name: 'Principal',
-  },
-];
-
 export const CommunicationsSection: React.FC<CommunicationsSectionProps> = ({
-  accounts = defaultMobileAccounts,
+  calls = mockCallData,
+  smsPush = mockSmsData,
+  emails = mockEmailData,
 }) => {
   return (
     <div className="grid gap-2 content-start">
       <CardAccordion header={<CardAccordionHeader icon={'📱'} title="Mobile Banking" />}>
-        {accounts.map((account) => {
-          const itemData: ItemData = {
-            id: createUniqueId('account', 'actives', account.id),
-            originalId: account.id,
-            type: 'calls',
-            category: 'communications',
-            data: account,
-            name: '',
-          };
-
-          return (
-            <CardAccordionItem key={account.id} itemData={itemData}>
-              <div className="flex flex-col w-full space-y-1">
-                <div className="flex justify-between items-center">
-                  <p className="text-xs font-medium">
-                    {account.id} - {account.name}
-                  </p>
-                  <p className="text-xs text-gray-500 text-right">Saldo disponível</p>
-                </div>
-                <div className="flex justify-between text-xs">
-                  <p>
-                    <Badge variant={'active'}>{'active'.toUpperCase()}</Badge>
-                  </p>
-                  <p className="text-right">{account.currency}</p>
+        <CardAccordionItem>
+          {calls.map((call) => {
+            return (
+              <div className="flex flex-row justify-between items-center w-full space-y-1 pr-[14px]">
+                <p className="font-semibold">
+                  {call.phoneNumber} <span className="pl-[1.875rem]">{call.direction}</span>
+                </p>
+                <div className="flex-col text-xs text-right text-[0.6875rem]">
+                  <p>{call.time}</p>
+                  <p>{call.date}</p>
                 </div>
               </div>
-            </CardAccordionItem>
-          );
-        })}
+            );
+          })}
+        </CardAccordionItem>
       </CardAccordion>
 
-      <CardAccordion header={<CardAccordionHeader icon={'💻'} title="Internet Banking" />}>
-        {accounts.map((account) => {
-          const itemData: ItemData = {
-            id: createUniqueId('deposit', 'actives', account.id),
-            originalId: account.id,
-            type: 'sms-push',
-            category: 'occurrences',
-            name: '',
-            data: account,
-          };
-
-          return (
-            <CardAccordionItem key={`deposit-${account.id}`} itemData={itemData}>
-              <div className="flex flex-col w-full space-y-1">
-                <div className="flex justify-between items-center">
-                  <p className="text-xs font-medium">
-                    {account.id} - {account.name}
-                  </p>
-                  <p className="text-xs text-gray-500 text-right">Saldo disponível</p>
-                </div>
-                <div className="flex justify-between text-xs">
-                  <p>
-                    <Badge variant={'blocked'}>{'blocked'.toUpperCase()}</Badge>
-                  </p>
-                  <p className="text-right">{account.currency}</p>
-                </div>
+      <CardAccordion header={<CardAccordionHeader icon={'💻'} title="SMS/Push" />}>
+        <CardAccordionItem>
+          {smsPush.map((sms, index) => {
+            return (
+              <div className="flex flex-col w-full space-y-1" key={`sms-${index}`}>
+                <p className="font-semibold flex items-center">
+                  <span className="mr-[0.625rem]">
+                    {index === 0 && <LogoIcon width="13" height="13" />}
+                  </span>
+                  {sms.title}
+                </p>
+                <p className="leading-6 ml-[1.4375rem]">{sms.message}</p>
               </div>
-            </CardAccordionItem>
-          );
-        })}
+            );
+          })}
+        </CardAccordionItem>
       </CardAccordion>
 
-      <CardAccordion header={<CardAccordionHeader icon={'☎️'} title="Linha Millennium Bim" />}>
-        {accounts.map((account) => {
+      <CardAccordion header={<CardAccordionHeader icon={'☎️'} title="E-mails" />}>
+        {emails.map((email) => {
           const itemData: ItemData = {
-            id: createUniqueId('debit-card', 'actives', account.id),
-            originalId: account.id,
+            id: createUniqueId('debit-card', 'actives', email.id),
+            originalId: email.id,
             type: 'emails',
             category: 'communications',
-            name: '',
-            data: account,
           };
 
           return (
-            <CardAccordionItem key={`card-${account.id}`} itemData={itemData}>
+            <CardAccordionItem key={`card-${email.id}`} itemData={itemData}>
               <div className="flex flex-col w-full space-y-1">
                 <div className="flex justify-between items-center">
                   <p className="text-xs font-medium">
-                    {account.id} - {account.name}
+                    {email.id} - {email.title}
                   </p>
                   <p className="text-xs text-gray-500 text-right">Saldo disponível</p>
                 </div>
@@ -129,7 +86,9 @@ export const CommunicationsSection: React.FC<CommunicationsSectionProps> = ({
                   <p>
                     <Badge variant={'active'}>{'active'.toUpperCase()}</Badge>
                   </p>
-                  <p className="text-right">{account.currency}</p>
+                  <p className="text-right">
+                    {email.date} {email.time}
+                  </p>
                 </div>
               </div>
             </CardAccordionItem>
