@@ -4,6 +4,8 @@ module.exports = {
   content: [
     // Shared package content only
     './src/**/*.{js,ts,jsx,tsx}',
+    './packages/*/src/**/*.{js,ts,jsx,tsx,mdx}',
+    './apps/*/src/**/*.{js,ts,jsx,tsx,mdx}',
 
     // Specific app source files (avoid scanning dist and node_modules)
     '../../apps/header/src/**/*.{js,ts,jsx,tsx}',
