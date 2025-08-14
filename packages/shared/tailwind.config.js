@@ -67,12 +67,6 @@ module.exports = {
           DEFAULT: '#0052B4',
         },
       },
-      borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
-        xl: 'calc(var(--radius) + 4px)',
-      },
       gridTemplateColumns: {
         24: 'repeat(24, minmax(0, 1fr))',
       },

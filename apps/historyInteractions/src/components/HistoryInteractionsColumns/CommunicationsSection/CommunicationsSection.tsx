@@ -1,10 +1,10 @@
 import React from 'react';
 import CardAccordion from 'shared/components/CardAccordion';
-import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
-import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
+import { CardAccordionHeader } from '../../CardAccordionHeader/CardAccordionHeader';
+import { CardAccordionItem } from '../../CardAccordionItem/CardAccordionItem';
 import { Badge } from 'shared/components/ui';
-import type { ItemData } from '../../context/ChannelsServicesContext';
-import { createUniqueId } from '../../context/ChannelsServicesContext';
+import type { ItemData } from '../../../context/HistoryInteractionsContext';
+import { createUniqueId } from '../../../context/HistoryInteractionsContext';
 
 interface AccountData {
   id: string;
@@ -18,7 +18,7 @@ interface AccountData {
   name?: string; // Optional field for account name
 }
 
-interface ChannelsSectionProps {
+interface CommunicationsSectionProps {
   accounts?: AccountData[];
 }
 
@@ -36,7 +36,7 @@ const defaultMobileAccounts: AccountData[] = [
   },
 ];
 
-export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
+export const CommunicationsSection: React.FC<CommunicationsSectionProps> = ({
   accounts = defaultMobileAccounts,
 }) => {
   return (
@@ -46,8 +46,8 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
           const itemData: ItemData = {
             id: createUniqueId('account', 'actives', account.id),
             originalId: account.id,
-            type: 'account',
-            category: 'actives',
+            type: 'calls',
+            category: 'communications',
             data: account,
             name: '',
           };
@@ -78,8 +78,8 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
           const itemData: ItemData = {
             id: createUniqueId('deposit', 'actives', account.id),
             originalId: account.id,
-            type: 'deposit',
-            category: 'actives',
+            type: 'sms-push',
+            category: 'occurrences',
             name: '',
             data: account,
           };
@@ -110,8 +110,8 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
           const itemData: ItemData = {
             id: createUniqueId('debit-card', 'actives', account.id),
             originalId: account.id,
-            type: 'debit-card',
-            category: 'actives',
+            type: 'emails',
+            category: 'communications',
             name: '',
             data: account,
           };

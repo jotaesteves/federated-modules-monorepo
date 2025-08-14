@@ -4,7 +4,7 @@ import { createContext, useContext, useState, type ReactNode, type FC } from 're
 export interface ItemData {
   id: string; // This will be a unique identifier combining type, category, and original id
   originalId: string; // The original ID from the data
-  type: 'calls' | 'smsPush' | 'emails' | 'complains' | 'incidents' | 'memos';
+  type: 'calls' | 'sms-push' | 'emails' | 'complains' | 'incidents' | 'memos';
   category: 'communications' | 'occurrences';
   name: string;
   data: any;
@@ -52,7 +52,7 @@ export const HistoryInteractionsProvider: FC<HistoryInteractionsProviderProps> =
   const getTypeDisplayName = (type: ItemData['type']) => {
     const typeMap: Record<ItemData['type'], string> = {
       calls: 'Chamadas',
-      smsPush: 'SMS/Push',
+      'sms-push': 'SMS/Push',
       emails: 'E-mails',
       complains: 'Reclamações',
       incidents: 'Incidentes',

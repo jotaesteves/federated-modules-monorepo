@@ -1,12 +1,12 @@
 import React from 'react';
 import CardAccordion from 'shared/components/CardAccordion';
-import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
-import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
+import { CardAccordionHeader } from '../../CardAccordionHeader/CardAccordionHeader';
+import { CardAccordionItem } from '../../CardAccordionItem/CardAccordionItem';
 import { Badge } from 'shared/components/ui';
-import type { ItemData } from '../../context/ChannelsServicesContext';
-import { createUniqueId } from '../../context/ChannelsServicesContext';
+import type { ItemData } from '../../../context/HistoryInteractionsContext';
+import { createUniqueId } from '../../../context/HistoryInteractionsContext';
 
-interface ServicesSectionData {
+interface OccurrencesSectionData {
   id: string;
   accountNumber: string;
   name: string;
@@ -17,10 +17,10 @@ interface ServicesSectionData {
 }
 
 interface ServicesSectionProps {
-  accounts?: ServicesSectionData[];
+  accounts?: OccurrencesSectionData[];
 }
 
-const ServicesSectionDefault: ServicesSectionData[] = [
+const OccurrencesSectionDefault: OccurrencesSectionData[] = [
   {
     id: '1',
     accountNumber: '73653476234',
@@ -41,8 +41,8 @@ const ServicesSectionDefault: ServicesSectionData[] = [
   },
 ];
 
-export const ServicesSection: React.FC<ServicesSectionProps> = ({
-  accounts = ServicesSectionDefault,
+export const OccurrencesSection: React.FC<ServicesSectionProps> = ({
+  accounts = OccurrencesSectionDefault,
 }) => {
   return (
     <div className="grid gap-2 content-start">
@@ -51,8 +51,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           const itemData: ItemData = {
             id: createUniqueId('loan', 'passives', account.id),
             originalId: account.id,
-            type: 'loan',
-            category: 'passives',
+            type: 'calls',
+            category: 'communications',
             name: account.name,
             data: account,
           };
@@ -85,8 +85,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
           const itemData: ItemData = {
             id: createUniqueId('credit-card', 'passives', account.id),
             originalId: account.id,
-            type: 'credit-card',
-            category: 'passives',
+            type: 'sms-push',
+            category: 'communications',
             name: account.name,
             data: account,
           };

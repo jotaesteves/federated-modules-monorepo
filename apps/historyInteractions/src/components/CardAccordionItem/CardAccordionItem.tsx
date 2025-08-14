@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from 'shared/lib/utils';
 import type { ItemData } from '../../context/HistoryInteractionsContext';
-import { useAssets } from '../../context/HistoryInteractionsContext';
+import { useHistoryInteractions } from '../../context/HistoryInteractionsContext';
 
 interface CardAccordionItemProps {
   children: React.ReactNode;
@@ -9,7 +9,7 @@ interface CardAccordionItemProps {
 }
 
 export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, itemData }) => {
-  const { activeItem, setActiveItem, updateBreadcrumbsForItem } = useAssets();
+  const { activeItem, setActiveItem, updateBreadcrumbsForItem } = useHistoryInteractions();
   const isActive = activeItem?.id === itemData?.id;
 
   const handleClick = () => {

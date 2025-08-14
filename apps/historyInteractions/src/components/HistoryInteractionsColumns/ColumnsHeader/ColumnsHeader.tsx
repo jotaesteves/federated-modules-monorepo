@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 
-interface AssetsHeaderProps {
+interface ColumnsHeaderProps {
   leftTitle: string;
   rightTitle: string;
 }
 
-export const AssetsHeader: React.FC<AssetsHeaderProps> = ({ leftTitle, rightTitle }) => {
+export const ColumnsHeader: React.FC<ColumnsHeaderProps> = ({ leftTitle, rightTitle }) => {
   return (
     <div className="col-span-2 mb-2 sticky top-0 left-0 right-0 z-10">
       <div className="bg-gradient-to-r from-primary-500 via-primary-700 to-purple-800 text-white p-1 rounded-t-xl">
