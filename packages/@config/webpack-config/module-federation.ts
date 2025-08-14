@@ -20,6 +20,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         personalData: 'personalData@http://localhost:3006/remoteEntry.js',
         assetsProducts: 'assetsProducts@http://localhost:3007/remoteEntry.js',
         channelsAndServices: 'channelsAndServices@http://localhost:3008/remoteEntry.js',
+        historyInteractions: 'historyInteractions@http://localhost:3009/remoteEntry.js',
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -29,6 +30,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
+        historyInteractions: `historyInteractions@${hostBaseUrl}apps/historyInteractions/dist/remoteEntry.js`,
       },
     },
   },
@@ -170,6 +172,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './ChannelsAndServices': './src/ChannelsAndServices',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: 'shared@http://localhost:3001/remoteEntry.js',
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.historyInteractions]: {
+    devPort: 3009,
+    analyzerPort: 4009,
+    baseConfig: {
+      name: 'historyInteractions',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './HistoryInteractions': './src/HistoryInteractions',
       },
     },
     remotes: {

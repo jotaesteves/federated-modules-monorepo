@@ -12,6 +12,8 @@ module.exports = {
     '../../apps/vision360/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/personalData/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/assetsProducts/src/**/*.{js,ts,jsx,tsx}',
+    '../../apps/channelsAndServices/src/**/*.{js,ts,jsx,tsx}',
+    '../../apps/historyInteractions/src/**/*.{js,ts,jsx,tsx}',
 
     // Public HTML files
     '../../apps/*/public/index.html',

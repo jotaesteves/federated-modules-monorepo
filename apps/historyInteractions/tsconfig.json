@@ -1,0 +1,12 @@
+{
+  "include": ["**/*", "package.json"],
+  "exclude": ["build", "dist", "coverage", "node_modules"],
+  "extends": "../../packages/config/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "shared/*": ["../../packages/shared/.wp_federation/shared/*"]
+    }
+  }
+}

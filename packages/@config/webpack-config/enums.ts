@@ -7,6 +7,7 @@ export enum Apps {
   personalData,
   assetsProducts,
   channelsAndServices,
+  historyInteractions,
 }
 
 export enum SharedModule {
