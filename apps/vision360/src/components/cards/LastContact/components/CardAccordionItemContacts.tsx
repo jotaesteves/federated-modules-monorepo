@@ -47,7 +47,7 @@ export const CardAccordionItemContacts: React.FC<CardAccordionItemContactsProps>
             <Icon type={itemIcon} />
             <div className="flex justify-between items-center w-full">
               <p>{label}</p>
-              {value && <span className="text-gray-600">{value}</span>}
+              {value && <span className="text-gray-600 text-right">{value}</span>}
             </div>
           </div>
         ))}
