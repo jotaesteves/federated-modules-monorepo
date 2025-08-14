@@ -10,10 +10,21 @@ import {
   MakePhoneCallIcon,
   CallCenterWorkerIcon,
   RingCallIcon,
+  CellPhoneIcon,
+  BellIcon,
+  ShoppingBagIcon,
+  PersonMaleIcon,
+  PersonMalePolygonIcon,
+  PauseIcon,
+  SendIcon,
+  ShareIcon,
+  CallBackIcon,
+  DialPadIcon,
   MessageIcon,
   HistoryIcon,
 } from '@/assets/icons';
 import * as React from 'react';
+import { cn } from '@/lib/utils';
 
 export interface IconProps {
   type:
@@ -28,6 +39,16 @@ export interface IconProps {
     | 'makePhoneCall'
     | 'ringCall'
     | 'callCenterWorker'
+    | 'cellPhone'
+    | 'bell'
+    | 'shoppingBag'
+    | 'personMale'
+    | 'personMalePolygon'
+    | 'pause'
+    | 'send'
+    | 'share'
+    | 'callback'
+    | 'dialPad'
     | 'message'
     | 'history';
   rounded?: boolean;
@@ -48,6 +69,16 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) =>
     makePhoneCall: MakePhoneCallIcon,
     ringCall: RingCallIcon,
     callCenterWorker: CallCenterWorkerIcon,
+    cellPhone: CellPhoneIcon,
+    bell: BellIcon,
+    shoppingBag: ShoppingBagIcon,
+    personMale: PersonMaleIcon,
+    personMalePolygon: PersonMalePolygonIcon,
+    pause: PauseIcon,
+    send: SendIcon,
+    share: ShareIcon,
+    callback: CallBackIcon,
+    dialPad: DialPadIcon,
     message: MessageIcon,
     history: HistoryIcon,
   };
@@ -65,7 +96,7 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) =>
   const radiusClasses = rounded ? 'rounded-full' : 'rounded-md';
 
   return (
-    <span className={`${baseClasses} ${sizeClasses[size]} ${radiusClasses} ${className}`}>
+    <span className={cn(baseClasses, sizeClasses[size], radiusClasses, className)}>
       <IconComponent />
     </span>
   );

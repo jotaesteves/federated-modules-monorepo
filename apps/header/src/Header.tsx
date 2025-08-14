@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import logoUrl from './assets/logo.jpg';
+import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
+import Icon from 'shared/components/Icon';
 
 export type User = {
   firstName: string;
@@ -11,7 +12,7 @@ export type User = {
 
 interface NavbarDropdown {
   title: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const Header: React.FC = () => {
@@ -28,15 +29,15 @@ const Header: React.FC = () => {
   const navbarDropdowns: NavbarDropdown[] = [
     {
       title: 'Smart IZI',
-      icon: '📱',
+      icon: <Icon type="cellPhone" className="p-0 mr-[0.625rem]" />,
     },
     {
       title: 'Alertas',
-      icon: '🔔',
+      icon: <Icon type="bell" className="p-0 mr-[0.625rem]" />,
     },
     {
       title: 'Vendas',
-      icon: '🛍️',
+      icon: <Icon type="shoppingBag" className="p-0 mr-[0.625rem]" />,
     },
   ];
 
@@ -62,38 +63,37 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <div className="flex p-4 text-black bg-white">
-        {/* Left section (70%) - logo, name, and navigation */}
-        <div className="flex-grow flex items-center justify-between" style={{ width: '70%' }}>
+      <div className="flex pl-[35px] pr-[34.6px] text-black bg-white h-[122px]">
+        <div className="w-[70%] flex-grow flex items-start justify-between pt-[2.3125rem]">
           {/* Logo and name section */}
           <div className="flex items-center">
             <img
               src={logoUrl}
               alt="Logo"
-              className="h-10 w-auto inline-block mr-2"
+              className="h-[52px] w-auto inline-block mr-[1.1875rem]"
               onError={(e) => {
                 // Fallback if logo doesn't exist
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
             />
-            <span className="text-md font-semibold">
+            <h4 className="font-bold text-zinc-700 text-xl leading-6">
               {user.firstName} <br /> {user.lastName}
-            </span>
+            </h4>
           </div>
 
           {/* Navigation section */}
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end items-start">
             <ul className="flex">
               {navbarDropdowns.map((item) => (
                 <li key={item.title} className="mx-2">
                   <button
-                    className={`flex items-center text-black hover:text-blue-600 p-2 rounded transition-colors ${
+                    className={`flex items-center text-zinc-700 text-xl font-medium hover:text-primary-500 px-2 rounded transition-colors ${
                       //isCurrentPage(item.title.toLowerCase()) ? 'bg-blue-100 text-blue-700' : ''
                       () => `bg-blue-100 text-blue-700`
                     }`}
                     onClick={(e) => handleNavClick(item.title, e)}
                   >
-                    <span className="mr-1">{item.icon}</span>
+                    {item.icon}
                     {item.title}
                   </button>
                 </li>
@@ -103,17 +103,20 @@ const Header: React.FC = () => {
         </div>
 
         {/* Vertical line */}
-        <div className="border-l border-gray-300 h-12 mx-4"></div>
+        <div className="border-l border-gray-300 h-[5.6875rem] ml-[1.8125rem] mt-[19px]"></div>
 
-        {/* Right section (30%) - user profile and controls */}
-        <div className="flex items-center justify-start" style={{ width: '30%' }}>
+        <div className="flex items-center justify-start pl-[36px] w-[30%]">
           {/* User dropdown */}
           <div className="relative">
             <button
-              className="w-8 h-8 rounded-md border border-gray-300 flex items-center text-gray-600 hover:text-blue-600 hover:border-blue-300 transition-colors"
+              className="w-[3.5rem] h-[3.5rem] rounded-md border border-primary-500 flex items-center"
               onClick={toggleUserDropdown}
             >
-              <span className="mx-auto">👤</span>
+              <Icon
+                type="personMale"
+                className="text-zinc-700 items-end p-0 w-[2.1875rem] h-[2.1875rem]"
+              />
+              <Icon type="personMalePolygon" className="p-0 flex-start items-end pb-1" />
             </button>
 
             {/* User dropdown menu */}
@@ -141,36 +144,36 @@ const Header: React.FC = () => {
           </div>
 
           {/* Call center controls - rounded pill shaped with 5 circles inside */}
-          <div className="ml-4 bg-primary-500 rounded-full px-2 py-2 flex items-center space-x-2">
+          <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2">
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Pause"
             >
-              <span>⏸︎</span>
+              <Icon type="pause" rounded className="text-zinc-700" />
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
             >
-              <span>↗️</span>
+              <Icon type="send" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Send"
             >
-              <span>📤</span>
+              <Icon type="share" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Call"
             >
-              <span>📞</span>
+              <Icon type="callback" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
-              className="w-6 h-6 bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Phone"
             >
-              <span>☎️</span>
+              <Icon type="dialPad" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
           </div>
         </div>

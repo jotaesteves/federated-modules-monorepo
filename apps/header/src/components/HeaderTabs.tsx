@@ -77,13 +77,13 @@ const HeaderTabs: React.FC = () => {
   };
 
   return (
-    <nav className="flex items-center bg-white border-b border-gray-200 p-4">
+    <nav className="flex items-center bg-white border-b border-gray-200 pl-[106px] h-[72px]">
       <ul className="flex space-x-8">
         {tabs.map((tab) => (
           <li key={tab.value}>
             {tab.path ? (
               <Link
-                className={`py-4 px-2 text-sm font-medium transition-colors duration-200 border-b-4 ${
+                className={`py-4 px-2 text-xl font-semibold transition-colors duration-200 border-b-4 ${
                   activeTab === tab.value
                     ? 'text-primary border-primary-500'
                     : 'text-neutral-900 border-transparent hover:text-pink-500 hover:border-pink-300'

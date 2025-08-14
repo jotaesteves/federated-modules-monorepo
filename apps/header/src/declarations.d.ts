@@ -1,7 +1,8 @@
-// to be able to import jpg/jpeg/png files
+// to be able to import jpg/jpeg/png/svg files
 declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.png';
+declare module '*.svg';
 
 // CSS Modules typings
 declare module '*.module.css' {

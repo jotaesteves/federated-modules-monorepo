@@ -1,14 +1,18 @@
 {
-  "include": ["**/*", "package.json"],
+  "include": ["./**/*", "**/*", "package.json"],
   "exclude": ["build", "dist", "coverage", "node_modules"],
   "extends": "@config/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "shared/*": ["../../packages/shared/.wp_federation/shared/*"],
-      "vision360/*": ["../../apps/vision360/.wp_federation/vision360/*"],
       "header/*": ["../../apps/header/.wp_federation/header/*"],
-      "footer/*": ["../../apps/footer/.wp_federation/footer/*"]
+      "footer/*": ["../../apps/footer/.wp_federation/footer/*"],
+      "vision360/*": ["../../apps/vision360/.wp_federation/vision360/*"],
+      "assetsProducts/*": ["../../apps/assetsProducts/.wp_federation/assetsProducts/*"],
+      "channelsAndServices/*": [
+        "../../apps/channelsAndServices/.wp_federation/channelsAndServices/*"
+      ]
     }
   }
 }

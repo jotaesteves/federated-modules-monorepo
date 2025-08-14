@@ -46,7 +46,7 @@ module.exports = {
           800: '#640334',
           900: '#3e0222',
           950: '#210112',
-          DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
+          DEFAULT: '#d70664',
         },
         gray: {
           100: '#F3F3F8',
