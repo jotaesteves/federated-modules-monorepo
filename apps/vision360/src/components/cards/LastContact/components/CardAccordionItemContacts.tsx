@@ -28,11 +28,11 @@ export const CardAccordionItemContacts: React.FC<CardAccordionItemContactsProps>
   body,
 }) => {
   return (
-    <div>
+    <>
       <CardAccordion
         header={
-          <div className="flex gap-2 items-center">
-            <Icon type={icon} className={cn(iconBackground)} size="sm" rounded />
+          <div className="flex gap-2">
+            <Icon type={icon} className={cn(iconBackground)} rounded size="sm" />
             <div className="flex flex-col">
               <span className="text-gray-800 opacity-55 text-xs font-semibold">
                 {date} | {time}
@@ -54,6 +54,6 @@ export const CardAccordionItemContacts: React.FC<CardAccordionItemContactsProps>
           ))}
         </div>
       </CardAccordion>
-    </div>
+    </>
   );
 };
