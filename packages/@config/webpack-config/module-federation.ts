@@ -38,17 +38,18 @@ const getPortFromEnv = (
 const generatePortMappings = () => {
   const portMappings: Record<Apps, { devPort: number; analyzerPort: number }> = {} as any;
 
-  // Get app names as strings, filtering out numeric enum values
-  const appEntries = Object.entries(Apps).filter(([_, value]) => typeof value === 'string');
+  // Get numeric enum values (the actual enum keys we use)
+  const appEntries = Object.values(Apps).filter((value) => typeof value === 'number') as Apps[];
 
-  appEntries.forEach(([enumKey, appName], index) => {
+  appEntries.forEach((enumValue, index) => {
+    // Get the string name of the enum
+    const appName = Apps[enumValue];
     const calculatedDevPort = PORT_CONFIG.DEV_BASE_PORT + index;
     const calculatedAnalyzerPort = PORT_CONFIG.ANALYZER_BASE_PORT + index;
 
-    const enumValue = Apps[enumKey as keyof typeof Apps];
     portMappings[enumValue] = {
-      devPort: getPortFromEnv(appName as string, 'dev', calculatedDevPort),
-      analyzerPort: getPortFromEnv(appName as string, 'analyzer', calculatedAnalyzerPort),
+      devPort: getPortFromEnv(appName, 'dev', calculatedDevPort),
+      analyzerPort: getPortFromEnv(appName, 'analyzer', calculatedAnalyzerPort),
     };
   });
 
@@ -77,7 +78,8 @@ export const getPortMappings = () => mapPorts;
 
 const appsModuleFederationConfig: AppsModuleFederationConfig = {
   [Apps.main]: {
-    ...mapPorts[Apps.main],
+    devPort: mapPorts[Apps.main].devPort,
+    analyzerPort: mapPorts[Apps.main].analyzerPort,
     baseConfig: {
       name: 'main',
       filename: 'remoteEntry.js',
@@ -104,7 +106,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps.shared]: {
-    ...mapPorts[Apps.shared],
+    devPort: mapPorts[Apps.shared].devPort,
+    analyzerPort: mapPorts[Apps.shared].analyzerPort,
     baseConfig: {
       name: 'shared',
       filename: 'remoteEntry.js',
@@ -137,7 +140,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps.header]: {
-    ...mapPorts[Apps.header],
+    devPort: mapPorts[Apps.header].devPort,
+    analyzerPort: mapPorts[Apps.header].analyzerPort,
     baseConfig: {
       name: 'header',
       filename: 'remoteEntry.js',
@@ -156,7 +160,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps.footer]: {
-    ...mapPorts[Apps.footer],
+    devPort: mapPorts[Apps.footer].devPort,
+    analyzerPort: mapPorts[Apps.footer].analyzerPort,
     baseConfig: {
       name: 'footer',
       filename: 'remoteEntry.js',
@@ -174,7 +179,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps['vision360']]: {
-    ...mapPorts[Apps.vision360],
+    devPort: mapPorts[Apps.vision360].devPort,
+    analyzerPort: mapPorts[Apps.vision360].analyzerPort,
     baseConfig: {
       name: 'vision360',
       filename: 'remoteEntry.js',
@@ -192,7 +198,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps.personalData]: {
-    ...mapPorts[Apps.personalData],
+    devPort: mapPorts[Apps.personalData].devPort,
+    analyzerPort: mapPorts[Apps.personalData].analyzerPort,
     baseConfig: {
       name: 'personalData',
       filename: 'remoteEntry.js',
@@ -210,7 +217,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps.assetsProducts]: {
-    ...mapPorts[Apps.assetsProducts],
+    devPort: mapPorts[Apps.assetsProducts].devPort,
+    analyzerPort: mapPorts[Apps.assetsProducts].analyzerPort,
     baseConfig: {
       name: 'assetsProducts',
       filename: 'remoteEntry.js',
@@ -228,7 +236,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps.channelsAndServices]: {
-    ...mapPorts[Apps.channelsAndServices],
+    devPort: mapPorts[Apps.channelsAndServices].devPort,
+    analyzerPort: mapPorts[Apps.channelsAndServices].analyzerPort,
     baseConfig: {
       name: 'channelsAndServices',
       filename: 'remoteEntry.js',
