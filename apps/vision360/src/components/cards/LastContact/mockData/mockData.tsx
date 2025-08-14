@@ -1,4 +1,5 @@
 import type { CardAccordionItemContactsProps } from 'src/components/cards/LastContact/components/CardAccordionItemContacts';
+import type { CardItemMessagesProps } from 'src/components/cards/LastContact/components/CardItemMessages';
 
 export const CardAccordionItemContactsMapData: CardAccordionItemContactsProps[] = [
   {
@@ -40,5 +41,20 @@ export const CardAccordionItemContactsMapData: CardAccordionItemContactsProps[] 
         value: 'x230876 | El Kaizen',
       },
     ],
+  },
+];
+
+export const CardItemMessagesMapData: CardItemMessagesProps[] = [
+  {
+    date: '03-04-2025',
+    time: '14h30',
+    message:
+      'Caro Cliente os novos Limites Transaccionais dos Cartoes entram em vigor a 12/04/25. Consulte o website ou contacte o seu Balcao ou Gestor. Millennium bim',
+  },
+  {
+    date: '03-04-2025',
+    time: '7h30',
+    message:
+      'A conta 123456789 recebeu o valor de xxxxx,00 MZN as 17:41 do dia 14/04/25. Se desconhece a transaccao ligue para 8003500.',
   },
 ];

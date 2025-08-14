@@ -28,32 +28,30 @@ export const CardAccordionItemContacts: React.FC<CardAccordionItemContactsProps>
   body,
 }) => {
   return (
-    <div>
-      <CardAccordion
-        header={
-          <div className="flex gap-2 items-center">
-            <Icon type={icon} className={cn(iconBackground)} size="sm" rounded />
-            <div className="flex flex-col">
-              <span className="text-gray-800 opacity-55 text-xs font-semibold">
-                {date} | {time}
-              </span>
-              <p>{title}</p>
+    <CardAccordion
+      header={
+        <div className="flex gap-2">
+          <Icon type={icon} className={cn(iconBackground)} rounded size="sm" />
+          <div className="flex flex-col">
+            <span className="text-gray-800 opacity-55 text-xs font-semibold">
+              {date} | {time}
+            </span>
+            <p>{title}</p>
+          </div>
+        </div>
+      }
+    >
+      <div className="flex flex-col">
+        {body.map(({ icon: itemIcon, label, value }, index) => (
+          <div key={index} className="flex text-gray-800 items-center">
+            <Icon type={itemIcon} />
+            <div className="flex justify-between items-center w-full">
+              <p>{label}</p>
+              {value && <span className="text-gray-600">{value}</span>}
             </div>
           </div>
-        }
-      >
-        <div className="flex flex-col">
-          {body.map(({ icon: itemIcon, label, value }, index) => (
-            <div key={index} className="flex text-gray-800 items-center">
-              <Icon type={itemIcon} />
-              <div className="flex justify-between items-center w-full">
-                <p>{label}</p>
-                {value && <span className="text-gray-600">{value}</span>}
-              </div>
-            </div>
-          ))}
-        </div>
-      </CardAccordion>
-    </div>
+        ))}
+      </div>
+    </CardAccordion>
   );
 };

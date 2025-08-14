@@ -20,6 +20,8 @@ import {
   ShareIcon,
   CallBackIcon,
   DialPadIcon,
+  MessageIcon,
+  HistoryIcon,
 } from '@/assets/icons';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
@@ -46,8 +48,9 @@ export interface IconProps {
     | 'send'
     | 'share'
     | 'callback'
-    | 'dialPad';
-
+    | 'dialPad'
+    | 'message'
+    | 'history';
   rounded?: boolean;
   size?: 'sm' | 'lg';
   className?: string;
@@ -76,19 +79,21 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) =>
     share: ShareIcon,
     callback: CallBackIcon,
     dialPad: DialPadIcon,
+    message: MessageIcon,
+    history: HistoryIcon,
   };
 
   const IconComponent = iconsMap[type];
   if (!IconComponent) return null;
 
-  const baseClasses = 'inline-flex items-center justify-center p-[6px] h-fit';
+  const baseClasses = 'inline-flex items-center justify-center p-[6px]';
 
   const sizeClasses = {
     sm: 'w-8 h-8',
     lg: 'w-10 h-10',
   };
 
-  const radiusClasses = rounded ? 'rounded-full' : 'rounded-sm';
+  const radiusClasses = rounded ? 'rounded-full' : 'rounded-md';
 
   return (
     <span className={cn(baseClasses, sizeClasses[size], radiusClasses, className)}>

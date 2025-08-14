@@ -19,3 +19,5 @@ export { SendIcon } from './SendIcon';
 export { ShareIcon } from './ShareIcon';
 export { CallBackIcon } from './CallBackIcon';
 export { DialPadIcon } from './DialPadIcon';
+export { MessageIcon } from './MessageIcon';
+export { HistoryIcon } from './HistoryIcon';

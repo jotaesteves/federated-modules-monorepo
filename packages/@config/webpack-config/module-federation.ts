@@ -121,6 +121,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
         './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
+        './components/LineBreak': './src/components/LineBreak/LineBreak',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
