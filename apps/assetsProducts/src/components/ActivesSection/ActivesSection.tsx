@@ -37,7 +37,7 @@ const defaultAccounts: AccountData[] = [
 
 export const ActivesSection: React.FC<ActivesSectionProps> = ({ accounts = defaultAccounts }) => {
   return (
-    <div className="grid gap-2 content-start">
+    <div className="flex flex-col gap-2 overflow-y-auto h-full scroll-custom">
       <CardAccordion
         header={
           <CardAccordionHeader
