@@ -24,3 +24,8 @@ export * from './BellIcon';
 export * from './ShoppingBagIcon';
 export * from './PersonMaleIcon';
 export * from './PersonMalePolygonIcon';
+export * from './PauseIcon';
+export * from './SendIcon';
+export * from './ShareIcon';
+export * from './CallBackIcon';
+export * from './DialPadIcon';

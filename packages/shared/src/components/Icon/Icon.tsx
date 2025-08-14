@@ -23,6 +23,11 @@ import {
   ShoppingBagIcon,
   PersonMaleIcon,
   PersonMalePolygonIcon,
+  PauseIcon,
+  SendIcon,
+  ShareIcon,
+  CallBackIcon,
+  DialPadIcon,
 } from '@/assets/icons';
 import { cn } from '@/lib/utils';
 
@@ -51,6 +56,11 @@ const iconsMap = {
   shoppingBag: ShoppingBagIcon,
   personMale: PersonMaleIcon,
   personMalePolygon: PersonMalePolygonIcon,
+  pause: PauseIcon,
+  send: SendIcon,
+  share: ShareIcon,
+  callback: CallBackIcon,
+  dialPad: DialPadIcon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;

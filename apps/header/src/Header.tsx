@@ -152,31 +152,31 @@ const Header: React.FC = () => {
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Pause"
             >
-              <span>⏸︎</span>
+              <Icon type="pause" rounded className="text-zinc-700" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
             >
-              <span>↗️</span>
+              <Icon type="send" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Send"
             >
-              <span>📤</span>
+              <Icon type="share" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Call"
             >
-              <span>📞</span>
+              <Icon type="callback" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Phone"
             >
-              <span>☎️</span>
+              <Icon type="dialPad" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
           </div>
         </div>
