@@ -13,6 +13,8 @@ import {
   CellPhoneIcon,
   BellIcon,
   ShoppingBagIcon,
+  PersonMaleIcon,
+  PersonMalePolygonIcon,
 } from '@/assets/icons';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
@@ -32,7 +34,9 @@ export interface IconProps {
     | 'callCenterWorker'
     | 'cellPhone'
     | 'bell'
-    | 'shoppingBag';
+    | 'shoppingBag'
+    | 'personMale'
+    | 'personMalePolygon';
   rounded?: boolean;
   size?: 'sm' | 'lg';
   className?: string;
@@ -54,6 +58,8 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) =>
     cellPhone: CellPhoneIcon,
     bell: BellIcon,
     shoppingBag: ShoppingBagIcon,
+    personMale: PersonMaleIcon,
+    personMalePolygon: PersonMalePolygonIcon,
   };
 
   const IconComponent = iconsMap[type];

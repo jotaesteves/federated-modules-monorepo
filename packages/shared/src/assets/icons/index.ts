@@ -12,3 +12,5 @@ export { CallCenterWorkerIcon } from './CallCenterWorkerIcon';
 export { CellPhoneIcon } from './CellPhoneIcon';
 export { BellIcon } from './BellIcon';
 export { ShoppingBagIcon } from './ShoppingBagIcon';
+export { PersonMaleIcon } from './PersonMaleIcon';
+export { PersonMalePolygonIcon } from './PersonMalePolygonIcon';
