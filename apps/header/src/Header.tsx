@@ -64,10 +64,7 @@ const Header: React.FC = () => {
   return (
     <header>
       <div className="flex pl-[35px] pr-[34.6px] text-black bg-white h-[122px]">
-        <div
-          className="flex-grow flex items-start justify-between pt-[2.3125rem]"
-          style={{ width: '70%' }}
-        >
+        <div className="w-[70%] flex-grow flex items-start justify-between pt-[2.3125rem]">
           {/* Logo and name section */}
           <div className="flex items-center">
             <img
@@ -108,7 +105,7 @@ const Header: React.FC = () => {
         {/* Vertical line */}
         <div className="border-l border-gray-300 h-[5.6875rem] ml-[1.8125rem] mt-[19px]"></div>
 
-        <div className="flex items-center justify-start pl-[36px]" style={{ width: '30%' }}>
+        <div className="flex items-center justify-start pl-[36px] w-[30%]">
           {/* User dropdown */}
           <div className="relative">
             <button
