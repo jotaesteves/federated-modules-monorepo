@@ -1,7 +1,12 @@
 import CardTabs from 'shared/components/CardTabs';
 import { CardAccordionItemContacts } from 'src/components/cards/LastContact/components/CardAccordionItemContacts';
 import type { CardTabItem } from 'shared/components/CardTabs';
-import { CardAccordionItemContactsMapData } from 'src/components/cards/LastContact/mockData/mockData';
+import {
+  CardAccordionItemContactsMapData,
+  CardItemMessagesMapData,
+} from 'src/components/cards/LastContact/mockData/mockData';
+import { CardItemMessages } from 'src/components/cards/LastContact/components/CardItemMessages';
+import React from 'react';
 
 const tabs: CardTabItem[] = [
   {
@@ -10,7 +15,12 @@ const tabs: CardTabItem[] = [
     content: (
       <>
         {CardAccordionItemContactsMapData.map((props, index) => (
-          <CardAccordionItemContacts key={index} {...props} />
+          <React.Fragment key={index}>
+            <CardAccordionItemContacts {...props} />
+            {index < CardAccordionItemContactsMapData.length - 1 && (
+              <hr className="my-2 text-gray-100" />
+            )}
+          </React.Fragment>
         ))}
       </>
     ),
@@ -19,10 +29,14 @@ const tabs: CardTabItem[] = [
     value: 'messages',
     label: 'Mensagens',
     content: (
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Messages Content</h3>
-        <p>This is the messages tab content. You can put any React components here.</p>
-      </div>
+      <>
+        {CardItemMessagesMapData.map((props, index) => (
+          <React.Fragment key={index}>
+            <CardItemMessages {...props} />
+            {index < CardItemMessagesMapData.length - 1 && <hr className="my-2 text-gray-100" />}
+          </React.Fragment>
+        ))}
+      </>
     ),
   },
 ];
