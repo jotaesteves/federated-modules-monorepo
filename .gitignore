@@ -27,3 +27,4 @@ yarn-error.log*
 
 # TS declarations
 .wp_federation
+.bun-cache
