@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import logoUrl from './assets/logo.jpg';
+import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
+import Icon from 'shared/components/Icon';
 
 export type User = {
   firstName: string;
@@ -11,7 +12,7 @@ export type User = {
 
 interface NavbarDropdown {
   title: string;
-  icon: string;
+  icon: React.ReactNode;
 }
 
 const Header: React.FC = () => {
@@ -28,15 +29,15 @@ const Header: React.FC = () => {
   const navbarDropdowns: NavbarDropdown[] = [
     {
       title: 'Smart IZI',
-      icon: '📱',
+      icon: <Icon type="cellPhone" className="p-0 mr-[0.625rem]" />,
     },
     {
       title: 'Alertas',
-      icon: '🔔',
+      icon: <Icon type="bell" className="p-0 mr-[0.625rem]" />,
     },
     {
       title: 'Vendas',
-      icon: '🛍️',
+      icon: <Icon type="shoppingBag" className="p-0 mr-[0.625rem]" />,
     },
   ];
 
@@ -62,38 +63,40 @@ const Header: React.FC = () => {
 
   return (
     <header>
-      <div className="flex p-4 text-black bg-white">
-        {/* Left section (70%) - logo, name, and navigation */}
-        <div className="flex-grow flex items-center justify-between" style={{ width: '70%' }}>
+      <div className="flex pl-[35px] pr-[34.6px] text-black bg-white h-[122px]">
+        <div
+          className="flex-grow flex items-start justify-between pt-[2.3125rem]"
+          style={{ width: '70%' }}
+        >
           {/* Logo and name section */}
           <div className="flex items-center">
             <img
               src={logoUrl}
               alt="Logo"
-              className="h-10 w-auto inline-block mr-2"
+              className="h-[52px] w-auto inline-block mr-[1.1875rem]"
               onError={(e) => {
                 // Fallback if logo doesn't exist
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
             />
-            <span className="text-md font-semibold">
+            <h4 className="font-bold text-zinc-700 text-xl leading-6">
               {user.firstName} <br /> {user.lastName}
-            </span>
+            </h4>
           </div>
 
           {/* Navigation section */}
-          <div className="flex-1 flex justify-end">
+          <div className="flex-1 flex justify-end items-start">
             <ul className="flex">
               {navbarDropdowns.map((item) => (
                 <li key={item.title} className="mx-2">
                   <button
-                    className={`flex items-center text-black hover:text-blue-600 p-2 rounded transition-colors ${
+                    className={`flex items-center text-zinc-700 text-xl font-medium hover:text-primary-500 px-2 rounded transition-colors ${
                       //isCurrentPage(item.title.toLowerCase()) ? 'bg-blue-100 text-blue-700' : ''
                       () => `bg-blue-100 text-blue-700`
                     }`}
                     onClick={(e) => handleNavClick(item.title, e)}
                   >
-                    <span className="mr-1">{item.icon}</span>
+                    {item.icon}
                     {item.title}
                   </button>
                 </li>

@@ -77,7 +77,7 @@ const HeaderTabs: React.FC = () => {
   };
 
   return (
-    <nav className="flex items-center bg-white border-b border-gray-200 p-4">
+    <nav className="flex items-center bg-white border-b border-gray-200 pl-[106px] h-[72px]">
       <ul className="flex space-x-8">
         {tabs.map((tab) => (
           <li key={tab.value}>
