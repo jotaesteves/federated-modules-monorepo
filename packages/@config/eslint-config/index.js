@@ -103,8 +103,11 @@ module.exports = [
         runtime: 'automatic', // Use the new JSX transform
       },
       'import/resolver': {
-        typescript: { project: true },
         node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
+        typescript: {
+          project: ['../tsconfig/tsconfig.json', './tsconfig.json'],
+          alwaysTryTypes: true,
+        },
       },
     },
   },
@@ -115,7 +118,9 @@ module.exports = [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        project: true,
+        ecmaFeatures: { jsx: true },
+        // Remove project-based parsing to avoid tsconfig path issues
+        sourceType: 'module',
       },
     },
     rules: {
