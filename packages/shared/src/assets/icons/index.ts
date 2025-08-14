@@ -19,3 +19,6 @@ export * from './RiskIcon';
 export * from './UserIcon';
 export * from './HistoryIcon';
 export * from './MessageIcon';
+export * from './CellPhoneIcon';
+export * from './BellIcon';
+export * from './ShoppingBagIcon';
