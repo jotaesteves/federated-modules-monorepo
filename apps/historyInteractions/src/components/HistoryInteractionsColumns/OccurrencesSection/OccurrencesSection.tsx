@@ -5,116 +5,111 @@ import { CardAccordionItem } from '../../CardAccordionItem/CardAccordionItem';
 import { Badge } from 'shared/components/ui';
 import type { ItemData } from '../../../context/HistoryInteractionsContext';
 import { createUniqueId } from '../../../context/HistoryInteractionsContext';
+import {
+  mockComplainsData,
+  mockIncidentsData,
+  mockMemosData,
+  type ComplainsData,
+  type IncidentsData,
+  type MemosData,
+} from '../mock-data/mock-occurrences-data';
+import { LogoIcon } from 'shared/assets/icons';
 
-interface OccurrencesSectionData {
-  id: string;
-  accountNumber: string;
-  name: string;
-  initialValue: string;
-  remainingValue: string;
-  currency: string;
-  status: 'active' | 'inactive';
+interface OccurrencesSectionProps {
+  complains?: ComplainsData[];
+  incidents?: IncidentsData[];
+  memos?: MemosData[];
 }
 
-interface ServicesSectionProps {
-  accounts?: OccurrencesSectionData[];
-}
-
-const OccurrencesSectionDefault: OccurrencesSectionData[] = [
-  {
-    id: '1',
-    accountNumber: '73653476234',
-    name: 'Crédito Salário - 323',
-    initialValue: '100.274,24',
-    remainingValue: '50.000,24',
-    currency: 'MZN',
-    status: 'active',
-  },
-  {
-    id: '736534723476',
-    accountNumber: '3217909828',
-    name: 'Microcrédito IZI - 321',
-    initialValue: '5.000,00',
-    remainingValue: '50.000,24',
-    currency: 'MZN',
-    status: 'inactive',
-  },
-];
-
-export const OccurrencesSection: React.FC<ServicesSectionProps> = ({
-  accounts = OccurrencesSectionDefault,
+export const OccurrencesSection: React.FC<OccurrencesSectionProps> = ({
+  complains = mockComplainsData,
+  incidents = mockIncidentsData,
+  memos = mockMemosData,
 }) => {
   return (
     <div className="grid gap-2 content-start">
       <CardAccordion header={<CardAccordionHeader icon={'⚠️'} title="Reclamações" />}>
-        {accounts.slice(0, 1).map((account) => {
+        {complains.map((complain, index) => {
           const itemData: ItemData = {
-            id: createUniqueId('complains', 'occurrences', account.id),
-            originalId: account.id,
+            id: createUniqueId('complains', 'occurrences', complain.id),
+            originalId: complain.id,
             type: 'complains',
             category: 'occurrences',
-            name: account.name,
+            name: '',
             data: {
-              ...account,
-              title: account.name,
-              description: `Reclamação relacionada a ${account.name}. Número de conta: ${account.accountNumber}`,
-              category: 'Seguro',
-              status: account.status === 'active' ? 'resolved' : 'pending',
-              priority: 'medium',
-              createdDate: '2024-01-15',
-              department: 'Seguros',
+              ...complain,
             },
           };
 
           return (
-            <CardAccordionItem key={`complaint-${account.id}`} itemData={itemData}>
-              <div className="flex flex-col w-full space-y-1">
-                <h3 className="text-sm font-bold">{account.name}</h3>
-                <p>Número de conta - {account.accountNumber}</p>
+            <CardAccordionItem key={`complaint-${complain.id}`} itemData={itemData}>
+              <div className="flex flex-row w-full gap-1 leading-4">
+                <div className="flex-col mr-[0.9375rem]">
+                  <p className="flex items-center font-semibold">
+                    <span className="mr-[0.625rem]">
+                      <LogoIcon width="13" height="13" />
+                    </span>
+                    {complain.complainId}
+                  </p>
+                  <Badge
+                    variant={complain.badge === 'SUBMITED' ? 'blocked' : 'active'}
+                    className="ml-[1.4375rem] mt-[0.36625rem] text-[0.520625rem] px-1"
+                  >
+                    {complain.badge === 'SUBMITED' ? 'SUBMETIDO' : 'COMPLETA'}
+                  </Badge>
+                </div>
+                <div className="flex-col w-full">
+                  <p className="text-2xs flex text-zinc-600">
+                    {complain.transferName.toUpperCase()}
+                  </p>
+                  <p className="flex-inline font-semibold mt-1 align-bottom">
+                    {complain.transferValue} <span className="text-xs font-normal">MZN</span>
+                  </p>
+                </div>
+                <div className="flex-col text-right w-full leading-4">
+                  <p className="text-[0.6875rem]">{complain.startDate}</p>
+                  <p className="text-[0.6875rem]">{complain.endDate}</p>
+                </div>
+              </div>
+              {/* <div className="flex flex-col w-full space-y-1">
+                <h3 className="text-sm font-bold">{complain.complainId}</h3>
                 <div className="flex justify-between items-center">
                   <p className="text-xs text-gray-500">Status</p>
                   <p className="text-xs text-gray-500 text-right">
-                    <Badge variant={account.status}>
-                      {account.status === 'active' ? 'RESOLVIDA' : 'PENDENTE'}
+                    <Badge variant={complain.badge === 'SUBMITED' ? 'blocked' : 'active'}>
+                      {complain.badge === 'SUBMITED' ? 'SUBMETIDO' : 'COMPLETA'}
                     </Badge>
                   </p>
                 </div>
-              </div>
+              </div> */}
             </CardAccordionItem>
           );
         })}
       </CardAccordion>
 
-      <CardAccordion header={<CardAccordionHeader icon={'�'} title="Incidentes" />}>
-        {accounts.slice(1, 2).map((account) => {
+      <CardAccordion header={<CardAccordionHeader icon={'🚨'} title="Incidentes" />}>
+        {incidents.map((incident) => {
           const itemData: ItemData = {
-            id: createUniqueId('incidents', 'occurrences', account.id),
-            originalId: account.id,
+            id: createUniqueId('incidents', 'occurrences', incident.id),
+            originalId: incident.id,
             type: 'incidents',
             category: 'occurrences',
-            name: account.name,
+            name: '',
             data: {
-              ...account,
-              title: `Incidente - ${account.name}`,
-              description: `Incidente técnico relacionado a ${account.name}. Investigação em andamento.`,
-              type: 'Técnico',
-              severity: account.status === 'active' ? 'low' : 'high',
-              status: account.status === 'active' ? 'resolved' : 'investigating',
-              reportedDate: '2024-01-16',
-              affectedServices: ['Mobile Banking', 'Internet Banking'],
+              ...incident,
             },
           };
 
           return (
-            <CardAccordionItem key={`incident-${account.id}`} itemData={itemData}>
+            <CardAccordionItem key={`incident-${incident.id}`} itemData={itemData}>
               <div className="flex flex-col w-full space-y-1">
-                <h3 className="text-sm font-bold">{account.name}</h3>
-                <p>Número de conta - {account.accountNumber}</p>
+                <h3 className="text-sm font-bold">{incident.name}</h3>
+                <p>Número de conta - {incident.accountNumber}</p>
                 <div className="flex justify-between items-center">
                   <p className="text-xs text-gray-500">Severidade</p>
                   <p className="text-xs text-gray-500 text-right">
-                    <Badge variant={account.status === 'active' ? 'default' : 'blocked'}>
-                      {account.status === 'active' ? 'BAIXA' : 'ALTA'}
+                    <Badge variant={incident.status}>
+                      {incident.status === 'active' ? 'ALTA' : 'BAIXA'}
                     </Badge>
                   </p>
                 </div>
@@ -125,17 +120,17 @@ export const OccurrencesSection: React.FC<ServicesSectionProps> = ({
       </CardAccordion>
 
       <CardAccordion header={<CardAccordionHeader icon={'📝'} title="Memos" />}>
-        {accounts.map((account) => {
+        {memos.map((memo) => {
           const itemData: ItemData = {
-            id: createUniqueId('memos', 'occurrences', account.id),
-            originalId: account.id,
+            id: createUniqueId('memos', 'occurrences', memo.id),
+            originalId: memo.id,
             type: 'memos',
             category: 'occurrences',
-            name: `Memo - ${account.name}`,
+            name: `Memo - ${memo.name}`,
             data: {
-              ...account,
-              subject: `Memo - ${account.name}`,
-              content: `Memo interno relacionado a ${account.name}. Valor inicial: ${account.initialValue} ${account.currency}. Status da conta: ${account.status}.`,
+              ...memo,
+              subject: `Memo - ${memo.name}`,
+              content: `Memo interno relacionado a ${memo.name}. Valor inicial: ${memo.initialValue} ${memo.currency}. Status da conta: ${memo.status}.`,
               author: 'Sistema',
               category: 'Seguros',
               priority: 'normal',
@@ -145,10 +140,10 @@ export const OccurrencesSection: React.FC<ServicesSectionProps> = ({
           };
 
           return (
-            <CardAccordionItem key={`memo-${account.id}`} itemData={itemData}>
+            <CardAccordionItem key={`memo-${memo.id}`} itemData={itemData}>
               <div className="flex flex-col w-full space-y-1">
-                <h3 className="text-sm font-bold">Memo - {account.name}</h3>
-                <p>Número de conta - {account.accountNumber}</p>
+                <h3 className="text-sm font-bold">Memo - {memo.name}</h3>
+                <p>Número de conta - {memo.accountNumber}</p>
                 <div className="flex justify-between items-center">
                   <p className="text-xs text-gray-500">Data</p>
                   <p className="text-xs text-gray-500 text-right">17/01/2024</p>

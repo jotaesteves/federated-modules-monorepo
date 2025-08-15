@@ -69,6 +69,9 @@ module.exports = {
         teal: {
           DEFAULT: '#14A9B9',
         },
+        orange: {
+          DEFAULT: '#FF5900',
+        },
       },
       gridTemplateColumns: {
         24: 'repeat(24, minmax(0, 1fr))',

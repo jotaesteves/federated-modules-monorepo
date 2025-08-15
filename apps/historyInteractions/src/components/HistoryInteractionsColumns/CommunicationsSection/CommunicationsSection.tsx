@@ -101,7 +101,7 @@ export const CommunicationsSection: React.FC<CommunicationsSectionProps> = ({
                     </span>
                     {email.title.toUpperCase()}
                   </p>
-                  <p className="ml-[1.4375rem] mt-0 font-semibold">{email.email}</p>
+                  <p className="ml-[1.4375rem] mt-0 font-semibold break-all">{email.email}</p>
                 </div>
                 <div className="flex-col text-right text-[0.6875rem] w-full leading-4">
                   <p>{email.time}</p>
