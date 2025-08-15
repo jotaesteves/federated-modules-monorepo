@@ -71,17 +71,6 @@ export const OccurrencesSection: React.FC<OccurrencesSectionProps> = ({
                   <p className="text-[0.6875rem]">{complain.endDate}</p>
                 </div>
               </div>
-              {/* <div className="flex flex-col w-full space-y-1">
-                <h3 className="text-sm font-bold">{complain.complainId}</h3>
-                <div className="flex justify-between items-center">
-                  <p className="text-xs text-gray-500">Status</p>
-                  <p className="text-xs text-gray-500 text-right">
-                    <Badge variant={complain.badge === 'SUBMITED' ? 'blocked' : 'active'}>
-                      {complain.badge === 'SUBMITED' ? 'SUBMETIDO' : 'COMPLETA'}
-                    </Badge>
-                  </p>
-                </div>
-              </div> */}
             </CardAccordionItem>
           );
         })}
