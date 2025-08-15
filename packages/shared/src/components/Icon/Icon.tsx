@@ -11,6 +11,8 @@ import {
   CallCenterWorkerIcon,
   RingCallIcon,
   ComplainsIcon,
+  AlertFolderIcon,
+  PackageWarningIcon,
 } from '@/assets/icons';
 import { cn } from '@/lib/utils';
 
@@ -27,6 +29,8 @@ const iconsMap = {
   ringCall: RingCallIcon,
   callCenterWorker: CallCenterWorkerIcon,
   complains: ComplainsIcon,
+  alertFolder: AlertFolderIcon,
+  packageWarning: PackageWarningIcon,
 } as const;
 
 export interface IconProps {
