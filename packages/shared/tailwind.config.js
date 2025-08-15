@@ -70,6 +70,7 @@ module.exports = {
           DEFAULT: '#14A9B9',
         },
         orange: {
+          500: '#FF810A',
           DEFAULT: '#FF5900',
         },
       },

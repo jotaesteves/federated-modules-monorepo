@@ -14,6 +14,7 @@ import {
   type MemosData,
 } from '../mock-data/mock-occurrences-data';
 import { LogoIcon } from 'shared/assets/icons';
+import Icon from 'shared/components/Icon';
 
 interface OccurrencesSectionProps {
   complains?: ComplainsData[];
@@ -28,7 +29,14 @@ export const OccurrencesSection: React.FC<OccurrencesSectionProps> = ({
 }) => {
   return (
     <div className="grid gap-2 content-start">
-      <CardAccordion header={<CardAccordionHeader icon={'⚠️'} title="Reclamações" />}>
+      <CardAccordion
+        header={
+          <CardAccordionHeader
+            icon={<Icon type="complains" className="bg-orange-500" />}
+            title="Reclamações"
+          />
+        }
+      >
         {complains.map((complain, index) => {
           const itemData: ItemData = {
             id: createUniqueId('complains', 'occurrences', complain.id),

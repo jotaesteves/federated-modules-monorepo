@@ -10,56 +10,48 @@ import {
   MakePhoneCallIcon,
   CallCenterWorkerIcon,
   RingCallIcon,
+  ComplainsIcon,
 } from '@/assets/icons';
-import * as React from 'react';
+import { cn } from '@/lib/utils';
+
+const iconsMap = {
+  graph: GraphIcon,
+  contact: ContactIcon,
+  documentation: DocumentationIcon,
+  person: PersonIcon,
+  pin: PinIcon,
+  risk: RiskIcon,
+  user: UserIcon,
+  phoneCall: PhoneCallIcon,
+  makePhoneCall: MakePhoneCallIcon,
+  ringCall: RingCallIcon,
+  callCenterWorker: CallCenterWorkerIcon,
+  complains: ComplainsIcon,
+} as const;
 
 export interface IconProps {
-  type:
-    | 'contact'
-    | 'graph'
-    | 'documentation'
-    | 'person'
-    | 'pin'
-    | 'risk'
-    | 'user'
-    | 'phoneCall'
-    | 'makePhoneCall'
-    | 'ringCall'
-    | 'callCenterWorker';
+  type: keyof typeof iconsMap;
   rounded?: boolean;
   size?: 'sm' | 'lg';
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ type, rounded, size, className }) => {
-  const iconsMap: Record<IconProps['type'], React.FC> = {
-    graph: GraphIcon,
-    contact: ContactIcon,
-    documentation: DocumentationIcon,
-    person: PersonIcon,
-    pin: PinIcon,
-    risk: RiskIcon,
-    user: UserIcon,
-    phoneCall: PhoneCallIcon,
-    makePhoneCall: MakePhoneCallIcon,
-    ringCall: RingCallIcon,
-    callCenterWorker: CallCenterWorkerIcon,
-  };
-
+const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className = '' }) => {
   const IconComponent = iconsMap[type];
   if (!IconComponent) return null;
 
-  const baseClasses = 'inline-flex items-center justify-center p-[6px] h-fit';
-
-  const sizeClasses = {
-    sm: 'w-8 h-8',
-    lg: 'w-10 h-10',
-  };
-
-  const radiusClasses = rounded ? 'rounded-full' : 'rounded-sm';
+  const sizeClasses = size === 'lg' ? 'w-10 h-10' : 'w-8 h-8';
+  const radiusClasses = rounded ? 'rounded-full' : 'rounded-md';
 
   return (
-    <span className={`${baseClasses} ${sizeClasses} ${radiusClasses} ${className}`}>
+    <span
+      className={cn(
+        'inline-flex items-center justify-center p-[6px] h-fit',
+        sizeClasses,
+        radiusClasses,
+        className
+      )}
+    >
       <IconComponent />
     </span>
   );
