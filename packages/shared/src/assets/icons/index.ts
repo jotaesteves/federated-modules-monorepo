@@ -29,3 +29,5 @@ export * from './SendIcon';
 export * from './ShareIcon';
 export * from './CallBackIcon';
 export * from './DialPadIcon';
+export * from './ExclamationIcon';
+export * from './ChevronRightIcon';

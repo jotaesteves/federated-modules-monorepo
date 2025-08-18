@@ -28,6 +28,8 @@ import {
   ShareIcon,
   CallBackIcon,
   DialPadIcon,
+  ExclamationIcon,
+  ChevronRightIcon,
 } from '@/assets/icons';
 import { cn } from '@/lib/utils';
 
@@ -61,6 +63,8 @@ const iconsMap = {
   share: ShareIcon,
   callback: CallBackIcon,
   dialPad: DialPadIcon,
+  exclamation: ExclamationIcon,
+  chevronRight: ChevronRightIcon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;
