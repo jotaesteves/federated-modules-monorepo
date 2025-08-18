@@ -19,7 +19,7 @@ if is_windows || [[ -n "$WINDIR" ]] || [[ -n "$SYSTEMROOT" ]]; then
   fi
 
   # Run commitlint
-  pnpm --no-install commitlint --edit $1
+  bun --no-install commitlint --edit $1
 
 else
   # macOS/Linux environment - full setup
@@ -48,5 +48,5 @@ else
   fi
 
   # Run commitlint
-  pnpm --no-install commitlint --edit $1
+  bun --no-install commitlint --edit $1
 fi
