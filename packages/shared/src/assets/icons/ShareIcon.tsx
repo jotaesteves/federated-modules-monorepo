@@ -21,7 +21,7 @@ export const ShareIcon = () => {
           width="41.1347"
           height="41.1347"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
           <feFlood flood-opacity="0" result="BackgroundImageFix" />
           <feColorMatrix
