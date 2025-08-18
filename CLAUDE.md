@@ -46,16 +46,16 @@ This project is a federated modules monorepo aimed at improving the development 
 
 ```bash
 # Install dependencies
-pnpm install
+bun install
 
 # Start the development server
-npm dev
+bun run dev
 
 # Run tests
-pnpm test
+bun run test
 
 # Build the project
-pnpm build
+bun run build
 ```
 
 ## Architecture Overview

@@ -4,10 +4,10 @@ Starter to bootstrap a web application, composite of React microfrontends and sh
 
 ## Installation
 
-1. Install Node 16 or later
-2. Install pnpm package manager. pnpm is used since it runs faster and solves [NPM doppelgangers problem](https://rushjs.io/pages/advanced/npm_doppelgangers/). For pnpm installation instruction visit [official doc](https://pnpm.io/installation)
-3. Run `pnpm install` to install dependencies
-4. [Optional, but recommended] Install [husky](https://typicode.github.io/husky/#/) and initialize it (via `npx husky install`) to provide better dev experience (git hooks)
+1. Install Node 18 or later
+2. Install Bun package manager. Bun is used since it runs faster than npm/pnpm and provides better TypeScript support. For Bun installation instruction visit [official doc](https://bun.sh/docs/installation)
+3. Run `bun install` to install dependencies
+4. [Optional, but recommended] Install [husky](https://typicode.github.io/husky/#/) and initialize it (via `bunx husky install`) to provide better dev experience (git hooks)
 
 ## Usage
 
@@ -107,3 +107,5 @@ Why particularly this tech stack? This is a brief overview/recap why this or tha
 18. AWS CDK - [Disclaimer: this is very opinionated section] the most advanced IaC solution for AWS. The main alternative - [Terraform](https://developer.hashicorp.com/terraform/docs) - has some advantages over CDK: it is cloud-agnostic and therefore is definitely a way to go if you want to do multi-cloud and just want to avoid vendor-lock. But, in our case, we completely commit to AWS and realize it. We are planning to deal with AWS only, and taking this constraint into account, CDK seems a better fit - it allows doing IaC in first-class programming language (in our case - TypeScript), while Terraform incorporates its own syntax - HCL, which is less flexible, and actually more competes with CloudFormation, rather than with CDK. TFCDK - CDK from Terraform world - is still not production-ready, though it actually can be considered as alternative in future. CDK just fills more natural to developers, where CDK app is actually kinda TS app. It is very subjective choice and there is no really a right answer, and a discussion between CDK vs Terraform and other tools (Pulumi, etc.) can take a lot of time and letters to type, so we just commit to CDK and build IaC with it.
 
 **Note on Storybook**: as project grows and becomes bigger, there will be need to document, demo and test its design system. It's worth take a look at [Storybook](https://storybook.js.org/) as a tool for this - it is quite a complex tool, have lots of addons and can be personalized per project's needs. It is not include in the starter, though may make sense for the project at bigger scale. It can be easily added as standalone app, which imports other components (from shared, etc.) and demos them.
+
+# Updated with Bun migration

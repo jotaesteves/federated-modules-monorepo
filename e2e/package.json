@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "E2E tests for the whole app",
   "scripts": {
-    "e2e": "pnpm dlx playwright test",
+    "e2e": "bunx playwright test",
     "e2e:show-report": "npx playwright show-report"
   },
   "devDependencies": {

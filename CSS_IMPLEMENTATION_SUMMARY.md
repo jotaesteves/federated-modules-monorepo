@@ -123,16 +123,16 @@ import './styles.css';
 
 ```bash
 # Build Tailwind CSS
-pnpm --filter shared build:css
+bun run --filter shared build:css
 
 # Watch Tailwind CSS during development
-pnpm --filter shared dev:css
+bun run --filter shared dev:css
 
 # Run development server with all CSS support
-pnpm dev
+bun run dev
 
 # Build production with optimized CSS
-pnpm build
+bun run build
 ```
 
 ## 📁 File Structure
@@ -152,7 +152,7 @@ packages/shared/src/
 
 ## 🎯 Next Steps
 
-1. **Run the development server**: `pnpm dev`
+1. **Run the development server**: `bun run dev`
 2. **Check the CSSShowcase component** in any app to see all approaches working
 3. **Create your own components** using the preferred CSS approach
 4. **Follow the patterns** shown in the example components
