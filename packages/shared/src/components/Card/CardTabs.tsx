@@ -56,7 +56,7 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
             <ScrollBar
               id="scroll-bar"
               forceMount
-              className="w-3 rounded-full bg-gray-300/35 [&>div]:bg-primary-600 [&>div]:rounded-full"
+              className="w-3 rounded-full bg-gray-300/35 [&>div]:bg-primary-600 [&>div]:rounded-full mt-4 h-[calc(100%_-_1rem)]"
             />
           </ScrollArea>
         </Tabs>
