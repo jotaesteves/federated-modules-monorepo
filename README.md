@@ -50,7 +50,7 @@ The app in general (and each separate sub-app in particular) are built on top of
 - [Turborepo](https://turbo.build/repo) - for smart & efficient monorepo management
 - [pnpm](https://pnpm.io/) - for faster package management and solving [NPM doppelgangers problem](https://rushjs.io/pages/advanced/npm_doppelgangers/).
 - [TypeScript](https://www.typescriptlang.org/docs/) (v4+) - 100% support, even for federated modules via dts-loader
-- [Webpack](https://webpack.js.org/) (v5+) - with [module federation](https://webpack.js.org/concepts/module-federation/) to be able to ship & deploy apps separately
+- [Webpack](https://webpack.js.org/) (v5+) - with [module federation](https://webpack.js.org/concepts/module-federation/) to be able to ship & deploy apps separately.
 - [React](https://reactjs.org/) (v18+)
 - [React Router](https://reactrouter.com/en/main) (v6+) - NOTE: make sure you do not use Router if it is remote (mfe) app - Router to be present only in host (main) app
 - [React Helmet](https://github.com/nfl/react-helmet) (v6+) - to manipulate with document head
