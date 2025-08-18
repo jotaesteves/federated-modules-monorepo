@@ -8,9 +8,9 @@ interface CardAccordionProps {
 export const CardAccordion = ({ header, children }: CardAccordionProps) => {
   return (
     <Accordion type="single" collapsible defaultValue="single">
-      <AccordionItem value="single" className=" rounded-2xl">
+      <AccordionItem value="single" className=" rounded-[20px]">
         <AccordionTrigger className="min-h-12">{header}</AccordionTrigger>
-        <AccordionContent className="flex flex-col gap-2 text-balance rounded-2xl">
+        <AccordionContent className="flex flex-col gap-4 text-balance rounded-[20px]">
           {children}
         </AccordionContent>
       </AccordionItem>
