@@ -13,7 +13,7 @@ export const AssetsColumns: React.FC<AssetsColumnsProps> = ({
   rightTitle = 'Passivos',
 }) => {
   return (
-    <div className="col-span-14 grid grid-rows-[auto_1fr] gap-2 h-full relative content-start rounded-2xl overflow-hidden">
+    <div className="col-span-14 grid grid-rows-[auto_1fr] gap-2 h-full relative content-start rounded-[20px] overflow-hidden">
       <AssetsHeader leftTitle={leftTitle} rightTitle={rightTitle} />
 
       {/* Column 1 - Assets */}

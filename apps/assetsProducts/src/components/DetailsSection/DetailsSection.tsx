@@ -8,7 +8,7 @@ interface DetailsSectionProps {
 
 export const DetailsSection: React.FC<DetailsSectionProps> = ({ title = 'Detalhes', children }) => {
   return (
-    <div className="col-span-10 flex flex-col max-h-full min-h-0 rounded-2xl overflow-hidden ">
+    <div className="col-span-10 flex flex-col max-h-full min-h-0 rounded-[20px] overflow-hidden ">
       <div className="sticky top-0 left-0 right-0 z-10 bg-[#E7E9EA] py-[4px] border-b border-primary-500 flex-shrink-0 px-[26px]">
         <h2 className="text-lg font-semibold text-left">{title}</h2>
       </div>
