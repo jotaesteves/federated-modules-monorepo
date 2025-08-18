@@ -55,17 +55,48 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
           return (
             <CardAccordionItem key={account.id} itemData={itemData}>
               <div className="flex flex-col w-full space-y-1">
-                <div className="flex justify-between items-center">
-                  <p className="text-xs font-medium">
-                    {account.id} - {account.name}
-                  </p>
-                  <p className="text-xs text-gray-500 text-right">Saldo disponível</p>
+                <div>
+                  <div className="flex justify-between items-center">
+                    <p className="text-xs text-gray-500 font-medium uppercase">
+                      Telemóvel (Principal)
+                    </p>
+                    <p className="text-xs text-gray-500 font-medium uppercase">
+                      Limite Transacional
+                    </p>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <p className="flex items-center text-xs">
+                      <span className="text-base font-semibold mr-2">
+                        {account.cellphoneNumber}
+                      </span>
+                      <Badge variant={'active'}>{'ativo'.toUpperCase()}</Badge>
+                    </p>
+                    <p>
+                      <span className="text-base font-semibold">{account.transactionalLimit}</span>
+                      {account.currency}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex justify-between text-xs">
-                  <p>
-                    <Badge variant={'active'}>{'active'.toUpperCase()}</Badge>
-                  </p>
-                  <p className="text-right">{account.currency}</p>
+
+                <div>
+                  <div className="flex justify-between items-center">
+                    <p className="text-xs text-gray-500 font-medium uppercase">Simswap</p>
+                    <p className="text-xs text-gray-500 font-medium uppercase">
+                      Limite de Recargas
+                    </p>
+                  </div>
+                  <div className="flex justify-between text-xs">
+                    <p className="flex items-center text-xs">
+                      <span className="text-base font-semibold mr-2">
+                        {account.cellphoneNumber}
+                      </span>
+                      <Badge variant={'blocked'}>{'bloqueado'.toUpperCase()}</Badge>
+                    </p>
+                    <p>
+                      <span className="text-base font-semibold">{account.rechargeLimit}</span>
+                      {account.currency}
+                    </p>
+                  </div>
                 </div>
               </div>
             </CardAccordionItem>
