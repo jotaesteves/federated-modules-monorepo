@@ -53,6 +53,9 @@
       "**/pnpm-lock.yaml": true,
       "**/package-lock.json": true,
       "**/yarn.lock": true,
+      "**/bun.lockb": true,
+      "**/.bun-cache": true,
+      "**/.bun-cache/**": true,
     },
 
     // Reduce file watcher overhead in large workspaces
