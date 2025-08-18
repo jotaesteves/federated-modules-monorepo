@@ -22,87 +22,15 @@ declare module '*.css?raw' {
 }
 
 // Module Federation remotes typings
-declare module 'shared/components/Card' {
+declare module 'shared/components/ErrorBoundary' {
   import type { ComponentType } from 'react';
 
-  interface CardProps {
-    icon?: React.ReactNode;
-    title?: React.ReactNode;
-    description?: React.ReactNode;
-    footer?: React.ReactNode;
-    children?: React.ReactNode;
-    className?: string;
-  }
-
-  const CardComponent: ComponentType<CardProps>;
-  export default CardComponent;
-}
-
-declare module 'shared/components/CardTabs' {
-  import type { ComponentType } from 'react';
-
-  export interface CardTabItem {
-    value: string;
-    label: React.ReactNode;
-    content: React.ReactNode;
-  }
-
-  export interface CardTabsProps {
-    icon?: React.ReactNode;
-    title?: React.ReactNode;
-    tabs: CardTabItem[];
-    defaultValue?: string;
-    className?: string;
-    tabsListClassName?: string;
-    tabsTriggerClassName?: string;
-    tabsContentClassName?: string;
-  }
-
-  const CardTabsComponent: ComponentType<CardTabsProps>;
-  export default CardTabsComponent;
-}
-
-declare module 'shared/components/CardAccordion' {
-  import type { ComponentType } from 'react';
-
-  interface CardAccordionProps {
-    header: React.ReactNode;
+  export interface ErrorBoundaryProps {
     children: React.ReactNode;
-    className?: string;
+    fallback?: React.ReactNode;
+    onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
   }
 
-  const CardAccordionComponent: ComponentType<CardAccordionProps>;
-  export default CardAccordionComponent;
-}
-
-declare module 'shared/components/Icon' {
-  import type { ComponentType } from 'react';
-
-  export interface IconProps {
-    type: string;
-    className?: string;
-    rounded?: boolean;
-    size?: 'sm' | 'md' | 'lg';
-  }
-
-  const IconComponent: ComponentType<IconProps>;
-  export default IconComponent;
-}
-
-declare module 'shared/components/LineBreak' {
-  import type { ComponentType } from 'react';
-
-  const LineBreakComponent: ComponentType;
-  export default LineBreakComponent;
-}
-
-declare module 'shared/lib/utils' {
-  export function cn(...classes: (string | undefined)[]): string;
-}
-
-declare module 'shared/styles/Global' {
-  import type { ComponentType } from 'react';
-
-  const GlobalComponent: ComponentType;
-  export default GlobalComponent;
+  const ErrorBoundaryComponent: ComponentType<ErrorBoundaryProps>;
+  export default ErrorBoundaryComponent;
 }
