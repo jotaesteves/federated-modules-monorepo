@@ -189,15 +189,15 @@ No changes are needed in `apps/main` webpack files beyond updating remotes in st
 
 ## 10) Run and verify
 
-- Dev (from repo root): `pnpm dev`
+- Dev (from repo root): `bun run dev`
   - Verify `http://localhost:3005` serves `app3` and `apps/main` can load the remote without `remoteEntry.js` 404s.
 - If Tailwind classes don’t appear, ensure the new paths are in `tailwind.config.js` and restart dev to clear JIT cache.
 
 ## 11) Build and local serve
 
-- Build all: `pnpm build` or `pnpm build:local`
+- Build all: `bun run build` or `bun run build:local`
 - Local static serving using provided scripts:
-  - `pnpm serve:local` (builds with `HOST_BASE_URL` and serves from port 3333 for remotes, main on port 80)
+  - `bun run serve:local` (builds with `HOST_BASE_URL` and serves from port 3333 for remotes, main on port 80)
 - Ensure the prod remotes in `module-federation.ts` match the output paths:
   - `app3@${hostBaseUrl}apps/app3/dist/remoteEntry.js`
 
