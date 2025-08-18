@@ -18,3 +18,21 @@ export const CardAccordionItemClaimsMapData: CardAccordionItemClaimsProps[] = [
     type: 'Tranferência e-Mola',
   },
 ];
+
+export const CardItemIncidentsMapData = [
+  {
+    type: 'INIBCHQS',
+    title: 'Conta inibida de requisitar cheques',
+    link: '/incident1',
+  },
+  {
+    type: 'MEMO',
+    title: 'Conta sem assinatura digitalizada',
+    link: '/incident2',
+  },
+  {
+    type: 'INIBCHQS',
+    title: 'Conta inibida de requisitar cheques',
+    link: '/incident3',
+  },
+];
