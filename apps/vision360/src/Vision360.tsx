@@ -2,11 +2,11 @@ import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { Suspense } from 'react';
 import ErrorBoundary from 'shared/components/ErrorBoundary';
-import ChannelsAndServices from 'src/components/cards/ChannelsAndServices';
-import EstateAndProducts from 'src/components/cards/EstateAndProducts';
-import Incidents from 'src/components/cards/Incidents/Incidents';
-import LastContact from 'src/components/cards/LastContact';
-import PersonalData from 'src/components/cards/PersonalData';
+// import ChannelsAndServices from 'src/components/cards/ChannelsAndServices';
+// import EstateAndProducts from 'src/components/cards/EstateAndProducts';
+// import Incidents from 'src/components/cards/Incidents/Incidents';
+// import LastContact from 'src/components/cards/LastContact';
+// import PersonalData from 'src/components/cards/PersonalData';
 
 // Loading Component
 const LoadingCard: React.FC = () => (
@@ -86,7 +86,7 @@ const Vision360: React.FC = () => {
         <div className="row-span-10 col-span-5">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
-              <PersonalData />
+              <LazyPersonalData />
             </Suspense>
           </ErrorBoundary>
         </div>
@@ -95,7 +95,7 @@ const Vision360: React.FC = () => {
         <div className="col-span-13 col-start-6 row-span-5">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
-              <EstateAndProducts />
+              <LazyEstateAndProducts />
             </Suspense>
           </ErrorBoundary>
         </div>
@@ -104,7 +104,7 @@ const Vision360: React.FC = () => {
         <div className="col-start-19 col-span-6 row-span-5">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
-              <LastContact />
+              <LazyLastContact />
             </Suspense>
           </ErrorBoundary>
         </div>
@@ -113,7 +113,7 @@ const Vision360: React.FC = () => {
         <div className="col-start-6 col-span-13 row-span-5 row-start-6">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
-              <ChannelsAndServices />
+              <LazyChannelsAndServices />
             </Suspense>
           </ErrorBoundary>
         </div>
@@ -122,7 +122,7 @@ const Vision360: React.FC = () => {
         <div className="col-span-6 col-start-19 row-start-6 row-span-5">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
-              <Incidents />
+              <LazyIncidents />
             </Suspense>
           </ErrorBoundary>
         </div>
