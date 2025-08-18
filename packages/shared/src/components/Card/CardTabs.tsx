@@ -2,6 +2,7 @@ import React from 'react';
 import Card, { CardProps } from './Card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@ui/tabs';
 import { ScrollArea, ScrollBar } from '@ui/scroll-area';
+import { cn } from '@/lib/utils';
 
 export interface CardTabItem {
   value: string;
@@ -44,11 +45,19 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
 
           <ScrollArea className="h-full">
             {tabs.map((tab) => (
-              <TabsContent key={tab.value} value={tab.value} className={tabsContentClassName}>
+              <TabsContent
+                key={tab.value}
+                value={tab.value}
+                className={cn(tabsContentClassName, 'pr-[1.125rem]')}
+              >
                 {tab.content}
               </TabsContent>
             ))}
-            <ScrollBar />
+            <ScrollBar
+              id="scroll-bar"
+              forceMount
+              className="w-3 rounded-full bg-gray-300/35 [&>div]:bg-primary-600 [&>div]:rounded-full"
+            />
           </ScrollArea>
         </Tabs>
       </Card>
