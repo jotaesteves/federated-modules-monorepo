@@ -39,42 +39,16 @@
 }
 
 @layer utilities {
-  /* se necessário usar classes tailwind para estilizar o scroll : pnpm add -D tailwind-scrollbar */
   .scroll-custom {
     scrollbar-width: thin;
-    scrollbar-color: #d1005d #f1f1f1;
+    scrollbar-color: #adadae #e9e9ed;
+    padding: 0 18px 0 8px;
   }
 
-  .scroll-custom::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-
-  .scroll-custom::-webkit-scrollbar-track {
-    background: red;
-    width: 4px;
-    border-radius: 2px;
-  }
-
-  .scroll-custom::-webkit-scrollbar-thumb {
-    background: #d1005d;
-    width: 4px;
-    border-radius: 2px;
-    min-width: 4px;
-  }
-
-  .scroll-custom::-webkit-scrollbar-thumb:hover {
-    background: #b8004f;
-    width: 4px;
-  }
-
-  .scroll-custom::-webkit-scrollbar-thumb:active {
-    background: #a50049;
-    width: 4px;
-  }
-
-  .scroll-custom::-webkit-scrollbar-thumb {
-    visibility: visible;
+  .scroll-custom-color {
+    scrollbar-width: thin;
+    scrollbar-color: #d1005d #e9e9ed;
+    padding: 0 18px 0 8px;
   }
 }
 
