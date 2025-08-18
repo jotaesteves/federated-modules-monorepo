@@ -21,16 +21,19 @@ export const CardAccordionItemClaimsMapData: CardAccordionItemClaimsProps[] = [
 
 export const CardItemIncidentsMapData = [
   {
+    date: '22-04-2025',
     type: 'INIBCHQS',
     title: 'Conta inibida de requisitar cheques',
     link: '/incident1',
   },
   {
+    date: '22-04-2025',
     type: 'MEMO',
     title: 'Conta sem assinatura digitalizada',
     link: '/incident2',
   },
   {
+    date: '22-04-2025',
     type: 'INIBCHQS',
     title: 'Conta inibida de requisitar cheques',
     link: '/incident3',
