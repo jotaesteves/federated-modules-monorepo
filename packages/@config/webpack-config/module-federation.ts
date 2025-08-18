@@ -193,7 +193,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
     remotes: {
       dev: {
-        shared: `shared@http://localhost:${mapPorts[Apps.vision360].devPort}/remoteEntry.js`,
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
