@@ -46,13 +46,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 }) => {
   return (
     <div className="grid gap-2 content-start">
-      <CardAccordion header={<CardAccordionHeader icon={'☂️'} title="Seguros" />}>
+      <CardAccordion icon={'☂️'} title="Seguros">
         {accounts.map((account) => {
           const itemData: ItemData = {
-            id: createUniqueId('loan', 'passives', account.id),
+            id: createUniqueId('insurance', 'other-services', account.id),
             originalId: account.id,
-            type: 'loan',
-            category: 'passives',
+            type: 'insurance',
+            category: 'other-services',
             name: account.name,
             data: account,
           };
@@ -80,13 +80,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         })}
       </CardAccordion>
 
-      <CardAccordion header={<CardAccordionHeader icon={'📃'} title="Extratos" />}>
+      <CardAccordion icon={'📃'} title="Extratos">
         {accounts.map((account) => {
           const itemData: ItemData = {
-            id: createUniqueId('credit-card', 'passives', account.id),
+            id: createUniqueId('extracts', 'other-services', account.id),
             originalId: account.id,
-            type: 'credit-card',
-            category: 'passives',
+            type: 'extracts',
+            category: 'other-services',
             name: account.name,
             data: account,
           };
@@ -96,7 +96,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
               <div className="flex flex-col w-full space-y-1">
                 <div className="flex justify-between items-center">
                   <p className="text-xs font-medium">{account.name}</p>
-                  <p className="text-xs text-gray-500 text-right">{account.cardNumber}</p>
+                  <p className="text-xs text-gray-500 text-right">{account.accountNumber}</p>
                 </div>
                 <div className="flex justify-between text-xs">
                   <p>

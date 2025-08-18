@@ -1,10 +1,10 @@
 import React from 'react';
 import { useChannelsServices } from '../../context/ChannelsServicesContext';
-import { AccountDetails } from './AccountDetails';
-import { DepositDetails } from './DepositDetails';
-import { DebitCardDetails } from './DebitCardDetails';
-import { LoanDetails } from './LoanDetails';
-import { CreditCardDetails } from './CreditCardDetails';
+import { AccountDetails } from './MobileBankingDetails';
+import { DepositDetails } from './MillenniumLineDetails';
+import { DebitCardDetails } from './InsuranceDetails';
+import { LoanDetails } from './InternetBankingDetails';
+import { CreditCardDetails } from './ExtractsDetails';
 
 export const DetailsRouter: React.FC = () => {
   const { activeItem } = useChannelsServices();
@@ -27,15 +27,15 @@ export const DetailsRouter: React.FC = () => {
   }
 
   switch (activeItem.type) {
-    case 'account':
+    case 'mobile':
       return <AccountDetails account={activeItem.data} />;
-    case 'deposit':
-      return <DepositDetails deposit={activeItem.data} />;
-    case 'debit-card':
-      return <DebitCardDetails card={activeItem.data} />;
-    case 'loan':
+    case 'internet':
       return <LoanDetails loan={activeItem.data} />;
-    case 'credit-card':
+    case 'millennium-line':
+      return <DepositDetails deposit={activeItem.data} />;
+    case 'insurance':
+      return <DebitCardDetails card={activeItem.data} />;
+    case 'extracts':
       return <CreditCardDetails card={activeItem.data} />;
     default:
       return (
