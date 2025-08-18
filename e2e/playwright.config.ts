@@ -101,7 +101,7 @@ const config: PlaywrightTestConfig = {
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'cd .. && pnpm serve:local:start',
+    command: 'cd .. && bun run serve:local:start',
     url: 'http://localhost:80/',
     reuseExistingServer: !process.env.CI,
   },
