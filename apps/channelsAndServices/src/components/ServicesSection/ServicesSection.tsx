@@ -6,43 +6,59 @@ import { Badge } from 'shared/components/ui';
 import type { ItemData } from '../../context/ChannelsServicesContext';
 import { createUniqueId } from '../../context/ChannelsServicesContext';
 
-interface ServicesSectionData {
+interface EnsuraceAccountData {
+  id: string;
+  policyNumber: string;
+  name: string;
+  subscriptionDate: string;
+}
+interface ExtractsData {
   id: string;
   accountNumber: string;
-  name: string;
-  initialValue: string;
-  remainingValue: string;
-  currency: string;
-  status: 'active' | 'inactive';
+  subscriptionDate: string;
+  type: 'simples' | 'combinado';
+  email: string;
 }
 
 interface ServicesSectionProps {
-  accounts?: ServicesSectionData[];
+  accounts?: EnsuraceAccountData[];
+  extracts?: ExtractsData[];
 }
 
-const ServicesSectionDefault: ServicesSectionData[] = [
+const EnsuranceAccountsDefault: EnsuraceAccountData[] = [
   {
-    id: '1',
-    accountNumber: '73653476234',
-    name: 'Crédito Salário - 323',
-    initialValue: '100.274,24',
-    remainingValue: '50.000,24',
-    currency: 'MZN',
-    status: 'active',
+    id: '73653476234',
+    policyNumber: '73653476234',
+    name: 'Seguro em Paz',
+    subscriptionDate: '2025-01-15',
   },
   {
     id: '736534723476',
-    accountNumber: '3217909828',
-    name: 'Microcrédito IZI - 321',
-    initialValue: '5.000,00',
-    remainingValue: '50.000,24',
-    currency: 'MZN',
-    status: 'inactive',
+    policyNumber: '736534723476',
+    name: 'Seguro Vida',
+    subscriptionDate: '2025-02-20',
+  },
+];
+const ExtractsDataDefault: ExtractsData[] = [
+  {
+    id: '1',
+    accountNumber: '1234567890',
+    subscriptionDate: '2025-01-15',
+    type: 'simples',
+    email: 'cliente1@example.com',
+  },
+  {
+    id: '2',
+    accountNumber: '0987654321',
+    subscriptionDate: '2025-02-20',
+    type: 'combinado',
+    email: 'cliente2@example.com',
   },
 ];
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({
-  accounts = ServicesSectionDefault,
+  accounts = EnsuranceAccountsDefault,
+  extracts = ExtractsDataDefault,
 }) => {
   return (
     <div className="grid gap-2 content-start">
@@ -59,20 +75,16 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
           return (
             <CardAccordionItem key={account.id} itemData={itemData}>
-              <div className="flex flex-col w-full space-y-1">
-                <h3 className="text-sm font-bold">{account.name}</h3>
-                <p> Número de conta - {account.accountNumber}</p>
-                <div className="flex justify-between items-center">
-                  <p className="text-xs text-gray-500">Valor inicial</p>
-                  <p className="text-xs text-gray-500 text-right">Valor Remanescente</p>
+              <div className="flex w-full justify-between">
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-base font-semibold">{account.name}</h3>
+                  <p className="flex justify-between items-center text-xs">
+                    Apólice: {account.policyNumber}
+                  </p>
                 </div>
-                <div className="flex justify-between text-xs">
-                  <p>
-                    {account.initialValue} {account.currency}
-                  </p>
-                  <p className="text-right">
-                    {account.remainingValue} {account.currency}
-                  </p>
+                <div className="flex flex-col gap-2">
+                  <p className="text-2xs text-gray-500 font-medium uppercase">Data de adesão</p>
+                  <p className="text-right font-semibold">{account.subscriptionDate}</p>
                 </div>
               </div>
             </CardAccordionItem>
@@ -81,40 +93,27 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
       </CardAccordion>
 
       <CardAccordion icon={'📃'} title="Extratos">
-        {accounts.map((account) => {
+        {extracts.map((extract) => {
           const itemData: ItemData = {
-            id: createUniqueId('extracts', 'other-services', account.id),
-            originalId: account.id,
+            id: createUniqueId('extracts', 'other-services', extract.id),
+            originalId: extract.id,
             type: 'extracts',
             category: 'other-services',
-            name: account.name,
-            data: account,
+            name: extract.email,
+            data: extract,
           };
 
           return (
-            <CardAccordionItem key={`deposit-${account.id}`} itemData={itemData}>
-              <div className="flex flex-col w-full space-y-1">
-                <div className="flex justify-between items-center">
-                  <p className="text-xs font-medium">{account.name}</p>
-                  <p className="text-xs text-gray-500 text-right">{account.accountNumber}</p>
+            <CardAccordionItem key={`deposit-${extract.id}`} itemData={itemData}>
+              <div className="flex w-full justify-between space-y-1 ">
+                <div className="flex flex-col">
+                  <h3 className="text-base font-semibold"> Conta - {extract.accountNumber}</h3>
+                  <p className="text-xs">Tipo: {extract.type}</p>
+                  <p className="text-xs">Email: {extract.email}</p>
                 </div>
-                <div className="flex justify-between text-xs">
-                  <p>
-                    <Badge variant={account.status}>{account.status.toUpperCase()}</Badge>
-                  </p>
-                  <p className="text-right">Nº de Conta - {account.accountNumber}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500"></p>
-                  <p className="text-xs text-gray-500 text-right">
-                    Limite Utilizado ({account.initialValue} {account.currency})
-                  </p>
-                </div>
-                <div>
-                  <p className="text-xs text-gray-500"></p>
-                  <p className="text-xs text-gray-500 text-right">
-                    {account.initialValue} | {account.remainingValue}
-                  </p>
+                <div className="flex flex-col justify-center">
+                  <p className="text-2xs text-gray-500 font-medium uppercase">Data de Subscrição</p>
+                  <p className="text-right font-semibold text-base">{extract.subscriptionDate}</p>
                 </div>
               </div>
             </CardAccordionItem>
