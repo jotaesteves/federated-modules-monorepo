@@ -1,8 +1,10 @@
 import Card from 'shared/components/Card';
+import CardItemTitleDescription from 'shared/components/CardItemTitleDescription';
 
 export default function PersonalData() {
   return (
     <Card title="Dados Pessoais" className="h-full">
+      <CardItemTitleDescription title="Nome completo" text="Jacinto Fazenda Protótipo" />
       <p className="text-sm font-bold text-gray-50">nome completo</p>
       <h4>Nome Sobrenome</h4>
       <br />
