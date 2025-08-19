@@ -24,6 +24,13 @@ import {
   HistoryIcon,
   ExclamationIcon,
   ChevronRightIcon,
+  HomeIcon,
+  RegisterIcon,
+  FilesIcon,
+  InfoIcon,
+  Graph2Icon,
+  ConfigIcon,
+  SearchIcon,
 } from '@/assets/icons';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
@@ -54,7 +61,15 @@ export interface IconProps {
     | 'message'
     | 'history'
     | 'exclamation'
-    | 'chevronRight';
+    | 'chevronRight'
+    | 'home'
+    | 'register'
+    | 'shopBag'
+    | 'info'
+    | 'files'
+    | 'graph2'
+    | 'config'
+    | 'search';
   rounded?: boolean;
   size?: 'sm' | 'lg';
   className?: string;
@@ -87,6 +102,14 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) =>
     history: HistoryIcon,
     exclamation: ExclamationIcon,
     chevronRight: ChevronRightIcon,
+    home: HomeIcon,
+    register: RegisterIcon,
+    shopBag: ShoppingBagIcon,
+    info: InfoIcon,
+    files: FilesIcon,
+    graph2: Graph2Icon,
+    config: ConfigIcon,
+    search: SearchIcon,
   };
 
   const IconComponent = iconsMap[type];
