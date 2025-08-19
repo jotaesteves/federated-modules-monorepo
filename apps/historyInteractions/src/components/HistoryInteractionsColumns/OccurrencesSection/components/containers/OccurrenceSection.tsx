@@ -42,7 +42,7 @@ export const OccurrenceSection: React.FC<OccurrenceSectionProps> = ({ type, item
     <CardAccordion
       header={
         <CardAccordionHeader
-          icon={<Icon type={config.iconType} className={config.iconClassName} />}
+          icon={<Icon type={config.iconType} className="bg-orange-500" />}
           title={config.title}
         />
       }

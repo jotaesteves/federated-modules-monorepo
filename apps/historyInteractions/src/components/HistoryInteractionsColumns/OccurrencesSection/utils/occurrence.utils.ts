@@ -35,20 +35,17 @@ export const getOccurrenceConfig = (): Record<OccurrenceType, OccurrenceConfig> 
   complains: {
     type: 'complains',
     title: 'Reclamações',
-    iconType: 'complains' as const,
-    iconClassName: 'bg-orange-500',
+    iconType: 'complains',
   },
   incidents: {
     type: 'incidents',
     title: 'Incidentes',
-    iconType: 'alertFolder' as const,
-    iconClassName: 'bg-orange-500',
+    iconType: 'alertFolder',
   },
   memos: {
     type: 'memos',
     title: 'Memos',
-    iconType: 'packageWarning' as const,
-    iconClassName: 'bg-orange-500',
+    iconType: 'packageWarning',
   },
 });
 

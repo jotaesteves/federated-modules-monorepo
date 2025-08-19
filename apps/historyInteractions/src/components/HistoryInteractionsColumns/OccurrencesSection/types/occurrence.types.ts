@@ -32,7 +32,6 @@ export interface OccurrenceConfig {
   type: OccurrenceType;
   title: string;
   iconType: IconType;
-  iconClassName: string;
 }
 
 export interface BadgeVariant {
