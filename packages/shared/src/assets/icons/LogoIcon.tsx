@@ -46,7 +46,8 @@ export const LogoIcon = ({ width, height }: { width: string; height: string }) =
           gradientUnits="userSpaceOnUse"
         >
           <stop stop-color="#D1005D" />
-          <stop offset="1" stop-color="#A03996" />
+          <stop stopColor="#D1005D" />
+          <stop offset="1" stopColor="#A03996" />
         </linearGradient>
       </defs>
     </svg>
