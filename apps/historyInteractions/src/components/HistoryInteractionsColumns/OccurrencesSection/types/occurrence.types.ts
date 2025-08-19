@@ -1,3 +1,5 @@
+import type { IconType } from 'shared/components/Icon';
+
 export interface ComplainsData {
   id: string;
   complainId: string;
@@ -25,8 +27,6 @@ export interface MemosData {
 }
 
 export type OccurrenceType = 'complains' | 'incidents' | 'memos';
-
-export type IconType = 'complains' | 'alertFolder' | 'packageWarning';
 
 export interface OccurrenceConfig {
   type: OccurrenceType;

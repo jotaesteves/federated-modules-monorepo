@@ -1,4 +1,22 @@
 import type { CommunicationConfig, CommunicationType } from '../types/communication.types';
+import Icon from 'shared/components/Icon';
+import React from 'react';
+
+/**
+ * Helper function to render icons based on type
+ */
+export const renderCommunicationIcon = (type: CommunicationType): React.ReactNode => {
+  switch (type) {
+    case 'calls':
+      return <Icon type="phoneCall" />;
+    case 'sms-push':
+      return '💻';
+    case 'emails':
+      return '☎️';
+    default:
+      return null;
+  }
+};
 
 /**
  * Gets configuration for each communication section
@@ -7,17 +25,17 @@ export const getCommunicationConfig = (): Record<CommunicationType, Communicatio
   calls: {
     type: 'calls',
     title: 'Mobile Banking',
-    icon: 'callDots',
+    icon: renderCommunicationIcon('calls'),
   },
   'sms-push': {
     type: 'sms-push',
     title: 'SMS/Push',
-    icon: 'messageCircleDots',
+    icon: renderCommunicationIcon('sms-push'),
   },
   emails: {
     type: 'emails',
     title: 'E-mails',
-    icon: 'email',
+    icon: renderCommunicationIcon('emails'),
   },
 });
 

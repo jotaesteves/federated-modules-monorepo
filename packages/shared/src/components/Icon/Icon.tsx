@@ -13,6 +13,9 @@ import {
   ComplainsIcon,
   AlertFolderIcon,
   PackageWarningIcon,
+  CallDotsIcon,
+  MessageCircleDotsIcon,
+  EmailIcon,
 } from '@/assets/icons';
 import { cn } from '@/lib/utils';
 
@@ -31,7 +34,12 @@ const iconsMap = {
   complains: ComplainsIcon,
   alertFolder: AlertFolderIcon,
   packageWarning: PackageWarningIcon,
+  callDots: CallDotsIcon,
+  messageCircleDots: MessageCircleDotsIcon,
+  email: EmailIcon,
 } as const;
+
+export type IconType = keyof typeof iconsMap;
 
 export interface IconProps {
   type: keyof typeof iconsMap;

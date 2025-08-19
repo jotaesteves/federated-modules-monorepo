@@ -1,3 +1,5 @@
+import type { IconType } from 'shared/components/Icon';
+
 export interface CallData {
   id: string;
   phoneNumber: string;
@@ -25,7 +27,7 @@ export type CommunicationType = 'calls' | 'sms-push' | 'emails';
 export interface CommunicationConfig {
   type: CommunicationType;
   title: string;
-  icon: string;
+  icon: IconType;
 }
 
 export type CommunicationData = CallData | SmsData | EmailData;

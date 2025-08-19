@@ -13,6 +13,7 @@ import { CallCard } from '../ui/CallCard';
 import { SmsCard } from '../ui/SmsCard';
 import { EmailCard } from '../ui/EmailCard';
 import { useCommunicationConfig } from '../../hooks/useCommunicationConfig';
+import Icon from 'shared/components/Icon';
 
 interface CommunicationSectionProps {
   type: CommunicationType;
@@ -46,7 +47,14 @@ export const CommunicationSection: React.FC<CommunicationSectionProps> = ({
   };
 
   return (
-    <CardAccordion header={<CardAccordionHeader icon={config.icon} title={config.title} />}>
+    <CardAccordion
+      header={
+        <CardAccordionHeader
+          icon={<Icon type={config.icon} className="bg-teal" />}
+          title={config.title}
+        />
+      }
+    >
       {items.map((item, index) => {
         const originalData = data[index];
         const key = `${type}-${item.originalId}`;
