@@ -9,6 +9,7 @@ export { default as CardTabs } from './Card/CardTabs';
 export type { CardTabsProps, CardTabItem } from './Card/CardTabs';
 export { default as Icon } from './Icon/Icon';
 export { default as LineBreak } from './LineBreak/LineBreak';
+export { default as Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
 
 export { default as appSidebar } from './app-sidebar';
 
