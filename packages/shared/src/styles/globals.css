@@ -35,6 +35,9 @@
     p {
       @apply text-base;
     }
+    .text-xxs {
+      font-size: 10px;
+    }
   }
 }
 
