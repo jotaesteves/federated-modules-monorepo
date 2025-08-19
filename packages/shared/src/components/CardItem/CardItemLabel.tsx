@@ -1,9 +1,9 @@
-interface CardTitleDescriptionProps {
+interface CardItemLabelProps {
   title: string;
   text: string;
 }
 
-const CardTitleDescription: React.FC<CardTitleDescriptionProps> = ({ title, text }) => {
+const CardItemLabel: React.FC<CardItemLabelProps> = ({ title, text }) => {
   return (
     <div className="text-gray-800">
       <span className="text-xs opacity-55 font-semibold">{title}</span>
@@ -12,4 +12,4 @@ const CardTitleDescription: React.FC<CardTitleDescriptionProps> = ({ title, text
   );
 };
 
-export default CardTitleDescription;
+export default CardItemLabel;
