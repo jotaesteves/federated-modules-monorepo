@@ -259,8 +259,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
   },
   [Apps.historyInteractions]: {
-    devPort: 3009,
-    analyzerPort: 4009,
+    devPort: mapPorts[Apps.historyInteractions].devPort,
+    analyzerPort: mapPorts[Apps.historyInteractions].analyzerPort,
     baseConfig: {
       name: 'historyInteractions',
       filename: 'remoteEntry.js',
@@ -270,7 +270,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
     remotes: {
       dev: {
-        shared: 'shared@http://localhost:3001/remoteEntry.js',
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
