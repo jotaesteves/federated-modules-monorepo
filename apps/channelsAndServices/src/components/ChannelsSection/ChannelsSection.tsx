@@ -12,6 +12,7 @@ interface AccountData {
   cellphoneStatus: 'active' | 'inactive';
   simSwapStatus: 'blocked' | 'unblocked';
   simSwapDate: string;
+  activationDate: string;
   transactionalLimit: string;
   rechargeLimit: string;
   currency: string;
@@ -29,6 +30,7 @@ const defaultMobileAccounts: AccountData[] = [
     cellphoneStatus: 'active',
     simSwapStatus: 'blocked',
     simSwapDate: '2025-05-20',
+    activationDate: '2025-01-15 | 15:33',
     transactionalLimit: '450.000,24',
     rechargeLimit: '2.000,24',
     currency: 'MZN',
@@ -55,48 +57,41 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
           return (
             <CardAccordionItem key={account.id} itemData={itemData}>
               <div className="flex flex-col w-full space-y-1">
-                <div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-xs text-gray-500 font-medium uppercase">
-                      Telemóvel (Principal)
-                    </p>
-                    <p className="text-xs text-gray-500 font-medium uppercase">
-                      Limite Transacional
-                    </p>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <p className="flex items-center text-xs">
-                      <span className="text-base font-semibold mr-2">
-                        {account.cellphoneNumber}
-                      </span>
-                      <Badge variant={'active'}>{'ativo'.toUpperCase()}</Badge>
-                    </p>
-                    <p>
-                      <span className="text-base font-semibold">{account.transactionalLimit}</span>
-                      {account.currency}
-                    </p>
-                  </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-2xs text-gray-500 font-medium uppercase">
+                    Telemóvel (Principal)
+                  </p>
+                  <p className="text-2xs text-gray-500 font-medium uppercase">
+                    Limite Transacional
+                  </p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="flex items-center">
+                    <span className="mr-2 text-base font-semibold">{account.cellphoneNumber}</span>
+                    <Badge variant={'active'}>{'ativo'.toUpperCase()}</Badge>
+                  </p>
+                  <p>
+                    <span className="text-base font-semibold">{account.transactionalLimit} </span>
+                    <span className="text-2xs">{account.currency}</span>
+                  </p>
                 </div>
 
-                <div>
-                  <div className="flex justify-between items-center">
-                    <p className="text-xs text-gray-500 font-medium uppercase">Simswap</p>
-                    <p className="text-xs text-gray-500 font-medium uppercase">
-                      Limite de Recargas
-                    </p>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <p className="flex items-center text-xs">
-                      <span className="text-base font-semibold mr-2">
-                        {account.cellphoneNumber}
-                      </span>
-                      <Badge variant={'blocked'}>{'bloqueado'.toUpperCase()}</Badge>
-                    </p>
-                    <p>
-                      <span className="text-base font-semibold">{account.rechargeLimit}</span>
-                      {account.currency}
-                    </p>
-                  </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-2xs text-gray-500 font-medium uppercase">
+                    <span className="mr-2">Simswap</span>
+                    <Badge variant={'blocked'}>{'bloqueado'.toUpperCase()}</Badge>
+                  </p>
+
+                  <p className="text-2xs text-gray-500 font-medium uppercase">Limite de Recargas</p>
+                </div>
+                <div className="flex justify-between text-xs">
+                  <p className="flex items-center text-xs">
+                    <span className="text-2xs mr-2">Data: {account.simSwapDate}</span>
+                  </p>
+                  <p>
+                    <span className="text-base font-semibold">{account.rechargeLimit} </span>
+                    <span className="text-2xs">{account.currency}</span>
+                  </p>
                 </div>
               </div>
             </CardAccordionItem>
@@ -119,16 +114,37 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
             <CardAccordionItem key={`deposit-${account.id}`} itemData={itemData}>
               <div className="flex flex-col w-full space-y-1">
                 <div className="flex justify-between items-center">
-                  <p className="text-xs font-medium">
-                    {account.id} - {account.name}
+                  <p className="text-2xs text-gray-500 font-medium uppercase">Utilizador</p>
+                  <p className="text-2xs text-gray-500 font-medium uppercase">
+                    Limite Transacional
                   </p>
-                  <p className="text-xs text-gray-500 text-right">Saldo disponível</p>
+                </div>
+                <div className="flex justify-between">
+                  <p className="flex items-center">
+                    <span className="mr-2 text-base font-semibold">{account.id}</span>
+                    <Badge variant={'active'}>{'ativo'.toUpperCase()}</Badge>
+                  </p>
+                  <p>
+                    <span className="text-base font-semibold">{account.transactionalLimit} </span>
+                    <span className="text-2xs">{account.currency}</span>
+                  </p>
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <p className="text-2xs text-gray-500 font-medium uppercase">
+                    <span className="mr-2">Simswap</span>
+                    <Badge variant={'blocked'}>{'bloqueado'.toUpperCase()}</Badge>
+                  </p>
+
+                  <p className="text-2xs text-gray-500 font-medium uppercase">Telemóvel</p>
                 </div>
                 <div className="flex justify-between text-xs">
-                  <p>
-                    <Badge variant={'blocked'}>{'blocked'.toUpperCase()}</Badge>
+                  <p className="flex items-center text-xs">
+                    <span className="text-2xs mr-2">{account.simSwapDate}</span>
                   </p>
-                  <p className="text-right">{account.currency}</p>
+                  <p>
+                    <span className="text-base font-semibold">{account.cellphoneNumber}</span>
+                  </p>
                 </div>
               </div>
             </CardAccordionItem>
@@ -149,18 +165,21 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
 
           return (
             <CardAccordionItem key={`card-${account.id}`} itemData={itemData}>
-              <div className="flex flex-col w-full space-y-1">
-                <div className="flex justify-between items-center">
-                  <p className="text-xs font-medium">
-                    {account.id} - {account.name}
+              <div className="flex w-full space-y-1 justify-between items-center">
+                <div className="flex flex-col justify-end">
+                  <p className="flex items-center">
+                    <span className="mr-2 text-base font-semibold uppercase">PIN 2</span>
+                    <Badge variant={'active'}>{'ativo'.toUpperCase()}</Badge>
                   </p>
-                  <p className="text-xs text-gray-500 text-right">Saldo disponível</p>
                 </div>
-                <div className="flex justify-between text-xs">
-                  <p>
-                    <Badge variant={'active'}>{'active'.toUpperCase()}</Badge>
+
+                <div className="flex flex-col justify-between">
+                  <p className="text-2xs text-gray-500 font-medium uppercase text-right">
+                    Data de Ativação
                   </p>
-                  <p className="text-right">{account.currency}</p>
+                  <p>
+                    <span className="text-base font-semibold">{account.activationDate} </span>
+                  </p>
                 </div>
               </div>
             </CardAccordionItem>
