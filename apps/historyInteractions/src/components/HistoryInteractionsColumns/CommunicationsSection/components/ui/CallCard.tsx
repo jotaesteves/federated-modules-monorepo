@@ -10,7 +10,7 @@ export const CallCard: React.FC<CallCardProps> = ({ call }) => {
     <div className="flex flex-row justify-between items-center w-full space-y-1 pr-[14px]">
       <p className="font-semibold">
         {call.phoneNumber}{' '}
-        <span className="pl-[1.875rem] capitalize">{call.direction.toLocaleLowerCase()}</span>
+        <span className="pl-[1.875rem] capitalize">{call.direction.toLowerCase()}</span>
       </p>
       <div className="flex-col text-right">
         <p className="text-[0.6875rem]">{call.time}</p>
