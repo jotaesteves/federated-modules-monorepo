@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-const sidebarItems: Omit<SideBarNavItemProps, 'expanded'>[] = [
+const sidebarItems: Omit<SideBarNavItemProps, 'expanded' | 'onOpenSubmenu'>[] = [
   { icon: 'home', label: 'Início', path: '/inicio' },
   { icon: 'register', label: 'Registos', path: '/registos' },
   { icon: 'makePhoneCall', label: 'Outbounds', path: '/outbounds' },
@@ -25,7 +25,7 @@ const sidebarItems: Omit<SideBarNavItemProps, 'expanded'>[] = [
   { icon: 'graph2', label: "KPI's", path: '/kpis' },
 ];
 
-const bottomSidebarItems: Omit<SideBarNavItemProps, 'expanded'>[] = [
+const bottomSidebarItems: Omit<SideBarNavItemProps, 'expanded' | 'onOpenSubmenu'>[] = [
   { icon: 'config', label: 'Definições', path: '/definicoes' },
   { icon: 'search', label: 'Pesquisa', path: '/pesquisa' },
 ];
@@ -35,16 +35,15 @@ interface SideBarNavItemProps {
   label: string;
   path: string;
   expanded: boolean;
-  onClick?: () => void;
-  isActive?: boolean;
+  onOpenSubmenu: (label: string) => void;
 }
 
-function SideBarNavItem({ icon, label, path, expanded, onClick, isActive }: SideBarNavItemProps) {
+function SideBarNavItem({ icon, label, path, expanded, onOpenSubmenu }: SideBarNavItemProps) {
   const handleClick = () => {
     console.log('SideBarNavItem clicked:', { path, expanded });
     console.log('window.microFrontendNavigation:', window.microFrontendNavigation);
 
-    if (onClick) onClick();
+    onOpenSubmenu(label);
 
     // Use global navigation helper to navigate
     if (typeof window !== 'undefined' && window.microFrontendNavigation) {
@@ -63,7 +62,7 @@ function SideBarNavItem({ icon, label, path, expanded, onClick, isActive }: Side
     <>
       <button
         onClick={handleClick}
-        className={`flex items-center gap-3 pl-10 pr-7 h-[4rem] text-gray-700 transition-all duration-300 relative rounded-r-[20px] group hover:bg-primary-500 text-left cursor-pointer ${expanded ? 'w-full' : 'w-fit'}`}
+        className={`flex items-center gap-3 pl-10 pr-7 min-h-[4rem] max-h-[4rem] text-gray-700 transition-all duration-300 relative rounded-r-[20px] group hover:bg-primary-500 text-left cursor-pointer ${expanded ? 'w-full' : 'w-fit'}`}
         style={{ zIndex: 1 }}
       >
         <Icon
@@ -84,31 +83,35 @@ function SideBarNavItem({ icon, label, path, expanded, onClick, isActive }: Side
           {label}
         </span>
       </button>
-
-      {isActive && (
-        <div className="ml-14 mt-2">
-          <SubMenuNav />
-        </div>
-      )}
     </>
   );
 }
 
 const SideBarNav: React.FC = () => {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const submenuRef = React.useRef<HTMLDivElement>(null);
+
+  const handleOpenSubmenu = (label: string) => {
+    setActiveItem(label);
+    setSubmenuOpen(true);
+  };
 
   return (
     <nav
-      className={`relative justify-between flex flex-col items-center pt-3 pb-[4.375rem] space-y-2 bg-white h-full transition-all duration-300 overflow-hidden ${
+      className={`fixed h-[calc(100vh_-_122px_-_72px)] justify-between flex flex-col items-center py-3 gap-2 bg-white transition-all duration-300 ${
         expanded && 'w-72 shadow-[0_4px_4px_0_#00000040] border border-gray-100'
       }`}
       onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(true)}
+      onMouseLeave={() => {
+        setExpanded(false);
+        setSubmenuOpen(false);
+        setActiveItem(null);
+      }}
       style={{
         minWidth: expanded ? '18rem' : '6.525rem',
         maxWidth: expanded ? '18rem' : '6.525rem',
-        minHeight: '100%',
       }}
     >
       <div className="flex-1 overflow-y-auto min-h-0 w-full flex flex-col overflow-x-hidden">
@@ -117,28 +120,37 @@ const SideBarNav: React.FC = () => {
             key={item.label}
             {...item}
             expanded={expanded}
-            isActive={activeItem === item.label}
-            onClick={() => setActiveItem((prev) => (prev === item.label ? null : item.label))}
+            onOpenSubmenu={handleOpenSubmenu}
           />
         ))}
       </div>
-      <div className="flex flex-col flex-shrink-0 w-full">
+      <div className="flex flex-col w-full">
         {bottomSidebarItems.map((item) => (
           <SideBarNavItem
             key={item.label}
             {...item}
             expanded={expanded}
-            onClick={() => setActiveItem((prev) => (prev === item.label ? null : item.label))}
+            onOpenSubmenu={handleOpenSubmenu}
           />
         ))}
       </div>
+
+      {submenuOpen && (
+        <div
+          ref={submenuRef}
+          className="absolute z-10 top-4 left-[18rem] h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px] min-w-[29.125rem]"
+        >
+          <SubMenuNav activeItem={activeItem} />
+        </div>
+      )}
     </nav>
   );
 };
 
-const SubMenuNav: React.FC = () => {
+const SubMenuNav: React.FC<{ activeItem: string | null }> = ({ activeItem }) => {
   return (
-    <div className="flex flex-col space-y-2 text-gray-600">
+    <div className="flex flex-col space-y-2 text-gray-600 pl-6 ml-2 pr-5 pb-10 pt-3">
+      <div className="font-semibold text-gray-800 mb-2">{activeItem}</div>
       <button className="text-left pl-4">SubItem 1</button>
       <button className="text-left pl-4">SubItem 2</button>
       <button className="text-left pl-4">SubItem 3</button>
