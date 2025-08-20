@@ -93,6 +93,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         personalData: `personalData@http://localhost:${mapPorts[Apps.personalData].devPort}/remoteEntry.js`,
         assetsProducts: `assetsProducts@http://localhost:${mapPorts[Apps.assetsProducts].devPort}/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@http://localhost:${mapPorts[Apps.channelsAndServices].devPort}/remoteEntry.js`,
+        historyInteractions: `historyInteractions@http://localhost:${mapPorts[Apps.historyInteractions].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -102,6 +103,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
+        historyInteractions: `historyInteractions@${hostBaseUrl}apps/historyInteractions/dist/remoteEntry.js`,
       },
     },
   },
@@ -112,12 +114,14 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       name: 'shared',
       filename: 'remoteEntry.js',
       exposes: {
+        './components/Breadcrumbs': './src/components/Breadcrumbs/Breadcrumbs',
         './components/Button': './src/components/Button/Button',
         './components/InputWithLabel': './src/components/InputWithLabel/InputWithLabel',
         './components/SomeForm': './src/components/SomeForm/SomeForm',
         './components/Card': './src/components/Card/Card',
         './components/CardAccordion': './src/components/Card/CardAccordion',
         './components/CardTabs': './src/components/Card/CardTabs',
+        './components/CardItemLabel': './src/components/CardItem/CardItemLabel',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
         './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
@@ -245,6 +249,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './ChannelsAndServices': './src/ChannelsAndServices',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.historyInteractions]: {
+    devPort: mapPorts[Apps.historyInteractions].devPort,
+    analyzerPort: mapPorts[Apps.historyInteractions].analyzerPort,
+    baseConfig: {
+      name: 'historyInteractions',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './HistoryInteractions': './src/HistoryInteractions',
       },
     },
     remotes: {

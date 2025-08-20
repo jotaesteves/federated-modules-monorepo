@@ -10,6 +10,14 @@ import {
   MakePhoneCallIcon,
   CallCenterWorkerIcon,
   RingCallIcon,
+  ComplainsIcon,
+  AlertFolderIcon,
+  PackageWarningIcon,
+  CallDotsIcon,
+  MessageCircleDotsIcon,
+  EmailIcon,
+  MessageIcon,
+  HistoryIcon,
   CellPhoneIcon,
   BellIcon,
   ShoppingBagIcon,
@@ -20,8 +28,6 @@ import {
   ShareIcon,
   CallBackIcon,
   DialPadIcon,
-  MessageIcon,
-  HistoryIcon,
   ExclamationIcon,
   ChevronRightIcon,
   HomeIcon,
@@ -32,100 +38,74 @@ import {
   ConfigIcon,
   SearchIcon,
 } from '@/assets/icons';
-import * as React from 'react';
 import { cn } from '@/lib/utils';
+import React from 'react';
+
+const iconsMap = {
+  graph: GraphIcon,
+  contact: ContactIcon,
+  documentation: DocumentationIcon,
+  person: PersonIcon,
+  pin: PinIcon,
+  risk: RiskIcon,
+  user: UserIcon,
+  phoneCall: PhoneCallIcon,
+  makePhoneCall: MakePhoneCallIcon,
+  ringCall: RingCallIcon,
+  callCenterWorker: CallCenterWorkerIcon,
+  complains: ComplainsIcon,
+  alertFolder: AlertFolderIcon,
+  packageWarning: PackageWarningIcon,
+  callDots: CallDotsIcon,
+  messageCircleDots: MessageCircleDotsIcon,
+  email: EmailIcon,
+  message: MessageIcon,
+  history: HistoryIcon,
+  cellPhone: CellPhoneIcon,
+  bell: BellIcon,
+  shoppingBag: ShoppingBagIcon,
+  personMale: PersonMaleIcon,
+  personMalePolygon: PersonMalePolygonIcon,
+  pause: PauseIcon,
+  send: SendIcon,
+  share: ShareIcon,
+  callback: CallBackIcon,
+  dialPad: DialPadIcon,
+  exclamation: ExclamationIcon,
+  chevronRight: ChevronRightIcon,
+  home: HomeIcon,
+  register: RegisterIcon,
+  files: FilesIcon,
+  info: InfoIcon,
+  graph2: Graph2Icon,
+  config: ConfigIcon,
+  search: SearchIcon,
+} as const;
+
+export type IconType = keyof typeof iconsMap;
 
 export interface IconProps {
-  type:
-    | 'contact'
-    | 'graph'
-    | 'documentation'
-    | 'person'
-    | 'pin'
-    | 'risk'
-    | 'user'
-    | 'phoneCall'
-    | 'makePhoneCall'
-    | 'ringCall'
-    | 'callCenterWorker'
-    | 'cellPhone'
-    | 'bell'
-    | 'shoppingBag'
-    | 'personMale'
-    | 'personMalePolygon'
-    | 'pause'
-    | 'send'
-    | 'share'
-    | 'callback'
-    | 'dialPad'
-    | 'message'
-    | 'history'
-    | 'exclamation'
-    | 'chevronRight'
-    | 'home'
-    | 'register'
-    | 'shopBag'
-    | 'info'
-    | 'files'
-    | 'graph2'
-    | 'config'
-    | 'search';
+  type: keyof typeof iconsMap;
   rounded?: boolean;
   size?: 'sm' | 'lg';
   className?: string;
 }
 
-const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) => {
-  const iconsMap: Record<IconProps['type'], React.FC> = {
-    graph: GraphIcon,
-    contact: ContactIcon,
-    documentation: DocumentationIcon,
-    person: PersonIcon,
-    pin: PinIcon,
-    risk: RiskIcon,
-    user: UserIcon,
-    phoneCall: PhoneCallIcon,
-    makePhoneCall: MakePhoneCallIcon,
-    ringCall: RingCallIcon,
-    callCenterWorker: CallCenterWorkerIcon,
-    cellPhone: CellPhoneIcon,
-    bell: BellIcon,
-    shoppingBag: ShoppingBagIcon,
-    personMale: PersonMaleIcon,
-    personMalePolygon: PersonMalePolygonIcon,
-    pause: PauseIcon,
-    send: SendIcon,
-    share: ShareIcon,
-    callback: CallBackIcon,
-    dialPad: DialPadIcon,
-    message: MessageIcon,
-    history: HistoryIcon,
-    exclamation: ExclamationIcon,
-    chevronRight: ChevronRightIcon,
-    home: HomeIcon,
-    register: RegisterIcon,
-    shopBag: ShoppingBagIcon,
-    info: InfoIcon,
-    files: FilesIcon,
-    graph2: Graph2Icon,
-    config: ConfigIcon,
-    search: SearchIcon,
-  };
-
+const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className = '' }) => {
   const IconComponent = iconsMap[type];
   if (!IconComponent) return null;
-
-  const baseClasses = 'inline-flex items-center justify-center p-[6px]';
-
-  const sizeClasses = {
-    sm: 'w-8 h-8',
-    lg: 'w-10 h-10',
-  };
-
+  const sizeClasses = size === 'lg' ? 'w-10 h-10' : 'w-8 h-8';
   const radiusClasses = rounded ? 'rounded-full' : 'rounded-md';
 
   return (
-    <span className={cn(baseClasses, sizeClasses[size], radiusClasses, className)}>
+    <span
+      className={cn(
+        'inline-flex items-center justify-center p-[6px] h-fit',
+        sizeClasses,
+        radiusClasses,
+        className
+      )}
+    >
       <IconComponent />
     </span>
   );

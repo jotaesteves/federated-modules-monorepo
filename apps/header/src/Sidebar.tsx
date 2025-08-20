@@ -19,7 +19,7 @@ const sidebarItems: Omit<SideBarNavItemProps, 'expanded' | 'onOpenSubmenu'>[] = 
   { icon: 'home', label: 'Início', path: '/inicio' },
   { icon: 'register', label: 'Registos', path: '/registos' },
   { icon: 'makePhoneCall', label: 'Outbounds', path: '/outbounds' },
-  { icon: 'shopBag', label: 'Vendas', path: '/vendas' },
+  { icon: 'shoppingBag', label: 'Vendas', path: '/vendas' },
   { icon: 'info', label: 'Scripts', path: '/scripts' },
   { icon: 'files', label: 'Documentação', path: '/documentacao' },
   { icon: 'graph2', label: "KPI's", path: '/kpis' },

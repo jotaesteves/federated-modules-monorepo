@@ -11,7 +11,7 @@ interface CardItemIncidentsProps {
 const CardItemIncidents: React.FC<CardItemIncidentsProps> = ({ date, type, title, link }) => {
   return (
     <div className="flex gap-2 p-2">
-      <Icon type="exclamation" className="bg-red" rounded size="sm" />
+      <Icon type="exclamation" className="bg-primary-500" rounded size="sm" />
       <div className="flex flex-col gap-1">
         <span className="font-bold text-gray-800 leading-[100%]">
           {date} | {type}
