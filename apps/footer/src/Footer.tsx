@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ customTags, useHistory = true }) => {
   const tagsToUse = customTags || (useHistory && historyTags.length > 0 ? historyTags : undefined);
 
   return (
-    <footer className={`footer ${theme}`}>
+    <footer className={`footer ml-[106px] ${theme}`}>
       <FooterTags tags={tagsToUse} onTagClose={useHistory ? excludePageFromHistory : undefined} />
       <div className="footer-chat">
         <button

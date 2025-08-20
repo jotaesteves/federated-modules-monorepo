@@ -30,8 +30,16 @@ import {
   DialPadIcon,
   ExclamationIcon,
   ChevronRightIcon,
+  HomeIcon,
+  RegisterIcon,
+  FilesIcon,
+  InfoIcon,
+  Graph2Icon,
+  ConfigIcon,
+  SearchIcon,
 } from '@/assets/icons';
 import { cn } from '@/lib/utils';
+import React from 'react';
 
 const iconsMap = {
   graph: GraphIcon,
@@ -65,6 +73,13 @@ const iconsMap = {
   dialPad: DialPadIcon,
   exclamation: ExclamationIcon,
   chevronRight: ChevronRightIcon,
+  home: HomeIcon,
+  register: RegisterIcon,
+  files: FilesIcon,
+  info: InfoIcon,
+  graph2: Graph2Icon,
+  config: ConfigIcon,
+  search: SearchIcon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;
@@ -79,7 +94,6 @@ export interface IconProps {
 const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className = '' }) => {
   const IconComponent = iconsMap[type];
   if (!IconComponent) return null;
-
   const sizeClasses = size === 'lg' ? 'w-10 h-10' : 'w-8 h-8';
   const radiusClasses = rounded ? 'rounded-full' : 'rounded-md';
 
