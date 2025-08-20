@@ -1,6 +1,8 @@
 import React from 'react';
 import Card, { CardProps } from './Card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@ui/tabs';
+import { ScrollArea, ScrollBar } from '@ui/scroll-area';
+import { cn } from '@/lib/utils';
 
 export interface CardTabItem {
   value: string;
@@ -32,7 +34,7 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
 
     return (
       <Card ref={ref} {...cardProps}>
-        <Tabs defaultValue={defaultTab} className="w-full">
+        <Tabs defaultValue={defaultTab} className="w-full h-full flex flex-col">
           <TabsList className={tabsListClassName}>
             {tabs.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value} className={tabsTriggerClassName}>
@@ -41,11 +43,22 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
             ))}
           </TabsList>
 
-          {tabs.map((tab) => (
-            <TabsContent key={tab.value} value={tab.value} className={tabsContentClassName}>
-              {tab.content}
-            </TabsContent>
-          ))}
+          <ScrollArea className="h-full">
+            {tabs.map((tab) => (
+              <TabsContent
+                key={tab.value}
+                value={tab.value}
+                className={cn(tabsContentClassName, 'pr-[1.125rem]')}
+              >
+                {tab.content}
+              </TabsContent>
+            ))}
+            <ScrollBar
+              id="scroll-bar"
+              forceMount
+              className="w-2 p-0 rounded-full bg-gray-300/35 [&>div]:bg-primary-500 [&>div]:rounded-full mt-4 h-[calc(100%_-_1rem)]"
+            />
+          </ScrollArea>
         </Tabs>
       </Card>
     );

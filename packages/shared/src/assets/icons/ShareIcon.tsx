@@ -2,7 +2,7 @@ export const ShareIcon = () => {
   return (
     <svg width="43" height="42" viewBox="0 0 43 42" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_5340_23579)">
-        <g clip-path="url(#clip0_5340_23579)">
+        <g clipPath="url(#clip0_5340_23579)">
           <path
             d="M3.76953 21.0127C3.76953 11.2204 11.7077 3.28223 21.5 3.28223C31.2923 3.28223 39.2305 11.2204 39.2305 21.0127C39.2305 30.805 31.2923 38.7432 21.5 38.7432C11.7077 38.7432 3.76953 30.805 3.76953 21.0127Z"
             fill="white"
@@ -21,9 +21,9 @@ export const ShareIcon = () => {
           width="41.1347"
           height="41.1347"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"

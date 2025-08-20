@@ -20,3 +20,17 @@ declare module '*.css?raw' {
   const content: string;
   export default content;
 }
+
+// Module Federation remotes typings
+declare module 'shared/components/ErrorBoundary' {
+  import type { ComponentType } from 'react';
+
+  export interface ErrorBoundaryProps {
+    children: React.ReactNode;
+    fallback?: React.ReactNode;
+    onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
+  }
+
+  const ErrorBoundaryComponent: ComponentType<ErrorBoundaryProps>;
+  export default ErrorBoundaryComponent;
+}
