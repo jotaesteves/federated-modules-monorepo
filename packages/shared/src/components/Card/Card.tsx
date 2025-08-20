@@ -25,7 +25,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       {(icon || title || description) && (
         <CardHeader>
           {(icon || title) && (
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-xl font-bold">
               {icon && <>{icon}</>}
               {title && <>{title}</>}
             </CardTitle>
