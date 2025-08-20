@@ -5,6 +5,7 @@ export enum Apps {
   vision360,
   footer,
   personalData,
+  records,
   assetsProducts,
   channelsAndServices,
   historyInteractions,
