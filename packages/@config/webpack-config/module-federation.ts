@@ -119,10 +119,12 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/Card': './src/components/Card/Card',
         './components/CardAccordion': './src/components/Card/CardAccordion',
         './components/CardTabs': './src/components/Card/CardTabs',
+        './components/CardItemLabel': './src/components/CardItem/CardItemLabel',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
         './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
         './components/LineBreak': './src/components/LineBreak/LineBreak',
+        './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
@@ -192,7 +194,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
     },
     remotes: {
       dev: {
-        shared: `shared@http://localhost:${mapPorts[Apps.vision360].devPort}/remoteEntry.js`,
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
