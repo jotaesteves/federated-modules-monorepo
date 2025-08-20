@@ -91,7 +91,6 @@ const SideBarNav: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  const submenuRef = React.useRef<HTMLDivElement>(null);
 
   const handleOpenSubmenu = (label: string) => {
     setActiveItem(label);
@@ -137,8 +136,8 @@ const SideBarNav: React.FC = () => {
 
       {submenuOpen && (
         <div
-          ref={submenuRef}
           className="absolute z-10 top-4 left-[18rem] h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px] min-w-[29.125rem]"
+          style={{ clipPath: 'inset(-10px -10px -10px 0)' }}
         >
           <SubMenuNav activeItem={activeItem} />
         </div>
@@ -149,11 +148,27 @@ const SideBarNav: React.FC = () => {
 
 const SubMenuNav: React.FC<{ activeItem: string | null }> = ({ activeItem }) => {
   return (
-    <div className="flex flex-col space-y-2 text-gray-600 pl-6 ml-2 pr-5 pb-10 pt-3">
-      <div className="font-semibold text-gray-800 mb-2">{activeItem}</div>
-      <button className="text-left pl-4">SubItem 1</button>
-      <button className="text-left pl-4">SubItem 2</button>
-      <button className="text-left pl-4">SubItem 3</button>
+    <div className="pl-6 ml-2 pr-5 pb-10 pt-3">
+      <p className="font-semibold text-gray-800 mb-2 text-[2rem] relative after:content-[''] after:absolute after:-bottom-[5px] after:left-0 after:w-[15%] after:h-[5px] after:bg-primary-500">
+        {activeItem}
+      </p>
+      <div className="py-3 flex flex-col overflow-y-auto">
+        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
+          Canais Digitais
+        </button>
+        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
+          Cartões
+        </button>
+        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
+          Créditos
+        </button>
+        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
+          Reclamações
+        </button>
+        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
+          Outros Serviços
+        </button>
+      </div>
     </div>
   );
 };
