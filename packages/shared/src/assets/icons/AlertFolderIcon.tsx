@@ -15,6 +15,7 @@ export const AlertFolderIcon = () => {
           strokeWidth="1.5"
           strokeMiterlimit="10"
         />
+
         <path d="M9.13965 18.8223H11.0496" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" />
       </g>
       <defs>
