@@ -180,16 +180,6 @@ const SubMenuNav: React.FC<SubMenuNavProps> = ({
 }) => {
   const submenuItems = ['Canais Digitais', 'Cartões', 'Créditos', 'Reclamações', 'Outros Serviços'];
 
-  const fixedLevel2Items = [
-    'Acessos',
-    'Cancelamento/Bloqueio',
-    'Limites Transaccionais',
-    'Recargas',
-    'Erros da Aplicação',
-    'Dúvidas de Instalação App - Smart IZI',
-    'Libertação OTP',
-  ];
-
   return (
     <div className="pl-6 pr-5 pb-10 pt-3 flex absolute w-full h-full overflow-hidden">
       {/* Submenu Level 1 */}
@@ -215,6 +205,28 @@ const SubMenuNav: React.FC<SubMenuNavProps> = ({
       </div>
 
       {/* Submenu Level 2 */}
+      <SubMenuLvl2 level2Open={level2Open} />
+    </div>
+  );
+};
+
+interface SubMenuLvl2Props {
+  level2Open: boolean;
+}
+
+const SubMenuLvl2: React.FC<SubMenuLvl2Props> = ({ level2Open }) => {
+  const fixedLevel2Items = [
+    'Acessos',
+    'Cancelamento/Bloqueio',
+    'Limites Transaccionais',
+    'Recargas',
+    'Erros da Aplicação',
+    'Dúvidas de Instalação App - Smart IZI',
+    'Libertação OTP',
+  ];
+
+  return (
+    <>
       {level2Open && (
         <div className="w-[28rem] pl-6 mt-14 overflow-y-auto scroll-custom-bar h-[calc(100%_-_70px)]">
           <div>
@@ -249,7 +261,7 @@ const SubMenuNav: React.FC<SubMenuNavProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 
