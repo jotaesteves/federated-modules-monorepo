@@ -16,7 +16,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className }) =>
   if (!items || items.length === 0) return null;
 
   return (
-    <div className={className ?? 'px-2'}>
+    <div className={cn( className, 'px-2'}>
       <Breadcrumb>
         <BreadcrumbList>
           {items.map((item, index) => (
