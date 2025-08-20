@@ -22,6 +22,8 @@ import {
   DialPadIcon,
   MessageIcon,
   HistoryIcon,
+  ExclamationIcon,
+  ChevronRightIcon,
 } from '@/assets/icons';
 import * as React from 'react';
 import { cn } from '@/lib/utils';
@@ -50,7 +52,9 @@ export interface IconProps {
     | 'callback'
     | 'dialPad'
     | 'message'
-    | 'history';
+    | 'history'
+    | 'exclamation'
+    | 'chevronRight';
   rounded?: boolean;
   size?: 'sm' | 'lg';
   className?: string;
@@ -81,6 +85,8 @@ const Icon: React.FC<IconProps> = ({ type, rounded, size = 'sm', className }) =>
     dialPad: DialPadIcon,
     message: MessageIcon,
     history: HistoryIcon,
+    exclamation: ExclamationIcon,
+    chevronRight: ChevronRightIcon,
   };
 
   const IconComponent = iconsMap[type];

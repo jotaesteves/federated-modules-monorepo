@@ -21,3 +21,5 @@ export { CallBackIcon } from './CallBackIcon';
 export { DialPadIcon } from './DialPadIcon';
 export { MessageIcon } from './MessageIcon';
 export { HistoryIcon } from './HistoryIcon';
+export { ExclamationIcon } from './ExclamationIcon';
+export { ChevronRightIcon } from './ChevronRightIcon';

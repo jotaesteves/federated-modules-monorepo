@@ -9,7 +9,7 @@ export interface CardItemMessagesProps {
 export const CardItemMessages: React.FC<CardItemMessagesProps> = ({ date, time, message }) => {
   return (
     <div className="flex gap-2 p-2">
-      <Icon type="message" rounded className="bg-red aspect-square" />
+      <Icon type="message" rounded className="bg-primary-600 aspect-square" />
       <div className="flex flex-col">
         <span className="text-gray-800 opacity-55 text-xs font-semibold">
           {date} | {time}

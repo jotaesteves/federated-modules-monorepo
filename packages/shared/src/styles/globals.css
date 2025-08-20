@@ -38,4 +38,18 @@
   }
 }
 
+@layer utilities {
+  .scroll-custom {
+    scrollbar-width: thin;
+    scrollbar-color: #adadae #e9e9ed;
+    padding: 0 18px 0 8px;
+  }
+
+  .scroll-custom-color {
+    scrollbar-width: thin;
+    scrollbar-color: #d1005d #e9e9ed;
+    padding: 0 18px 0 8px;
+  }
+}
+
 @import 'tw-animate-css';
