@@ -3,7 +3,11 @@ import type { CardTabItem } from 'shared/components/CardTabs';
 import CardTabs from 'shared/components/CardTabs';
 import LineBreak from 'shared/components/LineBreak';
 import { CardAccordionItemClaims } from 'src/components/cards/Incidents/components/CardAccordionItemClaims';
-import { CardAccordionItemClaimsMapData } from 'src/components/cards/Incidents/mockData/mockData';
+import CardItemIncidents from 'src/components/cards/Incidents/components/CardItemIncidents';
+import {
+  CardAccordionItemClaimsMapData,
+  CardItemIncidentsMapData,
+} from 'src/components/cards/Incidents/mockData/mockData';
 
 const tabs: CardTabItem[] = [
   {
@@ -24,10 +28,14 @@ const tabs: CardTabItem[] = [
     value: 'incidents',
     label: 'Incidentes',
     content: (
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold">Incidentes Content</h3>
-        <p>This is the incidentes tab content. You can put any React components here.</p>
-      </div>
+      <>
+        {CardItemIncidentsMapData.map((props, index) => (
+          <React.Fragment key={index}>
+            <CardItemIncidents {...props} />
+            {index < CardItemIncidentsMapData.length - 1 && <LineBreak />}
+          </React.Fragment>
+        ))}
+      </>
     ),
   },
 ];

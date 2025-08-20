@@ -1,8 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { AssetsColumns } from './components/AssetsColumns/AssetsColumns';
-import { DetailsSection } from './components/DetailsSection/DetailsSection';
 import { AssetsProvider } from './context/AssetsContext';
+import { DetailsSection } from './components/DetailsSection/DetailsSection';
 import { DetailsRouter } from './components/details/DetailsRouter';
 
 const AssetsProducts: React.FC = () => {

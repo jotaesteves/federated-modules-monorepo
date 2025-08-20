@@ -14,6 +14,8 @@ module.exports = {
     '../../apps/vision360/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/personalData/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/assetsProducts/src/**/*.{js,ts,jsx,tsx}',
+    '../../apps/channelsAndServices/src/**/*.{js,ts,jsx,tsx}',
+    '../../apps/historyInteractions/src/**/*.{js,ts,jsx,tsx}',
 
     // Public HTML files
     '../../apps/*/public/index.html',
@@ -40,7 +42,7 @@ module.exports = {
           200: '#ff80b3',
           300: '#ff4d94',
           400: '#ff1a75',
-          500: '#d70664',
+          500: '#D1005D', // client color
           600: '#b00557',
           700: '#8a0445',
           800: '#640334',
@@ -51,7 +53,7 @@ module.exports = {
         gray: {
           100: '#F3F3F8',
           200: '#E5E7EB', // used
-          300: '#D1D5DB',
+          300: '#D9D9D9', // used scroll-bar bg
           400: '#9CA3AF',
           500: '#7C7F86', // used
           600: '#5E5E5E', // used
@@ -66,8 +68,12 @@ module.exports = {
         blue: {
           DEFAULT: '#0052B4',
         },
-        red: {
-          DEFAULT: '#D1005D',
+        teal: {
+          DEFAULT: '#14A9B9',
+        },
+        orange: {
+          500: '#FF810A',
+          DEFAULT: '#FF5900',
         },
         purple: {
           DEFAULT: '#9747FF',
@@ -113,6 +119,7 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
       fontSize: {
+        '2xs': '0.625rem',
         base: '0.9375rem',
         '2xl': '1.5625rem',
         '2xs': '0.625rem',
