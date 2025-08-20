@@ -35,12 +35,6 @@
     p {
       @apply text-base;
     }
-    .text-2xs {
-      font-size: 10px;
-    }
-    .text-3xs {
-      font-size: 8px;
-    }
   }
 }
 
