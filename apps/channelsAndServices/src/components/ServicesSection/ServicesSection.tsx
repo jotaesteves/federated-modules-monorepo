@@ -1,5 +1,5 @@
 import React from 'react';
-import CardAccordion from 'shared/components/Card';
+import CardAccordion from 'shared/components/CardAccordion';
 import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 import { Badge } from 'shared/components/ui';
