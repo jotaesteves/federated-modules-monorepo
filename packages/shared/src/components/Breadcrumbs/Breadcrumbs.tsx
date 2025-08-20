@@ -8,6 +8,7 @@ import {
 } from '../ui';
 import { cn } from '@/lib/utils';
 
+
 export type BreadcrumbsProps = {
   items: { label: string }[];
   className?: string;
@@ -18,6 +19,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className }) =>
 
   return (
     <div className={cn(className, 'px-2')}>
+
       <Breadcrumb>
         <BreadcrumbList>
           {items.map((item, index) => (
