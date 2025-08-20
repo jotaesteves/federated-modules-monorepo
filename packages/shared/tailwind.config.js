@@ -51,7 +51,7 @@ module.exports = {
           DEFAULT: '#d70664',
         },
         gray: {
-          100: '#F3F3F8',
+          100: '#F3F4F6', // used
           200: '#E5E7EB', // used
           300: '#D9D9D9', // used scroll-bar bg
           400: '#9CA3AF',

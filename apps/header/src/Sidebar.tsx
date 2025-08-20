@@ -3,6 +3,7 @@
 
 import React, { useState } from 'react';
 import Icon, { IconProps } from 'shared/components/Icon';
+import LineBreak from 'shared/components/LineBreak';
 
 // Declare global navigation helper interface
 declare global {
@@ -91,10 +92,19 @@ const SideBarNav: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
   const [submenuOpen, setSubmenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
+  const [level2Open, setLevel2Open] = useState(false);
+  const [activeLevel2Item, setActiveLevel2Item] = useState<string | null>(null);
 
   const handleOpenSubmenu = (label: string) => {
     setActiveItem(label);
     setSubmenuOpen(true);
+    setLevel2Open(false);
+    setActiveLevel2Item(null);
+  };
+
+  const handleLevel2ItemClick = (item: string) => {
+    setActiveLevel2Item(item);
+    setLevel2Open(true);
   };
 
   return (
@@ -107,6 +117,8 @@ const SideBarNav: React.FC = () => {
         setExpanded(false);
         setSubmenuOpen(false);
         setActiveItem(null);
+        setLevel2Open(false);
+        setActiveLevel2Item(null);
       }}
       style={{
         minWidth: expanded ? '18rem' : '6.525rem',
@@ -136,39 +148,107 @@ const SideBarNav: React.FC = () => {
 
       {submenuOpen && (
         <div
-          className="absolute z-10 top-4 left-[18rem] h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px] min-w-[29.125rem]"
+          className={`absolute z-10 top-4 left-[18rem] min-h-[calc(100%_-_70px)] max-h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px] ${
+            level2Open ? 'min-w-[58rem]' : 'min-w-[24.5rem]'
+          }`}
           style={{ clipPath: 'inset(-10px -10px -10px 0)' }}
         >
-          <SubMenuNav activeItem={activeItem} />
+          <SubMenuNav
+            activeItem={activeItem}
+            onLevel2ItemClick={handleLevel2ItemClick}
+            level2Open={level2Open}
+            activeLevel2Item={activeLevel2Item}
+          />
         </div>
       )}
     </nav>
   );
 };
 
-const SubMenuNav: React.FC<{ activeItem: string | null }> = ({ activeItem }) => {
+interface SubMenuNavProps {
+  activeItem: string | null;
+  onLevel2ItemClick: (item: string) => void;
+  level2Open: boolean;
+  activeLevel2Item: string | null;
+}
+
+const SubMenuNav: React.FC<SubMenuNavProps> = ({
+  activeItem,
+  onLevel2ItemClick,
+  level2Open,
+  activeLevel2Item,
+}) => {
+  const submenuItems = ['Canais Digitais', 'Cartões', 'Créditos', 'Reclamações', 'Outros Serviços'];
+
+  const fixedLevel2Items = [
+    'Acessos',
+    'Cancelamento/Bloqueio',
+    'Limites Transaccionais',
+    'Recargas',
+    'Erros da Aplicação',
+    'Dúvidas de Instalação App - Smart IZI',
+    'Libertação OTP',
+  ];
+
   return (
-    <div className="pl-6 ml-2 pr-5 pb-10 pt-3">
-      <p className="font-semibold text-gray-800 mb-2 text-[2rem] relative after:content-[''] after:absolute after:-bottom-[5px] after:left-0 after:w-[15%] after:h-[5px] after:bg-primary-500">
-        {activeItem}
-      </p>
-      <div className="py-3 flex flex-col overflow-y-auto">
-        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
-          Canais Digitais
-        </button>
-        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
-          Cartões
-        </button>
-        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
-          Créditos
-        </button>
-        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
-          Reclamações
-        </button>
-        <button className="text-gray-800 font-medium text-[1.375rem] min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white">
-          Outros Serviços
-        </button>
+    <div className="pl-6 pr-5 pb-10 pt-3 flex absolute w-full h-full overflow-hidden">
+      {/* Submenu Level 1 */}
+      <div className="w-[24.5rem]">
+        <p className="font-semibold text-gray-800 mb-2 text-[2rem] relative after:content-[''] after:absolute after:-bottom-[5px] after:left-0 after:w-[15%] after:h-[5px] after:bg-primary-500">
+          {activeItem}
+        </p>
+        <div className="py-3 flex flex-col overflow-y-auto">
+          {submenuItems.map((item) => (
+            <>
+              <button
+                key={item}
+                onClick={() => onLevel2ItemClick(item)}
+                className={`text-gray-800 font-medium text-xl min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100 ${
+                  activeLevel2Item === item ? 'bg-primary-500 text-white' : ''
+                }`}
+              >
+                {item}
+              </button>
+            </>
+          ))}
+        </div>
       </div>
+
+      {/* Submenu Level 2 */}
+      {level2Open && (
+        <div className="w-[28rem] pl-6 mt-14 overflow-y-auto scroll-custom-bar h-[calc(100%_-_70px)]">
+          <div>
+            <p className="uppercase p-4 bg-gray-100 rounded-lg text-gray-800 opacity-60 m-0 font-semibold">
+              Mobile Banking (IZI/SMART IZI)
+            </p>
+            <div className="flex flex-col overflow-y-auto">
+              {fixedLevel2Items.map((subItem) => (
+                <button
+                  key={subItem}
+                  className="text-gray-800 font-medium text-xl min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100"
+                >
+                  {subItem}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="uppercase p-4 bg-gray-100 rounded-lg text-gray-800 opacity-60 m-0 font-semibold">
+              Mobile Banking (IZI/SMART IZI)
+            </p>
+            <div className="flex flex-col overflow-y-auto">
+              {fixedLevel2Items.map((subItem) => (
+                <button
+                  key={subItem}
+                  className="text-gray-800 font-medium text-xl min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100"
+                >
+                  {subItem}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
