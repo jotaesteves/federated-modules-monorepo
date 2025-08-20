@@ -7,7 +7,9 @@ export const ComplainsIcon = () => {
           stroke="white"
           stroke-width="1.63632"
           stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="1.63632"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
