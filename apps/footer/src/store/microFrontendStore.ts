@@ -3,9 +3,20 @@ import { useState, useCallback, useEffect } from 'react';
 // Global type declarations
 declare global {
   interface Window {
-    globalMicroFrontendStore?: any;
+    globalMicroFrontendStore?: {
+      getState: () => MicroFrontendState & {
+        navigateTo: (page: string) => void;
+        setCurrentPage: (page: string) => void;
+        setUser: (userData: Partial<MicroFrontendState['user']>) => void;
+        setTheme: (theme: MicroFrontendState['theme']) => void;
+        setSharedData: (key: string, value: unknown) => void;
+        getSharedData: (key: string) => unknown;
+        setLoading: (isLoading: boolean) => void;
+      };
+      subscribe: (listener: () => void) => () => void;
+    };
     microFrontendEventBus?: {
-      emit: (event: { type: string; payload: any }) => void;
+      emit: (event: { type: string; payload: unknown }) => void;
     };
   }
 }
@@ -20,7 +31,7 @@ export interface MicroFrontendState {
     isAuthenticated: boolean;
   };
   theme: 'light' | 'dark';
-  sharedData: Record<string, any>;
+  sharedData: Record<string, unknown>;
   isLoading: boolean;
 }
 
@@ -71,15 +82,23 @@ export const useMicroFrontendStore = () => {
   }, []);
 
   // Check if global store is available (running inside host)
-  if (typeof window !== 'undefined' && 'globalMicroFrontendStore' in window) {
-    // Access the shared global store directly
-    const globalStore = (window as any).globalMicroFrontendStore;
-    const state = globalStore.getState();
+  const isGlobalStoreAvailable =
+    typeof window !== 'undefined' && 'globalMicroFrontendStore' in window;
 
-    // Subscribe to global store changes
-    useEffect(() => {
+  // Subscribe to store changes (either global or local)
+  useEffect(() => {
+    if (isGlobalStoreAvailable) {
+      const globalStore = window.globalMicroFrontendStore!;
       return globalStore.subscribe(triggerUpdate);
-    }, [triggerUpdate]);
+    } else {
+      return localStore.subscribe(triggerUpdate);
+    }
+  }, [triggerUpdate, isGlobalStoreAvailable]);
+
+  if (isGlobalStoreAvailable) {
+    // Access the shared global store directly
+    const globalStore = window.globalMicroFrontendStore!;
+    const state = globalStore.getState();
 
     // Return global store state and actions
     return {
@@ -98,11 +117,6 @@ export const useMicroFrontendStore = () => {
   // Use local store for standalone mode
   const state = localStore.getState();
 
-  // Subscribe to changes
-  useEffect(() => {
-    return localStore.subscribe(triggerUpdate);
-  }, [triggerUpdate]);
-
   const actions = {
     setCurrentPage: (page: string) => {
       localStore.setState({ currentPage: page });
@@ -115,7 +129,7 @@ export const useMicroFrontendStore = () => {
       if (typeof window !== 'undefined' && window.microFrontendEventBus) {
         window.microFrontendEventBus.emit({
           type: 'NAVIGATION_CHANGE',
-          payload: { page: page as any },
+          payload: { page },
         });
       }
     },
@@ -131,7 +145,7 @@ export const useMicroFrontendStore = () => {
       localStore.setState({ theme });
     },
 
-    setSharedData: (key: string, value: any) => {
+    setSharedData: (key: string, value: unknown) => {
       const currentState = localStore.getState();
       localStore.setState({
         sharedData: { ...currentState.sharedData, [key]: value },

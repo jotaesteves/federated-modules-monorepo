@@ -119,8 +119,8 @@ module.exports = [
       parser: typescriptParser,
       parserOptions: {
         ecmaFeatures: { jsx: true },
-        // Remove project-based parsing to avoid tsconfig path issues
         sourceType: 'module',
+        project: true,
       },
     },
     rules: {
@@ -229,6 +229,11 @@ module.exports = [
       globals: {
         ...globals.node,
       },
+    },
+    rules: {
+      // Disable type-aware rules for config files as they often don't need strict typing
+      '@typescript-eslint/no-floating-promises': 'off',
+      '@typescript-eslint/no-misused-promises': 'off',
     },
   },
 ];

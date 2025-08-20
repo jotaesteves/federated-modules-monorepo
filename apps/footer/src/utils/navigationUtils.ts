@@ -1,6 +1,15 @@
 import type { FooterTag } from '../types';
 
 /**
+ * Interface for the global micro frontend store
+ */
+interface GlobalMicroFrontendStore {
+  getState(): {
+    removeFromHistory?: (page: string) => void;
+  };
+}
+
+/**
  * Utility functions for working with navigation history in the footer
  */
 
@@ -54,9 +63,9 @@ export const isGlobalStoreAvailable = (): boolean => {
 /**
  * Gets the global store instance safely
  */
-export const getGlobalStore = () => {
+export const getGlobalStore = (): GlobalMicroFrontendStore | null => {
   if (isGlobalStoreAvailable()) {
-    return (window as any).globalMicroFrontendStore;
+    return window.globalMicroFrontendStore as GlobalMicroFrontendStore;
   }
   return null;
 };

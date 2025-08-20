@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 
 import React, { useState } from 'react';
 import Icon, { IconProps } from 'shared/components/Icon';
