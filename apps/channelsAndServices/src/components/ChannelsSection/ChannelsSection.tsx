@@ -41,15 +41,15 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
 }) => {
   return (
     <div className="grid gap-2 content-start">
-      <CardAccordion header={<CardAccordionHeader icon={'📱'} title="Mobile Banking" />}>
+      <CardAccordion icon={'📱'} title="Mobile Banking">
         {accounts.map((account) => {
           const itemData: ItemData = {
-            id: createUniqueId('account', 'actives', account.id),
+            id: createUniqueId('mobile', 'channels', account.id),
             originalId: account.id,
-            type: 'account',
-            category: 'actives',
+            type: 'mobile',
+            category: 'channels',
             data: account,
-            name: '',
+            name: account.name || '',
           };
 
           return (
@@ -73,14 +73,14 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
         })}
       </CardAccordion>
 
-      <CardAccordion header={<CardAccordionHeader icon={'💻'} title="Internet Banking" />}>
+      <CardAccordion icon={'💻'} title="Internet Banking">
         {accounts.map((account) => {
           const itemData: ItemData = {
-            id: createUniqueId('deposit', 'actives', account.id),
+            id: createUniqueId('internet', 'channels', account.id),
             originalId: account.id,
-            type: 'deposit',
-            category: 'actives',
-            name: '',
+            type: 'internet',
+            category: 'channels',
+            name: account.name || '',
             data: account,
           };
 
@@ -105,14 +105,14 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
         })}
       </CardAccordion>
 
-      <CardAccordion header={<CardAccordionHeader icon={'☎️'} title="Linha Millennium Bim" />}>
+      <CardAccordion icon={'☎️'} title="Linha Millennium Bim">
         {accounts.map((account) => {
           const itemData: ItemData = {
-            id: createUniqueId('debit-card', 'actives', account.id),
+            id: createUniqueId('millennium-line', 'channels', account.id),
             originalId: account.id,
-            type: 'debit-card',
-            category: 'actives',
-            name: '',
+            type: 'millennium-line',
+            category: 'channels',
+            name: account.name || '',
             data: account,
           };
 

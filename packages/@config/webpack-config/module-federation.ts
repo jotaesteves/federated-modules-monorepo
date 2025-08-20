@@ -112,6 +112,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       name: 'shared',
       filename: 'remoteEntry.js',
       exposes: {
+        './components/Breadcrumbs': './src/components/Breadcrumbs/Breadcrumbs',
         './components/Button': './src/components/Button/Button',
         './components/InputWithLabel': './src/components/InputWithLabel/InputWithLabel',
         './components/SomeForm': './src/components/SomeForm/SomeForm',
