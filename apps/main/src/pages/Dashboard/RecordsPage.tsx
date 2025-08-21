@@ -1,12 +1,14 @@
-import React, { lazy, Suspense } from 'react';
+import * as React from 'react';
 import Spinner from 'shared/components/Spinner';
 
 const Records = React.lazy(() => import('records/Records'));
 
-export default function SomeRoute() {
+export const RecordsPage: React.FC = () => {
   return (
-    <Suspense fallback={<div>Loading de Registos...</div>}>
+    <React.Suspense fallback={<Spinner />}>
       <Records />
-    </Suspense>
+    </React.Suspense>
   );
-}
+};
+
+export default RecordsPage;

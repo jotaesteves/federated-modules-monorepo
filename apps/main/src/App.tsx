@@ -13,6 +13,7 @@ import {
   AssetsProductsPage,
   ChannelsAndServicesPage,
   HistoryInteractionsPage,
+  RecordsPage,
 } from './pages/Dashboard';
 
 // Settings Pages
