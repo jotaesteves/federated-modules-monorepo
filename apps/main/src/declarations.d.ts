@@ -36,6 +36,13 @@ declare module 'personalData/PersonalData' {
   export default PersonalDataComponent;
 }
 
+declare module 'records/Records' {
+  import type { ComponentType } from 'react';
+
+  const RecordsComponent: ComponentType<unknown>;
+  export default RecordsComponent;
+}
+
 declare module 'assetsProducts/AssetsProducts' {
   import type { ComponentType } from 'react';
 

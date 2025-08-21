@@ -13,6 +13,7 @@ module.exports = {
     '../../apps/footer/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/vision360/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/personalData/src/**/*.{js,ts,jsx,tsx}',
+    '../../apps/records/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/assetsProducts/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/channelsAndServices/src/**/*.{js,ts,jsx,tsx}',
     '../../apps/historyInteractions/src/**/*.{js,ts,jsx,tsx}',

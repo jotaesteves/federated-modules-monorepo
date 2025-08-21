@@ -13,6 +13,7 @@ import {
   AssetsProductsPage,
   ChannelsAndServicesPage,
   HistoryInteractionsPage,
+  RecordsPage,
 } from './pages/Dashboard';
 
 // Settings Pages
@@ -31,6 +32,7 @@ const App: React.FC = () => {
         <Route path="assets-products/*" element={<AssetsProductsPage />} />
         <Route path="channels-and-services/*" element={<ChannelsAndServicesPage />} />
         <Route path="history-interactions/*" element={<HistoryInteractionsPage />} />
+        <Route path="records/*" element={<RecordsPage />} />
         <Route index element={<Root />} />
       </Route>
 
