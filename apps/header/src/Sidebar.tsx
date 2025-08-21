@@ -104,10 +104,10 @@ const SideBarNav: React.FC = () => {
   const handleMouseEnter = () => setExpanded(true);
 
   const handleMouseLeave = () => {
-    setExpanded(false);
-    setMenuOpen(false);
+    setExpanded(true);
+    setMenuOpen(true);
     setActiveItem(null);
-    setSubmenuOpen(false);
+    setSubmenuOpen(true);
     setActiveSubmenuItem(null);
   };
 

@@ -24,12 +24,17 @@ const Submenu: React.FC<SubmenuProps> = ({ submenuOpen }) => {
           Mobile Banking (IZI/SMART IZI)
         </p>
         <div className="flex flex-col overflow-y-auto">
-          {submenuItems.map((subItem) => (
+          {submenuItems.map((subItem, index) => (
             <button
               key={subItem}
-              className="text-gray-800 font-medium text-xl min-h-16 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100"
+              className="group flex flex-col justify-center text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100"
             >
               {subItem}
+              {index === 2 && (
+                <span className="font-medium text-gray-800 text-xs group-hover:text-white">
+                  Utilização / Movimentos / Taxas
+                </span>
+              )}
             </button>
           ))}
         </div>
