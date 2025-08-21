@@ -38,6 +38,10 @@
     }
   ],
   "eslint.useFlatConfig": true,
+  "eslint.run": "onType",
+  "eslint.lintTask.enable": true,
+  "eslint.problems.shortenToSingleLine": false,
+  "problems.decorations.enabled": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.tsserver.maxTsServerMemory": 4096,

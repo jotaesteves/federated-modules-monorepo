@@ -15,7 +15,6 @@
     "incremental": true,
     "alwaysStrict": true,
     "resolveJsonModule": true,
-    "jsxImportSource": "@emotion/react",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noImplicitReturns": true,
