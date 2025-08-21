@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import Icon, { IconProps } from 'shared/components/Icon';
+import Icon from 'shared/components/Icon';
 import Menu from './components/Menu';
+import { bottomSidebarMapData, sidebarMapData } from 'src/data/menuData';
+import { SidebarItemProps } from 'src/types/types';
+import { getMenusBySidebarId } from 'src/utils/utils';
+
+// quando for flag nomenclatura 'isMenuOpen'
+// fechar o sidebar menu quando clicar no submenuitem
+// alterar z-index do sidebar para sobrepor o footer
 
 declare global {
   interface Window {
@@ -12,59 +19,38 @@ declare global {
   }
 }
 
-interface NavItemProps {
-  icon: IconProps['type'];
-  label: string;
-  path: string;
-}
-
-interface SidebarItemProps {
-  item: NavItemProps;
-  expanded: boolean;
-  onOpenMenu: (label: string) => void;
-  className?: string;
-  isActive?: boolean;
-}
-
-const sidebarItems: NavItemProps[] = [
-  { icon: 'home', label: 'Início', path: '/inicio' },
-  { icon: 'register', label: 'Registos', path: '/registos' },
-  { icon: 'makePhoneCall', label: 'Outbounds', path: '/outbounds' },
-  { icon: 'shoppingBag', label: 'Vendas', path: '/vendas' },
-  { icon: 'info', label: 'Scripts', path: '/scripts' },
-  { icon: 'files', label: 'Documentação', path: '/documentacao' },
-  { icon: 'graph2', label: "KPI's", path: '/kpis' },
-];
-
-const bottomSidebarItems: NavItemProps[] = [
-  { icon: 'config', label: 'Definições', path: '/definicoes' },
-  { icon: 'search', label: 'Pesquisa', path: '/pesquisa' },
-];
-
 const SidebarItem: React.FC<SidebarItemProps> = ({
   item,
   expanded,
   onOpenMenu,
+  onCloseMenu,
   className = '',
   isActive,
+  hasMenu,
 }) => {
   const handleClick = () => {
+    if (!item.path) return;
+
     console.log('SidebarItem clicked:', { path: item.path, expanded });
     console.log('window.microFrontendNavigation:', window.microFrontendNavigation);
 
-    onOpenMenu(item.label);
-
     // Use global navigation helper to navigate
-    if (typeof window !== 'undefined' && window.microFrontendNavigation) {
-      console.log('Attempting navigation to:', item.path);
-      window.microFrontendNavigation.navigateTo(item.path);
-    } else {
-      console.error('Navigation helper not available');
-      // Fallback to window.location
-      if (typeof window !== 'undefined') {
-        window.location.href = item.path;
+    if (!hasMenu) {
+      if (typeof window !== 'undefined' && window.microFrontendNavigation) {
+        console.log('Attempting navigation to:', item.path);
+        window.microFrontendNavigation.navigateTo(item.path);
+      } else {
+        console.error('Navigation helper not available');
+        // Fallback to window.location
+        if (typeof window !== 'undefined') {
+          window.location.href = item.path;
+        }
       }
+      onCloseMenu();
+      return;
     }
+
+    onOpenMenu(item.label);
   };
 
   return (
@@ -122,9 +108,21 @@ const SideBarNav: React.FC = () => {
     setActiveSubmenuItem(null);
   };
 
+  const handleCloseMenu = () => {
+    setMenuOpen(false);
+    setActiveItem(null);
+    setSubmenuOpen(false);
+    setActiveSubmenuItem(null);
+  };
+
   const handleSubmenuItemClick = (item: string) => {
     setActiveSubmenuItem(item);
     setSubmenuOpen(true);
+  };
+
+  const hasMenu = (sidebarId: string): boolean => {
+    const menus = getMenusBySidebarId(sidebarId);
+    return menus.length > 0;
   };
 
   return (
@@ -140,27 +138,31 @@ const SideBarNav: React.FC = () => {
       }}
     >
       <div className="flex-1 overflow-y-auto min-h-0 w-full flex flex-col overflow-x-hidden">
-        {sidebarItems.map((item) => (
+        {sidebarMapData.map((item) => (
           <SidebarItem
             key={item.label}
             item={item}
             expanded={expanded}
             onOpenMenu={handleOpenMenu}
+            onCloseMenu={handleCloseMenu}
             isActive={activeItem === item.label}
             className={activeItem === item.label ? 'active bg-primary-500 text-white' : ''}
+            hasMenu={hasMenu(item.id || item.label)}
           />
         ))}
       </div>
 
       <div className="flex flex-col w-full">
-        {bottomSidebarItems.map((item) => (
+        {bottomSidebarMapData.map((item) => (
           <SidebarItem
             key={item.label}
             item={item}
             expanded={expanded}
             onOpenMenu={handleOpenMenu}
+            onCloseMenu={handleCloseMenu}
             isActive={activeItem === item.label}
             className={activeItem === item.label ? 'active bg-primary-500 text-white' : ''}
+            hasMenu={hasMenu(item.id || item.label)}
           />
         ))}
       </div>

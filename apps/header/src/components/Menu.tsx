@@ -1,24 +1,25 @@
 import React from 'react';
 import Submenu from './Submenu';
+import { MenuItemProps } from 'src/types/types';
+import { getMenusBySidebarId } from 'src/utils/utils';
 
-interface MenuProps {
-  menuOpen: boolean;
-  activeItem: string | null;
-  submenuOpen: boolean;
-  activeSubmenuItem: string | null;
-  onSubmenuItemClick: (item: string) => void;
-}
-
-const Menu: React.FC<MenuProps> = ({
+const Menu: React.FC<MenuItemProps> = ({
   menuOpen,
   activeItem,
   submenuOpen,
   activeSubmenuItem,
   onSubmenuItemClick,
 }) => {
-  const menuItems = ['Canais Digitais', 'Cartões', 'Créditos', 'Reclamações', 'Outros Serviços'];
+  const [activeMenuItem, setActiveMenuItem] = React.useState('');
 
-  if (!menuOpen) return null;
+  if (!menuOpen || !activeItem) return null;
+
+  const menuItems = getMenusBySidebarId(activeItem);
+
+  const handleClickMenu = (id: string) => {
+    setActiveMenuItem(id);
+    onSubmenuItemClick(id);
+  };
 
   return (
     <div
@@ -35,23 +36,22 @@ const Menu: React.FC<MenuProps> = ({
           <div className="py-3 flex flex-col overflow-y-auto">
             {menuItems.map((item) => (
               <button
-                key={item}
-                onClick={() => onSubmenuItemClick(item)}
+                key={item.id}
+                onClick={() => handleClickMenu(item.id)}
                 className={`text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100 ${
-                  activeSubmenuItem === item ? 'bg-primary-500 text-white' : ''
+                  activeSubmenuItem === item.id ? 'bg-primary-500 text-white' : ''
                 }`}
               >
-                {item}
+                {item.label}
               </button>
             ))}
           </div>
         </div>
 
-        <Submenu submenuOpen={submenuOpen} />
+        <Submenu submenuOpen={submenuOpen} activeMenuItem={activeMenuItem} />
       </div>
     </div>
   );
 };
 
-export type { MenuProps };
 export default Menu;
