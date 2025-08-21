@@ -23,6 +23,7 @@ interface SidebarItemProps {
   expanded: boolean;
   onOpenMenu: (label: string) => void;
   className?: string;
+  isActive?: boolean;
 }
 
 const sidebarItems: NavItemProps[] = [
@@ -45,6 +46,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   expanded,
   onOpenMenu,
   className = '',
+  isActive,
 }) => {
   const handleClick = () => {
     console.log('SidebarItem clicked:', { path: item.path, expanded });
@@ -79,9 +81,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         size="sm"
       />
       <span
-        className={`transition-all duration-300 whitespace-nowrap font-medium text-gray-800 text-xl group-hover:text-white ${
-          expanded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
-        }`}
+        className={`transition-all duration-300 whitespace-nowrap font-medium text-xl 
+          ${isActive ? 'text-white' : 'text-gray-800'} 
+          group-hover:text-white
+          ${expanded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}
+        `}
         style={{
           pointerEvents: expanded ? 'auto' : 'none',
           width: expanded ? 'auto' : '0',
@@ -104,10 +108,10 @@ const SideBarNav: React.FC = () => {
   const handleMouseEnter = () => setExpanded(true);
 
   const handleMouseLeave = () => {
-    setExpanded(true);
-    setMenuOpen(true);
+    setExpanded(false);
+    setMenuOpen(false);
     setActiveItem(null);
-    setSubmenuOpen(true);
+    setSubmenuOpen(false);
     setActiveSubmenuItem(null);
   };
 
@@ -142,6 +146,8 @@ const SideBarNav: React.FC = () => {
             item={item}
             expanded={expanded}
             onOpenMenu={handleOpenMenu}
+            isActive={activeItem === item.label}
+            className={activeItem === item.label ? 'active bg-primary-500 text-white' : ''}
           />
         ))}
       </div>
@@ -153,6 +159,8 @@ const SideBarNav: React.FC = () => {
             item={item}
             expanded={expanded}
             onOpenMenu={handleOpenMenu}
+            isActive={activeItem === item.label}
+            className={activeItem === item.label ? 'active bg-primary-500 text-white' : ''}
           />
         ))}
       </div>
