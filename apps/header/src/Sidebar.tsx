@@ -5,10 +5,6 @@ import { bottomSidebarMapData, sidebarMapData } from 'src/data/menuData';
 import { SidebarItemProps } from 'src/types/types';
 import { getMenusBySidebarId } from 'src/utils/utils';
 
-// quando for flag nomenclatura 'isMenuOpen'
-// fechar o sidebar menu quando clicar no submenuitem
-// alterar z-index do sidebar para sobrepor o footer
-
 declare global {
   interface Window {
     microFrontendNavigation?: {
@@ -86,38 +82,39 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 
 const SideBarNav: React.FC = () => {
   const [expanded, setExpanded] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<string | null>(null);
-  const [submenuOpen, setSubmenuOpen] = useState(false);
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const [activeSubmenuItem, setActiveSubmenuItem] = useState<string | null>(null);
 
   const handleMouseEnter = () => setExpanded(true);
 
   const handleMouseLeave = () => {
     setExpanded(false);
-    setMenuOpen(false);
+    setIsMenuOpen(false);
     setActiveItem(null);
-    setSubmenuOpen(false);
+    setIsSubmenuOpen(false);
     setActiveSubmenuItem(null);
   };
 
   const handleOpenMenu = (label: string) => {
     setActiveItem(label);
-    setMenuOpen(true);
-    setSubmenuOpen(false);
+    setIsMenuOpen(true);
+    setIsSubmenuOpen(false);
     setActiveSubmenuItem(null);
   };
 
   const handleCloseMenu = () => {
-    setMenuOpen(false);
+    setExpanded(false);
+    setIsMenuOpen(false);
     setActiveItem(null);
-    setSubmenuOpen(false);
+    setIsSubmenuOpen(false);
     setActiveSubmenuItem(null);
   };
 
   const handleSubmenuItemClick = (item: string) => {
     setActiveSubmenuItem(item);
-    setSubmenuOpen(true);
+    setIsSubmenuOpen(true);
   };
 
   const hasMenu = (sidebarId: string): boolean => {
@@ -127,7 +124,7 @@ const SideBarNav: React.FC = () => {
 
   return (
     <nav
-      className={`fixed h-[calc(100vh_-_122px_-_72px)] justify-between flex flex-col items-center py-3 gap-2 bg-white transition-all duration-300 ${
+      className={`fixed z-50 h-[calc(100vh_-_122px_-_72px)] justify-between flex flex-col items-center py-3 gap-2 bg-white transition-all duration-300 ${
         expanded && 'w-72 shadow-[0_4px_4px_0_#00000040] border border-gray-100'
       }`}
       onMouseEnter={handleMouseEnter}
@@ -168,11 +165,12 @@ const SideBarNav: React.FC = () => {
       </div>
 
       <Menu
-        menuOpen={menuOpen}
+        isMenuOpen={isMenuOpen}
         activeItem={activeItem}
-        submenuOpen={submenuOpen}
+        isSubmenuOpen={isSubmenuOpen}
         activeSubmenuItem={activeSubmenuItem}
         onSubmenuItemClick={handleSubmenuItemClick}
+        onCloseMenu={handleCloseMenu}
       />
     </nav>
   );

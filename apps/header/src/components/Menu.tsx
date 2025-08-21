@@ -4,15 +4,16 @@ import { MenuItemProps } from 'src/types/types';
 import { getMenusBySidebarId } from 'src/utils/utils';
 
 const Menu: React.FC<MenuItemProps> = ({
-  menuOpen,
+  isMenuOpen,
   activeItem,
-  submenuOpen,
+  isSubmenuOpen,
   activeSubmenuItem,
   onSubmenuItemClick,
+  onCloseMenu,
 }) => {
   const [activeMenuItem, setActiveMenuItem] = React.useState('');
 
-  if (!menuOpen || !activeItem) return null;
+  if (!isMenuOpen || !activeItem) return null;
 
   const menuItems = getMenusBySidebarId(activeItem);
 
@@ -24,7 +25,7 @@ const Menu: React.FC<MenuItemProps> = ({
   return (
     <div
       className={`absolute z-10 top-4 left-[18rem] min-h-[calc(100%_-_70px)] max-h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px] ${
-        submenuOpen ? 'min-w-[53.625rem]' : 'min-w-[24.5rem]'
+        isSubmenuOpen ? 'min-w-[53.625rem]' : 'min-w-[24.5rem]'
       }`}
       style={{ clipPath: 'inset(-10px -10px -10px 0)' }}
     >
@@ -48,7 +49,11 @@ const Menu: React.FC<MenuItemProps> = ({
           </div>
         </div>
 
-        <Submenu submenuOpen={submenuOpen} activeMenuItem={activeMenuItem} />
+        <Submenu
+          isSubmenuOpen={isSubmenuOpen}
+          activeMenuItem={activeMenuItem}
+          onSubmenuItemClick={onCloseMenu}
+        />
       </div>
     </div>
   );

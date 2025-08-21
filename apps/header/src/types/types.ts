@@ -38,14 +38,16 @@ export interface SidebarItemProps {
 }
 
 export interface MenuItemProps {
-  menuOpen: boolean;
+  isMenuOpen: boolean;
   activeItem: string | null;
-  submenuOpen: boolean;
+  isSubmenuOpen: boolean;
   activeSubmenuItem: string | null;
   onSubmenuItemClick: (item: string) => void;
+  onCloseMenu: () => void;
 }
 
 export interface SubmenuItemProps {
-  submenuOpen: boolean;
+  isSubmenuOpen: boolean;
   activeMenuItem?: string;
+  onSubmenuItemClick: (link: SubmenuLinkItemProps) => void;
 }

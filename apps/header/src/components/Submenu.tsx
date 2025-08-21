@@ -2,8 +2,12 @@ import React from 'react';
 import { SubmenuItemProps } from 'src/types/types';
 import { getSubmenuLinksBySubmenuId, getSubmenusByMenuId } from 'src/utils/utils';
 
-const Submenu: React.FC<SubmenuItemProps> = ({ submenuOpen, activeMenuItem }) => {
-  if (!submenuOpen || !activeMenuItem) return null;
+const Submenu: React.FC<SubmenuItemProps> = ({
+  isSubmenuOpen,
+  activeMenuItem,
+  onSubmenuItemClick,
+}) => {
+  if (!isSubmenuOpen || !activeMenuItem) return null;
 
   const submenus = getSubmenusByMenuId(activeMenuItem);
 
@@ -21,6 +25,7 @@ const Submenu: React.FC<SubmenuItemProps> = ({ submenuOpen, activeMenuItem }) =>
               {submenuLinks.map((link) => (
                 <button
                   key={link.id}
+                  onClick={() => onSubmenuItemClick(link)}
                   className="group flex flex-col justify-center text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100"
                 >
                   {link.label}
