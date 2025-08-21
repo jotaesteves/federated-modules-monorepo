@@ -6,6 +6,7 @@ export enum Apps {
   footer,
   personalData,
   records,
+  sales,
   assetsProducts,
   channelsAndServices,
   historyInteractions,

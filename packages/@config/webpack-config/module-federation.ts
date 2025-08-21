@@ -92,6 +92,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         vision360: `vision360@http://localhost:${mapPorts[Apps.vision360].devPort}/remoteEntry.js`,
         personalData: `personalData@http://localhost:${mapPorts[Apps.personalData].devPort}/remoteEntry.js`,
         records: `records@http://localhost:${mapPorts[Apps.records].devPort}/remoteEntry.js`,
+        sales: `sales@http://localhost:${mapPorts[Apps.sales].devPort}/remoteEntry.js`,
         assetsProducts: `assetsProducts@http://localhost:${mapPorts[Apps.assetsProducts].devPort}/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@http://localhost:${mapPorts[Apps.channelsAndServices].devPort}/remoteEntry.js`,
         historyInteractions: `historyInteractions@http://localhost:${mapPorts[Apps.historyInteractions].devPort}/remoteEntry.js`,
@@ -102,7 +103,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         footer: `footer@${hostBaseUrl}apps/footer/dist/remoteEntry.js`,
         vision360: `vision360@${hostBaseUrl}apps/vision360/dist/remoteEntry.js`,
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
-        records: `records@${hostBaseUrl}apps/records/dist/remoteEntry.js`,
+        sales: `sales@${hostBaseUrl}apps/sales/dist/remoteEntry.js`,
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
         historyInteractions: `historyInteractions@${hostBaseUrl}apps/historyInteractions/dist/remoteEntry.js`,
@@ -232,6 +233,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Records': './src/Records',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.sales]: {
+    devPort: mapPorts[Apps.sales].devPort,
+    analyzerPort: mapPorts[Apps.sales].analyzerPort,
+    baseConfig: {
+      name: 'sales',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Sales': './src/Sales',
       },
     },
     remotes: {

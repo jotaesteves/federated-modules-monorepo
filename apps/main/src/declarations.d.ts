@@ -42,6 +42,12 @@ declare module 'records/Records' {
   const RecordsComponent: ComponentType<unknown>;
   export default RecordsComponent;
 }
+declare module 'sales/Sales' {
+  import type { ComponentType } from 'react';
+
+  const SalesComponent: ComponentType<unknown>;
+  export default SalesComponent;
+}
 
 declare module 'assetsProducts/AssetsProducts' {
   import type { ComponentType } from 'react';
