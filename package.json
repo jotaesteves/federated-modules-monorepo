@@ -19,7 +19,7 @@
     "serve:local:main": "serve apps/main/dist -l 80 -s --cors",
     "serve:local:start": "bun run --parallel serve:local:remotes serve:local:main",
     "serve:local": "bun run build:local && bun run serve:local:start",
-    "dev": "turbo dev",
+    "dev": "turbo run dev --concurrency=20",
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "lint:all": "turbo lint --continue",
