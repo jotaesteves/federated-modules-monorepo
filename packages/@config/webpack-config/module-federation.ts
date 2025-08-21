@@ -231,7 +231,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       name: 'records',
       filename: 'remoteEntry.js',
       exposes: {
-        './records': './src/records',
+        './Records': './src/Records',
       },
     },
     remotes: {
