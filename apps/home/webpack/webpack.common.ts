@@ -1,8 +1,5 @@
 import { Apps } from '@config/webpack-config/enums';
-import {
-  getAppModuleFederationConfig,
-  getDtsModuleConfig,
-} from '@config/webpack-config/module-federation';
+import { getAppModuleFederationConfig } from '@config/webpack-config/module-federation';
 import { getSharedModulesConfig } from '@config/webpack-config/utils';
 
 import { dependencies } from '../package.json';
