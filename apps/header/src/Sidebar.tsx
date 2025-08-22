@@ -15,7 +15,7 @@ declare global {
 }
 
 const sidebarItems: Omit<SideBarNavItemProps, 'expanded' | 'onOpenSubmenu'>[] = [
-  { icon: 'home', label: 'Início', path: '/inicio' },
+  { icon: 'home', label: 'Início', path: '/home' },
   { icon: 'register', label: 'Registos', path: '/registos' },
   { icon: 'makePhoneCall', label: 'Outbounds', path: '/outbounds' },
   { icon: 'shoppingBag', label: 'Vendas', path: '/vendas' },
