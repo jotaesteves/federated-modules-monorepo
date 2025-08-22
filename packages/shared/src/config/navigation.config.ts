@@ -48,7 +48,7 @@ export const NAVIGATION_ROUTES: Record<NavigationPath, NavigationRoute> = {
   historyInteractions: {
     navigationPath: 'historyInteractions',
     routerPath: '/history-interactions',
-    label: 'Historico Interacões',
+    label: 'Historico Interações',
   },
   records: {
     navigationPath: 'records',
