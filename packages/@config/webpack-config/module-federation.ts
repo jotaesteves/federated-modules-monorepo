@@ -128,6 +128,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
         './components/LineBreak': './src/components/LineBreak/LineBreak',
+        './components/TableComponent': './src/components/TableComponent/TableComponent',
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
