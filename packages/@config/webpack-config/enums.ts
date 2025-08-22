@@ -11,6 +11,7 @@ export enum Apps {
   channelsAndServices,
   historyInteractions,
   scriptsView,
+  outbounds,
 }
 
 export enum SharedModule {
