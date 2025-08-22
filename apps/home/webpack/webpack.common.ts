@@ -12,10 +12,6 @@ export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig 
   shared: getSharedModulesConfig(dependencies),
 });
 
-const getCommonConfig = (): webpack.Configuration => ({
-  module: {
-    rules: [getDtsModuleConfig(Apps['home'])],
-  },
-});
+const getCommonConfig = (): webpack.Configuration => ({});
 
 export default getCommonConfig;
