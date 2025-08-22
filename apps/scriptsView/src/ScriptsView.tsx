@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import ErrorBoundary from 'shared/components/ErrorBoundary';
 
-const ScriptsViews: React.FC = () => {
+const ScriptsView: React.FC = () => {
   const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
     console.error('Records Error:', error, errorInfo);
   };
@@ -17,4 +17,4 @@ const ScriptsViews: React.FC = () => {
   );
 };
 
-export default ScriptsViews;
+export default ScriptsView;

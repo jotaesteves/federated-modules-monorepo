@@ -8,7 +8,7 @@ import type { CommonModuleFederationConfig } from '@config/webpack-config/types'
 import type * as webpack from 'webpack';
 
 export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig => ({
-  ...getAppModuleFederationConfig(Apps.scriptViews).baseConfig,
+  ...getAppModuleFederationConfig(Apps.scriptsView).baseConfig,
   shared: getSharedModulesConfig(dependencies),
 });
 
