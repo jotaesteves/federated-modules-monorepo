@@ -19,11 +19,6 @@ src/
 │   │   ├── Vision360Page.tsx
 │   │   ├── PersonalDataPage.tsx
 │   │   └── index.ts
-│   ├── Settings/         # Settings-related pages
-│   │   ├── CSSDemo/
-│   │   │   ├── CSSDemo.tsx
-│   │   │   └── index.ts
-│   │   └── index.ts
 │   └── Root/             # Home/root pages
 │       └── Root.tsx
 ├── App.tsx              # Main app with routing configuration
@@ -72,9 +67,6 @@ src/
 ├── /vision-360/_→ Vision360Page
 ├── /personal-data/_ → PersonalDataPage
 └── / → Root (index)
-
-/settings (BaseLayout)
-└── /css-demo → CSSDemo
 
 /\* → Root (catch-all)
 

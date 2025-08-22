@@ -4,7 +4,8 @@ import { SharedModulesConfig } from './types';
 import { getAppModuleFederationConfig } from './module-federation';
 
 export const getSharedModulesConfig = (
-  dependencies: Record<string, string>
+  dependencies: Record<string, string>,
+  isHost: boolean = false
 ): SharedModulesConfig => {
   return Object.values(SharedModule).reduce(
     (sharedModulesConfig, moduleName) =>
@@ -14,6 +15,7 @@ export const getSharedModulesConfig = (
             [moduleName]: {
               singleton: true,
               requiredVersion: dependencies[moduleName],
+              eager: isHost, // Host should be eager, remotes should not
             },
           }
         : sharedModulesConfig,

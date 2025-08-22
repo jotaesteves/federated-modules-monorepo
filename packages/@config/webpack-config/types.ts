@@ -1,6 +1,9 @@
 import { Apps } from './enums';
 
-export type SharedModulesConfig = Record<string, { singleton: boolean; requiredVersion: string }>;
+export type SharedModulesConfig = Record<
+  string,
+  { singleton: boolean; requiredVersion: string; eager?: boolean }
+>;
 
 export type AppModuleFederationConfig = {
   devPort: number;

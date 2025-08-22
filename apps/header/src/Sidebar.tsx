@@ -2,16 +2,6 @@ import React, { useState } from 'react';
 import Icon, { IconProps } from 'shared/components/Icon';
 import Menu from './components/Menu';
 
-declare global {
-  interface Window {
-    microFrontendNavigation?: {
-      navigateTo: (path: string) => void;
-      getRouteFromTab?: (tab: string) => string;
-      getTabFromRoute?: (route: string) => string;
-    };
-  }
-}
-
 interface NavItemProps {
   icon: IconProps['type'];
   label: string;
@@ -50,21 +40,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 }) => {
   const handleClick = () => {
     console.log('SidebarItem clicked:', { path: item.path, expanded });
-    console.log('window.microFrontendNavigation:', window.microFrontendNavigation);
 
     onOpenMenu(item.label);
 
     // Use global navigation helper to navigate
-    if (typeof window !== 'undefined' && window.microFrontendNavigation) {
-      console.log('Attempting navigation to:', item.path);
-      window.microFrontendNavigation.navigateTo(item.path);
-    } else {
-      console.error('Navigation helper not available');
-      // Fallback to window.location
-      if (typeof window !== 'undefined') {
-        window.location.href = item.path;
-      }
-    }
+    console.log('Attempting navigation to:', item.path);
   };
 
   return (
@@ -81,8 +61,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         size="sm"
       />
       <span
-        className={`transition-all duration-300 whitespace-nowrap font-medium text-xl 
-          ${isActive ? 'text-white' : 'text-gray-800'} 
+        className={`transition-all duration-300 whitespace-nowrap font-medium text-xl
+          ${isActive ? 'text-white' : 'text-gray-800'}
           group-hover:text-white
           ${expanded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}
         `}

@@ -1,113 +1,153 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const tabs = [
-  { value: 'vision360', label: 'Visao 360', path: '/vision-360' },
-  { value: 'personalData', label: 'Dados Pessoais', path: '/personal-data' },
-  { value: 'assetsProducts', label: 'Patrimonio e Productos', path: '/assets-products' },
-  { value: 'channelsAndServices', label: 'Canais e Serviços', path: '/channels-and-services' },
-  { value: 'historyInteractions', label: 'Historico Interacões', path: '/history-interactions' },
+// Types (these are always available as they're compile-time)
+type NavigationPath =
+  | 'vision360'
+  | 'personalData'
+  | 'assetsProducts'
+  | 'channelsAndServices'
+  | 'historyInteractions'
+  | 'records';
+
+interface NavigationRoute {
+  navigationPath: NavigationPath;
+  routerPath: string;
+  label: string;
+}
+
+// Try to import shared services at runtime
+let navigationService: any = null; // eslint-disable-line @typescript-eslint/no-explicit-any
+let getTabRoutes: (() => NavigationRoute[]) | null = null;
+
+try {
+  // @ts-ignore - Module federation imports
+  const sharedService = require('shared/services/navigationService');
+  const sharedConfig = require('shared/config/navigationConfig');
+
+  navigationService = sharedService.default;
+  getTabRoutes = sharedConfig.getTabRoutes;
+} catch {
+  // Silently fall back to local implementations
+}
+
+// Fallback configuration for tabs (only used if module federation imports fail)
+const fallbackTabs: NavigationRoute[] = [
+  { navigationPath: 'vision360', routerPath: '/vision-360', label: 'Visao 360' },
+  { navigationPath: 'personalData', routerPath: '/personal-data', label: 'Dados Pessoais' },
+  {
+    navigationPath: 'assetsProducts',
+    routerPath: '/assets-products',
+    label: 'Patrimonio e Productos',
+  },
+  {
+    navigationPath: 'channelsAndServices',
+    routerPath: '/channels-and-services',
+    label: 'Canais e Serviços',
+  },
+  {
+    navigationPath: 'historyInteractions',
+    routerPath: '/history-interactions',
+    label: 'Historico Interacões',
+  },
 ];
 
+// Get tabs from shared config or use fallback
+const tabs: NavigationRoute[] = getTabRoutes ? getTabRoutes() : fallbackTabs;
+
+// Navigation utilities using the shared navigationService
+const NavigationHelper = {
+  getRouterPath(navigationPath: NavigationPath): string {
+    if (navigationService) {
+      return navigationService.getRouterPath(navigationPath);
+    }
+    // Fallback: simple lookup in tabs
+    const route = tabs.find((tab) => tab.navigationPath === navigationPath);
+    return route?.routerPath || '/';
+  },
+
+  getCurrentPath(): NavigationPath | null {
+    if (navigationService) {
+      return navigationService.getCurrentPath();
+    }
+    // Fallback: parse from URL
+    const pathname = window.location.pathname;
+    const pathSegment = pathname.split('/')[1];
+    const route = tabs.find((tab) => tab.routerPath === `/${pathSegment}`);
+    return route?.navigationPath || null;
+  },
+
+  navigate(path: NavigationPath): void {
+    if (navigationService) {
+      navigationService.navigate(path);
+    } else {
+      // Fallback: dispatch custom event
+      window.dispatchEvent(new CustomEvent('mf-navigate', { detail: { path } }));
+    }
+  },
+
+  onLocationChange(callback: (path: NavigationPath | null) => void): () => void {
+    if (navigationService) {
+      return navigationService.onLocationChange((location: any) => {
+        const path = navigationService.getCurrentPath();
+        callback(path);
+      });
+    } else {
+      // Fallback: listen to custom events
+      const handler = (event: Event) => {
+        const customEvent = event as CustomEvent;
+        const { path } = customEvent.detail;
+        callback(path);
+      };
+      window.addEventListener('mf-location-changed', handler);
+      return () => window.removeEventListener('mf-location-changed', handler);
+    }
+  },
+};
+
 const HeaderTabs: React.FC = () => {
-  // Track location early so initial state can reflect the current route
-  const location = useLocation();
+  const [activeTab, setActiveTab] = useState<NavigationPath>(tabs[0].navigationPath);
 
-  // Access the global store from the host app
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const globalStore = (window as any)?.globalMicroFrontendStore;
-
-  // Compute initial active tab from global store or current URL
-  const getInitialActiveTab = (): string | null => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const store = (window as any)?.globalMicroFrontendStore;
-    const storePage = store?.getState?.().currentPage;
-    if (storePage && tabs.some((t) => t.value === storePage)) return storePage;
-    const byPath = tabs.find((t) => t.path && location.pathname.startsWith(t.path));
-    return byPath?.value ?? null; // no default selection if no match
-  };
-
-  const [activeTab, setActiveTab] = useState<string | null>(getInitialActiveTab());
-
-  // Sync with global store if available
   useEffect(() => {
-    if (globalStore) {
-      const currentPage = globalStore.getState().currentPage;
-      if (tabs.some((tab) => tab.value === currentPage)) {
-        setActiveTab(currentPage);
-      } else {
-        setActiveTab(null);
-      }
-
-      const unsubscribe = globalStore.subscribe(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (state: any) => state.currentPage,
-        (currentPage: string) => {
-          if (tabs.some((tab) => tab.value === currentPage)) {
-            setActiveTab(currentPage);
-          } else {
-            setActiveTab(null);
-          }
-        }
-      );
-
-      return unsubscribe;
+    // Set initial active tab based on current location
+    const currentPath = NavigationHelper.getCurrentPath();
+    if (currentPath) {
+      setActiveTab(currentPath);
     }
-  }, [globalStore]);
 
-  // Fallback: derive active tab from URL when running inside host without global store
-  useEffect(() => {
-    if (!globalStore) {
-      const byPath = tabs.find((t) => t.path && location.pathname.startsWith(t.path));
-      if (byPath && byPath.value !== activeTab) {
-        setActiveTab(byPath.value);
-      } else if (!byPath && activeTab !== null) {
-        setActiveTab(null);
+    // Subscribe to location changes from the host
+    const unsubscribe = NavigationHelper.onLocationChange((path: NavigationPath | null) => {
+      if (path) {
+        setActiveTab(path);
       }
-    }
-  }, [location.pathname, globalStore, activeTab]);
+    });
 
-  const handleTabClick = (tabValue: string) => {
+    return unsubscribe;
+  }, []);
+
+  const handleTabClick = (tabValue: NavigationPath) => {
     setActiveTab(tabValue);
-
-    // Update the global store in the host app
-    if (globalStore) {
-      globalStore.getState().navigateTo(tabValue);
-    }
+    // Request navigation from the host using navigationService
+    NavigationHelper.navigate(tabValue);
   };
 
   return (
     <nav className="flex items-center bg-white border-b border-gray-200 pl-[106px] h-[72px]">
       <ul className="flex space-x-8">
         {tabs.map((tab) => (
-          <li key={tab.value}>
-            {tab.path ? (
-              <Link
-                className={`py-4 px-2 text-xl font-semibold transition-colors duration-200 border-b-4 ${
-                  activeTab === tab.value
-                    ? 'text-primary border-primary-500'
-                    : 'text-neutral-900 border-transparent hover:text-pink-500 hover:border-pink-300'
-                }`}
-                data-tab={tab.value}
-                to={tab.path}
-                onClick={() => handleTabClick(tab.value)}
-              >
-                {tab.label}
-              </Link>
-            ) : (
-              <button
-                className={`py-4 px-2 text-sm font-medium transition-colors duration-200 border-b-4 ${
-                  activeTab === tab.value
-                    ? 'text-primary border-primary'
-                    : 'text-neutral-900 border-transparent hover:text-pink-500 hover:border-pink-300'
-                }`}
-                data-tab={tab.value}
-                onClick={() => handleTabClick(tab.value)}
-                type="button"
-              >
-                {tab.label}
-              </button>
-            )}
+          <li key={tab.navigationPath}>
+            <Link
+              to={NavigationHelper.getRouterPath(tab.navigationPath)}
+              className={`py-4 px-2 text-xl font-semibold transition-colors duration-200 border-b-4 ${
+                activeTab === tab.navigationPath
+                  ? 'text-primary border-primary-500'
+                  : 'text-neutral-900 border-transparent hover:text-pink-500 hover:border-pink-300'
+              }`}
+              data-tab={tab.navigationPath}
+              onClick={() => handleTabClick(tab.navigationPath)}
+            >
+              {tab.label}
+            </Link>
           </li>
         ))}
       </ul>

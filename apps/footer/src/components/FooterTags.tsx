@@ -1,73 +1,42 @@
 import React from 'react';
-import { useNavigation } from '../store/microFrontendStore';
-import type { FooterTag, FooterTagsProps } from '../types';
+import type { FooterTag } from '../types';
 
-const FooterTags: React.FC<FooterTagsProps> = ({ tags, onTagClose }) => {
-  const { currentPage, navigateTo } = useNavigation();
-
-  // Default tags if none provided
-  const defaultTags: FooterTag[] = [{ id: 'default-home', label: 'Root Example', page: 'home' }];
-
-  // Use provided tags, or default tags if no tags provided
-  const tagsToDisplay = tags && tags.length > 0 ? tags : defaultTags;
-
+const FooterTags: React.FC = () => {
   const handleFooterNavClick = (page: string, event: React.MouseEvent) => {
     event.preventDefault();
-    navigateTo(page);
+    console.log('Footer tag clicked:', page);
   };
 
-  const handleTagClose = (event: React.MouseEvent, tag: FooterTag) => {
+  const handleTagClose = (event: React.MouseEvent, page: string) => {
     event.stopPropagation();
-
-    // Call the onTagClose callback for all tags that can be closed
-    // Note: Closed history tags can be re-added by navigating to them again
-    if (onTagClose) {
-      onTagClose(tag.page);
-    }
+    console.log('Removing from history:', page);
   };
 
   return (
-    <div className="footer-tags">
-      {tagsToDisplay.map((tag, index) => (
-        <span
-          key={tag.id}
-          className={`footer-tag ${currentPage === tag.page ? 'active' : ''} ${
-            tag.isFromHistory ? 'history-tag' : ''
-          }`}
-          onClick={(e) => handleFooterNavClick(tag.page, e as React.MouseEvent)}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            cursor: 'pointer',
-            marginRight: index < tagsToDisplay.length - 1 ? '8px' : '0',
-          }}
-          title={tag.isFromHistory ? `From navigation history: ${tag.label}` : tag.label}
+    <div className="footer-tags flex flex-wrap gap-2 items-center">
+      {/* {historyTags.map((tag) => (
+      <span
+        key={tag.id}
+        className={`footer-tag px-3 py-1 rounded-md text-sm ${
+          currentPage === tag.page
+            ? 'bg-blue-500 text-white'
+            : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+        } history-tag flex items-center transition-colors`}
+        onClick={(e) => handleFooterNavClick(tag.page, e as React.MouseEvent)}
+        style={{ cursor: 'pointer' }}
+        title={`Navigate to: ${tag.label}`}
+      >
+        {tag.label}
+        <button
+          className="footer-tag-close ml-2 hover:bg-gray-400 hover:text-white rounded-full w-5 h-5 flex items-center justify-center transition-colors"
+          onClick={(e) => handleTagClose(e, tag.page)}
+          aria-label={`Close ${tag.label} tag`}
+          type="button"
         >
-          {tag.isFromHistory && <span style={{ marginRight: '4px', opacity: 0.7 }}>🕒</span>}
-          {tag.label}
-          {/* Show close button only for history tags */}
-          {tag.isFromHistory && (
-            <button
-              className="footer-tag-close"
-              onClick={(e) => handleTagClose(e, tag)}
-              aria-label={`Close ${tag.label} tag`}
-              type="button"
-              style={{
-                marginLeft: '4px',
-                background: 'none',
-                border: 'none',
-                color: 'inherit',
-                cursor: 'pointer',
-                fontSize: '14px',
-                opacity: 0.7,
-                padding: '0 2px',
-              }}
-            >
-              ×
-            </button>
-          )}
-        </span>
-      ))}
+          ×
+        </button>
+      </span>
+      {/* ))} */}
     </div>
   );
 };

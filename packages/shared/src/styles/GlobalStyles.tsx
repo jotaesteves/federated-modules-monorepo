@@ -1,24 +1,9 @@
 import * as React from 'react';
-//TODO: validate if we can remove the font-family setup from globals.css
-import { Global, css } from '@emotion/react';
-import { fontFamily } from './utils';
 // Tailwind v3 entry + theme tokens
-import './global-import';
+import './global.import';
 
 const GlobalStyles: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  return (
-    <>
-      <Global
-        styles={css`
-          html,
-          body {
-            font-family: ${fontFamily};
-          }
-        `}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default GlobalStyles;
