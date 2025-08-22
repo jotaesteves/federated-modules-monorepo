@@ -7,7 +7,7 @@ import { merge } from 'webpack-merge';
 
 import getCommonConfig, { getCommonModuleFederationConfig } from './webpack.common';
 
-const getProdConfig = (env: Record<string, string | boolean>): webpack.Configuration => {
+const getProdConfig = (env: scriptsView<string, string | boolean>): webpack.Configuration => {
   return merge(getProdCommonConfig(), getCommonConfig(), {
     plugins: [
       new webpack.container.ModuleFederationPlugin({
