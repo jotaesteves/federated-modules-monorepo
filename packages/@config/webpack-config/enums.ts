@@ -10,6 +10,7 @@ export enum Apps {
   assetsProducts,
   channelsAndServices,
   historyInteractions,
+  home,
   scriptsView,
 }
 
