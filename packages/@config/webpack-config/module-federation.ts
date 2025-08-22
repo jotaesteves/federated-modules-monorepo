@@ -103,6 +103,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         footer: `footer@${hostBaseUrl}apps/footer/dist/remoteEntry.js`,
         vision360: `vision360@${hostBaseUrl}apps/vision360/dist/remoteEntry.js`,
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
+        records: `records@${hostBaseUrl}apps/records/dist/remoteEntry.js`,
         sales: `sales@${hostBaseUrl}apps/sales/dist/remoteEntry.js`,
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
