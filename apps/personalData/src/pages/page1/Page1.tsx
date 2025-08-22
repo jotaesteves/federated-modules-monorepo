@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Button from 'shared/components/Button';
 import InputWithLabel from 'shared/components/InputWithLabel';
 import useFilms from 'shared/queries/useFilms';

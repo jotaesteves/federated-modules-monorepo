@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router';
 
 // Layouts
 import DashboardLayout from './layouts/DashboardLayout';
@@ -13,6 +13,8 @@ import {
   AssetsProductsPage,
   ChannelsAndServicesPage,
   HistoryInteractionsPage,
+  RecordsPage,
+  SalesPage,
 } from './pages/Dashboard';
 
 // Sidebar Pages
@@ -29,6 +31,8 @@ const App: React.FC = () => {
         <Route path="assets-products/*" element={<AssetsProductsPage />} />
         <Route path="channels-and-services/*" element={<ChannelsAndServicesPage />} />
         <Route path="history-interactions/*" element={<HistoryInteractionsPage />} />
+        <Route path="records/*" element={<RecordsPage />} />
+        <Route path="sales/*" element={<SalesPage />} />
         <Route index element={<HomePage />} />
       </Route>
 

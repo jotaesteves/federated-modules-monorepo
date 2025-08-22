@@ -43,6 +43,19 @@ declare module 'personalData/PersonalData' {
   export default PersonalDataComponent;
 }
 
+declare module 'records/Records' {
+  import type { ComponentType } from 'react';
+
+  const RecordsComponent: ComponentType<unknown>;
+  export default RecordsComponent;
+}
+declare module 'sales/Sales' {
+  import type { ComponentType } from 'react';
+
+  const SalesComponent: ComponentType<unknown>;
+  export default SalesComponent;
+}
+
 declare module 'assetsProducts/AssetsProducts' {
   import type { ComponentType } from 'react';
 
