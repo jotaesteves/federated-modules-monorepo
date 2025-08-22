@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 
 const tabs = [
   { value: 'vision360', label: 'Visao 360', path: '/vision-360' },
