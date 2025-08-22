@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Spinner from 'shared/components/Spinner';
+import FallbackSpinner from '../../components/FallbackSpinner/FallbackSpinner';
 
 const AssetsProducts = React.lazy(() => import('assetsProducts/AssetsProducts'));
 
@@ -8,7 +8,7 @@ export const AssetsProductsPage: React.FC = () => {
     <React.Suspense
       fallback={
         <div className=" bg-white p-6 text-center">
-          <Spinner />
+          <FallbackSpinner />
         </div>
       }
     >

@@ -89,6 +89,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
         header: `header@http://localhost:${mapPorts[Apps.header].devPort}/remoteEntry.js`,
         footer: `footer@http://localhost:${mapPorts[Apps.footer].devPort}/remoteEntry.js`,
+        home: `home@http://localhost:${mapPorts[Apps.home].devPort}/remoteEntry.js`,
         vision360: `vision360@http://localhost:${mapPorts[Apps.vision360].devPort}/remoteEntry.js`,
         personalData: `personalData@http://localhost:${mapPorts[Apps.personalData].devPort}/remoteEntry.js`,
         assetsProducts: `assetsProducts@http://localhost:${mapPorts[Apps.assetsProducts].devPort}/remoteEntry.js`,
@@ -99,6 +100,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
         header: `header@${hostBaseUrl}apps/header/dist/remoteEntry.js`,
         footer: `footer@${hostBaseUrl}apps/footer/dist/remoteEntry.js`,
+        home: `home@${hostBaseUrl}apps/home/dist/remoteEntry.js`,
         vision360: `vision360@${hostBaseUrl}apps/vision360/dist/remoteEntry.js`,
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
@@ -123,7 +125,6 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/CardTabs': './src/components/Card/CardTabs',
         './components/CardItemLabel': './src/components/CardItem/CardItemLabel',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
-        './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
         './components/LineBreak': './src/components/LineBreak/LineBreak',
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
@@ -173,6 +174,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Footer': './src/Footer',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.home]: {
+    devPort: mapPorts[Apps.home].devPort,
+    analyzerPort: mapPorts[Apps.home].analyzerPort,
+    baseConfig: {
+      name: 'home',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Home': './src/Home',
       },
     },
     remotes: {
@@ -268,25 +288,6 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './HistoryInteractions': './src/HistoryInteractions',
-      },
-    },
-    remotes: {
-      dev: {
-        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
-      },
-      prod: {
-        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
-      },
-    },
-  },
-  [Apps.home]: {
-    devPort: mapPorts[Apps.home].devPort,
-    analyzerPort: mapPorts[Apps.home].analyzerPort,
-    baseConfig: {
-      name: 'home',
-      filename: 'remoteEntry.js',
-      exposes: {
-        './Home': './src/Home',
       },
     },
     remotes: {

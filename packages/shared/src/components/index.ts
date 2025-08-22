@@ -1,5 +1,4 @@
 // Common UI components
-export { default as Spinner } from './Spinner/Spinner';
 export { default as Button } from './Button/Button';
 export { default as InputWithLabel } from './InputWithLabel/InputWithLabel';
 export { default as SomeForm } from './SomeForm/SomeForm';

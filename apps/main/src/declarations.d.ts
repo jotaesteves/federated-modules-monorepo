@@ -36,6 +36,27 @@ declare module 'personalData/PersonalData' {
   export default PersonalDataComponent;
 }
 
+declare module 'historyInteractions/HistoryInteractions' {
+  import type { ComponentType } from 'react';
+
+  const HistoryInteractionsComponent: ComponentType<unknown>;
+  export default HistoryInteractionsComponent;
+}
+
+declare module 'channelsAndServices/ChannelsAndServices' {
+  import type { ComponentType } from 'react';
+
+  const ChannelsAndServicesComponent: ComponentType<unknown>;
+  export default ChannelsAndServicesComponent;
+}
+
+declare module 'assetsProducts/AssetsProductsList' {
+  import type { ComponentType } from 'react';
+
+  const AssetsProductsComponent: ComponentType<unknown>;
+  export default AssetsProductsComponent;
+}
+
 declare module 'assetsProducts/AssetsProducts' {
   import type { ComponentType } from 'react';
 
@@ -64,18 +85,18 @@ declare module 'footer/Footer' {
   export default FooterComponent;
 }
 
+declare module 'home/Home' {
+  import type { ComponentType } from 'react';
+
+  const HomeComponent: ComponentType<unknown>;
+  export default HomeComponent;
+}
+
 declare module 'shared/components/app-sidebar' {
   import type { ComponentType } from 'react';
 
   const AppSidebarComponent: ComponentType<unknown>;
   export default AppSidebarComponent;
-}
-
-declare module 'shared/components/Spinner' {
-  import type { ComponentType } from 'react';
-
-  const SpinnerComponent: ComponentType<unknown>;
-  export default SpinnerComponent;
 }
 
 declare module 'shared/components/ui' {
