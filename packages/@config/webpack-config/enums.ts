@@ -9,6 +9,7 @@ export enum Apps {
   assetsProducts,
   channelsAndServices,
   historyInteractions,
+  settingsView,
 }
 
 export enum SharedModule {
