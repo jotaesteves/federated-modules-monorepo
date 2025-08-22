@@ -4,7 +4,7 @@ import ErrorBoundary from 'shared/components/ErrorBoundary';
 
 const ScriptsView: React.FC = () => {
   const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
-    console.error('Records Error:', error, errorInfo);
+    console.error('ScriptsView Error:', error, errorInfo);
   };
 
   return (
