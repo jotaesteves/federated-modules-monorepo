@@ -92,10 +92,12 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         vision360: `vision360@http://localhost:${mapPorts[Apps.vision360].devPort}/remoteEntry.js`,
         personalData: `personalData@http://localhost:${mapPorts[Apps.personalData].devPort}/remoteEntry.js`,
         records: `records@http://localhost:${mapPorts[Apps.records].devPort}/remoteEntry.js`,
+        sales: `sales@http://localhost:${mapPorts[Apps.sales].devPort}/remoteEntry.js`,
         assetsProducts: `assetsProducts@http://localhost:${mapPorts[Apps.assetsProducts].devPort}/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@http://localhost:${mapPorts[Apps.channelsAndServices].devPort}/remoteEntry.js`,
         historyInteractions: `historyInteractions@http://localhost:${mapPorts[Apps.historyInteractions].devPort}/remoteEntry.js`,
         settingsView: `settingsView@http://localhost:${mapPorts[Apps.settingsView].devPort}/remoteEntry.js`,
+        scriptsView: `scriptsView@http://localhost:${mapPorts[Apps.scriptsView].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -104,10 +106,12 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         vision360: `vision360@${hostBaseUrl}apps/vision360/dist/remoteEntry.js`,
         personalData: `personalData@${hostBaseUrl}apps/personalData/dist/remoteEntry.js`,
         records: `records@${hostBaseUrl}apps/records/dist/remoteEntry.js`,
+        sales: `sales@${hostBaseUrl}apps/sales/dist/remoteEntry.js`,
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
         historyInteractions: `historyInteractions@${hostBaseUrl}apps/historyInteractions/dist/remoteEntry.js`,
         settingsView: `settingsView@${hostBaseUrl}apps/settingsView/dist/remoteEntry.js`,
+        scriptsView: `scriptsView@${hostBaseUrl}apps/scriptsView/dist/remoteEntry.js`,
       },
     },
   },
@@ -245,6 +249,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       },
     },
   },
+  [Apps.sales]: {
+    devPort: mapPorts[Apps.sales].devPort,
+    analyzerPort: mapPorts[Apps.sales].analyzerPort,
+    baseConfig: {
+      name: 'sales',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Sales': './src/Sales',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
   [Apps.assetsProducts]: {
     devPort: mapPorts[Apps.assetsProducts].devPort,
     analyzerPort: mapPorts[Apps.assetsProducts].analyzerPort,
@@ -302,6 +325,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       },
     },
   },
+
   [Apps.settingsView]: {
     devPort: mapPorts[Apps.settingsView].devPort,
     analyzerPort: mapPorts[Apps.settingsView].analyzerPort,
@@ -320,7 +344,26 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
       },
     },
-  },
+  },           
+  [Apps.scriptsView]: {
+    devPort: mapPorts[Apps.scriptsView].devPort,
+    analyzerPort: mapPorts[Apps.scriptsView].analyzerPort,
+    baseConfig: {
+      name: 'scriptsView',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './ScriptsView': './src/ScriptsView',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  }, 
 };
 
 export const getAppModuleFederationConfig = (appName: Apps): AppModuleFederationConfig =>

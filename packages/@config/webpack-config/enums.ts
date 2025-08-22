@@ -6,10 +6,12 @@ export enum Apps {
   footer,
   personalData,
   records,
+  sales,
   assetsProducts,
   channelsAndServices,
   historyInteractions,
   settingsView,
+  scriptsView,
 }
 
 export enum SharedModule {
