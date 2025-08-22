@@ -38,3 +38,4 @@ export * from './InfoIcon';
 export * from './Graph2Icon';
 export * from './ConfigIcon';
 export * from './SearchIcon';
+export * from './EyeIcon';

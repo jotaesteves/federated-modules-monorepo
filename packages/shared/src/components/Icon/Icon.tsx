@@ -37,6 +37,7 @@ import {
   Graph2Icon,
   ConfigIcon,
   SearchIcon,
+  EyeIcon,
 } from '@/assets/icons';
 import { cn } from '@/lib/utils';
 import React from 'react';
@@ -80,6 +81,7 @@ const iconsMap = {
   graph2: Graph2Icon,
   config: ConfigIcon,
   search: SearchIcon,
+  eye: EyeIcon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;
