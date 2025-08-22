@@ -96,6 +96,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         assetsProducts: `assetsProducts@http://localhost:${mapPorts[Apps.assetsProducts].devPort}/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@http://localhost:${mapPorts[Apps.channelsAndServices].devPort}/remoteEntry.js`,
         historyInteractions: `historyInteractions@http://localhost:${mapPorts[Apps.historyInteractions].devPort}/remoteEntry.js`,
+        scriptsView: `scriptsView@http://localhost:${mapPorts[Apps.scriptsView].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -108,6 +109,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         assetsProducts: `assetsProducts@${hostBaseUrl}apps/assetsProducts/dist/remoteEntry.js`,
         channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
         historyInteractions: `historyInteractions@${hostBaseUrl}apps/historyInteractions/dist/remoteEntry.js`,
+        scriptsView: `scriptsView@${hostBaseUrl}apps/scriptsView/dist/remoteEntry.js`,
       },
     },
   },
@@ -310,6 +312,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './HistoryInteractions': './src/HistoryInteractions',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.scriptsView]: {
+    devPort: mapPorts[Apps.scriptsView].devPort,
+    analyzerPort: mapPorts[Apps.scriptsView].analyzerPort,
+    baseConfig: {
+      name: 'scriptsView',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './ScriptsView': './src/ScriptsView',
       },
     },
     remotes: {

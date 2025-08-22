@@ -155,7 +155,7 @@
     "**/temp/**": true
   },
   "git.useEditorAsCommitInput": true,
-  "git.inputValidation": "both",
+  "git.inputValidation": true,
   "git.inputValidationSubjectLength": 72,
   "scm.inputPlaceholder": "type(scope): short summary — use .gitmessage template for details"
 }
