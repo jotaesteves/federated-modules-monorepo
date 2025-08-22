@@ -1,4 +1,4 @@
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router';
 import { render } from '@testing-library/react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from 'shared/queries/client';

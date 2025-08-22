@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, Routes, Link, matchPath, useLocation } from 'react-router-dom';
+import { Route, Routes, Link, matchPath, useLocation } from 'react-router';
 
 function useRouteMatch(patterns: readonly string[]) {
   const { pathname } = useLocation();
