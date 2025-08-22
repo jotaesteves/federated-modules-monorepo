@@ -15,29 +15,25 @@ import {
   HistoryInteractionsPage,
 } from './pages/Dashboard';
 
-// Settings Pages
-import { CSSDemo } from './pages/Settings';
-
-// Root page
-import Root from './pages/Root/Root';
+// Sidebar Pages
+import HomePage from './pages/Sidebar/HomePage';
 
 const App: React.FC = () => {
   return (
     <Routes>
       {/* Dashboard routes with DashboardLayout */}
       <Route path="/" element={<DashboardLayout />}>
+        <Route path="home/*" element={<HomePage />} />
         <Route path="vision-360/*" element={<Vision360Page />} />
         <Route path="personal-data/*" element={<PersonalDataPage />} />
         <Route path="assets-products/*" element={<AssetsProductsPage />} />
         <Route path="channels-and-services/*" element={<ChannelsAndServicesPage />} />
         <Route path="history-interactions/*" element={<HistoryInteractionsPage />} />
-        <Route index element={<Root />} />
+        <Route index element={<HomePage />} />
       </Route>
 
       {/* Settings routes with BaseLayout */}
-      <Route path="/pesquisa" element={<BaseLayout />}>
-        <Route index element={<CSSDemo />} />
-      </Route>
+      <Route path="/pesquisa" element={<BaseLayout />}></Route>
 
       <Route path="/definicoes" element={<SidebarLayout />} />
 
