@@ -38,7 +38,7 @@ export const NAVIGATION_ROUTES: Record<NavigationPath, NavigationRoute> = {
   assetsProducts: {
     navigationPath: 'assetsProducts',
     routerPath: '/assets-products',
-    label: 'Patrimonio e Productos',
+    label: 'Patrimonio e Produtos',
   },
   channelsAndServices: {
     navigationPath: 'channelsAndServices',
