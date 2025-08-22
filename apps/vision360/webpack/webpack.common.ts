@@ -1,8 +1,5 @@
 import { Apps } from '@config/webpack-config/enums';
-import {
-  getAppModuleFederationConfig,
-  getDtsModuleConfig,
-} from '@config/webpack-config/module-federation';
+import { getAppModuleFederationConfig } from '@config/webpack-config/module-federation';
 import { getSharedModulesConfig } from '@config/webpack-config/utils';
 
 import { dependencies } from '../package.json';
@@ -15,10 +12,6 @@ export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig 
   shared: getSharedModulesConfig(dependencies),
 });
 
-const getCommonConfig = (): webpack.Configuration => ({
-  module: {
-    rules: [getDtsModuleConfig(Apps['vision360'])],
-  },
-});
+const getCommonConfig = (): webpack.Configuration => ({});
 
 export default getCommonConfig;

@@ -116,32 +116,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       name: 'shared',
       filename: 'remoteEntry.js',
       exposes: {
+        './': './src/index.ts',
         './components/Breadcrumbs': './src/components/Breadcrumbs/Breadcrumbs',
         './components/Button': './src/components/Button/Button',
-        './components/InputWithLabel': './src/components/InputWithLabel/InputWithLabel',
-        './components/SomeForm': './src/components/SomeForm/SomeForm',
         './components/Card': './src/components/Card/Card',
         './components/CardAccordion': './src/components/Card/CardAccordion',
         './components/CardTabs': './src/components/Card/CardTabs',
         './components/CardItemLabel': './src/components/CardItem/CardItemLabel',
-        './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
         './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
         './components/LineBreak': './src/components/LineBreak/LineBreak',
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
-        './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
-        './styles/global-import': './src/styles/global-import',
+        './styles/global.import': './src/styles/global.import',
         './utils/transformations': './src/utils/transformations/transformations',
         './utils/api': './src/utils/api/api',
-        './queries/client': './src/queries/client',
-        './queries/useFilms': './src/queries/useFilms',
-        './stores/count': './src/stores/count',
-        './stores/globalStore': './src/stores/globalStore',
-        './providers/MicroFrontendProvider': './src/providers/MicroFrontendProvider',
-        './hooks/useMicroFrontend': './src/hooks/useMicroFrontend',
-        './shared/eventBus': './src/shared/eventBus',
+        './utils/navigation.bridge': './src/utils/navigation.bridge',
+        './config/navigation.config': './src/config/navigation.config',
+        './services/navigation.service': './src/services',
         './lib/utils': './src/lib/utils',
         './assets/icons': './src/assets/icons',
       },
@@ -305,17 +298,4 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
 export const getAppModuleFederationConfig = (appName: Apps): AppModuleFederationConfig =>
   appsModuleFederationConfig[appName];
 
-export const getDtsModuleConfig = (appName: Apps) => ({
-  test: /\.tsx?$/,
-  exclude: /node_modules/,
-  use: [
-    {
-      loader: 'dts-loader',
-      options: {
-        name: getAppModuleFederationConfig(appName).baseConfig.name,
-        exposes: getAppModuleFederationConfig(appName).baseConfig.exposes,
-        typesOutputDir: '.wp_federation',
-      },
-    },
-  ],
-});
+// dts-loader integration removed: keep type generation compile-time only, not part of Module Federation runtime

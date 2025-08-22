@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useNavigationService } from './hooks/useNavigationService';
 
 // Layouts
 import DashboardLayout from './layouts/DashboardLayout';
 import BaseLayout from './layouts/BaseLayout';
-import SidebarLayout from './layouts/SidebarLayout';
 
 // Dashboard Pages
 import {
@@ -16,13 +16,13 @@ import {
   RecordsPage,
 } from './pages/Dashboard';
 
-// Settings Pages
-import { CSSDemo } from './pages/Settings';
-
 // Root page
-import Root from './pages/Root/Root';
+import Root from './pages/Sidebar/Root';
 
 const App: React.FC = () => {
+  // Initialize navigation service integration
+  useNavigationService();
+
   return (
     <Routes>
       {/* Dashboard routes with DashboardLayout */}
@@ -38,10 +38,12 @@ const App: React.FC = () => {
 
       {/* Settings routes with BaseLayout */}
       <Route path="/pesquisa" element={<BaseLayout />}>
-        <Route index element={<CSSDemo />} />
+        <Route index element={<> TODO: Add Pesquisa </>} />
       </Route>
 
-      <Route path="/definicoes" element={<SidebarLayout />} />
+      <Route path="/definicoes" element={<BaseLayout />}>
+        <Route index element={<> TODO: Add Definicoes </>} />
+      </Route>
 
       {/* Catch-all route */}
       <Route path="*" element={<DashboardLayout />} />

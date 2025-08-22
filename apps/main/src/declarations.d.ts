@@ -105,3 +105,28 @@ declare module 'shared/components/ui' {
   export const CardFooter: ComponentType<unknown>;
   export const CardDescription: ComponentType<unknown>;
 }
+
+// Global Window interface extensions for microfrontend architecture
+declare global {
+  interface Window {
+    // Navigation system for microfrontends
+    navigation?: {
+      navigateTo: (path: string) => void;
+      getRouteFromTab?: (tab: string) => string;
+      getTabFromRoute?: (route: string) => string;
+    };
+
+    // Event bus for inter-microfrontend communication
+    eventBus?: {
+      on: (type: string, listener: (event: any) => void) => void;
+      off: (type: string, listener: (event: any) => void) => void;
+      emit: (event: any) => void;
+    };
+
+    // Footer store for global state management
+    globalFooterStore?: {
+      getState: () => any;
+      subscribe: (listener: () => void) => () => void;
+    };
+  }
+}

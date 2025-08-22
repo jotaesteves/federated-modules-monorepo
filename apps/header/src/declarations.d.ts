@@ -21,3 +21,15 @@ declare module '*.css?raw' {
   const content: string;
   export default content;
 }
+
+// Global Window interface extensions for microfrontend architecture
+declare global {
+  interface Window {
+    // Navigation system for microfrontends
+    navigation?: {
+      navigateTo: (path: string) => void;
+      getRouteFromTab?: (tab: string) => string;
+      getTabFromRoute?: (route: string) => string;
+    };
+  }
+}

@@ -1,8 +1,5 @@
 import { Apps } from '@config/webpack-config/enums';
-import {
-  getAppModuleFederationConfig,
-  getDtsModuleConfig,
-} from '@config/webpack-config/module-federation';
+import { getAppModuleFederationConfig } from '@config/webpack-config/module-federation';
 import { getSharedModulesConfig } from '@config/webpack-config/utils';
 
 import type { CommonModuleFederationConfig } from '@config/webpack-config/types';
@@ -17,9 +14,8 @@ export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig 
 });
 
 const getCommonConfig = (): webpack.Configuration => ({
-  module: {
-    rules: [getDtsModuleConfig(Apps.footer)],
-  },
+  // Empty - let the shared webpack config handle CSS processing
+  // Our local postcss.config.js will be used automatically when PostCSS runs
 });
 
 export default getCommonConfig;

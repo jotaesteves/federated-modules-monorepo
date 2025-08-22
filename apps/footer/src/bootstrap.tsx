@@ -1,7 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
-import queryClient from 'shared/queries/client';
 import Global from 'shared/styles/Global';
 
 import Footer from './Footer';
@@ -16,10 +15,8 @@ root.render(
       <title>Footer App</title>
     </Helmet>
     <Global />
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Footer />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <Footer />
+    </BrowserRouter>
   </>
 );

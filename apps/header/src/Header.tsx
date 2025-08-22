@@ -16,10 +16,6 @@ interface NavbarDropdown {
 }
 
 const Header: React.FC = () => {
-  // const { navigateTo, isCurrentPage } = useNavigation();
-  // const { theme, setTheme, isDark } = useTheme();
-
-  // User data - could come from global store in the future
   const user: User = {
     firstName: 'Alexandra',
     lastName: 'Rosália Umberto',
