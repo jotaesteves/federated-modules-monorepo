@@ -95,16 +95,6 @@ import styles from './Button.module.css';
 <button className={styles.button}>CSS Module Button</button>;
 ```
 
-### **3. Emotion CSS-in-JS (For dynamic styles)**
-
-```tsx
-import { css } from '@emotion/react';
-const buttonStyle = css`
-  background: ${(props) => (props.primary ? '#blue' : '#gray')};
-`;
-<button css={buttonStyle}>Emotion Button</button>;
-```
-
 ### **4. Global CSS (For global utilities)**
 
 ```css
