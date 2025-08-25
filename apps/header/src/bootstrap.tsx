@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { Helmet } from 'react-helmet';
+import { BrowserRouter } from 'react-router';
 import 'shared/styles/global-import';
 
 import Header from './Header';
@@ -13,7 +14,9 @@ root.render(
     <Helmet>
       <title>Header App</title>
     </Helmet>
-    <Header />
-    <SideBarNav />
+    <BrowserRouter>
+      <Header />
+      <SideBarNav />
+    </BrowserRouter>
   </>
 );

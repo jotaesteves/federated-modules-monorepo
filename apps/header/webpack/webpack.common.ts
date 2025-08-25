@@ -14,7 +14,7 @@ export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig 
   ...getAppModuleFederationConfig(Apps.header).baseConfig,
   shared: {
     ...getSharedModulesConfig(dependencies),
-    'react-router-dom': {
+    'react-router': {
       singleton: true,
       requiredVersion: '^6.22.3',
     },

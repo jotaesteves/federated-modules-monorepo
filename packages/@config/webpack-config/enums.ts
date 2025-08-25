@@ -22,7 +22,6 @@ export enum SharedModule {
   'react' = 'react',
   'react-dom' = 'react-dom',
   'react-router' = 'react-router',
-  'react-router-dom' = 'react-router-dom',
   'react-helmet' = 'react-helmet',
   'zustand' = 'zustand',
   '@tanstack/react-query' = '@tanstack/react-query',
