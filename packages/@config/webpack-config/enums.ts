@@ -2,8 +2,8 @@ export enum Apps {
   main,
   shared,
   header,
-  vision360,
   footer,
+  vision360,
   personalData,
   records,
   sales,
@@ -11,6 +11,7 @@ export enum Apps {
   channelsAndServices,
   historyInteractions,
   home,
+  settingsView,
   scriptsView,
 }
 

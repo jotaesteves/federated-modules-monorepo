@@ -97,6 +97,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         channelsAndServices: `channelsAndServices@http://localhost:${mapPorts[Apps.channelsAndServices].devPort}/remoteEntry.js`,
         historyInteractions: `historyInteractions@http://localhost:${mapPorts[Apps.historyInteractions].devPort}/remoteEntry.js`,
         home: `home@http://localhost:${mapPorts[Apps.home].devPort}/remoteEntry.js`,
+        settingsView: `settingsView@http://localhost:${mapPorts[Apps.settingsView].devPort}/remoteEntry.js`,
         scriptsView: `scriptsView@http://localhost:${mapPorts[Apps.scriptsView].devPort}/remoteEntry.js`,
       },
       prod: {
@@ -111,6 +112,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         channelsAndServices: `channelsAndServices@${hostBaseUrl}apps/channelsAndServices/dist/remoteEntry.js`,
         historyInteractions: `historyInteractions@${hostBaseUrl}apps/historyInteractions/dist/remoteEntry.js`,
         home: `home@${hostBaseUrl}apps/home/dist/remoteEntry.js`,
+        settingsView: `settingsView@${hostBaseUrl}apps/settingsView/dist/remoteEntry.js`,
         scriptsView: `scriptsView@${hostBaseUrl}apps/scriptsView/dist/remoteEntry.js`,
       },
     },
@@ -325,6 +327,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       },
     },
   },
+  [Apps.settingsView]: {
+    devPort: mapPorts[Apps.settingsView].devPort,
+    analyzerPort: mapPorts[Apps.settingsView].analyzerPort,
+    baseConfig: {
+      name: 'settingsView',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './SettingsView': './src/SettingsView',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },           
   [Apps.home]: {
     devPort: mapPorts[Apps.home].devPort,
     analyzerPort: mapPorts[Apps.home].analyzerPort,
@@ -354,7 +375,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
       },
     },
-  },
+  }, 
 };
 
 export const getAppModuleFederationConfig = (appName: Apps): AppModuleFederationConfig =>
