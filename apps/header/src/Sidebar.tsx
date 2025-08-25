@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Icon from 'shared/components/Icon';
 import Menu from './components/Menu';
 import { bottomSidebarMapData, sidebarMapData } from 'src/data/menuData';
-import { SidebarItemProps } from 'src/types/types';
+import type { SidebarItemProps } from 'src/types/types';
 import { getMenusBySidebarId } from 'src/utils/utils';
+import { Link } from 'react-router';
 
 declare global {
   interface Window {
@@ -36,7 +37,6 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         console.log('Attempting navigation to:', item.path);
         window.microFrontendNavigation.navigateTo(item.path);
       } else {
-        console.error('Navigation helper not available');
         // Fallback to window.location
         if (typeof window !== 'undefined') {
           window.location.href = item.path;
@@ -50,7 +50,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   };
 
   return (
-    <button
+    <Link
+      to={`/${item.label.toLowerCase()}`}
       onClick={handleClick}
       className={`flex items-center gap-3 pl-10 pr-7 min-h-[4rem] max-h-[4rem] text-gray-700 transition-all duration-300 relative rounded-r-[20px] group hover:bg-primary-500 text-left cursor-pointer ${
         expanded ? 'w-full' : 'w-fit'
@@ -76,7 +77,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
       >
         {item.label}
       </span>
-    </button>
+    </Link>
   );
 };
 
