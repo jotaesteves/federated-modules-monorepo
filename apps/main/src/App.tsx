@@ -22,25 +22,6 @@ const SalesPage = React.lazy(() => import('./pages/Dashboard/SalesPage'));
 // Sidebar Pages
 import HomePage from './pages/Sidebar/HomePage';
 
-// Hint: prefetch common remotes after idle time to improve later navigations
-if (typeof window !== 'undefined') {
-  // Prefetch remote entries lightly without blocking initial render
-  requestIdleCallback?.(() => {
-    const base = (process.env.HOST_BASE_URL as string) || '/';
-    const links = [
-      `${base}apps/header/dist/remoteEntry.js`,
-      `${base}apps/footer/dist/remoteEntry.js`,
-    ];
-    links.forEach((href) => {
-      const link = document.createElement('link');
-      link.rel = 'prefetch';
-      link.as = 'script';
-      link.href = href;
-      document.head.appendChild(link);
-    });
-  });
-}
-
 const App: React.FC = () => {
   return (
     <React.Suspense fallback={null}>
