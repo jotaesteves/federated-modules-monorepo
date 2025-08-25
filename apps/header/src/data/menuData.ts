@@ -1,11 +1,11 @@
-import { MenuItem, SidebarItem, SubmenuItem, SubmenuLinkItemProps } from 'src/types/types';
+import type { MenuItem, SidebarItem, SubmenuItem, SubmenuLinkItemProps } from 'src/types/types';
 
 export const sidebarMapData: SidebarItem[] = [
   {
     id: 'home',
     icon: 'home',
     label: 'Início',
-    path: '/inicio',
+    path: '/home',
   },
   {
     id: 'registos',

@@ -8,13 +8,13 @@ import getCommonConfig, { getCommonModuleFederationConfig } from './webpack.comm
 
 const getDevConfig = (): webpack.Configuration =>
   merge(
-    getDevCommonConfig({ port: getAppModuleFederationConfig(Apps['home']).devPort }),
+    getDevCommonConfig({ port: getAppModuleFederationConfig(Apps.home).devPort }),
     getCommonConfig(),
     {
       plugins: [
         new webpack.container.ModuleFederationPlugin({
           ...getCommonModuleFederationConfig(),
-          remotes: getAppModuleFederationConfig(Apps['home']).remotes?.dev,
+          remotes: getAppModuleFederationConfig(Apps.home).remotes?.dev,
         }),
       ],
     }

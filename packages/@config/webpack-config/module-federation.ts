@@ -363,6 +363,14 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './Home': './src/Home',
       },
     },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
   },
   [Apps.scriptsView]: {
     devPort: mapPorts[Apps.scriptsView].devPort,
