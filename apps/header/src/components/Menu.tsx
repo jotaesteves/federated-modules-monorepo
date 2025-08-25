@@ -2,7 +2,7 @@ import React from 'react';
 import Submenu from './Submenu';
 import type { MenuItemProps } from 'src/types/types';
 import { getMenusBySidebarId } from 'src/utils/utils';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const Menu: React.FC<MenuItemProps> = ({
   isMenuOpen,
@@ -37,23 +37,32 @@ const Menu: React.FC<MenuItemProps> = ({
           </p>
           <div className="py-3 flex flex-col overflow-y-auto">
             {menuItems.map((item) => {
-              const formatLink = item.label
-                .replace(/\s/g, '-')
-                .normalize('NFD')
-                .replace(/[\u0300-\u036f]/g, '')
-                .replace(/-+/g, '-')
-                .toLowerCase();
+              const commonClassName = `text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100 ${
+                activeSubmenuItem === item.id ? 'bg-primary-500 text-white' : ''
+              }`;
+
+              if (item.path) {
+                return (
+                  <Link
+                    to={item.path}
+                    key={item.id}
+                    onClick={() => handleClickMenu(item.id)}
+                    className={commonClassName}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              }
+
               return (
-                <Link
-                  to={`/${formatLink}`}
+                <button
+                  type="button"
                   key={item.id}
                   onClick={() => handleClickMenu(item.id)}
-                  className={`text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100 ${
-                    activeSubmenuItem === item.id ? 'bg-primary-500 text-white' : ''
-                  }`}
+                  className={commonClassName}
                 >
                   {item.label}
-                </Link>
+                </button>
               );
             })}
           </div>
