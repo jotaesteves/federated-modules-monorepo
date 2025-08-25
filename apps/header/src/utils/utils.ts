@@ -1,5 +1,5 @@
 import { menuMapData, submenuLinks, submenuMapData } from 'src/data/menuData';
-import { MenuItem, SubmenuItem, SubmenuLinkItemProps } from 'src/types/types';
+import type { MenuItem, SubmenuItem, SubmenuLinkItemProps } from 'src/types/types';
 
 // Buscar todos os menus de um sidebar
 export const getMenusBySidebarId = (sidebarId: string): MenuItem[] => {
