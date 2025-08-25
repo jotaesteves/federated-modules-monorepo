@@ -56,7 +56,7 @@ module.exports = {
           100: '#F3F4F6', // used
           200: '#E5E7EB', // used
           300: '#D9D9D9', // used scroll-bar bg
-          400: '#9CA3AF',
+          400: '#ABACAD', // used checkbox border
           500: '#7C7F86', // used
           600: '#5E5E5E', // used
           700: '#374151',
