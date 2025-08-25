@@ -12,17 +12,9 @@ export const DetailsRouter: React.FC = () => {
 
   if (!activeItem) {
     return (
-      <div className="p-6 text-center content-center h-full">
-        <div className="max-w-md mx-auto">
-          <div className="mb-4 text-6xl">📊</div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
-            Selecione um item para ver os detalhes
-          </h3>
-          <p className="text-gray-600">
-            Clique em qualquer comunicação ou ocorrência do painel esquerdo para ver informações
-            detalhadas aqui.
-          </p>
-        </div>
+      <div className="p-6 h-full">
+        {/* Exemplo de uso do componente Tabela */}
+        {/* <TableComponent headers={tableHeaders} data={tableData} /> */}
       </div>
     );
   }

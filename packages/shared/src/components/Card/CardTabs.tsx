@@ -1,5 +1,6 @@
 import React from 'react';
-import Card, { CardProps } from './Card';
+import type { CardProps } from './Card';
+import Card from './Card';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@ui/tabs';
 import { ScrollArea, ScrollBar } from '@ui/scroll-area';
 import { cn } from '@/lib/utils';
