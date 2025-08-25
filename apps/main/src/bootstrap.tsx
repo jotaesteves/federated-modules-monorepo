@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, useNavigate } from 'react-router';
+import { BrowserRouter, useNavigate } from 'react-router-dom';
 import { QueryClientProvider } from '@tanstack/react-query';
 import queryClient from 'shared/queries/client';
 import GlobalStylesProvider from 'shared/styles/Global';

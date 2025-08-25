@@ -1,0 +1,13 @@
+{
+  "include": ["./**/*", "**/*", "package.json"],
+  "exclude": ["build", "dist", "coverage", "node_modules"],
+  "extends": "../tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  }
+}

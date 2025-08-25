@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Outlet } from 'react-router';
+import { Outlet } from 'react-router-dom';
 import Spinner from 'shared/components/Spinner';
 
 const Header = React.lazy(() => import('header/Header'));
