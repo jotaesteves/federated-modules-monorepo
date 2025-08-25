@@ -1,3 +1,5 @@
+#!/usr/bin/env sh
+
 # Detect operating system and handle Windows environments
 is_windows() {
   case "$OSTYPE" in
@@ -19,7 +21,7 @@ if is_windows || [[ -n "$WINDIR" ]] || [[ -n "$SYSTEMROOT" ]]; then
   fi
 
   # Run lint-staged
-  bun exec lint-staged
+  bunx lint-staged
 else
   # macOS/Linux environment - full setup
   echo "Running on Unix-like environment (macOS/Linux)"
@@ -46,5 +48,5 @@ else
     exit 1
   fi
 
-  bun exec lint-staged
+  bunx lint-staged
 fi

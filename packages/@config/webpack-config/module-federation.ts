@@ -352,7 +352,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
       },
     },
-  },           
+  },
   [Apps.home]: {
     devPort: mapPorts[Apps.home].devPort,
     analyzerPort: mapPorts[Apps.home].analyzerPort,
@@ -361,6 +361,14 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Home': './src/Home',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
       },
     },
   },
@@ -391,7 +399,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Kpis': './src/Kpis',
-                },
+      },
     },
     remotes: {
       dev: {
@@ -410,7 +418,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Outbounds': './src/Outbounds',
-                },
+      },
     },
     remotes: {
       dev: {
