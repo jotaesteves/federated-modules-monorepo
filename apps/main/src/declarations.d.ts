@@ -21,6 +21,13 @@ declare module '*.css?raw' {
   export default content;
 }
 
+declare module 'home/Home' {
+  import type { ComponentType } from 'react';
+
+  const HomeComponent: ComponentType<unknown>;
+  export default HomeComponent;
+}
+
 // Module Federation remotes typings
 declare module 'vision360/Vision360' {
   import type { ComponentType } from 'react';
