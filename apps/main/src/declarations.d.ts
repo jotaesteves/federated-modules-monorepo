@@ -43,19 +43,6 @@ declare module 'personalData/PersonalData' {
   export default PersonalDataComponent;
 }
 
-declare module 'records/Records' {
-  import type { ComponentType } from 'react';
-
-  const RecordsComponent: ComponentType<unknown>;
-  export default RecordsComponent;
-}
-declare module 'sales/Sales' {
-  import type { ComponentType } from 'react';
-
-  const SalesComponent: ComponentType<unknown>;
-  export default SalesComponent;
-}
-
 declare module 'assetsProducts/AssetsProducts' {
   import type { ComponentType } from 'react';
 
@@ -98,6 +85,48 @@ declare module 'shared/components/Spinner' {
   export default SpinnerComponent;
 }
 
+declare module 'records/Records' {
+  import type { ComponentType } from 'react';
+
+  const RecordsComponent: ComponentType<unknown>;
+  export default RecordsComponent;
+}
+declare module 'sales/Sales' {
+  import type { ComponentType } from 'react';
+
+  const SalesComponent: ComponentType<unknown>;
+  export default SalesComponent;
+}
+declare module 'documentation/Documentation' {
+  import type { ComponentType } from 'react';
+
+  const DocumentationComponent: ComponentType<unknown>;
+  export default DocumentationComponent;
+}
+declare module 'outbounds/Outbounds' {
+  import type { ComponentType } from 'react';
+
+  const OutboundsComponent: ComponentType<unknown>;
+  export default OutboundsComponent;
+}
+declare module 'scriptsView/Scripts' {
+  import type { ComponentType } from 'react';
+
+  const ScriptsComponent: ComponentType<unknown>;
+  export default ScriptsComponent;
+}
+declare module 'kpi/Kpi' {
+  import type { ComponentType } from 'react';
+
+  const KpiComponent: ComponentType<unknown>;
+  export default KpiComponent;
+}
+declare module 'settingsView/SettingsView' {
+  import type { ComponentType } from 'react';
+
+  const SettingsViewComponent: ComponentType<unknown>;
+  export default SettingsViewComponent;
+}
 declare module 'shared/components/ui' {
   import type { ComponentType } from 'react';
 
