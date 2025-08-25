@@ -13,7 +13,9 @@ export const DetailsSection: React.FC<DetailsSectionProps> = ({ title = 'Detalhe
         <h2 className="text-lg font-semibold text-left">{title}</h2>
       </div>
       <Breadcrumbs />
-      <section className="bg-white flex-1 overflow-y-auto min-h-0">{children}</section>
+      <section className="bg-white flex-1 overflow-y-auto min-h-0" id="detailsRef">
+        {children}
+      </section>
     </div>
   );
 };
