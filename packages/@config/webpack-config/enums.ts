@@ -12,6 +12,7 @@ export enum Apps {
   historyInteractions,
   home,
   scriptsView,
+  kpis,
 }
 
 export enum SharedModule {

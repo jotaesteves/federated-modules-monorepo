@@ -98,6 +98,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         historyInteractions: `historyInteractions@http://localhost:${mapPorts[Apps.historyInteractions].devPort}/remoteEntry.js`,
         home: `home@http://localhost:${mapPorts[Apps.home].devPort}/remoteEntry.js`,
         scriptsView: `scriptsView@http://localhost:${mapPorts[Apps.scriptsView].devPort}/remoteEntry.js`,
+        kpis: `kpis@http://localhost:${mapPorts[Apps.kpis].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -112,6 +113,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         historyInteractions: `historyInteractions@${hostBaseUrl}apps/historyInteractions/dist/remoteEntry.js`,
         home: `home@${hostBaseUrl}apps/home/dist/remoteEntry.js`,
         scriptsView: `scriptsView@${hostBaseUrl}apps/scriptsView/dist/remoteEntry.js`,
+        kpis: `kpis@${hostBaseUrl}apps/kpis/dist/remoteEntry.js`,
       },
     },
   },
@@ -344,6 +346,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './ScriptsView': './src/ScriptsView',
+      },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.kpis]: {
+    devPort: mapPorts[Apps.kpis].devPort,
+    analyzerPort: mapPorts[Apps.kpis].analyzerPort,
+    baseConfig: {
+      name: 'kpis',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Kpis': './src/Kpis',
       },
     },
     remotes: {
