@@ -1,8 +1,8 @@
 {
-  "name": "scriptviews",
+  "name": "outbounds",
   "version": "0.1.0",
-  "main": "./src/ScriptsView.tsx",
-  "types": "./src/ScriptsView.tsx",
+  "main": "./src/Outbounds.tsx",
+  "types": "./src/Outbounds.tsx",
   "scripts": {
     "analyze": "webpack --config webpack/webpack.prod.ts --env analyze",
     "predev": "rimraf dist",

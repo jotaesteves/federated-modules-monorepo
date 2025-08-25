@@ -12,9 +12,9 @@ const getProdConfig = (env: Record<string, string | boolean>): webpack.Configura
     plugins: [
       new webpack.container.ModuleFederationPlugin({
         ...getCommonModuleFederationConfig(),
-        remotes: getAppModuleFederationConfig(Apps.home).remotes?.prod,
+        remotes: getAppModuleFederationConfig(Apps.documentation).remotes?.prod,
       }),
-      ...(env.analyze ? [getBundleAnalyzerPlugin(Apps.home)] : []),
+      ...(env.analyze ? [getBundleAnalyzerPlugin(Apps.documentation)] : []),
     ],
   });
 };

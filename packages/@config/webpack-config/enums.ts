@@ -13,6 +13,9 @@ export enum Apps {
   home,
   settingsView,
   scriptsView,
+  kpis,
+  outbounds,
+  documentation,
 }
 
 export enum SharedModule {
