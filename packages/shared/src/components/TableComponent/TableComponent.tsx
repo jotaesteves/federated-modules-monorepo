@@ -37,12 +37,12 @@ const TableComponent: React.FC<TableComponentProps> = ({ headers, data }) => {
 
   const updateHeight = () => {
     const detailsEl = document.getElementById('detailsRef');
-    const notTableEl = document.getElementById('detailsScrollArea');
+    const filterEl = document.getElementById('detailsScrollArea');
 
-    if (detailsEl && notTableEl) {
+    if (detailsEl && filterEl) {
       const detailsHeight = detailsEl.offsetHeight;
 
-      const prevEl = notTableEl.previousElementSibling as HTMLElement | null;
+      const prevEl = filterEl.previousElementSibling as HTMLElement | null;
       const scrollAreaHeight = prevEl ? prevEl.offsetHeight + 64 : 0;
 
       const finalHeight = detailsHeight - scrollAreaHeight;
