@@ -13,6 +13,7 @@ export enum Apps {
   home,
   settingsView,
   scriptsView,
+  documentation,
 }
 
 export enum SharedModule {
