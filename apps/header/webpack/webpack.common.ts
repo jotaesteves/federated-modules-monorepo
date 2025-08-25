@@ -12,7 +12,13 @@ import type * as webpack from 'webpack';
 
 export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig => ({
   ...getAppModuleFederationConfig(Apps.header).baseConfig,
-  shared: getSharedModulesConfig(dependencies),
+  shared: {
+    ...getSharedModulesConfig(dependencies),
+    'react-router-dom': {
+      singleton: true,
+      requiredVersion: '^6.22.3',
+    },
+  },
 });
 
 const getCommonConfig = (): webpack.Configuration => ({

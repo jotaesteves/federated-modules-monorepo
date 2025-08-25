@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router';
 
 const tabs = [
   { value: 'vision360', label: 'Visao 360', path: '/vision-360' },
@@ -9,9 +8,20 @@ const tabs = [
   { value: 'historyInteractions', label: 'Historico Interacões', path: '/history-interactions' },
 ];
 
+// Safe hook to use location
+const useSafeLocation = () => {
+  try {
+    const { useLocation } = require('react-router-dom');
+    return useLocation();
+  } catch {
+    // Fallback when not inside a Router context
+    return { pathname: window.location.pathname, search: '', hash: '', state: null, key: '' };
+  }
+};
+
 const HeaderTabs: React.FC = () => {
   // Track location early so initial state can reflect the current route
-  const location = useLocation();
+  const location = useSafeLocation();
 
   // Access the global store from the host app
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81,33 +91,18 @@ const HeaderTabs: React.FC = () => {
       <ul className="flex space-x-8">
         {tabs.map((tab) => (
           <li key={tab.value}>
-            {tab.path ? (
-              <Link
-                className={`py-4 px-2 text-xl font-semibold transition-colors duration-200 border-b-4 ${
-                  activeTab === tab.value
-                    ? 'text-primary border-primary-500'
-                    : 'text-neutral-900 border-transparent hover:text-pink-500 hover:border-pink-300'
-                }`}
-                data-tab={tab.value}
-                to={tab.path}
-                onClick={() => handleTabClick(tab.value)}
-              >
-                {tab.label}
-              </Link>
-            ) : (
-              <button
-                className={`py-4 px-2 text-sm font-medium transition-colors duration-200 border-b-4 ${
-                  activeTab === tab.value
-                    ? 'text-primary border-primary'
-                    : 'text-neutral-900 border-transparent hover:text-pink-500 hover:border-pink-300'
-                }`}
-                data-tab={tab.value}
-                onClick={() => handleTabClick(tab.value)}
-                type="button"
-              >
-                {tab.label}
-              </button>
-            )}
+            <button
+              className={`py-4 px-2 text-xl font-semibold transition-colors duration-200 border-b-4 ${
+                activeTab === tab.value
+                  ? 'text-primary border-primary-500'
+                  : 'text-neutral-900 border-transparent hover:text-pink-500 hover:border-pink-300'
+              }`}
+              data-tab={tab.value}
+              onClick={() => handleTabClick(tab.value)}
+              type="button"
+            >
+              {tab.label}
+            </button>
           </li>
         ))}
       </ul>

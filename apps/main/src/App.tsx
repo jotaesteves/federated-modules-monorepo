@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Routes, Route } from 'react-router';
+import { Routes, Route } from 'react-router-dom';
 
 // Layouts
 import DashboardLayout from './layouts/DashboardLayout';
