@@ -11,8 +11,8 @@ const HistoryInteractions: React.FC = () => {
       <Helmet>
         <title>Histórico de Interações</title>
       </Helmet>
-      <div className="p-2 h-full max-h-[calc(75vh)] overflow-hidden">
-        <div className="relative h-full grid grid-cols-24 gap-2">
+      <div className="h-full max-h-[calc(75vh)] overflow-hidden">
+        <div className="relative grid grid-cols-24 gap-2 px-4 py-5 rounded-lg  w-full overflow-y-auto h-[calc(100vh_-_194px_-_107px)]">
           <HistoryInteractionsColumns />
           <DetailsSection>
             <DetailsRouter />
