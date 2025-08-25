@@ -100,6 +100,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         settingsView: `settingsView@http://localhost:${mapPorts[Apps.settingsView].devPort}/remoteEntry.js`,
         scriptsView: `scriptsView@http://localhost:${mapPorts[Apps.scriptsView].devPort}/remoteEntry.js`,
         outbounds: `outbounds@http://localhost:${mapPorts[Apps.outbounds].devPort}/remoteEntry.js`,
+        documentation: `documentation@http://localhost:${mapPorts[Apps.documentation].devPort}/remoteEntry.js`,
       },
       prod: {
         shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
@@ -116,6 +117,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         settingsView: `settingsView@${hostBaseUrl}apps/settingsView/dist/remoteEntry.js`,
         scriptsView: `scriptsView@${hostBaseUrl}apps/scriptsView/dist/remoteEntry.js`,
         outbounds: `outbounds@${hostBaseUrl}apps/outbounds/dist/remoteEntry.js`,
+        documentation: `documentation@${hostBaseUrl}apps/documentation/dist/remoteEntry.js`,
       },
     },
   },
@@ -138,6 +140,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
         './components/LineBreak': './src/components/LineBreak/LineBreak',
+        './components/TableComponent': './src/components/TableComponent/TableComponent',
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
@@ -386,6 +389,25 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Outbounds': './src/Outbounds',
+                },
+    },
+    remotes: {
+      dev: {
+        shared: `shared@http://localhost:${mapPorts[Apps.shared].devPort}/remoteEntry.js`,
+      },
+      prod: {
+        shared: `shared@${hostBaseUrl}packages/shared/dist/remoteEntry.js`,
+      },
+    },
+  },
+  [Apps.documentation]: {
+    devPort: mapPorts[Apps.documentation].devPort,
+    analyzerPort: mapPorts[Apps.documentation].analyzerPort,
+    baseConfig: {
+      name: 'documentation',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Documentation': './src/Documentation',
       },
     },
     remotes: {

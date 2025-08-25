@@ -14,6 +14,7 @@ export enum Apps {
   settingsView,
   scriptsView,
   outbounds,
+  documentation,
 }
 
 export enum SharedModule {
