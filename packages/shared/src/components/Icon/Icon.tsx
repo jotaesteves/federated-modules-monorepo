@@ -39,6 +39,7 @@ import {
   SearchIcon,
   EyeIcon,
   CloseBlackIcon,
+  Phone2Icon,
 } from '@/assets/icons';
 import { PlayIcon } from '@/assets/icons/PlayIcon';
 import { cn } from '@/lib/utils';
@@ -86,6 +87,7 @@ const iconsMap = {
   eye: EyeIcon,
   closeBlack: CloseBlackIcon,
   play: PlayIcon,
+  phone2: Phone2Icon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;
