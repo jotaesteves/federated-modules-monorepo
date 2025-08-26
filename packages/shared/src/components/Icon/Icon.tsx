@@ -39,6 +39,7 @@ import {
   SearchIcon,
   EyeIcon,
 } from '@/assets/icons';
+import { PlayIcon } from '@/assets/icons/PlayIcon';
 import { cn } from '@/lib/utils';
 import React from 'react';
 
@@ -82,6 +83,7 @@ const iconsMap = {
   config: ConfigIcon,
   search: SearchIcon,
   eye: EyeIcon,
+  play: PlayIcon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;
