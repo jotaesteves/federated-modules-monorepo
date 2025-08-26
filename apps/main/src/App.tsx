@@ -16,26 +16,35 @@ const ChannelsAndServicesPage = React.lazy(
 const HistoryInteractionsPage = React.lazy(
   () => import('./pages/Dashboard/HistoryInteractionsPage')
 );
-const RecordsPage = React.lazy(() => import('./pages/Dashboard/RecordsPage'));
-const SalesPage = React.lazy(() => import('./pages/Dashboard/SalesPage'));
-
 // Sidebar Pages
-import HomePage from './pages/Sidebar/HomePage';
+const RecordsPage = React.lazy(() => import('./pages/Sidebar/RecordsPage'));
+const SalesPage = React.lazy(() => import('./pages/Sidebar/SalesPage'));
+const OutboundsPage = React.lazy(() => import('./pages/Sidebar/OutboundsPage'));
+const ScriptsViewPage = React.lazy(() => import('./pages/Sidebar/ScriptsViewPage'));
+const SettingsViewPage = React.lazy(() => import('./pages/Sidebar/SettingsViewPage'));
+const KpisPage = React.lazy(() => import('./pages/Sidebar/KpisPage'));
+const DocumentationPage = React.lazy(() => import('./pages/Sidebar/DocumentationPage'));
+const HomePage = React.lazy(() => import('./pages/Sidebar/HomePage'));
 
 const App: React.FC = () => {
   return (
-    <React.Suspense fallback={null}>
+    <React.Suspense fallback={<div>Loading...</div>}>
       <Routes>
         {/* Dashboard routes with DashboardLayout */}
         <Route path="/" element={<DashboardLayout />}>
           <Route path="home/*" element={<HomePage />} />
+          <Route path="records/*" element={<RecordsPage />} />
+          <Route path="sales/*" element={<SalesPage />} />
+          <Route path="outbounds/*" element={<OutboundsPage />} />
+          <Route path="scripts/*" element={<ScriptsViewPage />} />
+          <Route path="settings/*" element={<SettingsViewPage />} />
+          <Route path="kpis/*" element={<KpisPage />} />
+          <Route path="documentation/*" element={<DocumentationPage />} />
           <Route path="vision-360/*" element={<Vision360Page />} />
           <Route path="personal-data/*" element={<PersonalDataPage />} />
           <Route path="assets-products/*" element={<AssetsProductsPage />} />
           <Route path="channels-and-services/*" element={<ChannelsAndServicesPage />} />
           <Route path="history-interactions/*" element={<HistoryInteractionsPage />} />
-          <Route path="records/*" element={<RecordsPage />} />
-          <Route path="sales/*" element={<SalesPage />} />
           <Route index element={<HomePage />} />
         </Route>
 
