@@ -2,8 +2,8 @@ import Icon from '@/components/Icon';
 import React from 'react';
 
 interface TextareaProps {
-  name: string;
-  placeholder: string;
+  name?: string;
+  placeholder?: string;
 }
 
 const Textarea: React.FC<TextareaProps> = ({ name, placeholder }) => {
@@ -21,7 +21,7 @@ const Textarea: React.FC<TextareaProps> = ({ name, placeholder }) => {
       />
       <Icon
         type="closeBlack"
-        className="cursor-pointer absolute h-fit w-fit p-0 right-2 top-4"
+        className="cursor-pointer absolute h-fit w-fit p-0 right-2 top-1/2 -translate-y-1/2"
         onClick={() => setText('')}
       />
     </div>
