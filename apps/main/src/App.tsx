@@ -57,6 +57,15 @@ const App: React.FC = () => {
           <Route path="kpis/*" element={<KpisPage />} />
           <Route path="documentation/*" element={<DocumentationPage />} />
         </Route>
+        {/* Sidebar routes with BaseLayout */}
+        <Route path="home/*" element={<HomePage />} />
+        <Route path="records/*" element={<RecordsPage />} />
+        <Route path="sales/*" element={<SalesPage />} />
+        <Route path="outbounds/*" element={<OutboundsPage />} />
+        <Route path="scripts/*" element={<ScriptsViewPage />} />
+        <Route path="settings/*" element={<SettingsViewPage />} />
+        <Route path="kpis/*" element={<KpisPage />} />
+        <Route path="documentation/*" element={<DocumentationPage />} />
 
         {/* Settings routes with BaseLayout */}
         <Route path="/pesquisa" element={<BaseLayout />}></Route>
