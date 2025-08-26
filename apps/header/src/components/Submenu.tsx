@@ -6,7 +6,6 @@ import { getSubmenuLinksBySubmenuId, getSubmenusByMenuId } from 'src/utils/utils
 const Submenu: React.FC<SubmenuItemProps> = ({
   isSubmenuOpen,
   activeMenuItem,
-  activeSubmenuItem,
   onSubmenuItemClick,
 }) => {
   if (!isSubmenuOpen || !activeMenuItem) return null;

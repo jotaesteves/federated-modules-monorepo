@@ -20,6 +20,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   item,
   expanded,
   onOpenMenu,
+  onCloseMenu,
   className = '',
   isActive,
   isPendingActive,
@@ -43,6 +44,8 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     if (hasMenu) {
       onOpenMenu(item.label);
       return;
+    } else if (onCloseMenu) {
+      onCloseMenu();
     }
   };
 
@@ -163,7 +166,7 @@ const SideBarNav: React.FC = () => {
             item={item}
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.label)}
-            onCloseMenu={handleCloseMenu}
+            onCloseMenu={handleCloseMenuAndSidebar}
             isActive={false}
             isPendingActive={activeItem === item.label}
             hasMenu={!item.path}
@@ -178,7 +181,7 @@ const SideBarNav: React.FC = () => {
             item={item}
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.label)}
-            onCloseMenu={handleCloseMenu}
+            onCloseMenu={handleCloseMenuAndSidebar}
             isActive={false}
             isPendingActive={activeItem === item.label}
             hasMenu={!item.path}
