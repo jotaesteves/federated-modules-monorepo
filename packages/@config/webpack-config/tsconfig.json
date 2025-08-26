@@ -1,5 +1,5 @@
 {
-  "include": ["./**/*", "**/*", "package.json"],
+  "include": ["./**/*", "**/*", "package.json", "**/*.ts"],
   "exclude": ["build", "dist", "coverage", "node_modules"],
   "extends": "../tsconfig/tsconfig.json",
   "compilerOptions": {
@@ -8,6 +8,8 @@
     "rootDir": ".",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["node"]
   }
 }
