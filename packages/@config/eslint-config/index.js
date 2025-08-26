@@ -221,11 +221,19 @@ module.exports = [
     files: [
       '**/*.config.{js,cjs,mjs,ts}',
       '**/webpack/**/*.{js,ts}',
+      '**/webpack-config/*.{js,ts}',
+      '**/webpack-config/**/*.{js,ts}',
+      'packages/@config/webpack-config/*.{js,ts}',
+      'packages/@config/webpack-config/**/*.{js,ts}',
       '**/scripts/**/*.{js,ts}',
       '**/.eslintrc.*',
       '**/eslint.config.*',
     ],
     languageOptions: {
+      parserOptions: {
+        // Disable project-based type-aware parsing for config files
+        project: false,
+      },
       globals: {
         ...globals.node,
       },
