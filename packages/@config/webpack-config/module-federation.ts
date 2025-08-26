@@ -1,5 +1,5 @@
 import { Apps } from './enums';
-import { AppsModuleFederationConfig, AppModuleFederationConfig } from './types';
+import type { AppsModuleFederationConfig, AppModuleFederationConfig } from './types';
 
 const hostBaseUrl = process.env.HOST_BASE_URL || '/';
 
@@ -133,12 +133,10 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/Breadcrumbs': './src/components/Breadcrumbs/Breadcrumbs',
         './components/Button': './src/components/Button/Button',
         './components/InputWithLabel': './src/components/InputWithLabel/InputWithLabel',
-        './components/SomeForm': './src/components/SomeForm/SomeForm',
         './components/Card': './src/components/Card/Card',
         './components/CardAccordion': './src/components/Card/CardAccordion',
         './components/CardTabs': './src/components/Card/CardTabs',
         './components/CardItemLabel': './src/components/CardItem/CardItemLabel',
-        './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
         './components/Spinner': './src/components/Spinner/Spinner',
         './components/Icon': './src/components/Icon/Icon',
         './components/LineBreak': './src/components/LineBreak/LineBreak',

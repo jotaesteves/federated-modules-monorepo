@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import InjectGoogleFontsPlugin from './plugins/google-fonts-plugin';
 
 const getCommonConfig = (): webpack.Configuration => ({
   entry: './src/main',
@@ -83,6 +84,7 @@ const getCommonConfig = (): webpack.Configuration => ({
       publicPath: '/',
       favicon: './public/favicon.png',
     }),
+    new InjectGoogleFontsPlugin(),
   ],
 });
 

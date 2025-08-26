@@ -11,7 +11,13 @@ import { dependencies } from '../package.json';
 
 export const getCommonModuleFederationConfig = (): CommonModuleFederationConfig => ({
   ...getAppModuleFederationConfig(Apps.main).baseConfig,
-  shared: getSharedModulesConfig(dependencies),
+  shared: {
+    ...getSharedModulesConfig(dependencies),
+    'react-router': {
+      singleton: true,
+      requiredVersion: dependencies['react-router'],
+    },
+  },
 });
 
 const getCommonConfig = (): webpack.Configuration => ({
