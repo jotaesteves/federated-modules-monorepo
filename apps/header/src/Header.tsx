@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
 import { Icon } from 'shared/components';
+import DialCall from 'src/components/DialCall';
 
 export type User = {
   firstName: string;
@@ -39,6 +40,7 @@ export default function Header() {
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [isDialOpen, setIsDialOpen] = useState(false);
 
   const handleNavClick = (title: string, event: React.MouseEvent) => {
     event.preventDefault();
@@ -50,6 +52,10 @@ export default function Header() {
 
   const togglePausePlay = () => {
     setIsPaused((prev) => !prev);
+  };
+
+  const toggleDialCall = () => {
+    setIsDialOpen((prev) => !prev);
   };
 
   return (
@@ -135,7 +141,7 @@ export default function Header() {
           </div>
 
           {/* Call center controls - rounded pill shaped with 5 circles inside */}
-          <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2">
+          <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2 relative">
             {isPaused ? (
               <button
                 className="relative w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
@@ -177,9 +183,12 @@ export default function Header() {
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Phone"
+              onClick={toggleDialCall}
             >
               <Icon type="dialPad" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
+
+            {isDialOpen && <DialCall />}
           </div>
         </div>
       </div>
