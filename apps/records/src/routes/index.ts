@@ -153,18 +153,3 @@ export const getRoutesForOutlet = (): RouteConfig[] => {
     }))
   );
 };
-// Helper function to get all routes flattened
-export const getAllRoutes = (): Array<{
-  fullPath: string;
-  component: React.ComponentType;
-  label: string;
-  category: string;
-}> => {
-  return ROUTES_CONFIG.flatMap((category) =>
-    category.routes.map((route) => ({
-      path: `${category.basePath.slice(1)}${route.path}`,
-      component: route.component,
-      label: route.label,
-    }))
-  );
-};
