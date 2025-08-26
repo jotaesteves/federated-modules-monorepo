@@ -32,14 +32,6 @@ const App: React.FC = () => {
       <Routes>
         {/* Dashboard routes with DashboardLayout */}
         <Route path="/" element={<DashboardLayout />}>
-          <Route path="home/*" element={<HomePage />} />
-          <Route path="records/*" element={<RecordsPage />} />
-          <Route path="sales/*" element={<SalesPage />} />
-          <Route path="outbounds/*" element={<OutboundsPage />} />
-          <Route path="scripts/*" element={<ScriptsViewPage />} />
-          <Route path="settings/*" element={<SettingsViewPage />} />
-          <Route path="kpis/*" element={<KpisPage />} />
-          <Route path="documentation/*" element={<DocumentationPage />} />
           <Route path="vision-360/*" element={<Vision360Page />} />
           <Route path="personal-data/*" element={<PersonalDataPage />} />
           <Route path="assets-products/*" element={<AssetsProductsPage />} />
@@ -47,6 +39,15 @@ const App: React.FC = () => {
           <Route path="history-interactions/*" element={<HistoryInteractionsPage />} />
           <Route index element={<HomePage />} />
         </Route>
+        {/* Sidebar routes with BaseLayout */}
+        <Route path="home/*" element={<HomePage />} />
+        <Route path="records/*" element={<RecordsPage />} />
+        <Route path="sales/*" element={<SalesPage />} />
+        <Route path="outbounds/*" element={<OutboundsPage />} />
+        <Route path="scripts/*" element={<ScriptsViewPage />} />
+        <Route path="settings/*" element={<SettingsViewPage />} />
+        <Route path="kpis/*" element={<KpisPage />} />
+        <Route path="documentation/*" element={<DocumentationPage />} />
 
         {/* Settings routes with BaseLayout */}
         <Route path="/pesquisa" element={<BaseLayout />}></Route>
