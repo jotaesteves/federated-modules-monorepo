@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { Suspense } from 'react';
 import ErrorBoundary from 'shared/components/ErrorBoundary';
 
 // Loading Component
