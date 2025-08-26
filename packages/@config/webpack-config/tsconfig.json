@@ -1,11 +1,15 @@
 {
-  "extends": "@config/tsconfig",
+  "include": ["./**/*", "**/*", "package.json", "**/*.ts"],
+  "exclude": ["build", "dist", "coverage", "node_modules"],
+  "extends": "../tsconfig/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "./dist",
     "rootDir": ".",
-    "outDir": "dist",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "noEmit": true,
     "types": ["node"]
-  },
-  "include": ["**/*.ts"],
-  "exclude": ["dist", "node_modules"]
+  }
 }

@@ -1,4 +1,4 @@
-import { Apps } from './enums';
+import type { Apps } from './enums';
 
 export type SharedModulesConfig = Record<string, { singleton: boolean; requiredVersion: string }>;
 

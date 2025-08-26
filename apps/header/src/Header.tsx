@@ -15,11 +15,7 @@ interface NavbarDropdown {
   icon: React.ReactNode;
 }
 
-const Header: React.FC = () => {
-  // const { navigateTo, isCurrentPage } = useNavigation();
-  // const { theme, setTheme, isDark } = useTheme();
-
-  // User data - could come from global store in the future
+export default function Header() {
   const user: User = {
     firstName: 'Alexandra',
     lastName: 'Rosália Umberto',
@@ -45,16 +41,6 @@ const Header: React.FC = () => {
 
   const handleNavClick = (title: string, event: React.MouseEvent) => {
     event.preventDefault();
-    // Map navigation items to existing pages or handle new navigation
-    const pageMap: Record<string, string> = {
-      'Smart IZI': 'home',
-      Alertas: 'about',
-      Vendas: 'services',
-    };
-
-    if (pageMap[title]) {
-      //TODO: navigateTo(pageMap[title]);
-    }
   };
 
   const toggleUserDropdown = () => {
@@ -181,6 +167,4 @@ const Header: React.FC = () => {
       <HeaderTabs />
     </header>
   );
-};
-
-export default Header;
+}

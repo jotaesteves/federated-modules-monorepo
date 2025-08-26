@@ -33,7 +33,7 @@
     "e2e": "bun run build:local && bun run e2e:start",
     "e2e:show-report": "turbo e2e:show-report",
     "format": "prettier --config ./.prettierrc.json --write .",
-    "clean": "rimraf apps/*/node_modules packages/*/node_modules bun.lockb node_modules",
+    "clean": "rimraf apps/*/node_modules packages/*/node_modules bun.lock node_modules",
     "prepare": "husky"
   },
   "devDependencies": {
