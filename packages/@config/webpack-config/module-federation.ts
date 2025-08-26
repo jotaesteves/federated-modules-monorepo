@@ -142,6 +142,8 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/LineBreak': './src/components/LineBreak/LineBreak',
         './components/TableComponent': './src/components/TableComponent/TableComponent',
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
+        './components/Textarea': './src/components/Textarea/Textarea',
+        './components/Input': './src/components/Input/Input',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
