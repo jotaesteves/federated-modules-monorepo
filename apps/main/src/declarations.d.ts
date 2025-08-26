@@ -109,7 +109,7 @@ declare module 'outbounds/Outbounds' {
   const OutboundsComponent: ComponentType<unknown>;
   export default OutboundsComponent;
 }
-declare module 'scriptsView/Scripts' {
+declare module 'scriptsView/ScriptsView' {
   import type { ComponentType } from 'react';
 
   const ScriptsComponent: ComponentType<unknown>;

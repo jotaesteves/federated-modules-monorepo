@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Spinner from 'shared/components/Spinner';
 
-const ScriptsView = React.lazy(() => import('scripts/ScriptsView'));
+const ScriptsView = React.lazy(() => import('scriptsView/ScriptsView'));
 
 export const ScriptsViewPage: React.FC = () => {
   return (
