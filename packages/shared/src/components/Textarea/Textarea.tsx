@@ -1,7 +1,12 @@
 import Icon from '@/components/Icon';
 import React from 'react';
 
-const Textarea = () => {
+interface TextareaProps {
+  name: string;
+  placeholder: string;
+}
+
+const Textarea: React.FC<TextareaProps> = ({ name, placeholder }) => {
   const [text, setText] = React.useState('');
 
   return (
@@ -9,9 +14,10 @@ const Textarea = () => {
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        name=""
-        placeholder="campo de textarea"
-        className="bg-gray-100 text-gray-800 text-sm border-b border-gray-800 py-2 pl-2 pr-8 w-full"
+        name={name}
+        placeholder={placeholder}
+        className="bg-gray-100 text-gray-800 text-sm border-b border-gray-800 py-2 pl-2 pr-8 w-full resize-none overflow-hidden"
+        rows={2}
       />
       <Icon
         type="closeBlack"
