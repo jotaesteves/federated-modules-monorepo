@@ -11,7 +11,6 @@ export const sidebarMapData: SidebarItem[] = [
     id: 'registos',
     icon: 'register',
     label: 'Registos',
-    path: '/registos',
   },
   {
     id: 'outbounds',
@@ -35,7 +34,6 @@ export const sidebarMapData: SidebarItem[] = [
     id: 'documentacao',
     icon: 'files',
     label: 'Documentação',
-    path: '/documentacao',
   },
   {
     id: 'kpis',
@@ -50,13 +48,12 @@ export const bottomSidebarMapData: SidebarItem[] = [
     id: 'definicoes',
     icon: 'config',
     label: 'Definições',
-    path: '/definicoes',
+    path: '/config',
   },
   {
     id: 'pesquisa',
     icon: 'search',
     label: 'Pesquisa',
-    path: '/pesquisa',
   },
 ];
 

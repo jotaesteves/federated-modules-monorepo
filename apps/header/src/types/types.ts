@@ -1,4 +1,4 @@
-import { IconProps } from 'shared/components/Icon';
+import type { IconProps } from 'shared/components/Icon';
 
 export interface NavItemProps {
   id: string;
@@ -34,12 +34,14 @@ export interface SidebarItemProps {
   onCloseMenu: () => void;
   className?: string;
   isActive?: boolean;
+  isPendingActive: boolean;
   hasMenu: boolean;
 }
 
 export interface MenuItemProps {
   isMenuOpen: boolean;
   activeItem: string | null;
+  isPendingActive: boolean;
   isSubmenuOpen: boolean;
   activeSubmenuItem: string | null;
   onSubmenuItemClick: (item: string) => void;
@@ -49,5 +51,6 @@ export interface MenuItemProps {
 export interface SubmenuItemProps {
   isSubmenuOpen: boolean;
   activeMenuItem?: string;
+  activeSubmenuItem: string | null;
   onSubmenuItemClick: (link: SubmenuLinkItemProps) => void;
 }
