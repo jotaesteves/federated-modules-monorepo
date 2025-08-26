@@ -2,7 +2,7 @@ import React from 'react';
 import Submenu from './Submenu';
 import type { MenuItemProps } from 'src/types/types';
 import { getMenusBySidebarId } from 'src/utils/utils';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { cn } from 'shared/lib/utils';
 
 const Menu: React.FC<MenuItemProps> = ({
