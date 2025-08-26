@@ -3,7 +3,7 @@ import Icon from 'shared/components/Icon';
 import Menu from './components/Menu';
 import { bottomSidebarMapData, sidebarMapData } from 'src/data/menuData';
 import type { SidebarItemProps } from 'src/types/types';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 import { cn } from 'shared/lib/utils';
 
 declare global {

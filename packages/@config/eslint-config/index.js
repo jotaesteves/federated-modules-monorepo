@@ -42,7 +42,7 @@ module.exports = [
       'no-var': 'error',
       'prefer-const': 'warn',
       'object-shorthand': 'error',
-      'linebreak-style': ['error', 'unix'],
+      'linebreak-style': ['error', 'windows'],
       'no-undef': 'off', // Disable no-undef for React/JSX in TypeScript files
 
       // React

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import type { SubmenuItemProps } from 'src/types/types';
 import { getSubmenuLinksBySubmenuId, getSubmenusByMenuId } from 'src/utils/utils';
 
