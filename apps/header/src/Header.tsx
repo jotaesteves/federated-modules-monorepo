@@ -38,6 +38,7 @@ export default function Header() {
   ];
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const handleNavClick = (title: string, event: React.MouseEvent) => {
     event.preventDefault();
@@ -45,6 +46,10 @@ export default function Header() {
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const togglePausePlay = () => {
+    setIsPaused((prev) => !prev);
   };
 
   return (
@@ -131,12 +136,26 @@ export default function Header() {
 
           {/* Call center controls - rounded pill shaped with 5 circles inside */}
           <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2">
-            <button
-              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Pause"
-            >
-              <Icon type="pause" rounded className="text-zinc-700" />
-            </button>
+            {isPaused ? (
+              <button
+                className="relative w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+                onClick={togglePausePlay}
+                title="Play"
+              >
+                <Icon type="play" rounded className="text-zinc-700" />
+                <span className="text-primary-500 italic text-xs font-medium absolute -bottom-7 left-1/2 whitespace-nowrap">
+                  Em espera...
+                </span>
+              </button>
+            ) : (
+              <button
+                className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+                onClick={togglePausePlay}
+                title="Pause"
+              >
+                <Icon type="pause" rounded className="text-zinc-700" />
+              </button>
+            )}
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
