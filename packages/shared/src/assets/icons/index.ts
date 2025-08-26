@@ -50,3 +50,4 @@ export * from './DocumentLayoutIcon';
 export * from './AnalyticsBusinessChartIcon';
 export * from './ContactsIcon';
 export * from './DangerIcon';
+export * from './Phone2Icon';
