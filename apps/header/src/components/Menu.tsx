@@ -3,6 +3,7 @@ import Submenu from './Submenu';
 import type { MenuItemProps } from 'src/types/types';
 import { getMenusBySidebarId } from 'src/utils/utils';
 import { Link } from 'react-router-dom';
+import { cn } from 'shared/lib/utils';
 
 const Menu: React.FC<MenuItemProps> = ({
   isMenuOpen,
@@ -37,9 +38,14 @@ const Menu: React.FC<MenuItemProps> = ({
           </p>
           <div className="py-3 flex flex-col overflow-y-auto">
             {menuItems.map((item) => {
-              const commonClassName = `text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100 ${
-                activeSubmenuItem === item.id ? 'bg-primary-500 text-white' : ''
-              }`;
+              const isPendingActive = activeSubmenuItem === item.id;
+
+              const commonClassName = cn(
+                'text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] transition-all duration-300 border-b border-gray-100',
+                isPendingActive
+                  ? 'bg-primary-500/20 text-gray-700' // navegação
+                  : 'hover:bg-primary-500/20 hover:text-gray-800'
+              );
 
               if (item.path) {
                 return (
@@ -71,6 +77,7 @@ const Menu: React.FC<MenuItemProps> = ({
         <Submenu
           isSubmenuOpen={isSubmenuOpen}
           activeMenuItem={activeMenuItem}
+          activeSubmenuItem={activeSubmenuItem}
           onSubmenuItemClick={onCloseMenu}
         />
       </div>

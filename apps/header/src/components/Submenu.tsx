@@ -6,6 +6,7 @@ import { getSubmenuLinksBySubmenuId, getSubmenusByMenuId } from 'src/utils/utils
 const Submenu: React.FC<SubmenuItemProps> = ({
   isSubmenuOpen,
   activeMenuItem,
+  activeSubmenuItem,
   onSubmenuItemClick,
 }) => {
   if (!isSubmenuOpen || !activeMenuItem) return null;
@@ -28,13 +29,11 @@ const Submenu: React.FC<SubmenuItemProps> = ({
                   to={link.path}
                   key={link.id}
                   onClick={() => onSubmenuItemClick(link)}
-                  className="group flex flex-col justify-center text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500 hover:text-white transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100"
+                  className="flex flex-col justify-center text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] hover:bg-primary-500/20 transition-all duration-300 active:bg-primary-500 active:text-white border-b border-gray-100"
                 >
                   {link.label}
                   {link.description && (
-                    <span className="font-medium text-gray-800 text-xs group-hover:text-white">
-                      {link.description}
-                    </span>
+                    <span className="font-medium text-gray-800 text-xs">{link.description}</span>
                   )}
                 </Link>
               ))}

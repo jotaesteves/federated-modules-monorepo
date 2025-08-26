@@ -3,8 +3,7 @@ import Icon from 'shared/components/Icon';
 import Menu from './components/Menu';
 import { bottomSidebarMapData, sidebarMapData } from 'src/data/menuData';
 import type { SidebarItemProps } from 'src/types/types';
-import { getMenusBySidebarId } from 'src/utils/utils';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { cn } from 'shared/lib/utils';
 
 declare global {
@@ -23,11 +22,24 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   onOpenMenu,
   className = '',
   isActive,
+  isPendingActive,
   hasMenu,
 }) => {
-  const handleClick = () => {
-    console.log('SidebarItem clicked:', { id: item.id, path: item.path, expanded, hasMenu });
+  const location = useLocation();
 
+  const checkRouteMatch = () => {
+    const currentPath = location.pathname;
+
+    if (item.id && currentPath.startsWith(`/${item.id}`)) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const isItemActive = item.path ? checkRouteMatch() : checkRouteMatch() || isActive;
+
+  const handleClick = () => {
     if (hasMenu) {
       onOpenMenu(item.label);
       return;
@@ -40,14 +52,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         type={item.icon}
         className={cn(
           'p-0 w-[25px] h-[25px] transition-all duration-300',
-          isActive ? 'text-white' : 'group-hover:text-white'
+          isItemActive ? 'text-white' : 'text-gray-700'
         )}
         size="sm"
       />
       <span
         className={cn(
           'transition-all duration-300 whitespace-nowrap font-medium text-xl',
-          isActive ? 'text-white' : 'text-gray-800 group-hover:text-white',
+          isItemActive ? 'text-white' : 'text-gray-800',
           expanded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
         )}
         style={{
@@ -64,7 +76,11 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   const commonClassName = cn(
     'flex items-center gap-3 pl-10 pr-7 min-h-[4rem] max-h-[4rem] transition-all duration-300 relative rounded-r-[20px] group text-left cursor-pointer',
     expanded ? 'w-full' : 'w-fit',
-    isActive ? 'bg-primary-500 text-white' : 'text-gray-700 hover:bg-primary-500',
+    isItemActive
+      ? 'bg-primary-500 text-white'
+      : isPendingActive
+        ? 'bg-primary-500/20 text-gray-700'
+        : 'text-gray-700 hover:bg-primary-500/20',
     className
   );
 
@@ -122,11 +138,6 @@ const SideBarNav: React.FC = () => {
     setIsSubmenuOpen(true);
   };
 
-  const hasMenu = (sidebarId: string): boolean => {
-    const menus = getMenusBySidebarId(sidebarId);
-    return menus.length > 0;
-  };
-
   const handleCloseMenuAndSidebar = () => {
     handleCloseMenu();
     setExpanded(false);
@@ -153,8 +164,9 @@ const SideBarNav: React.FC = () => {
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.label)}
             onCloseMenu={handleCloseMenu}
-            isActive={activeItem === item.label}
-            hasMenu={hasMenu(item.id || item.label)}
+            isActive={false}
+            isPendingActive={activeItem === item.label}
+            hasMenu={!item.path}
           />
         ))}
       </div>
@@ -167,8 +179,9 @@ const SideBarNav: React.FC = () => {
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.label)}
             onCloseMenu={handleCloseMenu}
-            isActive={activeItem === item.label}
-            hasMenu={hasMenu(item.id || item.label)}
+            isActive={false}
+            isPendingActive={activeItem === item.label}
+            hasMenu={!item.path}
           />
         ))}
       </div>
@@ -176,6 +189,7 @@ const SideBarNav: React.FC = () => {
       <Menu
         isMenuOpen={isMenuOpen}
         activeItem={activeItem}
+        isPendingActive={!!activeItem}
         isSubmenuOpen={isSubmenuOpen}
         activeSubmenuItem={activeSubmenuItem}
         onSubmenuItemClick={handleSubmenuItemClick}
