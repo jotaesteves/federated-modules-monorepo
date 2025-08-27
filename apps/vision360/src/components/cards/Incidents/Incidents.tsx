@@ -1,7 +1,7 @@
 import React from 'react';
-import type { CardTabItem } from 'shared/components/CardTabs';
-import CardTabs from 'shared/components/CardTabs';
-import LineBreak from 'shared/components/LineBreak';
+import type { CardTabItem } from 'shared/components';
+import { CardTabs, LineBreak } from 'shared/components';
+
 import { CardAccordionItemClaims } from 'src/components/cards/Incidents/components/CardAccordionItemClaims';
 import CardItemIncidents from 'src/components/cards/Incidents/components/CardItemIncidents';
 import {

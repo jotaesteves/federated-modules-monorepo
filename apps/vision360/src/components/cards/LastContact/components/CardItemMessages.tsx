@@ -1,4 +1,4 @@
-import Icon from 'shared/components/Icon';
+import { Icon } from 'shared/components';
 
 export interface CardItemMessagesProps {
   date: string;

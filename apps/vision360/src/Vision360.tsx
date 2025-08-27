@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { Suspense } from 'react';
-import ErrorBoundary from 'shared/components/ErrorBoundary';
+// TODO: move the ErrorBoundary to the app shell
+import { ErrorBoundary } from 'shared/components';
 // import ChannelsAndServices from 'src/components/cards/ChannelsAndServices';
 // import EstateAndProducts from 'src/components/cards/EstateAndProducts';
 // import Incidents from 'src/components/cards/Incidents/Incidents';

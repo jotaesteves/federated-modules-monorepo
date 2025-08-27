@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
-import Icon from 'shared/components/Icon';
+import { Icon } from 'shared/components';
 
 export type User = {
   firstName: string;

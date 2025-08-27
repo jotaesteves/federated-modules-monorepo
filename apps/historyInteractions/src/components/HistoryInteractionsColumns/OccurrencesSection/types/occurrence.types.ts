@@ -1,4 +1,4 @@
-import type { IconType } from 'shared/components/Icon';
+import type { IconType } from 'shared/components';
 
 export interface ComplainsData {
   id: string;

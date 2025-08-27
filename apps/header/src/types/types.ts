@@ -1,4 +1,4 @@
-import type { IconProps } from 'shared/components/Icon';
+import type { IconProps } from 'shared/components';
 
 export interface NavItemProps {
   id: string;
