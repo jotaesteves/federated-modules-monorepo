@@ -1,0 +1,12 @@
+{
+  "channelsAndServices": {
+    "digitalChannels": {
+      "title": "Canais Digitais",
+      "items": ["Internet Banking", "Millennium IZI", "Linha Millennium bim"]
+    },
+    "services": {
+      "title": "Serviços",
+      "items": ["Cartão de Débito Estudante", "Extracto Mensal", "Seguro de Vida"]
+    }
+  }
+}

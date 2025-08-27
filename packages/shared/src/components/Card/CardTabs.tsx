@@ -46,11 +46,7 @@ const CardTabs = React.forwardRef<HTMLDivElement, CardTabsProps>(
 
           <ScrollArea className="h-full">
             {tabs.map((tab) => (
-              <TabsContent
-                key={tab.value}
-                value={tab.value}
-                className={cn(tabsContentClassName, 'pr-[1.125rem]')}
-              >
+              <TabsContent key={tab.value} value={tab.value} className={cn(tabsContentClassName)}>
                 {tab.content}
               </TabsContent>
             ))}

@@ -34,7 +34,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         </CardHeader>
       )}
 
-      {children && <CardContent className="flex-1 min-h-0">{children}</CardContent>}
+      {children && <CardContent className="flex-1 min-h-0 overflow-auto">{children}</CardContent>}
 
       {footer && <CardFooter>{footer}</CardFooter>}
     </UICard>

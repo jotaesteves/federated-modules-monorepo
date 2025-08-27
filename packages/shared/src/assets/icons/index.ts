@@ -41,3 +41,7 @@ export * from './SearchIcon';
 export * from './EyeIcon';
 export * from './CloseBlackIcon';
 export * from './PlayIcon';
+export * from './PersonalIcon';
+export * from './PieChartIcon';
+export * from './BoxIcon';
+export * from './PersonalQuestionIcon';
