@@ -188,7 +188,7 @@ export default function Header() {
               <Icon type="dialPad" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
 
-            {isDialOpen && <DialCall />}
+            {isDialOpen && <DialCall toggleDialCall={toggleDialCall} />}
           </div>
         </div>
       </div>
