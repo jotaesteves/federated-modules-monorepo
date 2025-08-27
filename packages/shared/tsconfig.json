@@ -1,11 +1,14 @@
 {
   "include": ["**/*", "package.json"],
-  "exclude": ["build", "dist", "coverage", "node_modules"],
+  "exclude": ["build", "dist", "coverage", "node_modules", ".wp_federation"],
   "extends": "@config/tsconfig",
   "compilerOptions": {
     "moduleResolution": "node",
     "module": "ESNext",
     "baseUrl": ".",
+    "outDir": "./types",
+    "declarationDir": "./types",
+    "emitDeclarationOnly": false,
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
