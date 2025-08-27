@@ -19,3 +19,15 @@ export {
 export { Separator } from './separator';
 export { Badge, badgeVariants } from './badge';
 export { Checkbox } from './checkbox';
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from './dialog';

@@ -1,4 +1,4 @@
-import { IconProps } from 'shared/components/Icon';
+import type { IconProps } from 'shared/components/Icon';
 
 export interface NavItemProps {
   id: string;
@@ -50,4 +50,12 @@ export interface SubmenuItemProps {
   isSubmenuOpen: boolean;
   activeMenuItem?: string;
   onSubmenuItemClick: (link: SubmenuLinkItemProps) => void;
+}
+
+export interface HeaderModalProps {
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+  title?: string;
+  children?: React.ReactNode;
+  footer?: React.ReactNode;
 }

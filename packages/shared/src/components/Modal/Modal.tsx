@@ -6,7 +6,6 @@ import {
   DialogFooter,
   DialogTitle,
   DialogDescription,
-  DialogClose,
   DialogTrigger,
 } from '../ui/dialog';
 import { cn } from '@/lib/utils';
@@ -25,7 +24,6 @@ export interface ModalProps {
   contentClassName?: string;
   footerClassName?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
-  showCloseButton?: boolean;
 }
 
 const sizeClasses = {
@@ -49,15 +47,11 @@ const Modal: React.FC<ModalProps> = ({
   contentClassName,
   footerClassName,
   size = 'md',
-  showCloseButton = true,
 }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
-      <DialogContent
-        className={cn(sizeClasses[size], className)}
-        hideCloseButton={!showCloseButton}
-      >
+      <DialogContent className={cn(sizeClasses[size], className)}>
         {(icon || title || description) && (
           <DialogHeader className={cn('space-y-3', headerClassName)}>
             {(icon || title) && (

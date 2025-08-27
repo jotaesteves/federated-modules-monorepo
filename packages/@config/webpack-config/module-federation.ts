@@ -1,5 +1,5 @@
 import { Apps } from './enums';
-import { AppsModuleFederationConfig, AppModuleFederationConfig } from './types';
+import type { AppsModuleFederationConfig, AppModuleFederationConfig } from './types';
 
 const hostBaseUrl = process.env.HOST_BASE_URL || '/';
 
@@ -144,6 +144,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/LineBreak': './src/components/LineBreak/LineBreak',
         './components/TableComponent': './src/components/TableComponent/TableComponent',
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
+        './components/Modal': './src/components/Modal',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',

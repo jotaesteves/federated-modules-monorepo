@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
 import Icon from 'shared/components/Icon';
+import HeaderModal from './components/HeaderModal';
 
 export type User = {
   firstName: string;
@@ -42,6 +43,7 @@ const Header: React.FC = () => {
   ];
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isTransferModalOpen, setIsTransferModalOpen] = useState(false);
 
   const handleNavClick = (title: string, event: React.MouseEvent) => {
     event.preventDefault();
@@ -59,6 +61,10 @@ const Header: React.FC = () => {
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const handleTransferClick = () => {
+    setIsTransferModalOpen(true);
   };
 
   return (
@@ -154,6 +160,7 @@ const Header: React.FC = () => {
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
+              onClick={handleTransferClick}
             >
               <Icon type="send" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
@@ -179,6 +186,49 @@ const Header: React.FC = () => {
         </div>
       </div>
       <HeaderTabs />
+      <HeaderModal
+        isOpen={isTransferModalOpen}
+        onOpenChange={setIsTransferModalOpen}
+        title="Transferir Chamada"
+        footer={
+          <div className="flex justify-end space-x-2">
+            <button
+              onClick={() => setIsTransferModalOpen(false)}
+              className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
+            >
+              Cancelar
+            </button>
+            <button
+              onClick={() => {
+                // Lógica para transferir chamada
+                console.log('Transferindo chamada...');
+                setIsTransferModalOpen(false);
+              }}
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Transferir
+            </button>
+          </div>
+        }
+      >
+        <div className="space-y-4">
+          <p>Selecione o destino para transferir a chamada:</p>
+          <div className="space-y-2">
+            <label className="flex items-center space-x-2">
+              <input type="radio" name="transfer" value="supervisor" />
+              <span>Supervisor</span>
+            </label>
+            <label className="flex items-center space-x-2">
+              <input type="radio" name="transfer" value="tecnico" />
+              <span>Técnico</span>
+            </label>
+            <label className="flex items-center space-x-2">
+              <input type="radio" name="transfer" value="outro" />
+              <span>Outro departamento</span>
+            </label>
+          </div>
+        </div>
+      </HeaderModal>
     </header>
   );
 };
