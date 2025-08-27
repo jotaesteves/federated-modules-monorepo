@@ -4,8 +4,7 @@ import { Helmet } from 'react-helmet';
 import { ErrorBoundary } from 'shared/components';
 
 export { getRoutesForOutlet, type RouteConfig } from './routes';
-import { Routes, Route, Navigate } from 'react-router';
-import { ROUTES_CONFIG } from './routes';
+import { Outlet } from 'react-router';
 
 const Records: React.FC = () => {
   const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
@@ -18,19 +17,8 @@ const Records: React.FC = () => {
       <Helmet>
         <title>Registos</title>
       </Helmet>
-      <div className="p-6">
-        <h1 className="text-2xl font-bold mb-6">Registos</h1>
-        <Routes>
-          <Route path="/" element={<Navigate to="cards/cancels" replace />} />
-          {ROUTES_CONFIG.map((category) =>
-            category.routes.map((route) => {
-              const fullPath = `${category.basePath}${route.path}`;
-              return <Route key={fullPath} path={fullPath} element={<route.component />} />;
-            })
-          )}
-          <Route path="*" element={<Navigate to="cards/cancels" replace />} />
-        </Routes>
-      </div>
+      <h1>Registos</h1>
+      <Outlet />
     </ErrorBoundary>
   );
 };

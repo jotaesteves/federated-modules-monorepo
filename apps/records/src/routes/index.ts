@@ -162,16 +162,9 @@ export const getAllRoutes = (): Array<{
 }> => {
   return ROUTES_CONFIG.flatMap((category) =>
     category.routes.map((route) => ({
-      fullPath: `${category.basePath}${route.path}`,
+      path: `${category.basePath.slice(1)}${route.path}`,
       component: route.component,
       label: route.label,
-      category: category.category,
     }))
   );
-};
-
-// Helper function to get routes by category
-export const getRoutesByCategory = (categoryName: string): RouteConfig[] => {
-  const category = ROUTES_CONFIG.find((cat) => cat.category === categoryName);
-  return category ? category.routes : [];
 };
