@@ -2,8 +2,10 @@
 /// <reference path="../../../packages/@config/webpack-config/shared-components.d.ts" />
 
 // to be able to import jpg/jpeg/png files
+declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.png';
+declare module '*.svg';
 
 // CSS Modules typings
 declare module '*.module.css' {
