@@ -16,8 +16,10 @@ const Records: React.FC = () => {
       <Helmet>
         <title>Registos</title>
       </Helmet>
-      <h1>Registos</h1>
-      <Outlet />
+      <div className=" bg-gray-100 h-full">
+        <h1>Registos</h1>
+        <Outlet />
+      </div>
     </ErrorBoundary>
   );
 };
