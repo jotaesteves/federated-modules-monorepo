@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Spinner from 'shared/components/Spinner';
+import { Spinner } from '../../components';
 
 const Kpis = React.lazy(() => import('kpis/Kpis'));
 

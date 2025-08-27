@@ -1,5 +1,7 @@
+// Import shared component declarations
+/// <reference path="../../../packages/@config/webpack-config/shared-components.d.ts" />
+
 // to be able to import jpg/jpeg/png files
-declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.png';
 
@@ -71,20 +73,6 @@ declare module 'footer/Footer' {
   export default FooterComponent;
 }
 
-declare module 'shared/components/app-sidebar' {
-  import type { ComponentType } from 'react';
-
-  const AppSidebarComponent: ComponentType<unknown>;
-  export default AppSidebarComponent;
-}
-
-declare module 'shared/components/Spinner' {
-  import type { ComponentType } from 'react';
-
-  const SpinnerComponent: ComponentType<unknown>;
-  export default SpinnerComponent;
-}
-
 declare module 'records/Records' {
   import type { ComponentType } from 'react';
 
@@ -126,24 +114,4 @@ declare module 'settingsView/SettingsView' {
 
   const SettingsViewComponent: ComponentType<unknown>;
   export default SettingsViewComponent;
-}
-declare module 'shared/components/ui' {
-  import type { ComponentType } from 'react';
-
-  export const SidebarProvider: ComponentType<{ children: React.ReactNode }>;
-  export const SidebarInset: ComponentType<unknown>;
-  export const SidebarTrigger: ComponentType<unknown>;
-  export const Breadcrumb: ComponentType<unknown>;
-  export const BreadcrumbItem: ComponentType<unknown>;
-  export const BreadcrumbLink: ComponentType<unknown>;
-  export const BreadcrumbList: ComponentType<unknown>;
-  export const BreadcrumbPage: ComponentType<unknown>;
-  export const BreadcrumbSeparator: ComponentType<unknown>;
-  export const Separator: ComponentType<unknown>;
-  export const Card: ComponentType<unknown>;
-  export const CardHeader: ComponentType<unknown>;
-  export const CardTitle: ComponentType<unknown>;
-  export const CardContent: ComponentType<unknown>;
-  export const CardFooter: ComponentType<unknown>;
-  export const CardDescription: ComponentType<unknown>;
 }

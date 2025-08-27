@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { Suspense } from 'react';
-import ErrorBoundary from 'shared/components/ErrorBoundary';
+// TODO: move the ErrorBoundary to the app shell
+import { ErrorBoundary } from 'shared/components';
 
 // Loading Component
 const LoadingCard: React.FC = () => (

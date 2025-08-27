@@ -1,5 +1,8 @@
 import React from 'react';
-import CardAccordion from 'shared/components/CardAccordion';
+
+import { CardAccordion } from 'shared/components';
+import { Icon } from 'shared/components';
+
 import { CardAccordionHeader } from '../../../../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../../../../CardAccordionItem/CardAccordionItem';
 import type { ItemData } from '../../../../../context/HistoryInteractionsContext';
@@ -13,7 +16,6 @@ import { CallCard } from '../ui/CallCard';
 import { SmsCard } from '../ui/SmsCard';
 import { EmailCard } from '../ui/EmailCard';
 import { useCommunicationConfig } from '../../hooks/useCommunicationConfig';
-import Icon from 'shared/components/Icon';
 
 interface CommunicationSectionProps {
   type: CommunicationType;
