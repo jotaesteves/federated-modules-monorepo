@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from 'react-router';
 import DashboardLayout from './layouts/DashboardLayout';
 import BaseLayout from './layouts/BaseLayout';
 import SidebarLayout from './layouts/SidebarLayout';
+
 // Rotas de Registos
 import { getRoutesForOutlet, type RouteConfig } from 'records/Records';
 
@@ -65,21 +66,6 @@ const App: React.FC = () => {
           <Route path="kpis/*" element={<KpisPage />} />
           <Route path="documentation/*" element={<DocumentationPage />} />
         </Route>
-        {/* Sidebar routes with BaseLayout */}
-        <Route path="home/*" element={<HomePage />} />
-        <Route path="records" element={<RecordsPage />}>
-          <Route index element={<Navigate to="home" replace />} />
-          {getRoutesForOutlet().map((route: RouteConfig) => (
-            <Route key={route.path} path={route.path} element={<route.component />} />
-          ))}
-          <Route path="*" element={<Navigate to="home" replace />} />
-        </Route>
-        <Route path="sales/*" element={<SalesPage />} />
-        <Route path="outbounds/*" element={<OutboundsPage />} />
-        <Route path="scripts/*" element={<ScriptsViewPage />} />
-        <Route path="settings/*" element={<SettingsViewPage />} />
-        <Route path="kpis/*" element={<KpisPage />} />
-        <Route path="documentation/*" element={<DocumentationPage />} />
 
         {/* Settings routes with BaseLayout */}
         <Route path="/pesquisa" element={<BaseLayout />}></Route>
