@@ -71,7 +71,7 @@ module.exports = [
 
       'object-shorthand': 'error',
 
-      'linebreak-style': 0,
+      'linebreak-style': 'off', // Disable linebreak style enforcement
 
       'no-undef': 'off', // Disable no-undef for React/JSX in TypeScript files
 
