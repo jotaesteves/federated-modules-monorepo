@@ -9,12 +9,19 @@
     "build": {
       "dependsOn": ["^build"],
       "env": ["HOST_BASE_URL", "API_BASE_URL"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["dist/**", "build/**", "types/**", ".wp_federation/**"]
     },
     "build:local": {
       "dependsOn": ["^build"],
       "env": ["HOST_BASE_URL", "API_BASE_URL"],
-      "outputs": ["dist/**", "build/**"]
+      "outputs": ["dist/**", "build/**", "types/**", ".wp_federation/**"]
+    },
+    "types:generate": {
+      "outputs": ["types/**", ".wp_federation/**"]
+    },
+    "types:build": {
+      "dependsOn": ["types:clean"],
+      "outputs": ["types/**", ".wp_federation/**"]
     },
     "serve:local": {
       "persistent": true

@@ -154,7 +154,7 @@ export const useMicroFrontendCommunication = () => {
   const { setSharedData, getSharedData } = useGlobalStore();
 
   const sendMessage = useCallback(
-    (targetMF: string, message: any) => {
+    (targetMF: string, message: unknown) => {
       const messageKey = `message_${targetMF}_${Date.now()}`;
       setSharedData(messageKey, {
         from: 'current',
