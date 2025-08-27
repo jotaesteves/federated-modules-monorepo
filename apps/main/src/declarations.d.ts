@@ -80,6 +80,13 @@ declare module 'records/Records' {
 
   const RecordsComponent: ComponentType<unknown>;
   export default RecordsComponent;
+
+  export interface RouteConfig {
+    path: string;
+    component: ComponentType<unknown>;
+    label: string;
+  }
+  export function getRoutesForOutlet(): RouteConfig[];
 }
 declare module 'sales/Sales' {
   import type { ComponentType } from 'react';
@@ -116,4 +123,25 @@ declare module 'settingsView/SettingsView' {
 
   const SettingsViewComponent: ComponentType<unknown>;
   export default SettingsViewComponent;
+}
+declare module 'shared/components/ui' {
+  import type { ComponentType } from 'react';
+
+  export const SidebarProvider: ComponentType<{ children: React.ReactNode }>;
+  export const SidebarInset: ComponentType<unknown>;
+  export const SidebarTrigger: ComponentType<unknown>;
+  export const Breadcrumb: ComponentType<unknown>;
+  export const BreadcrumbItem: ComponentType<unknown>;
+  export const BreadcrumbLink: ComponentType<unknown>;
+  export const BreadcrumbList: ComponentType<unknown>;
+  export const BreadcrumbPage: ComponentType<unknown>;
+  export const BreadcrumbSeparator: ComponentType<unknown>;
+  export const Separator: ComponentType<unknown>;
+  export const Card: ComponentType<unknown>;
+  export const CardHeader: ComponentType<unknown>;
+  export const CardTitle: ComponentType<unknown>;
+  export const CardContent: ComponentType<unknown>;
+  export const CardFooter: ComponentType<unknown>;
+  export const CardDescription: ComponentType<unknown>;
+  export const CardFooter: ComponentType<unknown>;
 }

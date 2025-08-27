@@ -144,25 +144,12 @@ export const ROUTES_CONFIG: CategoryRoutes[] = [
   },
 ];
 
-// Helper function to get all routes flattened
-export const getAllRoutes = (): Array<{
-  fullPath: string;
-  component: React.ComponentType;
-  label: string;
-  category: string;
-}> => {
+export const getRoutesForOutlet = (): RouteConfig[] => {
   return ROUTES_CONFIG.flatMap((category) =>
     category.routes.map((route) => ({
-      fullPath: `${category.basePath}${route.path}`,
+      path: `${category.basePath.slice(1)}${route.path}`,
       component: route.component,
       label: route.label,
-      category: category.category,
     }))
   );
-};
-
-// Helper function to get routes by category
-export const getRoutesByCategory = (categoryName: string): RouteConfig[] => {
-  const category = ROUTES_CONFIG.find((cat) => cat.category === categoryName);
-  return category ? category.routes : [];
 };
