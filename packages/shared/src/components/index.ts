@@ -15,7 +15,6 @@ export { default as TableComponent } from './TableComponent/TableComponent';
 export { default as Breadcrumbs } from './Breadcrumbs/Breadcrumbs';
 export { default as ErrorBoundary } from './ErrorBoundary/ErrorBoundary';
 export type { ErrorBoundaryProps } from './ErrorBoundary/ErrorBoundary';
-export { default as SomeForm } from './SomeForm/SomeForm';
 
 // Navigation components
 export { NavMain } from './nav-main';
