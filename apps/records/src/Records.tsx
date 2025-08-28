@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+// TODO: move the ErrorBoundary to the app shell
+import { ErrorBoundary } from 'shared/components';
 import { Outlet } from 'react-router';
-import ErrorBoundary from 'shared/components/ErrorBoundary';
 
 export { getRoutesForOutlet, type RouteConfig } from './routes';
 

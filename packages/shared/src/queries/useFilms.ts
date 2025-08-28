@@ -13,7 +13,7 @@ interface FilmsApiResponse {
 
 const useFilms = (): {
   data: FilmsApiResponse | undefined;
-  status: 'error' | 'success' | 'loading';
+  status: 'error' | 'success' | 'pending';
   error: unknown;
 } => {
   return useQuery({

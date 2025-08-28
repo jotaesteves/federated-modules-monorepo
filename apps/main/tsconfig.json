@@ -5,7 +5,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "shared/*": ["../../packages/shared/.wp_federation/shared/*"],
+      "shared/*": [
+        "../../packages/shared/.wp_federation/shared/*",
+        "../../packages/shared/types/src/*"
+      ],
       "header/*": ["../../apps/header/.wp_federation/header/*"],
       "footer/*": ["../../apps/footer/.wp_federation/footer/*"],
       "vision360/*": ["../../apps/vision360/.wp_federation/vision360/*"],

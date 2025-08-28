@@ -1,5 +1,4 @@
-import Card from 'shared/components/Card';
-import CardItemLabel from 'shared/components/CardItemLabel';
+import { Card, CardItemLabel } from 'shared/components';
 
 export default function PersonalData() {
   return (

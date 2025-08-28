@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Spinner from 'shared/components/Spinner';
+import { Spinner } from '../../components';
 
 const ScriptsView = React.lazy(() => import('scriptsView/ScriptsView'));
 
