@@ -144,6 +144,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
         './components/Textarea': './src/components/Textarea/Textarea',
         './components/Input': './src/components/Input/Input',
+        './components/SelectComponent': './src/components/Select/SelectComponent',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
