@@ -33,7 +33,7 @@ export const sidebarMapData: SidebarItem[] = [
   {
     id: 'documentacao',
     icon: 'files',
-    label: 'documentation',
+    label: 'Documentação',
   },
   {
     id: 'kpis',
