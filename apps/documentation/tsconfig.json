@@ -1,5 +1,10 @@
 {
-  "include": ["**/*", "package.json", "../../packages/shared/src/declarations.d.ts"],
+  "include": [
+    "**/*",
+    "package.json",
+    "../../packages/shared/src/declarations.d.ts",
+    "../footer/tools"
+  ],
   "exclude": ["build", "dist", "coverage", "node_modules"],
   "extends": "@config/tsconfig",
   "compilerOptions": {
