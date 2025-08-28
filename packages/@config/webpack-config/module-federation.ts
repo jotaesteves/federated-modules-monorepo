@@ -145,6 +145,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/Textarea': './src/components/Textarea/Textarea',
         './components/Input': './src/components/Input/Input',
         './components/SelectComponent': './src/components/Select/SelectComponent',
+        './components/TooltipComponent': './src/components/Tooltip/TooltipComponent',
         './components/app-sidebar': './src/components/app-sidebar',
         './components/ui': './src/components/ui',
         './styles/Global': './src/styles/GlobalStyles',
