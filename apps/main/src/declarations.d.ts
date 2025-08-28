@@ -90,6 +90,13 @@ declare module 'records/Records' {
 
   const RecordsComponent: ComponentType<unknown>;
   export default RecordsComponent;
+
+  export interface RouteConfig {
+    path: string;
+    component: ComponentType<unknown>;
+    label: string;
+  }
+  export function getRoutesForOutlet(): RouteConfig[];
 }
 declare module 'sales/Sales' {
   import type { ComponentType } from 'react';
@@ -146,4 +153,5 @@ declare module 'shared/components/ui' {
   export const CardContent: ComponentType<unknown>;
   export const CardFooter: ComponentType<unknown>;
   export const CardDescription: ComponentType<unknown>;
+  export const CardFooter: ComponentType<unknown>;
 }
