@@ -1,8 +1,10 @@
 import React from 'react';
-import CardAccordion from 'shared/components/CardAccordion';
+import { CardAccordion } from 'shared/components';
+import { Badge } from 'shared/components/ui';
+
 import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
-import { Badge } from 'shared/components/ui';
+
 import type { ItemData } from '../../context/AssetsContext';
 import { createUniqueId } from '../../context/AssetsContext';
 

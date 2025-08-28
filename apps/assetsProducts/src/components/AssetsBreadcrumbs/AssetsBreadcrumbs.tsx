@@ -1,5 +1,5 @@
 import React from 'react';
-import Breadcrumbs from 'shared/components/Breadcrumbs';
+import { Breadcrumbs } from 'shared/components';
 import { useAssets } from '../../context/AssetsContext';
 
 export const AssetsBreadcrumbs: React.FC = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Icon from 'shared/components/Icon';
+import { Icon } from 'shared/components';
 import Menu from './components/Menu';
 import { bottomSidebarMapData, sidebarMapData } from 'src/data/menuData';
 import type { SidebarItemProps } from 'src/types/types';

@@ -1,0 +1,1 @@
+{"version":3,"file":"MicroFrontendProvider.d.ts","sourceRoot":"","sources":["../../../src/providers/MicroFrontendProvider.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAoB,MAAM,OAAO,CAAC;AAKzC,UAAU,0BAA0B;IAClC,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;CAC3B;AAED,eAAO,MAAM,qBAAqB,EAAE,KAAK,CAAC,EAAE,CAAC,0BAA0B,CAyBtE,CAAC;AAEF,eAAe,qBAAqB,CAAC"}

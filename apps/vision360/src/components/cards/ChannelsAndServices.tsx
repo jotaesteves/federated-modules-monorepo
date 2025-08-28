@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card from 'shared/components/Card';
+import { Card } from 'shared/components';
 
 const ChannelsAndServices: React.FC = () => {
   const channelsData = ['Internet Banking', 'Millennium IZI', 'Linha Millennium bim'];
