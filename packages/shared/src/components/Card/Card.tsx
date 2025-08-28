@@ -7,6 +7,7 @@ import {
   CardContent,
   CardFooter,
 } from '../ui/card';
+import { cn } from '@/lib/utils';
 
 // Omit the native HTML 'title' attribute so we can use a ReactNode title prop
 export type CardBaseProps = Omit<React.ComponentPropsWithoutRef<typeof UICard>, 'title'>;
@@ -21,7 +22,7 @@ export interface CardProps extends CardBaseProps {
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
   ({ icon, title, description, footer, children, className, ...props }, ref) => (
-    <UICard ref={ref} className={className + ` bg-white`} {...props}>
+    <UICard ref={ref} className={cn(className, 'bg-white')} {...props}>
       {(icon || title || description) && (
         <CardHeader>
           {(icon || title) && (
