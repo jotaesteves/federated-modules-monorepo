@@ -4,14 +4,16 @@ import { TooltipArrow } from '@radix-ui/react-tooltip';
 import { cn } from '@/lib/utils';
 
 type TooltipVariant = 'white' | 'purple';
+type TooltipSide = 'top' | 'right' | 'bottom' | 'left';
+type TooltipAlign = 'start' | 'center' | 'end';
 
 interface TooltipProps {
   title: string;
   content: React.ReactNode;
   children: React.ReactNode;
   variant?: TooltipVariant;
-  side?: 'top' | 'right' | 'bottom' | 'left';
-  align?: 'start' | 'center' | 'end';
+  side?: TooltipSide;
+  align?: TooltipAlign;
 }
 
 const variantStyles: Record<TooltipVariant, string> = {
