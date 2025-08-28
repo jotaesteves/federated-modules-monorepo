@@ -16,13 +16,12 @@ declare global {
   }
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({
+const SidebarItem: React.FC<Omit<SidebarItemProps, 'isActive'>> = ({
   item,
   expanded,
   onOpenMenu,
   onCloseMenu,
   className = '',
-  isActive,
   isPendingActive,
   hasMenu,
 }) => {
@@ -30,22 +29,18 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 
   const checkRouteMatch = () => {
     const currentPath = location.pathname;
-
-    if (item.id && currentPath.startsWith(`/${item.id}`)) {
-      return true;
-    }
-
-    return false;
+    return item.id && currentPath.startsWith(`/${item.id}`);
   };
 
-  const isItemActive = item.path ? checkRouteMatch() : checkRouteMatch() || isActive;
+  const isItemActive = item.path ? checkRouteMatch() : checkRouteMatch();
 
   const handleClick = () => {
+    if (onCloseMenu) {
+      onCloseMenu();
+    }
+
     if (hasMenu) {
       onOpenMenu(item.label);
-      return;
-    } else if (onCloseMenu) {
-      onCloseMenu();
     }
   };
 
@@ -55,14 +50,14 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
         type={item.icon}
         className={cn(
           'p-0 w-[25px] h-[25px] transition-all duration-300',
-          isItemActive ? 'text-white' : 'text-gray-700'
+          isItemActive || isPendingActive ? 'text-white' : 'text-gray-700 group-hover:text-white'
         )}
         size="sm"
       />
       <span
         className={cn(
           'transition-all duration-300 whitespace-nowrap font-medium text-xl',
-          isItemActive ? 'text-white' : 'text-gray-800',
+          isItemActive || isPendingActive ? 'text-white' : 'text-gray-800 group-hover:text-white',
           expanded ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
         )}
         style={{
@@ -79,11 +74,9 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   const commonClassName = cn(
     'flex items-center gap-3 pl-10 pr-7 min-h-[4rem] max-h-[4rem] transition-all duration-300 relative rounded-r-[20px] group text-left cursor-pointer',
     expanded ? 'w-full' : 'w-fit',
-    isItemActive
+    isItemActive || isPendingActive
       ? 'bg-primary-500 text-white'
-      : isPendingActive
-        ? 'bg-primary-500/20 text-gray-700'
-        : 'text-gray-700 hover:bg-primary-500/20',
+      : 'text-gray-700 hover:bg-primary-500 hover:text-white',
     className
   );
 
@@ -141,9 +134,16 @@ const SideBarNav: React.FC = () => {
     setIsSubmenuOpen(true);
   };
 
-  const handleCloseMenuAndSidebar = () => {
-    handleCloseMenu();
-    setExpanded(false);
+  const handleCloseOnlyMenu = () => {
+    setIsMenuOpen(false);
+    setActiveItem(null);
+    setIsSubmenuOpen(false);
+    setActiveSubmenuItem(null);
+  };
+
+  const handleCloseSubmenu = () => {
+    setIsSubmenuOpen(false);
+    setActiveSubmenuItem(null);
   };
 
   return (
@@ -166,8 +166,7 @@ const SideBarNav: React.FC = () => {
             item={item}
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.label)}
-            onCloseMenu={handleCloseMenuAndSidebar}
-            isActive={false}
+            onCloseMenu={handleCloseOnlyMenu}
             isPendingActive={activeItem === item.label}
             hasMenu={!item.path}
           />
@@ -181,8 +180,7 @@ const SideBarNav: React.FC = () => {
             item={item}
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.label)}
-            onCloseMenu={handleCloseMenuAndSidebar}
-            isActive={false}
+            onCloseMenu={handleCloseOnlyMenu}
             isPendingActive={activeItem === item.label}
             hasMenu={!item.path}
           />
@@ -192,11 +190,11 @@ const SideBarNav: React.FC = () => {
       <Menu
         isMenuOpen={isMenuOpen}
         activeItem={activeItem}
-        isPendingActive={!!activeItem}
         isSubmenuOpen={isSubmenuOpen}
         activeSubmenuItem={activeSubmenuItem}
         onSubmenuItemClick={handleSubmenuItemClick}
-        onCloseMenu={handleCloseMenuAndSidebar}
+        onCloseMenu={handleCloseOnlyMenu}
+        onCloseSubmenu={handleCloseSubmenu}
       />
     </nav>
   );
