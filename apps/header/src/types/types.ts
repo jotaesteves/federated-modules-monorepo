@@ -1,4 +1,5 @@
 import type { IconProps } from 'shared/components/Icon';
+import type { ModalProps } from 'shared/components/Modal';
 
 export interface NavItemProps {
   id: string;
@@ -52,10 +53,4 @@ export interface SubmenuItemProps {
   onSubmenuItemClick: (link: SubmenuLinkItemProps) => void;
 }
 
-export interface HeaderModalProps {
-  isOpen: boolean;
-  onOpenChange: (open: boolean) => void;
-  title?: string;
-  children?: React.ReactNode;
-  footer?: React.ReactNode;
-}
+export interface HeaderModalProps extends ModalProps {}

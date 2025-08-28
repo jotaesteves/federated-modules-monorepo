@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-
 import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
 import Icon from 'shared/components/Icon';
 import HeaderModal from './components/HeaderModal';
+import { useHeaderModals } from './hooks/useHeaderModals';
 
 export type User = {
   firstName: string;
@@ -17,6 +17,9 @@ interface NavbarDropdown {
 }
 
 const Header: React.FC = () => {
+  // Use the custom hook for modal management
+  const { modals, closeAllModals } = useHeaderModals();
+
   // const { navigateTo, isCurrentPage } = useNavigation();
   // const { theme, setTheme, isDark } = useTheme();
 
@@ -43,7 +46,6 @@ const Header: React.FC = () => {
   ];
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
-  const [isTransferModalOpen, setIsTransferModalOpen] = useState(false);
 
   const handleNavClick = (title: string, event: React.MouseEvent) => {
     event.preventDefault();
@@ -63,8 +65,40 @@ const Header: React.FC = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
   };
 
+  // Enhanced modal handlers with custom logic using the hook
   const handleTransferClick = () => {
-    setIsTransferModalOpen(true);
+    modals.transferCall.open();
+  };
+
+  const handleTransferClose = () => {
+    // Add any custom cleanup logic here
+  };
+
+  const _handleTransferSubmit = () => {
+    // Add transfer logic here
+    modals.transferCall.close(); // Close after successful transfer
+  };
+
+  const handleSendMessageClick = () => {
+    modals.sendMessage.open();
+  };
+
+  const handleReceiveCallClick = () => {
+    modals.receiveCall.open();
+  };
+
+  const handlePauseClick = () => {
+    modals.pauseCall.open();
+  };
+
+  const handlePauseSubmit = () => {
+    // Add pause logic here
+    modals.pauseCall.close();
+  };
+
+  // Emergency function to close all modals
+  const handleEmergencyClose = () => {
+    closeAllModals();
   };
 
   return (
@@ -149,11 +183,12 @@ const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Call center controls - rounded pill shaped with 5 circles inside */}
+          {/* Call center controls - Enhanced with different modal examples */}
           <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2">
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Pause"
+              onClick={handlePauseClick}
             >
               <Icon type="pause" rounded className="text-zinc-700" />
             </button>
@@ -166,19 +201,22 @@ const Header: React.FC = () => {
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Send"
+              title="Send Message"
+              onClick={handleSendMessageClick}
             >
               <Icon type="share" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Call"
+              title="Receive Call"
+              onClick={handleReceiveCallClick}
             >
               <Icon type="callback" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Phone"
+              title="Emergency Close All"
+              onClick={handleEmergencyClose}
             >
               <Icon type="dialPad" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
@@ -186,49 +224,43 @@ const Header: React.FC = () => {
         </div>
       </div>
       <HeaderTabs />
+
+      {/* Multiple modal implementations showcasing different approaches using hooks */}
+
+      {/* 1. Basic modal with default schema behavior */}
       <HeaderModal
-        isOpen={isTransferModalOpen}
-        onOpenChange={setIsTransferModalOpen}
-        title="Transferir Chamada"
-        footer={
-          <div className="flex justify-end space-x-2">
-            <button
-              onClick={() => setIsTransferModalOpen(false)}
-              className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300"
-            >
-              Cancelar
-            </button>
-            <button
-              onClick={() => {
-                // Lógica para transferir chamada
-                console.log('Transferindo chamada...');
-                setIsTransferModalOpen(false);
-              }}
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Transferir
-            </button>
-          </div>
-        }
-      >
-        <div className="space-y-4">
-          <p>Selecione o destino para transferir a chamada:</p>
-          <div className="space-y-2">
-            <label className="flex items-center space-x-2">
-              <input type="radio" name="transfer" value="supervisor" />
-              <span>Supervisor</span>
-            </label>
-            <label className="flex items-center space-x-2">
-              <input type="radio" name="transfer" value="tecnico" />
-              <span>Técnico</span>
-            </label>
-            <label className="flex items-center space-x-2">
-              <input type="radio" name="transfer" value="outro" />
-              <span>Outro departamento</span>
-            </label>
-          </div>
-        </div>
-      </HeaderModal>
+        type="transferCall"
+        isOpen={modals.transferCall.isOpen}
+        onOpenChange={() => modals.transferCall.close()}
+      />
+
+      {/* 2. Modal with custom onClose override */}
+      <HeaderModal
+        type="sendMessage"
+        isOpen={modals.sendMessage.isOpen}
+        onOpenChange={() => modals.sendMessage.close()}
+        onCloseOverride={handleTransferClose}
+      />
+
+      {/* 3. Modal with custom onSubmit override */}
+      <HeaderModal
+        type="receiveCall"
+        isOpen={modals.receiveCall.isOpen}
+        onOpenChange={() => modals.receiveCall.close()}
+        onSubmitOverride={() => {
+          // Call accepted logic
+          modals.receiveCall.close();
+        }}
+      />
+
+      {/* 4. Modal with both custom close and submit handlers */}
+      <HeaderModal
+        type="pauseCall"
+        isOpen={modals.pauseCall.isOpen}
+        onOpenChange={() => modals.pauseCall.close()}
+        onCloseOverride={handleTransferClose}
+        onSubmitOverride={handlePauseSubmit}
+      />
     </header>
   );
 };
