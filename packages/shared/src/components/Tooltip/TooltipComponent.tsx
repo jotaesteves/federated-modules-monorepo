@@ -45,7 +45,7 @@ const TooltipComponent: React.FC<TooltipProps> = ({
           {content}
           <TooltipArrow
             className={cn(
-              '-translate-y-[2px] w-[25px] h-[14px]',
+              '-translate-y-[2px] w-[1.5625rem] h-[0.875rem]',
               variant === 'white' ? 'fill-white' : 'fill-purple-400'
             )}
             style={{
