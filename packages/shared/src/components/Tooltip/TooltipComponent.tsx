@@ -1,0 +1,59 @@
+import React from 'react';
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
+import { TooltipArrow } from '@radix-ui/react-tooltip';
+import { cn } from '@/lib/utils';
+
+type TooltipVariant = 'white' | 'purple';
+
+interface TooltipProps {
+  title: string;
+  content: React.ReactNode;
+  children: React.ReactNode;
+  variant?: TooltipVariant;
+  side?: 'top' | 'right' | 'bottom' | 'left';
+  align?: 'start' | 'center' | 'end';
+}
+
+const variantStyles: Record<TooltipVariant, string> = {
+  white: 'bg-white text-gray-800',
+  purple: 'bg-purple-400 text-white',
+};
+
+const TooltipComponent: React.FC<TooltipProps> = ({
+  title,
+  content,
+  children,
+  variant = 'white',
+  side = 'top',
+  align = 'center',
+}) => {
+  return (
+    <TooltipProvider delayDuration={100}>
+      <Tooltip>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipContent side={side} align={align} className={variantStyles[variant]}>
+          <p
+            className={cn(
+              'font-semibold border-b-2 mb-3 text-base',
+              variant === 'white' ? 'text-gray-800 border-primary-500' : 'text-white border-white'
+            )}
+          >
+            {title}
+          </p>
+          {content}
+          <TooltipArrow
+            className={cn(
+              '-translate-y-[2px] w-[25px] h-[14px]',
+              variant === 'white' ? 'fill-white' : 'fill-purple-400'
+            )}
+            style={{
+              filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
+            }}
+          />
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+export default TooltipComponent;
