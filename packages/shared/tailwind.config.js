@@ -83,7 +83,6 @@ module.exports = {
         },
         purple: {
           DEFAULT: '#9747FF',
-          400: '#8B39A0',
         },
       },
       gridTemplateColumns: {
