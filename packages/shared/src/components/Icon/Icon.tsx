@@ -41,6 +41,7 @@ import {
   CloseBlackIcon,
   Phone2Icon,
   CloseIcon,
+  CalendaryIcon,
 } from '@/assets/icons';
 import { PlayIcon } from '@/assets/icons/PlayIcon';
 import { cn } from '@/lib/utils';
@@ -90,6 +91,7 @@ const iconsMap = {
   play: PlayIcon,
   phone2: Phone2Icon,
   close: CloseIcon,
+  calendary: CalendaryIcon,
 } as const;
 
 export type IconType = keyof typeof iconsMap;

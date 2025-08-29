@@ -43,3 +43,4 @@ export * from './CloseBlackIcon';
 export * from './PlayIcon';
 export * from './Phone2Icon';
 export * from './CloseIcon';
+export * from './CalendaryIcon';
