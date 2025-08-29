@@ -33,7 +33,6 @@ export interface SidebarItemProps {
   onOpenMenu: (id: string) => void;
   onCloseMenu: () => void;
   className?: string;
-  isActive?: boolean;
   isPendingActive: boolean;
   hasMenu: boolean;
 }
@@ -41,16 +40,17 @@ export interface SidebarItemProps {
 export interface MenuItemProps {
   isMenuOpen: boolean;
   activeItem: string | null;
-  isPendingActive: boolean;
   isSubmenuOpen: boolean;
   activeSubmenuItem: string | null;
   onSubmenuItemClick: (item: string) => void;
   onCloseMenu: () => void;
+  onCloseSubmenu: () => void;
 }
 
 export interface SubmenuItemProps {
   isSubmenuOpen: boolean;
   activeMenuItem?: string;
-  activeSubmenuItem: string | null;
-  onSubmenuItemClick: (link: SubmenuLinkItemProps) => void;
+  activeSubmenuItem?: string | null;
+  onSubmenuItemClick: (id: string) => void;
+  onCloseSubmenu: () => void;
 }
