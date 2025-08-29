@@ -1,6 +1,5 @@
 import * as React from 'react';
-import Card from 'shared/components/Card';
-import Icon from 'shared/components/Icon';
+import { Card, Icon } from 'shared/components';
 import mockData from './mock-data/mock-data.json';
 
 interface ServiceSection {

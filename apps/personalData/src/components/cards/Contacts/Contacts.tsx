@@ -1,6 +1,4 @@
-import Card from 'shared/components/Card';
-import Icon from 'shared/components/Icon';
-import CardItemLabel from 'shared/components/CardItemLabel';
+import { CardItemLabel, Card, Icon } from 'shared/components';
 import dataJson from './mock-data/mock-data.json';
 
 export default function Contacts() {
