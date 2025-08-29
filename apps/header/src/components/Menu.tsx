@@ -52,7 +52,7 @@ const Menu: React.FC<MenuItemProps> = ({
                   <Link
                     to={item.path}
                     key={item.id}
-                    onClick={() => handleClickMenu(item.id)}
+                    onClick={onCloseMenu}
                     className={commonClassName}
                   >
                     {item.label}

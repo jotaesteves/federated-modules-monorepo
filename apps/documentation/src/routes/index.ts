@@ -12,6 +12,7 @@ import Disclosures from '../pages/Disclosures';
 import Forms from '../pages/Forms';
 import Pricing from '../pages/Pricing';
 import Calculators from '../pages/Calculators';
+import Exchange from '../pages/Exchange';
 
 // Simplified flat route structure for Documentation (no categories)
 export const DOCUMENTATION_ROUTES: DocumentationRouteConfig[] = [
@@ -45,9 +46,20 @@ export const DOCUMENTATION_ROUTES: DocumentationRouteConfig[] = [
     label: 'Simuladores',
     description: 'Ferramentas de simulação e cálculo',
   },
+  {
+    path: 'exchange',
+    component: Exchange,
+    label: 'Câmbio',
+    description: 'Ferramentas de simulação e cálculo',
+  },
 ];
 
 // Helper function to get routes for outlet (compatible with records pattern)
 export const getDocumentationForOutlet = (): DocumentationRouteConfig[] => {
-  return DOCUMENTATION_ROUTES;
+  return DOCUMENTATION_ROUTES.map((route) => ({
+    path: route.path,
+    component: route.component,
+    label: route.label,
+    description: route.description,
+  }));
 };
