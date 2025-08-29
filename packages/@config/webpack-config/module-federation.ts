@@ -146,7 +146,10 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/ErrorBoundary': './src/components/ErrorBoundary/ErrorBoundary',
         './components/Modal': './src/components/Modal',
         './components/app-sidebar': './src/components/app-sidebar',
+        './components': './src/components',
         './components/ui': './src/components/ui',
+        './components/app-sidebar': './src/components/app-sidebar',
+        './components/Icon': './src/components/Icon/Icon',
         './styles/Global': './src/styles/GlobalStyles',
         './styles/global-import': './src/styles/global-import',
         './utils/transformations': './src/utils/transformations/transformations',
@@ -248,6 +251,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         './Records': './src/Records',
+        './routes': './src/routes',
       },
     },
     remotes: {

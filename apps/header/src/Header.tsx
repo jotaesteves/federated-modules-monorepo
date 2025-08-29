@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
-import Icon from 'shared/components/Icon';
 import HeaderModal from './components/HeaderModal';
 import { useHeaderModals } from './hooks/useHeaderModals';
+import { Icon } from 'shared/components';
+import DialCall from 'src/components/DialCall';
 
 export type User = {
   firstName: string;
@@ -16,6 +17,7 @@ interface NavbarDropdown {
   icon: React.ReactNode;
 }
 
+
 const Header: React.FC = () => {
   // Use the custom hook for modal management
   const { modals, closeAllModals } = useHeaderModals();
@@ -24,6 +26,9 @@ const Header: React.FC = () => {
   // const { theme, setTheme, isDark } = useTheme();
 
   // User data - could come from global store in the future
+
+export default function Header() {
+
   const user: User = {
     firstName: 'Alexandra',
     lastName: 'Rosália Umberto',
@@ -46,26 +51,18 @@ const Header: React.FC = () => {
   ];
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isDialOpen, setIsDialOpen] = useState(false);
 
   const handleNavClick = (title: string, event: React.MouseEvent) => {
     event.preventDefault();
-    // Map navigation items to existing pages or handle new navigation
-    const pageMap: Record<string, string> = {
-      'Smart IZI': 'home',
-      Alertas: 'about',
-      Vendas: 'services',
-    };
-
-    if (pageMap[title]) {
-      //TODO: navigateTo(pageMap[title]);
-    }
   };
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
   };
 
-  // Enhanced modal handlers with custom logic using the hook
+
   const handleTransferClick = () => {
     modals.transferCall.open();
   };
@@ -99,6 +96,14 @@ const Header: React.FC = () => {
   // Emergency function to close all modals
   const handleEmergencyClose = () => {
     closeAllModals();
+
+  const togglePausePlay = () => {
+    setIsPaused((prev) => !prev);
+  };
+
+  const toggleDialCall = () => {
+    setIsDialOpen((prev) => !prev);
+
   };
 
   return (
@@ -183,15 +188,30 @@ const Header: React.FC = () => {
             )}
           </div>
 
-          {/* Call center controls - Enhanced with different modal examples */}
-          <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2">
-            <button
-              className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Pause"
-              onClick={handlePauseClick}
-            >
-              <Icon type="pause" rounded className="text-zinc-700" />
-            </button>
+
+          {/* Call center controls - rounded pill shaped with 5 circles inside */}
+          <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2 relative">
+            {isPaused ? (
+              <button
+                className="relative w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+                onClick={togglePausePlay}
+                title="Play"
+              >
+                <Icon type="play" rounded className="text-zinc-700" />
+                <span className="text-primary-500 italic text-xs font-medium absolute -bottom-7 left-1/2 whitespace-nowrap">
+                  Em espera...
+                </span>
+              </button>
+            ) : (
+              <button
+                className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+                onClick={togglePausePlay}
+                title="Pause"
+              >
+                <Icon type="pause" rounded className="text-zinc-700" />
+              </button>
+            )}
+
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
@@ -215,11 +235,13 @@ const Header: React.FC = () => {
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Emergency Close All"
-              onClick={handleEmergencyClose}
+              title="Phone"
+              onClick={toggleDialCall}
             >
               <Icon type="dialPad" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
+
+            {isDialOpen && <DialCall toggleDialCall={toggleDialCall} />}
           </div>
         </div>
       </div>
@@ -263,6 +285,4 @@ const Header: React.FC = () => {
       />
     </header>
   );
-};
-
-export default Header;
+}

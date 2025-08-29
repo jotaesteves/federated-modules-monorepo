@@ -1,9 +1,11 @@
 import * as React from 'react';
-import Spinner from 'shared/components/Spinner';
+import { Spinner } from '../../components';
 
-const ChannelsAndServices = React.lazy(() => import('channelsAndServices/ChannelsAndServices'));
+const ChannelsAndServices = React.lazy(
+  () => import(/* webpackPrefetch: true */ 'channelsAndServices/ChannelsAndServices')
+);
 
-export const ChannelsAndServicesPage: React.FC = () => {
+const ChannelsAndServicesPage: React.FC = () => {
   return (
     <React.Suspense
       fallback={

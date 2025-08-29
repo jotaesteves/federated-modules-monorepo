@@ -1,14 +1,13 @@
-import CardTabs from 'shared/components/CardTabs';
+import React from 'react';
+import { CardTabs, Icon, LineBreak } from 'shared/components';
+import type { CardTabItem } from 'shared/components';
+
 import { CardAccordionItemContacts } from 'src/components/cards/LastContact/components/CardAccordionItemContacts';
-import type { CardTabItem } from 'shared/components/CardTabs';
 import {
   CardAccordionItemContactsMapData,
   CardItemMessagesMapData,
 } from 'src/components/cards/LastContact/mockData/mockData';
 import { CardItemMessages } from 'src/components/cards/LastContact/components/CardItemMessages';
-import React from 'react';
-import LineBreak from 'shared/components/LineBreak';
-import Icon from 'shared/components/Icon';
 
 const tabs: CardTabItem[] = [
   {

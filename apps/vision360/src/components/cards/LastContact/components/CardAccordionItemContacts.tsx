@@ -1,7 +1,7 @@
 import React from 'react';
-import CardAccordion from 'shared/components/CardAccordion';
-import type { IconProps } from 'shared/components/Icon';
-import Icon from 'shared/components/Icon';
+import { CardAccordion } from 'shared/components';
+import type { IconProps } from 'shared/components';
+import { Icon } from 'shared/components';
 import { cn } from 'shared/lib/utils';
 
 export interface CardHeaderProps {

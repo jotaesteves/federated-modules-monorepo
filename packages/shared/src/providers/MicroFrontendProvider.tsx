@@ -13,8 +13,13 @@ export const MicroFrontendProvider: React.FC<MicroFrontendProviderProps> = ({ ch
   useEffect(() => {
     // Listen for navigation events from micro-frontends (backward compatibility)
     const handleNavigationEvent = (event: MicroFrontendEvent) => {
-      if (event.type === 'NAVIGATION_CHANGE') {
-        setCurrentPage(event.payload.page);
+      if (
+        event.type === 'NAVIGATION_CHANGE' &&
+        event.payload &&
+        typeof event.payload === 'object' &&
+        'page' in event.payload
+      ) {
+        setCurrentPage((event.payload as { page: string }).page);
       }
     };
 

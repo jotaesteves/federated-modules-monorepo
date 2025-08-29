@@ -1,7 +1,11 @@
+// Import shared component declarations
+/// <reference path="../../../packages/@config/webpack-config/shared-components.d.ts" />
+
 // to be able to import jpg/jpeg/png files
 declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.png';
+declare module '*.svg';
 
 // CSS Modules typings
 declare module '*.module.css' {
@@ -43,19 +47,6 @@ declare module 'personalData/PersonalData' {
   export default PersonalDataComponent;
 }
 
-declare module 'records/Records' {
-  import type { ComponentType } from 'react';
-
-  const RecordsComponent: ComponentType<unknown>;
-  export default RecordsComponent;
-}
-declare module 'sales/Sales' {
-  import type { ComponentType } from 'react';
-
-  const SalesComponent: ComponentType<unknown>;
-  export default SalesComponent;
-}
-
 declare module 'assetsProducts/AssetsProducts' {
   import type { ComponentType } from 'react';
 
@@ -84,20 +75,55 @@ declare module 'footer/Footer' {
   export default FooterComponent;
 }
 
-declare module 'shared/components/app-sidebar' {
+declare module 'records/Records' {
   import type { ComponentType } from 'react';
 
-  const AppSidebarComponent: ComponentType<unknown>;
-  export default AppSidebarComponent;
-}
+  const RecordsComponent: ComponentType<unknown>;
+  export default RecordsComponent;
 
-declare module 'shared/components/Spinner' {
+  export interface RouteConfig {
+    path: string;
+    component: ComponentType<unknown>;
+    label: string;
+  }
+  export function getRoutesForOutlet(): RouteConfig[];
+}
+declare module 'sales/Sales' {
   import type { ComponentType } from 'react';
 
-  const SpinnerComponent: ComponentType<unknown>;
-  export default SpinnerComponent;
+  const SalesComponent: ComponentType<unknown>;
+  export default SalesComponent;
 }
+declare module 'documentation/Documentation' {
+  import type { ComponentType } from 'react';
 
+  const DocumentationComponent: ComponentType<unknown>;
+  export default DocumentationComponent;
+}
+declare module 'outbounds/Outbounds' {
+  import type { ComponentType } from 'react';
+
+  const OutboundsComponent: ComponentType<unknown>;
+  export default OutboundsComponent;
+}
+declare module 'scriptsView/ScriptsView' {
+  import type { ComponentType } from 'react';
+
+  const ScriptsComponent: ComponentType<unknown>;
+  export default ScriptsComponent;
+}
+declare module 'kpi/Kpi' {
+  import type { ComponentType } from 'react';
+
+  const KpiComponent: ComponentType<unknown>;
+  export default KpiComponent;
+}
+declare module 'settingsView/SettingsView' {
+  import type { ComponentType } from 'react';
+
+  const SettingsViewComponent: ComponentType<unknown>;
+  export default SettingsViewComponent;
+}
 declare module 'shared/components/ui' {
   import type { ComponentType } from 'react';
 
@@ -117,4 +143,5 @@ declare module 'shared/components/ui' {
   export const CardContent: ComponentType<unknown>;
   export const CardFooter: ComponentType<unknown>;
   export const CardDescription: ComponentType<unknown>;
+  export const CardFooter: ComponentType<unknown>;
 }

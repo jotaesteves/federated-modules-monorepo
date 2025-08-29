@@ -1,0 +1,55 @@
+import React from 'react';
+declare const iconsMap: {
+  readonly graph: () => import('react/jsx-runtime').JSX.Element;
+  readonly contact: () => import('react/jsx-runtime').JSX.Element;
+  readonly documentation: () => import('react/jsx-runtime').JSX.Element;
+  readonly person: () => import('react/jsx-runtime').JSX.Element;
+  readonly pin: () => import('react/jsx-runtime').JSX.Element;
+  readonly risk: () => import('react/jsx-runtime').JSX.Element;
+  readonly user: () => import('react/jsx-runtime').JSX.Element;
+  readonly phoneCall: () => import('react/jsx-runtime').JSX.Element;
+  readonly makePhoneCall: () => import('react/jsx-runtime').JSX.Element;
+  readonly ringCall: () => import('react/jsx-runtime').JSX.Element;
+  readonly callCenterWorker: () => import('react/jsx-runtime').JSX.Element;
+  readonly complains: () => import('react/jsx-runtime').JSX.Element;
+  readonly alertFolder: () => import('react/jsx-runtime').JSX.Element;
+  readonly packageWarning: () => import('react/jsx-runtime').JSX.Element;
+  readonly callDots: () => import('react/jsx-runtime').JSX.Element;
+  readonly messageCircleDots: () => import('react/jsx-runtime').JSX.Element;
+  readonly email: () => import('react/jsx-runtime').JSX.Element;
+  readonly message: () => import('react/jsx-runtime').JSX.Element;
+  readonly history: () => import('react/jsx-runtime').JSX.Element;
+  readonly cellPhone: () => import('react/jsx-runtime').JSX.Element;
+  readonly bell: () => import('react/jsx-runtime').JSX.Element;
+  readonly shoppingBag: () => import('react/jsx-runtime').JSX.Element;
+  readonly personMale: () => import('react/jsx-runtime').JSX.Element;
+  readonly personMalePolygon: () => import('react/jsx-runtime').JSX.Element;
+  readonly pause: () => import('react/jsx-runtime').JSX.Element;
+  readonly send: () => import('react/jsx-runtime').JSX.Element;
+  readonly share: () => import('react/jsx-runtime').JSX.Element;
+  readonly callback: () => import('react/jsx-runtime').JSX.Element;
+  readonly dialPad: () => import('react/jsx-runtime').JSX.Element;
+  readonly exclamation: () => import('react/jsx-runtime').JSX.Element;
+  readonly chevronRight: () => import('react/jsx-runtime').JSX.Element;
+  readonly home: () => import('react/jsx-runtime').JSX.Element;
+  readonly register: () => import('react/jsx-runtime').JSX.Element;
+  readonly files: () => import('react/jsx-runtime').JSX.Element;
+  readonly info: () => import('react/jsx-runtime').JSX.Element;
+  readonly graph2: () => import('react/jsx-runtime').JSX.Element;
+  readonly config: () => import('react/jsx-runtime').JSX.Element;
+  readonly search: () => import('react/jsx-runtime').JSX.Element;
+  readonly eye: () => import('react/jsx-runtime').JSX.Element;
+  readonly closeBlack: () => import('react/jsx-runtime').JSX.Element;
+  readonly play: () => import('react/jsx-runtime').JSX.Element;
+};
+export type IconType = keyof typeof iconsMap;
+export interface IconProps {
+  type: keyof typeof iconsMap;
+  rounded?: boolean;
+  size?: 'sm' | 'lg';
+  className?: string;
+  onClick?: () => void;
+}
+declare const Icon: React.FC<IconProps>;
+export default Icon;
+//# sourceMappingURL=Icon.d.ts.map

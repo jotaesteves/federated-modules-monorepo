@@ -1,6 +1,7 @@
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import { SharedModule, Apps } from './enums';
-import { SharedModulesConfig } from './types';
+import type { Apps } from './enums';
+import { SharedModule } from './enums';
+import type { SharedModulesConfig } from './types';
 import { getAppModuleFederationConfig } from './module-federation';
 
 export const getSharedModulesConfig = (
