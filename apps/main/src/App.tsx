@@ -9,15 +9,6 @@ import SidebarLayout from './layouts/SidebarLayout';
 // Rotas de Registos
 import { getRoutesForOutlet, type RouteConfig } from 'records/Records';
 
-// Rotas de Registos
-import { getRoutesForOutlet, type RouteConfig } from 'records/Records';
-
-// Rotas de Registos
-import { getRoutesForOutlet, type RouteConfig } from 'records/Records';
-
-// Rotas de Registos
-import { getRoutesForOutlet, type RouteConfig } from 'records/Records';
-
 // Dashboard Pages
 const Vision360Page = React.lazy(() => import('./pages/Dashboard/Vision360Page'));
 const PersonalDataPage = React.lazy(() => import('./pages/Dashboard/PersonalDataPage'));
