@@ -1,4 +1,7 @@
+
 import type { IconProps } from 'shared/components';
+import type { ModalProps } from 'shared/components';
+
 
 export interface NavItemProps {
   id: string;
@@ -54,3 +57,5 @@ export interface SubmenuItemProps {
   onSubmenuItemClick: (id: string) => void;
   onCloseSubmenu: () => void;
 }
+
+export interface HeaderModalProps extends ModalProps {}
