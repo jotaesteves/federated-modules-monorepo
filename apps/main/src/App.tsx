@@ -60,7 +60,7 @@ const App: React.FC = () => {
           <Route path="settings/*" element={<SettingsViewPage />} />
           <Route path="kpis/*" element={<KpisPage />} />
           <Route path="documentation" element={<DocumentationPage />}>
-            <Route index element={<Navigate to="home" replace />} />
+            <Route index element={<Navigate to="/" replace />} />
             {getDocumentationForOutlet().map((route: DocumentationRouteConfig) => (
               <Route key={route.path} path={route.path} element={<route.component />} />
             ))}

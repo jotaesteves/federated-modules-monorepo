@@ -104,7 +104,6 @@ declare module 'documentation/Documentation' {
     path: string;
     component: ComponentType<unknown>;
     label: string;
-    description?: string;
   }
   export function getDocumentationForOutlet(): DocumentationRouteConfig[];
 }

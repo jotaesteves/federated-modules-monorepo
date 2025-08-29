@@ -96,7 +96,7 @@ export const menuMapData: MenuItem[] = [
     submenuIds: ['outros-servicos-submenu'],
   },
 
-  //submenus de Documentação
+  //menu de Documentação
   {
     id: 'simuladores',
     label: 'Simuladores',
