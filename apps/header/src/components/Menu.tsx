@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Submenu from './Submenu';
 import type { MenuItemProps } from 'src/types/types';
 import { getMenusBySidebarId, getSidebarLabelById } from 'src/utils/utils';
@@ -12,8 +12,9 @@ const Menu: React.FC<MenuItemProps> = ({
   activeSubmenuItem,
   onSubmenuItemClick,
   onCloseMenu,
+  onCloseSubmenu,
 }) => {
-  const [activeMenuItem, setActiveMenuItem] = React.useState('');
+  const [activeMenuItem, setActiveMenuItem] = useState('');
 
   if (!isMenuOpen || !activeItem) return null;
 
@@ -26,12 +27,15 @@ const Menu: React.FC<MenuItemProps> = ({
 
   return (
     <div
-      className={`absolute z-10 top-4 left-[18rem] min-h-[calc(100%_-_70px)] max-h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px] ${
+      className={cn(
+        'absolute z-10 top-4 left-[18rem] min-h-[calc(100%_-_70px)] max-h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px]',
         isSubmenuOpen ? 'min-w-[53.625rem]' : 'min-w-[24.5rem]'
-      }`}
+      )}
       style={{ clipPath: 'inset(-10px -10px -10px 0)' }}
+      onMouseLeave={onCloseMenu}
     >
       <div className="pl-6 pr-10 pb-10 pt-3 flex absolute w-full h-full overflow-hidden">
+        {/* Menu lateral */}
         <div className="w-[24.5rem]">
           <p className="font-semibold text-gray-800 mb-2 text-[2rem] relative after:content-[''] after:absolute after:-bottom-[5px] after:left-0 after:w-[15%] after:h-[5px] after:bg-primary-500">
             {getSidebarLabelById(activeItem)}
@@ -41,10 +45,10 @@ const Menu: React.FC<MenuItemProps> = ({
               const isPendingActive = activeSubmenuItem === item.id;
 
               const commonClassName = cn(
-                'text-gray-800 font-medium text-xl py-5 text-left pl-10 rounded-[1.25rem] transition-all duration-300 border-b border-gray-100',
+                'text-xl py-5 text-left pl-10 rounded-[1.25rem] transition-all duration-300 border-b border-gray-100',
                 isPendingActive
-                  ? 'bg-primary-500/20 text-gray-700' // navegação
-                  : 'hover:bg-primary-500/20 hover:text-gray-800'
+                  ? 'bg-primary-500 text-white'
+                  : 'hover:bg-primary-500 hover:text-white'
               );
 
               if (item.path) {
@@ -77,8 +81,8 @@ const Menu: React.FC<MenuItemProps> = ({
         <Submenu
           isSubmenuOpen={isSubmenuOpen}
           activeMenuItem={activeMenuItem}
-          activeSubmenuItem={activeSubmenuItem}
-          onSubmenuItemClick={onCloseMenu}
+          onSubmenuItemClick={onSubmenuItemClick}
+          onCloseSubmenu={onCloseSubmenu}
         />
       </div>
     </div>
