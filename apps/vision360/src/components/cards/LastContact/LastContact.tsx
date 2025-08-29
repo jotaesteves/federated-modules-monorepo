@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CardTabs, LineBreak, Icon } from 'shared/components';
 import type { CardTabItem } from 'shared/components/CardTabs';
 
