@@ -178,7 +178,7 @@ export default function Header() {
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Call"
             >
-              <Icon type="callback" rounded className="text-zinc-700 w-[50px] h-auto" />
+              <Icon type="callBack" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
