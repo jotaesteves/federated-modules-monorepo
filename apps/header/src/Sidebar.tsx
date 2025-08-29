@@ -34,13 +34,13 @@ const SidebarItem: React.FC<Omit<SidebarItemProps, 'isActive'>> = ({
 
   const isItemActive = item.path ? checkRouteMatch() : checkRouteMatch();
 
-const handleClick = () => {
-  if (hasMenu) {
-    onOpenMenu(item.id);
-  } else if (onCloseMenu) {
-    onCloseMenu();
-  }
-};
+  const handleClick = () => {
+    if (hasMenu) {
+      onOpenMenu(item.id);
+    } else if (onCloseMenu) {
+      onCloseMenu();
+    }
+  };
 
   const buttonContent = (
     <>
@@ -144,6 +144,10 @@ const SideBarNav: React.FC = () => {
     setActiveSubmenuItem(null);
   };
 
+  function handleCloseMenuAndSidebar(): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <nav
       className={cn(
@@ -165,9 +169,7 @@ const SideBarNav: React.FC = () => {
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.id)}
             onCloseMenu={handleCloseMenuAndSidebar}
-            isActive={false}
             isPendingActive={activeItem === item.id}
-
             hasMenu={!item.path}
           />
         ))}
@@ -181,7 +183,6 @@ const SideBarNav: React.FC = () => {
             expanded={expanded}
             onOpenMenu={() => handleOpenMenu(item.id)}
             onCloseMenu={handleCloseMenuAndSidebar}
-            isActive={false}
             isPendingActive={activeItem === item.id}
             hasMenu={!item.path}
           />
