@@ -1,7 +1,7 @@
 import React from 'react';
 import Submenu from './Submenu';
 import type { MenuItemProps } from 'src/types/types';
-import { getMenusBySidebarId } from 'src/utils/utils';
+import { getMenusBySidebarId, getSidebarLabelById } from 'src/utils/utils';
 import { Link } from 'react-router';
 import { cn } from 'shared/lib/utils';
 
@@ -34,7 +34,7 @@ const Menu: React.FC<MenuItemProps> = ({
       <div className="pl-6 pr-10 pb-10 pt-3 flex absolute w-full h-full overflow-hidden">
         <div className="w-[24.5rem]">
           <p className="font-semibold text-gray-800 mb-2 text-[2rem] relative after:content-[''] after:absolute after:-bottom-[5px] after:left-0 after:w-[15%] after:h-[5px] after:bg-primary-500">
-            {activeItem}
+            {getSidebarLabelById(activeItem)}
           </p>
           <div className="py-3 flex flex-col overflow-y-auto">
             {menuItems.map((item) => {

@@ -42,7 +42,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
 
   const handleClick = () => {
     if (hasMenu) {
-      onOpenMenu(item.label);
+      onOpenMenu(item.id);
       return;
     } else if (onCloseMenu) {
       onCloseMenu();
@@ -121,9 +121,9 @@ const SideBarNav: React.FC = () => {
     handleCloseMenu();
   };
 
-  const handleOpenMenu = (label: string) => {
+  const handleOpenMenu = (id: string) => {
     setExpanded(true);
-    setActiveItem(label);
+    setActiveItem(id);
     setIsMenuOpen(true);
     setIsSubmenuOpen(false);
     setActiveSubmenuItem(null);
@@ -165,10 +165,10 @@ const SideBarNav: React.FC = () => {
             key={item.id}
             item={item}
             expanded={expanded}
-            onOpenMenu={() => handleOpenMenu(item.label)}
+            onOpenMenu={() => handleOpenMenu(item.id)}
             onCloseMenu={handleCloseMenuAndSidebar}
             isActive={false}
-            isPendingActive={activeItem === item.label}
+            isPendingActive={activeItem === item.id}
             hasMenu={!item.path}
           />
         ))}
@@ -180,10 +180,10 @@ const SideBarNav: React.FC = () => {
             key={item.id}
             item={item}
             expanded={expanded}
-            onOpenMenu={() => handleOpenMenu(item.label)}
+            onOpenMenu={() => handleOpenMenu(item.id)}
             onCloseMenu={handleCloseMenuAndSidebar}
             isActive={false}
-            isPendingActive={activeItem === item.label}
+            isPendingActive={activeItem === item.id}
             hasMenu={!item.path}
           />
         ))}
