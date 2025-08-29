@@ -1,6 +1,6 @@
 import React from 'react';
 import type { CardTabItem } from 'shared/components';
-import { CardTabs, LineBreak } from 'shared/components';
+import { CardTabs, LineBreak, Icon } from 'shared/components';
 
 import { CardAccordionItemClaims } from 'src/components/cards/Incidents/components/CardAccordionItemClaims';
 import CardItemIncidents from 'src/components/cards/Incidents/components/CardItemIncidents';
@@ -43,7 +43,7 @@ const tabs: CardTabItem[] = [
 const Incidents: React.FC = () => {
   return (
     <CardTabs
-      icon="👤↺"
+      icon={<Icon type="personalQuestion" className="bg-orange" />}
       title="Reclamações / Incidentes"
       className="h-full"
       tabs={tabs}
