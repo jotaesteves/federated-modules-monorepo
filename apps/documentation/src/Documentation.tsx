@@ -2,6 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 // TODO: move the ErrorBoundary to the app shell
 import { ErrorBoundary } from 'shared/components';
+import { Outlet } from 'react-router';
+
+export { getDocumentationForOutlet, type DocumentationRouteConfig } from './routes';
 
 const Documentation: React.FC = () => {
   const handleError = (error: Error, errorInfo: React.ErrorInfo) => {
@@ -13,7 +16,10 @@ const Documentation: React.FC = () => {
       <Helmet>
         <title>Documentation View</title>
       </Helmet>
-      <h1>Documentation Views</h1>
+      <div className=" bg-gray-100 h-full">
+        <h1>Documentation Views</h1>
+        <Outlet />
+      </div>
     </ErrorBoundary>
   );
 };

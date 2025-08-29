@@ -58,6 +58,7 @@ export const bottomSidebarMapData: SidebarItem[] = [
 ];
 
 export const menuMapData: MenuItem[] = [
+  //submenus de Registos
   {
     id: 'canais-digitais',
     label: 'Canais Digitais',
@@ -93,6 +94,44 @@ export const menuMapData: MenuItem[] = [
     label: 'Outros Serviços',
     parentSidebarId: 'registos',
     submenuIds: ['outros-servicos-submenu'],
+  },
+
+  //menu de Documentação
+  {
+    id: 'simuladores',
+    label: 'Simuladores',
+    parentSidebarId: 'documentacao',
+    path: '/documentation/calculators',
+  },
+  {
+    id: 'impressos',
+    label: 'Impressos',
+    parentSidebarId: 'documentacao',
+    path: '/documentation/forms',
+  },
+  {
+    id: 'divulgacoes',
+    label: 'Divulgações',
+    parentSidebarId: 'documentacao',
+    path: '/documentation/disclosures',
+  },
+  {
+    id: 'campanha-de-ciclo',
+    label: 'Campanha de Ciclo',
+    parentSidebarId: 'documentacao',
+    path: '/documentation/campaigns',
+  },
+  {
+    id: 'precario',
+    label: 'Preçário',
+    parentSidebarId: 'documentacao',
+    path: '/documentation/pricing',
+  },
+  {
+    id: 'cambio',
+    label: 'Câmbio',
+    parentSidebarId: 'documentacao',
+    path: '/documentation/exchange',
   },
 ];
 
