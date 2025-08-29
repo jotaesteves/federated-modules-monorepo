@@ -7,7 +7,12 @@ import BaseLayout from './layouts/BaseLayout';
 import SidebarLayout from './layouts/SidebarLayout';
 
 // Rotas de Registos
-import { getRoutesForOutlet, type RouteConfig } from 'records/Records';
+import { getRecordsForOutlet, type RecordsRouteConfig } from 'records/Records';
+import {
+  getDocumentationForOutlet,
+  type DocumentationRouteConfig,
+} from 'documentation/Documentation';
+// Rotas de Documentação
 
 // Dashboard Pages
 const Vision360Page = React.lazy(() => import('./pages/Dashboard/Vision360Page'));
@@ -41,11 +46,11 @@ const App: React.FC = () => {
           <Route path="channels-and-services/*" element={<ChannelsAndServicesPage />} />
           <Route path="history-interactions/*" element={<HistoryInteractionsPage />} />
           <Route index element={<HomePage />} />
-          {/* Sidebar routes with BaseLayout */}
+          {/* Sidebar routes*/}
           <Route path="home/*" element={<HomePage />} />
           <Route path="records" element={<RecordsPage />}>
             <Route index element={<Navigate to="home" replace />} />
-            {getRoutesForOutlet().map((route: RouteConfig) => (
+            {getRecordsForOutlet().map((route: RecordsRouteConfig) => (
               <Route key={route.path} path={route.path} element={<route.component />} />
             ))}
             <Route path="*" element={<Navigate to="home" replace />} />
@@ -55,7 +60,13 @@ const App: React.FC = () => {
           <Route path="scripts/*" element={<ScriptsViewPage />} />
           <Route path="settings/*" element={<SettingsViewPage />} />
           <Route path="kpis/*" element={<KpisPage />} />
-          <Route path="documentation/*" element={<DocumentationPage />} />
+          <Route path="documentation" element={<DocumentationPage />}>
+            <Route index element={<Navigate to="campaigns" replace />} />
+            {getDocumentationForOutlet().map((route: DocumentationRouteConfig) => (
+              <Route key={route.path} path={route.path} element={<route.component />} />
+            ))}
+            <Route path="*" element={<Navigate to="campaigns" replace />} />
+          </Route>
         </Route>
 
         {/* Settings routes with BaseLayout */}

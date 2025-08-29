@@ -1,5 +1,5 @@
 // Route configuration for the Records module
-export interface RouteConfig {
+export interface RecordsRouteConfig {
   path: string;
   component: React.ComponentType;
   label: string;
@@ -8,7 +8,7 @@ export interface RouteConfig {
 export interface CategoryRoutes {
   category: string;
   basePath: string;
-  routes: RouteConfig[];
+  routes: RecordsRouteConfig[];
 }
 
 // Cards section routes
@@ -144,7 +144,7 @@ export const ROUTES_CONFIG: CategoryRoutes[] = [
   },
 ];
 
-export const getRoutesForOutlet = (): RouteConfig[] => {
+export const getRecordsForOutlet = (): RecordsRouteConfig[] => {
   return ROUTES_CONFIG.flatMap((category) =>
     category.routes.map((route) => ({
       path: `${category.basePath.slice(1)}${route.path}`,
