@@ -33,7 +33,6 @@ const SettingsViewPage = React.lazy(() => import('./pages/Sidebar/SettingsViewPa
 const KpisPage = React.lazy(() => import('./pages/Sidebar/KpisPage'));
 const DocumentationPage = React.lazy(() => import('./pages/Sidebar/DocumentationPage'));
 const HomePage = React.lazy(() => import('./pages/Sidebar/HomePage'));
-
 const App: React.FC = () => {
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
@@ -61,11 +60,11 @@ const App: React.FC = () => {
           <Route path="settings/*" element={<SettingsViewPage />} />
           <Route path="kpis/*" element={<KpisPage />} />
           <Route path="documentation" element={<DocumentationPage />}>
-            <Route index element={<Navigate to="campaigns" replace />} />
+            <Route index element={<Navigate to="home" replace />} />
             {getDocumentationForOutlet().map((route: DocumentationRouteConfig) => (
               <Route key={route.path} path={route.path} element={<route.component />} />
             ))}
-            <Route path="*" element={<Navigate to="campaigns" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Route>
 

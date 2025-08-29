@@ -101,13 +101,13 @@ export const menuMapData: MenuItem[] = [
     id: 'simuladores',
     label: 'Simuladores',
     parentSidebarId: 'documentacao',
-    path: '/documentation/simulators',
+    path: '/documentation/calculators',
   },
   {
     id: 'impressos',
     label: 'Impressos',
     parentSidebarId: 'documentacao',
-    path: '/documentation/prints',
+    path: '/documentation/forms',
   },
   {
     id: 'divulgacoes',
@@ -119,7 +119,7 @@ export const menuMapData: MenuItem[] = [
     id: 'campanha-de-ciclo',
     label: 'Campanha de Ciclo',
     parentSidebarId: 'documentacao',
-    path: '/documentation/cycle-campaign',
+    path: '/documentation/campaigns',
   },
   {
     id: 'precario',

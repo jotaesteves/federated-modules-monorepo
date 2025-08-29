@@ -41,7 +41,7 @@ export const DOCUMENTATION_ROUTES: DocumentationRouteConfig[] = [
     description: 'Tabelas de preços e tarifas',
   },
   {
-    path: 'simulators',
+    path: 'calculators',
     component: Calculators,
     label: 'Simuladores',
     description: 'Ferramentas de simulação e cálculo',

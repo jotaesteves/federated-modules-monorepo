@@ -37,6 +37,7 @@ const SidebarItem: React.FC<Omit<SidebarItemProps, 'isActive'>> = ({
   const handleClick = () => {
     if (hasMenu) {
       onOpenMenu(item.id);
+      return;
     } else if (onCloseMenu) {
       onCloseMenu();
     }
