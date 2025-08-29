@@ -2,7 +2,7 @@ import * as React from 'react';
 export const Campaigns: React.FC = () => {
   return (
     <React.Suspense fallback={<div>Loading Campaigns...</div>}>
-      <h1>Campaigns from </h1>
+      <h1>Campaigns</h1>
     </React.Suspense>
   );
 };
