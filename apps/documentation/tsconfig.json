@@ -1,14 +1,9 @@
 {
-  "include": [
-    "**/*",
-    "package.json",
-    "../../packages/shared/src/declarations.d.ts",
-    "../footer/tools"
-  ],
+  "include": ["**/*", "package.json"],
   "exclude": ["build", "dist", "coverage", "node_modules"],
   "extends": "@config/tsconfig",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "",
     "paths": {
       "shared/*": ["../../packages/shared/.wp_federation/shared/*"]
     }
