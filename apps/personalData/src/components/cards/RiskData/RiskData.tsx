@@ -6,7 +6,7 @@ import dataJson from './mock-data/mock-data.json';
 export default function RiskData() {
   return (
     <Card
-      icon={<Icon type="personal" className="bg-orange" />}
+      icon={<Icon type="danger" className="bg-orange-500" />}
       title="Dados de Risco"
       className="h-fit"
     >

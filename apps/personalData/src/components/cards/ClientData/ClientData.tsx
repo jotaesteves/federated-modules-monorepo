@@ -6,7 +6,7 @@ import dataJson from './mock-data/mock-data.json';
 export default function ClientData() {
   return (
     <Card
-      icon={<Icon type="personal" className="bg-teal" />}
+      icon={<Icon type="person" className="bg-teal" />}
       title="Dados do Cliente"
       className="h-fit"
     >

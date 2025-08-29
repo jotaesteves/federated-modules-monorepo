@@ -6,7 +6,7 @@ import dataJson from './mock-data/mock-data.json';
 export default function Addresses() {
   return (
     <Card
-      icon={<Icon type="personal" className="bg-primary-500" />}
+      icon={<Icon type="location" className="bg-primary-500" />}
       title="Endereços"
       className="h-fit"
     >

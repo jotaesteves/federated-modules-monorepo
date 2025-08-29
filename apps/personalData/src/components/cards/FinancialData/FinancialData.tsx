@@ -6,7 +6,7 @@ import dataJson from './mock-data/mock-data.json';
 export default function FinancialData() {
   return (
     <Card
-      icon={<Icon type="personal" className="bg-teal" />}
+      icon={<Icon type="analyticsBusinessChart" className="bg-teal" />}
       title="Dados Financeiros"
       className="h-fit"
     >

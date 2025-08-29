@@ -6,7 +6,7 @@ import dataJson from './mock-data/mock-data.json';
 export default function Documentation() {
   return (
     <Card
-      icon={<Icon type="personal" className="bg-green" />}
+      icon={<Icon type="documentLayout" className="bg-green-400" />}
       title="Documentação"
       className="h-fit"
     >

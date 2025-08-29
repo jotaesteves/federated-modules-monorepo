@@ -45,3 +45,8 @@ export * from './PersonalIcon';
 export * from './PieChartIcon';
 export * from './BoxIcon';
 export * from './PersonalQuestionIcon';
+export * from './LocationIcon';
+export * from './DocumentLayoutIcon';
+export * from './AnalyticsBusinessChartIcon';
+export * from './ContactsIcon';
+export * from './DangerIcon';

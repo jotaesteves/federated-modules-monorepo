@@ -18,12 +18,12 @@ const PersonalData: React.FC = () => {
       <div className="px-4 py-5 rounded-lg bg-gray-100 w-full h-[calc(100vh_-_194px_-_107px)]">
         <div className="grid grid-cols-4 gap-4 h-full">
           {/* Column 1 */}
-          <div className="flex flex-col h-full flex-1 min-h-0 overflow-y-scroll">
+          <div className="flex flex-col h-full flex-1 min-h-0">
             <PersonalDataCard />
           </div>
 
           {/* Column 2 */}
-          <div className="flex flex-col gap-4 h-full min-h-0 overflow-y-scroll">
+          <div className="flex flex-col gap-4 h-full min-h-0">
             <ClientDataCard />
             <AddressesCard />
           </div>
