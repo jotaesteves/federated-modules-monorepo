@@ -1,12 +1,8 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { Suspense } from 'react';
-import ErrorBoundary from 'shared/components/ErrorBoundary';
-// import ChannelsAndServices from 'src/components/cards/ChannelsAndServices';
-// import EstateAndProducts from 'src/components/cards/EstateAndProducts';
-// import Incidents from 'src/components/cards/Incidents/Incidents';
-// import LastContact from 'src/components/cards/LastContact';
-// import PersonalData from 'src/components/cards/PersonalData';
+// TODO: move the ErrorBoundary to the app shell
+import { ErrorBoundary } from 'shared/components';
 
 // Loading Component
 const LoadingCard: React.FC = () => (
@@ -22,7 +18,7 @@ const LoadingCard: React.FC = () => (
 
 // Lazy load components with error handling
 const LazyPersonalData = React.lazy(() =>
-  import('src/components/cards/PersonalData').catch(() => ({
+  import('src/components/cards/PersonalData/PersonalData').catch(() => ({
     default: () => (
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Personal Data component
@@ -32,7 +28,7 @@ const LazyPersonalData = React.lazy(() =>
 );
 
 const LazyEstateAndProducts = React.lazy(() =>
-  import('src/components/cards/EstateAndProducts').catch(() => ({
+  import('src/components/cards/EstateAndProducts/EstateAndProducts').catch(() => ({
     default: () => (
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Estate and Products component
@@ -42,7 +38,7 @@ const LazyEstateAndProducts = React.lazy(() =>
 );
 
 const LazyLastContact = React.lazy(() =>
-  import('src/components/cards/LastContact').catch(() => ({
+  import('src/components/cards/LastContact/LastContact').catch(() => ({
     default: () => (
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Last Contact component
@@ -52,7 +48,7 @@ const LazyLastContact = React.lazy(() =>
 );
 
 const LazyChannelsAndServices = React.lazy(() =>
-  import('src/components/cards/ChannelsAndServices').catch(() => ({
+  import('src/components/cards/ChannelsAndServices/ChannelsAndServices').catch(() => ({
     default: () => (
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Channels and Services component
@@ -92,7 +88,7 @@ const Vision360: React.FC = () => {
         </div>
 
         {/* Estate and Products */}
-        <div className="col-span-13 col-start-6 row-span-5">
+        <div className="col-start-6 col-span-12 row-span-5">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
               <LazyEstateAndProducts />
@@ -101,7 +97,7 @@ const Vision360: React.FC = () => {
         </div>
 
         {/* Last Contact */}
-        <div className="col-start-19 col-span-6 row-span-5">
+        <div className="col-start-16 col-span-7 row-span-5">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
               <LazyLastContact />
@@ -110,7 +106,7 @@ const Vision360: React.FC = () => {
         </div>
 
         {/* Channels and Services */}
-        <div className="col-start-6 col-span-13 row-span-5 row-start-6">
+        <div className="col-start-6 col-span-12 row-span-5 row-start-6">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
               <LazyChannelsAndServices />
@@ -119,7 +115,7 @@ const Vision360: React.FC = () => {
         </div>
 
         {/* Incidents */}
-        <div className="col-span-6 col-start-19 row-start-6 row-span-5">
+        <div className="col-start-16 col-span-7 row-start-6 row-span-5">
           <ErrorBoundary>
             <Suspense fallback={<LoadingCard />}>
               <LazyIncidents />

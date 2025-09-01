@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
 
-import ChannelsAndServices from './components/cards/ChannelsAndServices';
-import EstateAndProducts from './components/cards/EstateAndProducts';
-import Incidents from './components/cards/Incidents';
-import LastContact from './components/cards/LastContact';
-import PersonalDataCard from './components/cards/PersonalData';
+import PersonalDataCard from './components/cards/PersonalData/PersonalData';
+import ClientDataCard from './components/cards/ClientData/ClientData';
+import AddressesCard from './components/cards/Addresses/Addresses';
+import DocumentationCard from './components/cards/Documentation/Documentation';
+import FinancialDataCard from './components/cards/FinancialData/FinancialData';
+import ContactsCard from './components/cards/Contacts/Contacts';
+import RiskDataCard from './components/cards/RiskData/RiskData';
 
 const PersonalData: React.FC = () => {
   return (
@@ -13,27 +15,29 @@ const PersonalData: React.FC = () => {
       <Helmet>
         <title>Dados Pessoais</title>
       </Helmet>
-      <div className="p-2">
-        <div className="grid grid-cols-5 grid-rows-4 gap-2">
-          {/* div1 */}
-          <div className="row-span-4">
+      <div className="px-4 py-5 rounded-lg bg-gray-100 w-full h-[calc(100vh_-_194px_-_107px)]">
+        <div className="grid grid-cols-4 gap-4 h-full">
+          {/* Column 1 */}
+          <div className="flex flex-col h-full flex-1 min-h-0">
             <PersonalDataCard />
           </div>
-          {/* div2 */}
-          <div className="col-span-3 row-span-2">
-            <EstateAndProducts />
+
+          {/* Column 2 */}
+          <div className="flex flex-col gap-4 h-full min-h-0">
+            <ClientDataCard />
+            <AddressesCard />
           </div>
-          {/* div3 */}
-          <div className="col-start-5 row-span-2">
-            <LastContact />
+
+          {/* Column 3 */}
+          <div className="flex flex-col gap-4 h-full">
+            <DocumentationCard />
+            <FinancialDataCard />
           </div>
-          {/* div4 */}
-          <div className="col-span-3 row-span-2 col-start-2 row-start-3">
-            <ChannelsAndServices />
-          </div>
-          {/* div5 */}
-          <div className="col-start-5 row-start-3 row-span-2">
-            <Incidents />
+
+          {/* Column 4 */}
+          <div className="flex flex-col gap-4 h-full">
+            <ContactsCard />
+            <RiskDataCard />
           </div>
         </div>
       </div>

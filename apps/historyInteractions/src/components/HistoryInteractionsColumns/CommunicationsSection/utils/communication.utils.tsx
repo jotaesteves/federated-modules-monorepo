@@ -1,5 +1,5 @@
 import type { CommunicationConfig, CommunicationType } from '../types/communication.types';
-import Icon from 'shared/components/Icon';
+import { Icon } from 'shared/components';
 import React from 'react';
 
 /**

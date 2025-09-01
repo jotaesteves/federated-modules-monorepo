@@ -1,6 +1,4 @@
-import type { IconProps } from 'shared/components/Icon';
-import type { ModalProps } from 'shared/components/Modal';
-
+import type { IconProps, ModalProps } from 'shared/components';
 export interface NavItemProps {
   id: string;
   icon: IconProps['type'];
@@ -32,9 +30,9 @@ export interface SidebarItemProps {
   item: NavItemProps;
   expanded: boolean;
   onOpenMenu: (label: string) => void;
-  onCloseMenu: () => void;
+  onCloseMenu?: () => void;
   className?: string;
-  isActive?: boolean;
+  isPendingActive: boolean;
   hasMenu: boolean;
 }
 
@@ -45,12 +43,15 @@ export interface MenuItemProps {
   activeSubmenuItem: string | null;
   onSubmenuItemClick: (item: string) => void;
   onCloseMenu: () => void;
+  onCloseSubmenu: () => void;
 }
 
 export interface SubmenuItemProps {
   isSubmenuOpen: boolean;
   activeMenuItem?: string;
-  onSubmenuItemClick: (link: SubmenuLinkItemProps) => void;
+  activeSubmenuItem?: string | null;
+  onSubmenuItemClick: (id: string) => void;
+  onCloseSubmenu: () => void;
 }
 
 export interface HeaderModalProps extends ModalProps {}

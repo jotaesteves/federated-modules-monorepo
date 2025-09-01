@@ -1,8 +1,8 @@
 import React from 'react';
-import CardAccordion from 'shared/components/CardAccordion';
+import { CardAccordion } from 'shared/components';
+
 import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
-import { Badge } from 'shared/components/ui';
 import type { ItemData } from '../../context/ChannelsServicesContext';
 import { createUniqueId } from '../../context/ChannelsServicesContext';
 
@@ -62,7 +62,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 }) => {
   return (
     <div className="grid gap-2 content-start">
-      <CardAccordion icon={'☂️'} title="Seguros">
+      <CardAccordion header={<CardAccordionHeader icon={'☂️'} title="Seguros" />}>
         {accounts.map((account) => {
           const itemData: ItemData = {
             id: createUniqueId('insurance', 'other-services', account.id),
@@ -92,7 +92,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
         })}
       </CardAccordion>
 
-      <CardAccordion icon={'📃'} title="Extratos">
+      <CardAccordion header={<CardAccordionHeader icon={'📃'} title="Extratos" />}>
         {extracts.map((extract) => {
           const itemData: ItemData = {
             id: createUniqueId('extracts', 'other-services', extract.id),

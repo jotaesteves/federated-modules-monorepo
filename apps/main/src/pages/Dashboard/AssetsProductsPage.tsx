@@ -1,9 +1,11 @@
 import * as React from 'react';
-import Spinner from 'shared/components/Spinner';
+import { Spinner } from '../../components';
 
-const AssetsProducts = React.lazy(() => import('assetsProducts/AssetsProducts'));
+const AssetsProducts = React.lazy(
+  () => import(/* webpackPrefetch: true */ 'assetsProducts/AssetsProducts')
+);
 
-export const AssetsProductsPage: React.FC = () => {
+const AssetsProductsPage: React.FC = () => {
   return (
     <React.Suspense
       fallback={

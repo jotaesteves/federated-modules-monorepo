@@ -1,14 +1,14 @@
-import CardTabs from 'shared/components/CardTabs';
-import LineBreak from 'shared/components/LineBreak';
-import { CardAccordionItemContacts } from 'src/components/cards/LastContact/components/CardAccordionItemContacts';
+import React from 'react';
+
+import { CardTabs, LineBreak, Icon } from 'shared/components';
 import type { CardTabItem } from 'shared/components/CardTabs';
+
+import { CardAccordionItemContacts } from 'src/components/cards/LastContact/components/CardAccordionItemContacts';
 import {
   CardAccordionItemContactsMapData,
   CardItemMessagesMapData,
 } from 'src/components/cards/LastContact/mockData/mockData';
 import { CardItemMessages } from 'src/components/cards/LastContact/components/CardItemMessages';
-import React from 'react';
-import Icon from 'shared/components/Icon';
 
 const tabs: CardTabItem[] = [
   {
@@ -45,7 +45,7 @@ const LastContact: React.FC = () => {
   return (
     <CardTabs
       title="Últimos contactos"
-      icon={<Icon type="history" className="bg-purple" size="lg" />}
+      icon={<Icon type="history" className="bg-purple" />}
       tabs={tabs}
       defaultValue="calls"
       className="w-full"

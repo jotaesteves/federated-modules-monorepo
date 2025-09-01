@@ -1,8 +1,10 @@
 import React from 'react';
-import CardAccordion from 'shared/components/CardAccordion';
+import { CardAccordion } from 'shared/components';
+import { Badge } from 'shared/components/ui';
+
 import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
-import { Badge } from 'shared/components/ui';
+
 import type { ItemData } from '../../context/ChannelsServicesContext';
 import { createUniqueId } from '../../context/ChannelsServicesContext';
 
@@ -43,7 +45,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
 }) => {
   return (
     <div className="grid gap-2 content-start">
-      <CardAccordion icon={'📱'} title="Mobile Banking">
+      <CardAccordion header={<CardAccordionHeader icon={'📱'} title="Mobile Banking" />}>
         {accounts.map((account) => {
           const itemData: ItemData = {
             id: createUniqueId('mobile', 'channels', account.id),
@@ -99,7 +101,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
         })}
       </CardAccordion>
 
-      <CardAccordion icon={'💻'} title="Internet Banking">
+      <CardAccordion header={<CardAccordionHeader icon={'💻'} title="Internet Banking" />}>
         {accounts.map((account) => {
           const itemData: ItemData = {
             id: createUniqueId('internet', 'channels', account.id),
@@ -152,7 +154,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
         })}
       </CardAccordion>
 
-      <CardAccordion icon={'☎️'} title="Linha Millennium Bim">
+      <CardAccordion header={<CardAccordionHeader icon={'☎️'} title="Linha Millennium Bim" />}>
         {accounts.map((account) => {
           const itemData: ItemData = {
             id: createUniqueId('millennium-line', 'channels', account.id),

@@ -1,4 +1,4 @@
-import CardAccordion from 'shared/components/CardAccordion';
+import { CardAccordion } from 'shared/components';
 
 export interface CardAccordionItemClaimsProps {
   number: string;

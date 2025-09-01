@@ -53,10 +53,12 @@ module.exports = {
           DEFAULT: '#d70664',
         },
         gray: {
+          50: '#f3f3f8', // tooltip border
           100: '#F3F4F6', // used
           200: '#E5E7EB', // used
           300: '#D9D9D9', // used scroll-bar bg
           400: '#ABACAD', // used checkbox border
+          450: '#888d93',
           500: '#7C7F86', // used
           600: '#5E5E5E', // used
           700: '#374151',
@@ -65,6 +67,8 @@ module.exports = {
           DEFAULT: '#7C7F86',
         },
         green: {
+          400: '#8CC63F',
+          500: '#87D100',
           DEFAULT: '#25B917',
         },
         blue: {

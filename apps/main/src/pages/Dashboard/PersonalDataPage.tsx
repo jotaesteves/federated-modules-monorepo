@@ -1,9 +1,11 @@
 import * as React from 'react';
-import Spinner from 'shared/components/Spinner';
+import { Spinner } from '../../components';
 
-const PersonalData = React.lazy(() => import('personalData/PersonalData'));
+const PersonalData = React.lazy(
+  () => import(/* webpackPrefetch: true */ 'personalData/PersonalData')
+);
 
-export const PersonalDataPage: React.FC = () => {
+const PersonalDataPage: React.FC = () => {
   return (
     <React.Suspense
       fallback={

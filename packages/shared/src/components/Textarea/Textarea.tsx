@@ -1,0 +1,31 @@
+import Icon from '@/components/Icon';
+import React from 'react';
+
+interface TextareaProps {
+  name?: string;
+  placeholder?: string;
+}
+
+const Textarea: React.FC<TextareaProps> = ({ name, placeholder }) => {
+  const [text, setText] = React.useState('');
+
+  return (
+    <div className="relative">
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        name={name}
+        placeholder={placeholder}
+        className="bg-gray-100 text-gray-800 text-sm border-b border-gray-800 py-2 pl-2 pr-8 w-full resize-none overflow-hidden"
+        rows={2}
+      />
+      <Icon
+        type="closeBlack"
+        className="cursor-pointer absolute h-fit w-fit p-0 right-2 top-1/2 -translate-y-1/2"
+        onClick={() => setText('')}
+      />
+    </div>
+  );
+};
+
+export default Textarea;
