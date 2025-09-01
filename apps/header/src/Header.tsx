@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
 import { useHeaderModals } from './hooks/useHeaderModals';
-import { Icon, HeaderModal } from 'shared/components';
+import { Icon } from 'shared/components';
 import DialCall from 'src/components/DialCall';
+import HeaderModal from './components/HeaderModal';
 
 export type User = {
   firstName: string;
@@ -52,18 +53,12 @@ const Header: React.FC = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
   };
 
-  // Enhanced modal handlers with custom logic using the hook
   const handleTransferClick = () => {
     modals.transferCall.open();
   };
 
   const handleTransferClose = () => {
-    // Add any custom cleanup logic here
-  };
-
-  const _handleTransferSubmit = () => {
-    // Add transfer logic here
-    modals.transferCall.close(); // Close after successful transfer
+    modals.transferCall.close();
   };
 
   const handleSendMessageClick = () => {
@@ -72,20 +67,6 @@ const Header: React.FC = () => {
 
   const handleOutboundClick = () => {
     modals.scheduleOutbound.open();
-  };
-
-  const handlePauseClick = () => {
-    modals.pauseCall.open();
-  };
-
-  const handlePauseSubmit = () => {
-    // Add pause logic here
-    modals.pauseCall.close();
-  };
-
-  // Emergency function to close all modals
-  const handleEmergencyClose = () => {
-    closeAllModals();
   };
 
   const togglePausePlay = () => {
@@ -255,3 +236,5 @@ const Header: React.FC = () => {
     </header>
   );
 };
+
+export default Header;

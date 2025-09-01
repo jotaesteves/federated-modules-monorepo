@@ -1,5 +1,5 @@
 import React, { type Dispatch } from 'react';
-import Modal from 'shared/components/Modal';
+import { Modal } from 'shared/components';
 import { schema, type schemaTypes } from '../schemas/modalSchemas';
 
 interface HeaderModalProps {
