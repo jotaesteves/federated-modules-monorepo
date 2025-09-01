@@ -61,7 +61,7 @@ const DatePicker: React.FC = () => {
             ) : (
               <span>Select date range</span>
             )}
-            <Icon type="calendary" className="p-0 w-3 h-3" size="sm" />
+            <Icon type="calendar" className="p-0 w-3 h-3" size="sm" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto overflow-hidden p-0" align="start">
@@ -77,7 +77,7 @@ const DatePicker: React.FC = () => {
                     </>
                   ) : null}
                 </div>
-                <Icon type="calendary" className="p-0 w-3 h-3" />
+                <Icon type="calendar" className="p-0 w-3 h-3" />
               </div>
             </div>
           )}
