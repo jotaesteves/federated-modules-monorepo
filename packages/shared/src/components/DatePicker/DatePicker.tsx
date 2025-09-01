@@ -1,7 +1,6 @@
 'use client';
 
 import * as React from 'react';
-import { ChevronDownIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -39,23 +38,37 @@ const DatePicker: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 max-w-[200px]">
       <Popover open={open} onOpenChange={handleOpenChange}>
         <PopoverTrigger asChild>
-          <Button variant="outline" id="date" className="w-64 justify-between font-normal">
-            {range?.from && range?.to && range.from.getTime() !== range.to.getTime()
-              ? `${range.from.toLocaleDateString()} - ${range.to.toLocaleDateString()}`
-              : range?.from
-                ? `${range.from.toLocaleDateString()} - ...`
-                : 'Select date range'}
-            <ChevronDownIcon />
+          <Button
+            variant="outline"
+            id="date"
+            className="w-fit h-fit justify-between gap-3 items-center font-normal border border-[#A9ABAD] rounded-3xl text-[10px] py-[5px] px-3"
+          >
+            {range?.from && range?.to && range.from.getTime() !== range.to.getTime() ? (
+              <div className="flex gap-2">
+                <span>{range.from.toLocaleDateString()}</span>
+                <span>-</span>
+                <span>{range.to.toLocaleDateString()}</span>
+              </div>
+            ) : range?.from ? (
+              <div className="flex gap-1">
+                <span>{range.from.toLocaleDateString()}</span>
+                <span>-</span>
+                <span>...</span>
+              </div>
+            ) : (
+              <span>Select date range</span>
+            )}
+            <Icon type="calendary" className="p-0 w-3 h-3" size="sm" />
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-auto overflow-hidden p-0" align="start">
           {range && (
             <div className="bg-white px-3">
               <div className="pb-1 pt-2 text-xs text-gray-800 font-semibold border-b border-gray-800 flex items-center justify-center gap-4">
-                <div className="flex gap-4">
+                <div className="flex gap-1">
                   {range?.from && range?.to ? (
                     <>
                       <span>{range.from.toLocaleDateString()}</span>
