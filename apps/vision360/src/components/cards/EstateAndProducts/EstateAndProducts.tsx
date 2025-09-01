@@ -1,14 +1,18 @@
 import { Card, Icon } from 'shared/components';
 import mockData from './mock-data/mock-data.json';
-import { type EstateAndProductsData, type FinancialSection, type FinancialItem } from './types';
+import {
+  type EstateAndProductsData,
+  type FinancialSectionInterface,
+  type FinancialItemInterface,
+} from './types';
 
 interface FinancialItemProps {
-  item: FinancialItem;
+  item: FinancialItemInterface;
   isLast?: boolean;
 }
 
 interface FinancialSectionProps {
-  section: FinancialSection;
+  section: FinancialSectionInterface;
   className?: string;
 }
 

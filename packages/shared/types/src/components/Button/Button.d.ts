@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 interface TailwindButtonProps {
   variant?: 'primary' | 'secondary';
   size?: 'sm' | 'md' | 'lg';

@@ -13,6 +13,7 @@ module.exports = [
   },
   {
     ignores: [
+      '**/*.d.ts',
       'dist/**/*',
       'build/**/*',
       'node_modules/**/*',

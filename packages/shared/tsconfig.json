@@ -8,7 +8,9 @@
     "baseUrl": ".",
     "outDir": "./types",
     "declarationDir": "./types",
-    "emitDeclarationOnly": false,
+    "emitDeclarationOnly": true,
+    "strict": true,
+    "strictFunctionTypes": true,
     "paths": {
       "@/*": ["./src/*"],
       "@components/*": ["./src/components/*"],
