@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-
 import logoUrl from './assets/logo.svg';
 import HeaderTabs from './components/HeaderTabs';
+import { useHeaderModals } from './hooks/useHeaderModals';
 import { Icon } from 'shared/components';
 import DialCall from 'src/components/DialCall';
+import HeaderModal from './components/HeaderModal';
 
 export type User = {
   firstName: string;
@@ -16,7 +17,9 @@ interface NavbarDropdown {
   icon: React.ReactNode;
 }
 
-export default function Header() {
+const Header: React.FC = () => {
+  const { modals, closeAllModals } = useHeaderModals();
+
   const user: User = {
     firstName: 'Alexandra',
     lastName: 'Rosália Umberto',
@@ -48,6 +51,22 @@ export default function Header() {
 
   const toggleUserDropdown = () => {
     setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const handleTransferClick = () => {
+    modals.transferCall.open();
+  };
+
+  const handleTransferClose = () => {
+    modals.transferCall.close();
+  };
+
+  const handleSendMessageClick = () => {
+    modals.sendMessage.open();
+  };
+
+  const handleOutboundClick = () => {
+    modals.scheduleOutbound.open();
   };
 
   const togglePausePlay = () => {
@@ -165,18 +184,21 @@ export default function Header() {
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
+              onClick={handleSendMessageClick}
             >
               <Icon type="send" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Send"
+              title="Send Message"
+              onClick={handleTransferClick}
             >
               <Icon type="share" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
-              title="Call"
+              title="Receive Call"
+              onClick={handleOutboundClick}
             >
               <Icon type="callBack" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
@@ -193,6 +215,26 @@ export default function Header() {
         </div>
       </div>
       <HeaderTabs />
+
+      <HeaderModal
+        type="sendMessage"
+        isOpen={modals.sendMessage.isOpen}
+        onOpenChange={() => modals.sendMessage.close()}
+        onCloseOverride={handleTransferClose}
+      />
+      <HeaderModal
+        type="transferCall"
+        isOpen={modals.transferCall.isOpen}
+        onOpenChange={() => modals.transferCall.close()}
+      />
+      <HeaderModal
+        type="scheduleOutbound"
+        isOpen={modals.scheduleOutbound.isOpen}
+        onOpenChange={() => modals.scheduleOutbound.close()}
+        onCloseOverride={handleTransferClose}
+      />
     </header>
   );
-}
+};
+
+export default Header;

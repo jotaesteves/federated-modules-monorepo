@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 declare const iconsMap: {
   readonly graph: () => import('react/jsx-runtime').JSX.Element;
   readonly contact: () => import('react/jsx-runtime').JSX.Element;

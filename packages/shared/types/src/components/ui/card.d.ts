@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 declare const Card: React.ForwardRefExoticComponent<
   React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>
 >;

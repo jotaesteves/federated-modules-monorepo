@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as TabsPrimitive from '@radix-ui/react-tabs';
+import type * as React from 'react';
+import type * as TabsPrimitive from '@radix-ui/react-tabs';
 declare const Tabs: React.ForwardRefExoticComponent<
   TabsPrimitive.TabsProps & React.RefAttributes<HTMLDivElement>
 >;

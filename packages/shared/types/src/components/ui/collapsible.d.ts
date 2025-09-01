@@ -1,4 +1,4 @@
-import * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
+import type * as CollapsiblePrimitive from '@radix-ui/react-collapsible';
 declare const Collapsible: import('react').ForwardRefExoticComponent<
   CollapsiblePrimitive.CollapsibleProps & import('react').RefAttributes<HTMLDivElement>
 >;

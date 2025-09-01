@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import React from 'react';
+import type React from 'react';
 interface TableHeaderData {
   label: string;
   className?: string;

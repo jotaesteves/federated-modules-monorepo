@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 declare const Breadcrumb: React.ForwardRefExoticComponent<
   Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>, 'ref'> & {
     separator?: React.ReactNode;

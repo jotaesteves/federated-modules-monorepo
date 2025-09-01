@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Card as UICard } from '../ui/card';
+import type * as React from 'react';
+import type { Card as UICard } from '../ui/card';
 export type CardBaseProps = Omit<React.ComponentPropsWithoutRef<typeof UICard>, 'title'>;
 export interface CardProps extends CardBaseProps {
   icon?: React.ReactNode;

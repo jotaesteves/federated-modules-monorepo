@@ -2,14 +2,14 @@ import * as React from 'react';
 import { Card, Icon } from 'shared/components';
 import mockData from './mock-data/mock-data.json';
 
-interface ServiceSection {
+interface ServiceSectionInterface {
   title: string;
   items: string[];
 }
 
 interface ChannelsAndServicesData {
-  digitalChannels: ServiceSection;
-  services: ServiceSection;
+  digitalChannels: ServiceSectionInterface;
+  services: ServiceSectionInterface;
 }
 
 interface ServiceItemProps {
@@ -18,7 +18,7 @@ interface ServiceItemProps {
 }
 
 interface ServiceSectionProps {
-  section: ServiceSection;
+  section: ServiceSectionInterface;
   className?: string;
 }
 
