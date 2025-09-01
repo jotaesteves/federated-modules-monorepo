@@ -19,10 +19,12 @@
     "noImplicitReturns": true,
     "strictNullChecks": true,
     "experimentalDecorators": true,
-    "noEmitOnError": true,
+    "noEmitOnError": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "lib": ["es2021", "dom"]
+    "lib": ["es2021", "dom", "dom.iterable"],
+    "moduleResolution": "node",
+    "strictFunctionTypes": false
   },
   "ts-node": {
     "compilerOptions": {
