@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import './InputWithLabel.css';
 export type InputWithLabelProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label: string;

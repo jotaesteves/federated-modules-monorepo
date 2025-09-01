@@ -1,19 +1,19 @@
-export interface FinancialItem {
+export interface FinancialItemInterface {
   name: string;
   amount: string;
   currency: string;
 }
 
-export interface FinancialSection {
+export interface FinancialSectionInterface {
   title: string;
   total: {
     amount: string;
     currency: string;
   };
-  items: FinancialItem[];
+  items: FinancialItemInterface[];
 }
 
 export interface EstateAndProductsData {
-  assets: FinancialSection;
-  liabilities: FinancialSection;
+  assets: FinancialSectionInterface;
+  liabilities: FinancialSectionInterface;
 }

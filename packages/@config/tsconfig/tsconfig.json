@@ -24,7 +24,7 @@
     "noUnusedParameters": false,
     "lib": ["es2021", "dom", "dom.iterable"],
     "moduleResolution": "node",
-    "strictFunctionTypes": false
+    "strictFunctionTypes": true
   },
   "ts-node": {
     "compilerOptions": {

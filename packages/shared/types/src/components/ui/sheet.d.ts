@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as SheetPrimitive from '@radix-ui/react-dialog';
+import type * as React from 'react';
+import type * as SheetPrimitive from '@radix-ui/react-dialog';
 import { type VariantProps } from 'class-variance-authority';
 declare const Sheet: React.FC<SheetPrimitive.DialogProps>;
 declare const SheetTrigger: React.ForwardRefExoticComponent<

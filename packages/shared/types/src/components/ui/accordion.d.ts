@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import type * as React from 'react';
+import type * as AccordionPrimitive from '@radix-ui/react-accordion';
 declare const Accordion: React.ForwardRefExoticComponent<
   (AccordionPrimitive.AccordionSingleProps | AccordionPrimitive.AccordionMultipleProps) &
     React.RefAttributes<HTMLDivElement>

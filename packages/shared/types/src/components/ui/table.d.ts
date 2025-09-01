@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 declare const Table: React.ForwardRefExoticComponent<
   React.HTMLAttributes<HTMLTableElement> & React.RefAttributes<HTMLTableElement>
 >;
