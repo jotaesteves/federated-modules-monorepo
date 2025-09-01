@@ -49,6 +49,7 @@ const CardContent = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDi
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
+      id="card-content"
       className={cn('p-6 pt-0 has-[#scroll-bar]:pr-[0.5625rem]', className)}
       {...props}
     />

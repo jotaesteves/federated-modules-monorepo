@@ -45,7 +45,7 @@ const LastContact: React.FC = () => {
   return (
     <CardTabs
       title="Últimos contactos"
-      icon={<Icon type="history" className="bg-purple" size="lg" />}
+      icon={<Icon type="history" className="bg-purple" />}
       tabs={tabs}
       defaultValue="calls"
       className="w-full"
