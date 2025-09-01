@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import type { schemaTypes } from '../schemas/modalSchemas';
 
-type ModalType = 'transferCall' | 'sendMessage' | 'receiveCall' | 'pauseCall';
+type ModalType = schemaTypes;
 
 interface ModalState {
   [key: string]: boolean;
@@ -17,19 +18,16 @@ interface ModalHandlers {
 
 export const useHeaderModals = () => {
   const [modalStates, setModalStates] = useState<ModalState>({
-    transferCall: false,
     sendMessage: false,
-    receiveCall: false,
-    pauseCall: false,
+    transferCall: false,
+    scheduleOutbound: false,
   });
 
   const createModalHandler = (modalType: ModalType) => ({
     open: () => {
-      // Opening modal logic
       setModalStates((prev) => ({ ...prev, [modalType]: true }));
     },
     close: () => {
-      // Closing modal logic
       setModalStates((prev) => ({ ...prev, [modalType]: false }));
     },
     toggle: () => {
@@ -39,10 +37,9 @@ export const useHeaderModals = () => {
   });
 
   const modals: ModalHandlers = {
-    transferCall: createModalHandler('transferCall'),
     sendMessage: createModalHandler('sendMessage'),
-    receiveCall: createModalHandler('receiveCall'),
-    pauseCall: createModalHandler('pauseCall'),
+    transferCall: createModalHandler('transferCall'),
+    scheduleOutbound: createModalHandler('scheduleOutbound'),
   };
 
   const closeAllModals = () => {

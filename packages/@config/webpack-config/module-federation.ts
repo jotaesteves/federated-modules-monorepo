@@ -139,7 +139,7 @@ const appsModuleFederationConfig: AppsModuleFederationConfig = {
         './components/CardTabs': './src/components/Card/CardTabs',
         './components/CardItemLabel': './src/components/CardItem/CardItemLabel',
         './components/CSSShowcase': './src/components/CSSShowcase/CSSShowcase',
-        './components/Spinner': './src/components/Spinner/Spinner',
+        './components/Spinner': './src/components/Spinner',
         './components/Icon': './src/components/Icon/Icon',
         './components/LineBreak': './src/components/LineBreak/LineBreak',
         './components/TableComponent': './src/components/TableComponent/TableComponent',
