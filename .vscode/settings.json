@@ -1,8 +1,8 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always",
-    "source.fixAll.eslint": "always"
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
@@ -157,5 +157,7 @@
   "git.useEditorAsCommitInput": true,
   "git.inputValidation": true,
   "git.inputValidationSubjectLength": 72,
-  "scm.inputPlaceholder": "type(scope): short summary — use .gitmessage template for details"
+  "scm.inputPlaceholder": "type(scope): short summary — use .gitmessage template for details",
+  "biome.configurationPath": "packages/@config/biome-config/biome.json",
+  "biome.requireConfiguration": true
 }

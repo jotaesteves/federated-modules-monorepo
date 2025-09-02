@@ -2,14 +2,10 @@
   "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
   "root": false,
   "files": {
-    "includes": [
-      "**",
-      "!node_modules",
-      "!dist",
-      "!build",
-      "!coverage",
-      "!.wp_federation",
-      "!packages/shared/src/components/ui"
+    "includes": ["**", "!node_modules", "!dist", "!build", "!coverage", "!.wp_federation"],
+    "experimentalScannerIgnores": [
+      "packages/shared/src/components/ui/**/*",
+      "packages/shared/src/components/ui"
     ]
   },
   "formatter": {
@@ -22,7 +18,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "correctness": {
+        "noNestedComponentDefinitions": "warn"
+      }
     }
   },
   "javascript": {
