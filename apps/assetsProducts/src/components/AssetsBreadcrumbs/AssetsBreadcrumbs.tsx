@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Breadcrumbs } from 'shared/components';
 import { useAssets } from '../../context/AssetsContext';
 
