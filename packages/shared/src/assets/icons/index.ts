@@ -52,3 +52,4 @@ export * from './ContactsIcon';
 export * from './DangerIcon';
 export * from './Phone2Icon';
 export * from './CloseIcon';
+export * from './CalendarIcon';
