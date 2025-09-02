@@ -1,9 +1,9 @@
 {
   "include": ["**/*", "package.json"],
-  "exclude": ["build", "dist", "coverage", "node_modules", ".wp_federation"],
+  "exclude": ["build", "dist", "coverage", "node_modules", ".wp_federation", "types"],
   "extends": "@config/tsconfig",
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "ESNext",
     "baseUrl": ".",
     "outDir": "./types",
