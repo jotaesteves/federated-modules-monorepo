@@ -6,21 +6,19 @@ const typescript = require('@typescript-eslint/eslint-plugin');
 
 const typescriptParser = require('@typescript-eslint/parser');
 
-const jestDom = require('eslint-plugin-jest-dom');
-
-const jsxA11y = require('eslint-plugin-jsx-a11y');
-
-const playwright = require('eslint-plugin-playwright');
-
 const react = require('eslint-plugin-react');
 
+const globals = require('globals');
+
+// CHECK:
 const reactHooks = require('eslint-plugin-react-hooks');
-
-const testingLibrary = require('eslint-plugin-testing-library');
-
 const unusedImports = require('eslint-plugin-unused-imports');
 
-const globals = require('globals');
+// TODO:
+const jestDom = require('eslint-plugin-jest-dom');
+const playwright = require('eslint-plugin-playwright');
+const jsxA11y = require('eslint-plugin-jsx-a11y');
+const testingLibrary = require('eslint-plugin-testing-library');
 
 module.exports = [
   // Base configuration for all files

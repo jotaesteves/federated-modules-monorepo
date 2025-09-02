@@ -10,7 +10,7 @@
     { "name": "PersonalData (Remote)", "path": "apps/personalData" },
     { "name": "Vision360 (Remote)", "path": "apps/vision360" },
     { "name": "HistoryInteractions (Remote)", "path": "apps/historyInteractions" },
-    { "name": "Config (Webpack/TS/ESLint/etc)", "path": "packages/@config" },
+    { "name": "Config (Webpack/TS/Biome/etc)", "path": "packages/@config" },
     { "name": "E2E (Playwright)", "path": "e2e" },
     { "name": "(Root)", "path": "." },
   ],

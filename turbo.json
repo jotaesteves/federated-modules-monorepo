@@ -36,6 +36,20 @@
       "passThroughEnv": ["CI"]
     },
     "format": {},
+    "biome:lint": {
+      "dependsOn": ["^biome:lint"],
+      "passThroughEnv": ["CI"]
+    },
+    "biome:format": {
+      "dependsOn": ["^biome:format"]
+    },
+    "biome:check": {
+      "dependsOn": ["^biome:check"],
+      "passThroughEnv": ["CI"]
+    },
+    "biome:check:apply": {
+      "dependsOn": ["^biome:check:apply"]
+    },
     "test": {
       "dependsOn": ["^test"]
     },

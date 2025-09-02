@@ -31,7 +31,7 @@ Starter to bootstrap a web application, composite of React microfrontends and sh
 
 ### Linting
 
-`pnpm lint` - to launch ESLint check for the whole app.
+`pnpm lint` - to launch biome check for the whole app.
 
 ### Deploy
 
