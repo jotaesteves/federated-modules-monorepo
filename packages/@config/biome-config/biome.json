@@ -20,7 +20,10 @@
     "rules": {
       "recommended": true,
       "correctness": {
-        "noNestedComponentDefinitions": "warn"
+        "noNestedComponentDefinitions": "warn",
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error",
+        "useExhaustiveDependencies": "warn"
       }
     }
   },
