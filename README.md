@@ -47,7 +47,7 @@ For more information on available infra commands visit README in infra folder.
 
 The app in general (and each separate sub-app in particular) are built on top of:
 
-- [Turborepo](https://turbo.build/repo) - for smart & efficient monorepo management
+- [Turborepo](https://turbo.build/repo) - for smart & efficient monorepo management.
 - [pnpm](https://pnpm.io/) - for faster package management and solving [NPM doppelgangers problem](https://rushjs.io/pages/advanced/npm_doppelgangers/).
 - [TypeScript](https://www.typescriptlang.org/docs/) (v4+) - 100% support, even for federated modules via dts-loader
 - [Webpack](https://webpack.js.org/) (v5+) - with [module federation](https://webpack.js.org/concepts/module-federation/) to be able to ship & deploy apps separately.
