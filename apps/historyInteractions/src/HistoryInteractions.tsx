@@ -1,9 +1,9 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { HistoryInteractionsColumns } from './components/HistoryInteractionsColumns/HistoryInteractionsColumns';
-import { HistoryInteractionsProvider } from './context/HistoryInteractionsContext';
 import { DetailsSection } from './components/DetailsSection/DetailsSection';
 import { DetailsRouter } from './components/details/DetailsRouter';
+import { HistoryInteractionsColumns } from './components/HistoryInteractionsColumns/HistoryInteractionsColumns';
+import { HistoryInteractionsProvider } from './context/HistoryInteractionsContext';
 
 const HistoryInteractions: React.FC = () => {
   return (

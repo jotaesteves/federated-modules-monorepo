@@ -8,7 +8,7 @@ export const mockComplainsData: ComplainsData[] = [
     transferName: 'Transferência Internacional',
     transferValue: '25,000.00',
     startDate: '15/08/2024',
-    endDate: '20/08/2024',
+    endDate: '20/08/2024'
   },
   {
     id: '2',
@@ -17,8 +17,8 @@ export const mockComplainsData: ComplainsData[] = [
     transferName: 'Pagamento de Salário',
     transferValue: '45,000.00',
     startDate: '10/08/2024',
-    endDate: '15/08/2024',
-  },
+    endDate: '15/08/2024'
+  }
 ];
 
 export const mockIncidentsData: IncidentsData[] = [
@@ -26,14 +26,14 @@ export const mockIncidentsData: IncidentsData[] = [
     id: '1',
     name: 'Falha no Sistema de Pagamentos',
     accountNumber: '1234567890',
-    status: 'active',
+    status: 'active'
   },
   {
     id: '2',
     name: 'Tentativa de Acesso Não Autorizado',
     accountNumber: '0987654321',
-    status: 'blocked',
-  },
+    status: 'blocked'
+  }
 ];
 
 export const mockMemosData: MemosData[] = [
@@ -43,7 +43,7 @@ export const mockMemosData: MemosData[] = [
     accountNumber: '1122334455',
     initialValue: '150,000.00',
     currency: 'MZN',
-    status: 'ativo',
+    status: 'ativo'
   },
   {
     id: '2',
@@ -51,6 +51,6 @@ export const mockMemosData: MemosData[] = [
     accountNumber: '5544332211',
     initialValue: '85,000.00',
     currency: 'MZN',
-    status: 'pendente',
-  },
+    status: 'pendente'
+  }
 ];

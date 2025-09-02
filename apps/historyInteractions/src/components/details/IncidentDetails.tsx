@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface IncidentData {
@@ -12,11 +12,13 @@ interface IncidentData {
   resolvedDate?: string;
   reportedBy?: string;
   assignedTo?: string;
+  name?: string;
+  date?: string;
   affectedServices?: string[];
 }
 
 interface IncidentDetailsProps {
-  incident: IncidentData | any; // Fallback to any for existing data structures
+  incident: IncidentData; // Fallback to any for existing data structures
 }
 
 export const IncidentDetails: React.FC<IncidentDetailsProps> = ({ incident }) => {
@@ -32,7 +34,7 @@ export const IncidentDetails: React.FC<IncidentDetailsProps> = ({ incident }) =>
     resolvedDate: incident?.resolvedDate,
     reportedBy: incident?.reportedBy,
     assignedTo: incident?.assignedTo,
-    affectedServices: incident?.affectedServices || [],
+    affectedServices: incident?.affectedServices || []
   };
 
   const getStatusBadgeVariant = (status: string) => {
@@ -42,7 +44,6 @@ export const IncidentDetails: React.FC<IncidentDetailsProps> = ({ incident }) =>
         return 'active';
       case 'investigating':
         return 'default';
-      case 'open':
       default:
         return 'inactive';
     }
@@ -55,7 +56,6 @@ export const IncidentDetails: React.FC<IncidentDetailsProps> = ({ incident }) =>
         return 'blocked';
       case 'medium':
         return 'default';
-      case 'low':
       default:
         return 'inactive';
     }
@@ -155,8 +155,8 @@ export const IncidentDetails: React.FC<IncidentDetailsProps> = ({ incident }) =>
         <div className="bg-red-50 p-4 rounded-lg">
           <h4 className="font-medium text-red-900 mb-2">Serviços Afetados</h4>
           <div className="flex flex-wrap gap-1">
-            {safeIncident.affectedServices.map((service: string, index: number) => (
-              <Badge key={index} variant="blocked">
+            {safeIncident.affectedServices.map((service: string) => (
+              <Badge key={safeIncident.id} variant="blocked">
                 {service}
               </Badge>
             ))}

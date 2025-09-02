@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Outlet } from 'react-router';
-import { Spinner } from '../components';
 import { SidebarProvider } from 'shared/components/ui';
+import { Spinner } from '../components';
 
 import Page from '../pages/Definicoes/Definicoes';
 

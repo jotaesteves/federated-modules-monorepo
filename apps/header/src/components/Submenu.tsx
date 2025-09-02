@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Link } from 'react-router';
 import type { SubmenuItemProps } from 'src/types/types';
 import { getSubmenuLinksBySubmenuId, getSubmenusByMenuId } from 'src/utils/utils';
@@ -7,7 +7,7 @@ const Submenu: React.FC<SubmenuItemProps> = ({
   isSubmenuOpen,
   activeMenuItem,
   onSubmenuItemClick,
-  onCloseSubmenu,
+  onCloseSubmenu
 }) => {
   if (!isSubmenuOpen || !activeMenuItem) return null;
 
@@ -16,6 +16,8 @@ const Submenu: React.FC<SubmenuItemProps> = ({
   return (
     <div
       className="w-[28rem] pl-6 mt-14 overflow-y-auto scroll-custom-bar h-[calc(100%_-_70px)]"
+      role="menu"
+      tabIndex={-1}
       onMouseLeave={onCloseSubmenu}
     >
       {submenus.map((submenu) => {

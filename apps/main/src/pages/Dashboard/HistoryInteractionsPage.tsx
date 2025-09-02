@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 const { lazy, Suspense } = React;
 
 const HistoryInteractions = lazy(() => import('historyInteractions/HistoryInteractions'));

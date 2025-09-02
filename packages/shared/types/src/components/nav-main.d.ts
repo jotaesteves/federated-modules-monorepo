@@ -1,6 +1,6 @@
 import { type LucideIcon } from 'lucide-react';
 export declare function NavMain({
-  items,
+  items
 }: {
   items: {
     title: string;

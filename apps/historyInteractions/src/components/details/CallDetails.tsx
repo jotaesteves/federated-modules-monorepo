@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 import type { CallData } from '../HistoryInteractionsColumns/mock-data/mock-communication-data';
 

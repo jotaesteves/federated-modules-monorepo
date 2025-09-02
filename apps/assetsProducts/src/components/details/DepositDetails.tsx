@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface DepositData {
@@ -71,12 +71,22 @@ export const DepositDetails: React.FC<DepositDetailsProps> = ({ deposit }) => {
         <h4 className="font-medium text-gray-900">Interest History</h4>
         <div className="space-y-2">
           {[
-            { month: 'January 2024', interest: '+58.33', rate: '3.5%' },
-            { month: 'February 2024', interest: '+58.33', rate: '3.5%' },
-            { month: 'March 2024', interest: '+58.33', rate: '3.5%' },
-          ].map((entry, index) => (
+            {
+              id: '1',
+              month: 'January 2024',
+              interest: '+58.33',
+              rate: '3.5%'
+            },
+            {
+              id: '2',
+              month: 'February 2024',
+              interest: '+58.33',
+              rate: '3.5%'
+            },
+            { id: '3', month: 'March 2024', interest: '+58.33', rate: '3.5%' }
+          ].map((entry) => (
             <div
-              key={index}
+              key={entry.id}
               className="flex justify-between items-center p-3 bg-white border rounded"
             >
               <div>
@@ -92,10 +102,16 @@ export const DepositDetails: React.FC<DepositDetailsProps> = ({ deposit }) => {
       </div>
 
       <div className="flex space-x-3">
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
           Add Funds
         </button>
-        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors"
+        >
           View Certificate
         </button>
       </div>

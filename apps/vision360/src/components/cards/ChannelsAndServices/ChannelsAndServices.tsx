@@ -1,8 +1,9 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { Card, Icon } from 'shared/components';
 import mockData from './mock-data/mock-data.json';
 
 interface ServiceSectionInterface {
+  id: string;
   title: string;
   items: string[];
 }
@@ -41,11 +42,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({ section, className = ''
     <br />
 
     {section.items?.map((item, index) => (
-      <ServiceItem
-        key={`${item}-${index}`}
-        item={item}
-        isLast={index === section.items.length - 1}
-      />
+      <ServiceItem key={item} item={item} isLast={index === section.items.length - 1} />
     ))}
   </div>
 );

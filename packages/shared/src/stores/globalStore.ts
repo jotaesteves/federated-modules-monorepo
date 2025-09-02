@@ -60,12 +60,12 @@ const initialState: GlobalState = {
   currentPage: '360vision', // Start with the first tab
   navigationHistory: [],
   user: {
-    isAuthenticated: false,
+    isAuthenticated: false
   },
   theme: 'dark',
   language: 'en',
   sharedData: {},
-  isLoading: false,
+  isLoading: false
 };
 
 // Create the Zustand store
@@ -77,7 +77,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
     setCurrentPage: (page: string) => {
       set((state) => ({
         currentPage: page,
-        navigationHistory: [...state.navigationHistory, page],
+        navigationHistory: [...state.navigationHistory, page]
       }));
     },
 
@@ -97,7 +97,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
       if (typeof window !== 'undefined' && window.microFrontendEventBus) {
         window.microFrontendEventBus.emit({
           type: 'NAVIGATION_CHANGE',
-          payload: { page },
+          payload: { page }
         });
       }
     },
@@ -111,7 +111,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
 
         set({
           currentPage: previousPage,
-          navigationHistory: newHistory,
+          navigationHistory: newHistory
         });
       }
     },
@@ -131,14 +131,14 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
 
       set({
         currentPage: newCurrentPage,
-        navigationHistory: updatedHistory,
+        navigationHistory: updatedHistory
       });
     },
 
     // User actions
     setUser: (userData) => {
       set((state) => ({
-        user: { ...state.user, ...userData },
+        user: { ...state.user, ...userData }
       }));
     },
 
@@ -147,16 +147,16 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
         user: {
           name,
           email,
-          isAuthenticated: true,
-        },
+          isAuthenticated: true
+        }
       });
     },
 
     logout: () => {
       set({
         user: {
-          isAuthenticated: false,
-        },
+          isAuthenticated: false
+        }
       });
     },
 
@@ -179,8 +179,8 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
       set((state) => ({
         sharedData: {
           ...state.sharedData,
-          [key]: value,
-        },
+          [key]: value
+        }
       }));
     },
 
@@ -208,7 +208,7 @@ export const useGlobalStore = create<GlobalState & GlobalActions>()(
     // Reset store
     reset: () => {
       set(initialState);
-    },
+    }
   }))
 );
 
@@ -236,7 +236,7 @@ useGlobalStore.subscribe(
     if (typeof window !== 'undefined' && window.microFrontendEventBus) {
       window.microFrontendEventBus.emit({
         type: 'NAVIGATION_CHANGE',
-        payload: { page: currentPage },
+        payload: { page: currentPage }
       });
     }
   }

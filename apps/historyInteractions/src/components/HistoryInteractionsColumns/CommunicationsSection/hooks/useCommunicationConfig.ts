@@ -11,6 +11,6 @@ export const useCommunicationConfig = () => {
 
   return {
     configs,
-    getConfigByType,
+    getConfigByType
   };
 };

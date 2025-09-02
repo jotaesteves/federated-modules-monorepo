@@ -1,8 +1,8 @@
-import React from 'react';
+import type React from 'react';
 import { Helmet } from 'react-helmet';
+import { Outlet } from 'react-router';
 // TODO: move the ErrorBoundary to the app shell
 import { ErrorBoundary } from 'shared/components';
-import { Outlet } from 'react-router';
 
 export { getRecordsForOutlet, type RecordsRouteConfig } from './routes';
 

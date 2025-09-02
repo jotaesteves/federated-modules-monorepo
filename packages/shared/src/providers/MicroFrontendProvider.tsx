@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
-import { useGlobalStore } from '../stores/globalStore';
+import type React from 'react';
+import { useEffect } from 'react';
 import type { MicroFrontendEvent } from '../shared/eventBus';
 import eventBus from '../shared/eventBus';
+import { useGlobalStore } from '../stores/globalStore';
 
 interface MicroFrontendProviderProps {
   children: React.ReactNode;

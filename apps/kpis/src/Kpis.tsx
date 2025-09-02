@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Helmet } from 'react-helmet';
 // TODO: move the ErrorBoundary to the app shell
 import { ErrorBoundary } from 'shared/components';

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface DebitCardData {
@@ -69,26 +69,29 @@ export const DebitCardDetails: React.FC<DebitCardDetailsProps> = ({ card }) => {
         <div className="space-y-2">
           {[
             {
+              id: '1',
               date: '2024-01-15',
               merchant: 'Shoprite Supermarket',
               amount: '-85.50',
-              location: 'Maputo',
+              location: 'Maputo'
             },
             {
+              id: '2',
               date: '2024-01-14',
               merchant: 'ATM Withdrawal',
               amount: '-100.00',
-              location: 'Polana',
+              location: 'Polana'
             },
             {
+              id: '3',
               date: '2024-01-13',
               merchant: 'Fuel Station',
               amount: '-75.00',
-              location: 'Sommerschield',
-            },
-          ].map((transaction, index) => (
+              location: 'Sommerschield'
+            }
+          ].map((transaction) => (
             <div
-              key={index}
+              key={transaction.id}
               className="flex justify-between items-center p-3 bg-white border rounded"
             >
               <div>
@@ -124,13 +127,22 @@ export const DebitCardDetails: React.FC<DebitCardDetailsProps> = ({ card }) => {
       </div>
 
       <div className="flex space-x-3">
-        <button className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors"
+        >
           Block Card
         </button>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
           Update Limits
         </button>
-        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors"
+        >
           Request New PIN
         </button>
       </div>

@@ -1,13 +1,13 @@
 import * as React from 'react';
+import { cn } from '@/lib/utils';
 import {
-  Card as UICard,
+  CardContent,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
+  Card as UICard
 } from '../ui/card';
-import { cn } from '@/lib/utils';
 
 // Omit the native HTML 'title' attribute so we can use a ReactNode title prop
 export type CardBaseProps = Omit<React.ComponentPropsWithoutRef<typeof UICard>, 'title'>;

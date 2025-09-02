@@ -20,7 +20,7 @@ export const useHeaderModals = () => {
   const [modalStates, setModalStates] = useState<ModalState>({
     sendMessage: false,
     transferCall: false,
-    scheduleOutbound: false,
+    scheduleOutbound: false
   });
 
   const createModalHandler = (modalType: ModalType) => ({
@@ -33,13 +33,13 @@ export const useHeaderModals = () => {
     toggle: () => {
       setModalStates((prev) => ({ ...prev, [modalType]: !prev[modalType] }));
     },
-    isOpen: modalStates[modalType],
+    isOpen: modalStates[modalType]
   });
 
   const modals: ModalHandlers = {
     sendMessage: createModalHandler('sendMessage'),
     transferCall: createModalHandler('transferCall'),
-    scheduleOutbound: createModalHandler('scheduleOutbound'),
+    scheduleOutbound: createModalHandler('scheduleOutbound')
   };
 
   const closeAllModals = () => {
@@ -48,13 +48,13 @@ export const useHeaderModals = () => {
       transferCall: false,
       sendMessage: false,
       receiveCall: false,
-      pauseCall: false,
+      pauseCall: false
     });
   };
 
   return {
     modals,
     closeAllModals,
-    modalStates,
+    modalStates
   };
 };

@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
+import type * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -14,12 +14,12 @@ const badgeVariants = cva(
         inactive:
           'border-transparent bg-red-500 text-white shadow hover:bg-red-500/80 rounded-[11px]',
         blocked:
-          'border-transparent bg-orange-500 text-white shadow hover:bg-orange-500/80 rounded-[11px]',
-      },
+          'border-transparent bg-orange-500 text-white shadow hover:bg-orange-500/80 rounded-[11px]'
+      }
     },
     defaultVariants: {
-      variant: 'default',
-    },
+      variant: 'default'
+    }
   }
 );
 

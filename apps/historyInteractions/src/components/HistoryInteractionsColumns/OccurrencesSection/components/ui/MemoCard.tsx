@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type { MemosData } from '../../types/occurrence.types';
 
 interface MemoCardProps {
@@ -26,7 +26,7 @@ const MemoCardPreview = () => {
     accountNumber: '1122334455',
     initialValue: '150,000.00',
     currency: 'MZN',
-    status: 'ativo',
+    status: 'ativo'
   };
 
   return (

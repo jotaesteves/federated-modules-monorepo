@@ -43,6 +43,6 @@ export {
   BreadcrumbLink,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis,
+  BreadcrumbEllipsis
 };
 //# sourceMappingURL=breadcrumb.d.ts.map

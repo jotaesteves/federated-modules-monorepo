@@ -1,6 +1,6 @@
-import React from 'react';
+import type React from 'react';
 import { CommunicationsSectionContainer } from './components/CommunicationsSectionContainer';
-import type { CallData, SmsData, EmailData } from './types/communication.types';
+import type { CallData, EmailData, SmsData } from './types/communication.types';
 
 interface CommunicationsSectionProps {
   calls?: CallData[];

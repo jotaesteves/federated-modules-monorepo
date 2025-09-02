@@ -1,6 +1,6 @@
 import type * as React from 'react';
 export declare function TeamSwitcher({
-  teams,
+  teams
 }: {
   teams: {
     name: string;

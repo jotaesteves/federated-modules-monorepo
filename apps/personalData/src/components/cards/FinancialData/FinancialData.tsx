@@ -1,4 +1,4 @@
-import { CardItemLabel, Card, Icon } from 'shared/components';
+import { Card, CardItemLabel, Icon } from 'shared/components';
 import dataJson from './mock-data/mock-data.json';
 
 export default function FinancialData() {

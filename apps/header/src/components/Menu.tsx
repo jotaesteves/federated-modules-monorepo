@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import Submenu from './Submenu';
-import type { MenuItemProps } from 'src/types/types';
-import { getMenusBySidebarId, getSidebarLabelById } from 'src/utils/utils';
+import type React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 import { cn } from 'shared/lib/utils';
+import type { MenuItemProps } from 'src/types/types';
+import { getMenusBySidebarId, getSidebarLabelById } from 'src/utils/utils';
+import Submenu from './Submenu';
 
 const Menu: React.FC<MenuItemProps> = ({
   isMenuOpen,
@@ -12,7 +13,7 @@ const Menu: React.FC<MenuItemProps> = ({
   activeSubmenuItem,
   onSubmenuItemClick,
   onCloseMenu,
-  onCloseSubmenu,
+  onCloseSubmenu
 }) => {
   const [activeMenuItem, setActiveMenuItem] = useState('');
 
@@ -26,7 +27,7 @@ const Menu: React.FC<MenuItemProps> = ({
   };
 
   return (
-    <div
+    <nav
       className={cn(
         'absolute z-10 top-4 left-[18rem] min-h-[calc(100%_-_70px)] max-h-[calc(100%_-_70px)] bg-white shadow-[0px_2px_7px_5px_#00000040] rounded-r-[22px]',
         isSubmenuOpen ? 'min-w-[53.625rem]' : 'min-w-[24.5rem]'
@@ -80,7 +81,7 @@ const Menu: React.FC<MenuItemProps> = ({
           onCloseSubmenu={onCloseSubmenu}
         />
       </div>
-    </div>
+    </nav>
   );
 };
 

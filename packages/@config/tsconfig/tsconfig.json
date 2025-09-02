@@ -23,7 +23,7 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "lib": ["es2021", "dom", "dom.iterable"],
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strictFunctionTypes": true
   },
   "ts-node": {

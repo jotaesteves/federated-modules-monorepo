@@ -1,7 +1,6 @@
-import React from 'react';
-import { CardAccordion } from 'shared/components';
+import type React from 'react';
 import type { IconProps } from 'shared/components';
-import { Icon } from 'shared/components';
+import { CardAccordion, Icon } from 'shared/components';
 import { cn } from 'shared/lib/utils';
 
 export interface CardHeaderProps {
@@ -13,19 +12,21 @@ export interface CardHeaderProps {
 }
 
 export interface CardBodyItemProps {
+  id: string;
   icon: IconProps['type'];
   label: string;
   value?: string;
 }
 
 export interface CardAccordionItemContactsProps {
+  id: string;
   header: CardHeaderProps;
   body: CardBodyItemProps[];
 }
 
 export const CardAccordionItemContacts: React.FC<CardAccordionItemContactsProps> = ({
   header: { icon, iconBackground, date, time, title },
-  body,
+  body
 }) => {
   return (
     <CardAccordion
@@ -42,8 +43,8 @@ export const CardAccordionItemContacts: React.FC<CardAccordionItemContactsProps>
       }
     >
       <div className="flex flex-col">
-        {body.map(({ icon: itemIcon, label, value }, index) => (
-          <div key={index} className="flex text-gray-800 items-center">
+        {body.map(({ icon: itemIcon, label, value, id }) => (
+          <div key={id} className="flex text-gray-800 items-center">
             <Icon type={itemIcon} />
             <div className="flex justify-between items-center w-full">
               <p>{label}</p>

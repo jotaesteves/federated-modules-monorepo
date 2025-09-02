@@ -1,4 +1,4 @@
 export { default } from './Card';
-export { default as CardTabs } from './CardTabs';
 export { default as CardAccordion } from './CardAccordion';
-export type { CardTabsProps, CardTabItem } from './CardTabs';
+export type { CardTabItem, CardTabsProps } from './CardTabs';
+export { default as CardTabs } from './CardTabs';

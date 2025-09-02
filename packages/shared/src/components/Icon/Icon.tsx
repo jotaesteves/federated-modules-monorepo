@@ -1,7 +1,7 @@
+import type React from 'react';
 import * as Icons from '@/assets/icons';
 import { PlayIcon } from '@/assets/icons/PlayIcon';
 import { cn } from '@/lib/utils';
-import React from 'react';
 
 // INFO: builds the icons map and generates keys for each icon component
 const applyIconRegex = (str: string) =>
@@ -11,14 +11,14 @@ const applyIconRegex = (str: string) =>
     .replace(/^./, (c: string) => c.toLowerCase()); // lower first char
 
 const buildIconsMap = (
-  mod: Record<string, React.ComponentType<any>>
-): Record<string, React.ComponentType<any>> => {
-  const map: Record<string, React.ComponentType<any>> = {};
+  mod: Record<string, unknown>
+): Record<string, React.ComponentType<unknown>> => {
+  const map: Record<string, React.ComponentType<unknown>> = {};
   for (const [exportName, Component] of Object.entries(mod)) {
     if (typeof Component !== 'function') continue; // skip non-components
     const key = applyIconRegex(exportName);
     if (!key) continue;
-    map[key] = Component;
+    map[key] = Component as React.ComponentType<unknown>;
   }
   return map;
 };

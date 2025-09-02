@@ -4,7 +4,7 @@ interface CardAccordionProps {
 }
 export declare const CardAccordion: ({
   header,
-  children,
+  children
 }: CardAccordionProps) => import('react/jsx-runtime').JSX.Element;
 export default CardAccordion;
 //# sourceMappingURL=CardAccordion.d.ts.map

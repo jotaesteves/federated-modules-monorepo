@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface CreditCardData {
@@ -18,9 +18,9 @@ interface CreditCardDetailsProps {
 
 export const CreditCardDetails: React.FC<CreditCardDetailsProps> = ({ card }) => {
   const usedCredit =
-    parseFloat(card.initialValue.replace(/[,\.]/g, '')) -
-    parseFloat(card.remainingValue.replace(/[,\.]/g, ''));
-  const usagePercentage = (usedCredit / parseFloat(card.initialValue.replace(/[,\.]/g, ''))) * 100;
+    parseFloat(card.initialValue.replace(/[,.]/g, '')) -
+    parseFloat(card.remainingValue.replace(/[,.]/g, ''));
+  const usagePercentage = (usedCredit / parseFloat(card.initialValue.replace(/[,.]/g, ''))) * 100;
 
   return (
     <div className="p-6 space-y-6">
@@ -120,22 +120,36 @@ export const CreditCardDetails: React.FC<CreditCardDetailsProps> = ({ card }) =>
         <div className="space-y-2">
           {[
             {
+              id: 'tx1',
               date: '2024-01-15',
               merchant: 'Online Shopping',
               amount: '-125.00',
-              category: 'Shopping',
+              category: 'Shopping'
             },
-            { date: '2024-01-14', merchant: 'Restaurant', amount: '-45.50', category: 'Dining' },
-            { date: '2024-01-13', merchant: 'Gas Station', amount: '-65.00', category: 'Fuel' },
             {
+              id: 'tx2',
+              date: '2024-01-14',
+              merchant: 'Restaurant',
+              amount: '-45.50',
+              category: 'Dining'
+            },
+            {
+              id: 'tx3',
+              date: '2024-01-13',
+              merchant: 'Gas Station',
+              amount: '-65.00',
+              category: 'Fuel'
+            },
+            {
+              id: 'tx4',
               date: '2024-01-12',
               merchant: 'Payment Received',
               amount: '+500.00',
-              category: 'Payment',
-            },
-          ].map((transaction, index) => (
+              category: 'Payment'
+            }
+          ].map((transaction) => (
             <div
-              key={index}
+              key={transaction.id}
               className="flex justify-between items-center p-3 bg-white border rounded"
             >
               <div>
@@ -165,13 +179,22 @@ export const CreditCardDetails: React.FC<CreditCardDetailsProps> = ({ card }) =>
       </div>
 
       <div className="flex space-x-3">
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
           Make Payment
         </button>
-        <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+        >
           Set Auto-Pay
         </button>
-        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors"
+        >
           View Statement
         </button>
       </div>

@@ -1,6 +1,7 @@
 import { Icon } from 'shared/components';
 
 export interface CardItemMessagesProps {
+  id: string;
   date: string;
   time: string;
   message: string;

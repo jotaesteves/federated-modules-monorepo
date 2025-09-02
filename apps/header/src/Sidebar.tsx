@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router';
 import { Icon } from 'shared/components';
-import Menu from './components/Menu';
+import { cn } from 'shared/lib/utils';
 import { bottomSidebarMapData, sidebarMapData } from 'src/data/menuData';
 import type { SidebarItemProps } from 'src/types/types';
-import { Link, useLocation } from 'react-router';
-import { cn } from 'shared/lib/utils';
+import Menu from './components/Menu';
 
 declare global {
   interface Window {
@@ -23,7 +24,7 @@ const SidebarItem: React.FC<Omit<SidebarItemProps, 'isActive'>> = ({
   onCloseMenu,
   className = '',
   isPendingActive,
-  hasMenu,
+  hasMenu
 }) => {
   const location = useLocation();
 
@@ -62,7 +63,7 @@ const SidebarItem: React.FC<Omit<SidebarItemProps, 'isActive'>> = ({
         style={{
           pointerEvents: expanded ? 'auto' : 'none',
           width: expanded ? 'auto' : '0',
-          overflow: expanded ? 'visible' : 'hidden',
+          overflow: expanded ? 'visible' : 'hidden'
         }}
       >
         {item.label}
@@ -159,7 +160,7 @@ const SideBarNav: React.FC = () => {
       onMouseLeave={handleMouseLeave}
       style={{
         minWidth: expanded ? '18rem' : '6.525rem',
-        maxWidth: expanded ? '18rem' : '6.525rem',
+        maxWidth: expanded ? '18rem' : '6.525rem'
       }}
     >
       <div className="flex-1 overflow-y-auto min-h-0 w-full flex flex-col overflow-x-hidden">

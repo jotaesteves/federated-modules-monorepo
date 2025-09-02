@@ -35,7 +35,7 @@ export const useMicroFrontendNavigation = () => {
     navigate,
     back,
     isCurrentPage,
-    navigationHistory,
+    navigationHistory
   };
 };
 
@@ -48,7 +48,7 @@ export const useMicroFrontendUser = () => {
     setUser,
     login,
     logout,
-    isAuthenticated: user.isAuthenticated,
+    isAuthenticated: user.isAuthenticated
   };
 };
 
@@ -65,7 +65,7 @@ export const useMicroFrontendTheme = () => {
     setTheme,
     toggleTheme,
     isDark: theme === 'dark',
-    isLight: theme === 'light',
+    isLight: theme === 'light'
   };
 };
 
@@ -74,7 +74,7 @@ export const useMicroFrontendSharedData = () => {
   const { sharedData, setSharedData, getSharedData, clearSharedData } = useGlobalStore();
 
   const setData = useCallback(
-    (key: string, value: any) => {
+    (key: string, value: unknown) => {
       setSharedData(key, value);
     },
     [setSharedData]
@@ -98,7 +98,7 @@ export const useMicroFrontendSharedData = () => {
     sharedData,
     setData,
     getData,
-    clearData,
+    clearData
   };
 };
 
@@ -122,7 +122,7 @@ export const useMicroFrontendLoading = () => {
     loadingMessage,
     startLoading,
     stopLoading,
-    setLoading,
+    setLoading
   };
 };
 
@@ -145,7 +145,7 @@ export const useMicroFrontendSync = () => {
 
   return {
     isConnected,
-    isStandalone: !isConnected,
+    isStandalone: !isConnected
   };
 };
 
@@ -160,7 +160,7 @@ export const useMicroFrontendCommunication = () => {
         from: 'current',
         to: targetMF,
         timestamp: new Date().toISOString(),
-        data: message,
+        data: message
       });
     },
     [setSharedData]
@@ -184,7 +184,7 @@ export const useMicroFrontendCommunication = () => {
 
   return {
     sendMessage,
-    getMessages,
+    getMessages
   };
 };
 
@@ -196,5 +196,5 @@ export default {
   useMicroFrontendSharedData,
   useMicroFrontendLoading,
   useMicroFrontendSync,
-  useMicroFrontendCommunication,
+  useMicroFrontendCommunication
 };

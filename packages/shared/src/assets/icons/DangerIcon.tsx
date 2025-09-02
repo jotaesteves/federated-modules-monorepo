@@ -1,6 +1,7 @@
 export const DangerIcon = () => {
   return (
     <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <title>Danger Icon</title>
       <path
         d="M13.4539 16.775C12.9725 16.775 12.5732 16.3757 12.5732 15.8943V10.0232C12.5732 9.54181 12.9725 9.14258 13.4539 9.14258C13.9353 9.14258 14.3346 9.54181 14.3346 10.0232V15.8943C14.3346 16.3757 13.9353 16.775 13.4539 16.775Z"
         fill="white"

@@ -1,6 +1,6 @@
-import type { CommunicationConfig, CommunicationType } from '../types/communication.types';
+import type React from 'react';
 import { Icon } from 'shared/components';
-import React from 'react';
+import type { CommunicationConfig, CommunicationType } from '../types/communication.types';
 
 /**
  * Helper function to render icons based on type
@@ -25,18 +25,18 @@ export const getCommunicationConfig = (): Record<CommunicationType, Communicatio
   calls: {
     type: 'calls',
     title: 'Mobile Banking',
-    icon: renderCommunicationIcon('calls'),
+    icon: renderCommunicationIcon('calls')
   },
   'sms-push': {
     type: 'sms-push',
     title: 'SMS/Push',
-    icon: renderCommunicationIcon('sms-push'),
+    icon: renderCommunicationIcon('sms-push')
   },
   emails: {
     type: 'emails',
     title: 'E-mails',
-    icon: renderCommunicationIcon('emails'),
-  },
+    icon: renderCommunicationIcon('emails')
+  }
 });
 
 /**

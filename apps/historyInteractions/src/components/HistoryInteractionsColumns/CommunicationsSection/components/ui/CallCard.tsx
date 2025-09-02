@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import type { CallData } from '../../types/communication.types';
 
 interface CallCardProps {
@@ -27,7 +27,7 @@ const CallCardPreview = () => {
     phoneNumber: 'X9999999',
     direction: 'INBOUND',
     date: '2023-01-01',
-    time: '10:00:35',
+    time: '10:00:35'
   };
 
   return (

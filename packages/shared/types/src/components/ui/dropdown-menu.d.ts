@@ -90,6 +90,6 @@ export {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuRadioGroup,
+  DropdownMenuRadioGroup
 };
 //# sourceMappingURL=dropdown-menu.d.ts.map

@@ -1,12 +1,12 @@
 import React from 'react';
 import type { CardTabItem } from 'shared/components';
-import { CardTabs, LineBreak, Icon } from 'shared/components';
+import { CardTabs, Icon, LineBreak } from 'shared/components';
 
 import { CardAccordionItemClaims } from 'src/components/cards/Incidents/components/CardAccordionItemClaims';
 import CardItemIncidents from 'src/components/cards/Incidents/components/CardItemIncidents';
 import {
   CardAccordionItemClaimsMapData,
-  CardItemIncidentsMapData,
+  CardItemIncidentsMapData
 } from 'src/components/cards/Incidents/mockData/mockData';
 
 const tabs: CardTabItem[] = [
@@ -16,13 +16,13 @@ const tabs: CardTabItem[] = [
     content: (
       <>
         {CardAccordionItemClaimsMapData.map((props, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={props.id}>
             <CardAccordionItemClaims {...props} />
             {index < CardAccordionItemClaimsMapData.length - 1 && <LineBreak />}
           </React.Fragment>
         ))}
       </>
-    ),
+    )
   },
   {
     value: 'incidents',
@@ -30,14 +30,14 @@ const tabs: CardTabItem[] = [
     content: (
       <>
         {CardItemIncidentsMapData.map((props, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={props.id}>
             <CardItemIncidents {...props} />
             {index < CardItemIncidentsMapData.length - 1 && <LineBreak />}
           </React.Fragment>
         ))}
       </>
-    ),
-  },
+    )
+  }
 ];
 
 const Incidents: React.FC = () => {

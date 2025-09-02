@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 interface CardAccordionHeaderProps {
   icon?: React.ReactNode;
@@ -11,7 +11,7 @@ export const CardAccordionHeader: React.FC<CardAccordionHeaderProps> = ({
   icon,
   title,
   value,
-  currency,
+  currency
 }) => {
   return (
     <div className="flex items-center justify-between w-full">

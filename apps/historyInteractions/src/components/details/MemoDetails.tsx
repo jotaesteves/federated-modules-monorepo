@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface MemoData {
@@ -16,23 +16,34 @@ interface MemoData {
 }
 
 interface MemoDetailsProps {
-  memo: MemoData | any; // Fallback to any for existing data structures
+  memo: unknown; // Fallback to unknown for existing data structures
 }
 
 export const MemoDetails: React.FC<MemoDetailsProps> = ({ memo }) => {
   // Fallback for existing data structures that might not match MemoData
+  const m = (memo ?? {}) as Partial<MemoData> & Record<string, unknown>;
   const safeMemo = {
-    id: memo?.id || 'N/A',
-    subject: memo?.name || memo?.subject || memo?.title || 'Memo',
-    content: memo?.content || memo?.description || 'Conteúdo não disponível',
-    author: memo?.author || 'Sistema',
-    recipient: memo?.recipient,
-    category: memo?.category || 'Geral',
-    priority: memo?.priority || 'normal',
-    status: memo?.status || 'sent',
-    createdDate: memo?.createdDate || memo?.date || new Date().toLocaleDateString(),
-    sentDate: memo?.sentDate,
-    readDate: memo?.readDate,
+    id: (m.id as string | undefined) ?? 'N/A',
+    subject:
+      (m.name as string | undefined) ||
+      (m.subject as string | undefined) ||
+      (m.title as string | undefined) ||
+      'Memo',
+    content:
+      (m.content as string | undefined) ||
+      (m.description as string | undefined) ||
+      'Conteúdo não disponível',
+    author: (m.author as string | undefined) || 'Sistema',
+    recipient: m.recipient as string | undefined,
+    category: (m.category as string | undefined) || 'Geral',
+    priority: (m.priority as MemoData['priority'] | undefined) || 'normal',
+    status: (m.status as MemoData['status'] | undefined) || 'sent',
+    createdDate:
+      (m.createdDate as string | undefined) ||
+      (m as Record<string, unknown>).date?.toString?.() ||
+      new Date().toLocaleDateString(),
+    sentDate: m.sentDate as string | undefined,
+    readDate: m.readDate as string | undefined
   };
 
   const getStatusBadgeVariant = (status: string) => {
@@ -42,7 +53,6 @@ export const MemoDetails: React.FC<MemoDetailsProps> = ({ memo }) => {
         return 'active';
       case 'sent':
         return 'default';
-      case 'draft':
       default:
         return 'inactive';
     }
@@ -55,7 +65,6 @@ export const MemoDetails: React.FC<MemoDetailsProps> = ({ memo }) => {
         return 'blocked';
       case 'normal':
         return 'default';
-      case 'low':
       default:
         return 'inactive';
     }

@@ -1,14 +1,14 @@
-import React from 'react';
+import type React from 'react';
 import { Icon } from 'shared/components';
 
 interface CardItemIncidentsProps {
   date: string;
   type: string;
   title: string;
-  link: string;
+  link?: string;
 }
 
-const CardItemIncidents: React.FC<CardItemIncidentsProps> = ({ date, type, title, link }) => {
+const CardItemIncidents: React.FC<CardItemIncidentsProps> = ({ date, type, title }) => {
   return (
     <div className="flex gap-2 p-2">
       <Icon type="exclamation" className="bg-primary-500" rounded size="sm" />

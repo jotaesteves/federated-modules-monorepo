@@ -1,11 +1,12 @@
+/** biome-ignore-all lint/correctness/useUniqueElementIds: id is used for unique  */
 'use client';
 
 import * as React from 'react';
+import type { DateRange } from 'react-day-picker';
+import Icon from '@/components/Icon';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import type { DateRange } from 'react-day-picker';
-import Icon from '@/components/Icon';
 
 const DatePicker: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -42,8 +43,9 @@ const DatePicker: React.FC = () => {
       <Popover open={open} onOpenChange={handleOpenChange}>
         <PopoverTrigger asChild>
           <Button
-            variant="outline"
             id="date"
+            type="button"
+            variant="outline"
             className="w-fit h-fit justify-between gap-3 items-center font-normal border border-[#A9ABAD] rounded-3xl text-[10px] py-[5px] px-3"
           >
             {range?.from && range?.to && range.from.getTime() !== range.to.getTime() ? (

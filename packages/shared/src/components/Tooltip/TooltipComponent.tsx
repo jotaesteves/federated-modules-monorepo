@@ -1,6 +1,6 @@
-import React from 'react';
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 import { TooltipArrow } from '@radix-ui/react-tooltip';
+import type React from 'react';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 
 type TooltipVariant = 'white' | 'purple';
@@ -18,7 +18,7 @@ interface TooltipProps {
 
 const variantStyles: Record<TooltipVariant, string> = {
   white: 'bg-white text-gray-800',
-  purple: 'bg-purple-400 text-white',
+  purple: 'bg-purple-400 text-white'
 };
 
 const TooltipComponent: React.FC<TooltipProps> = ({
@@ -27,7 +27,7 @@ const TooltipComponent: React.FC<TooltipProps> = ({
   children,
   variant = 'white',
   side = 'top',
-  align = 'center',
+  align = 'center'
 }) => {
   return (
     <TooltipProvider delayDuration={100}>
@@ -49,7 +49,7 @@ const TooltipComponent: React.FC<TooltipProps> = ({
               variant === 'white' ? 'fill-white' : 'fill-purple-400'
             )}
             style={{
-              filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))',
+              filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1))'
             }}
           />
         </TooltipContent>

@@ -1,9 +1,9 @@
-import React from 'react';
+import type React from 'react';
 import { Helmet } from 'react-helmet';
 import { ChannelsServicesColumns } from './components/ChannelsServicesColumns/ChannelsServicesColumns';
 import { DetailsSection } from './components/DetailsSection/DetailsSection';
-import { ChannelsServicesProvider } from './context/ChannelsServicesContext';
 import { DetailsRouter } from './components/details/DetailsRouter';
+import { ChannelsServicesProvider } from './context/ChannelsServicesContext';
 
 const ChannelsAndServices: React.FC = () => {
   return (

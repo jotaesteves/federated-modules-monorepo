@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import logoUrl from './assets/logo.svg';
-import HeaderTabs from './components/HeaderTabs';
-import { useHeaderModals } from './hooks/useHeaderModals';
+import type React from 'react';
+import { useState } from 'react';
 import { Icon } from 'shared/components';
 import DialCall from 'src/components/DialCall';
+import logoUrl from './assets/logo.svg';
 import HeaderModal from './components/HeaderModal';
+import HeaderTabs from './components/HeaderTabs';
+import { useHeaderModals } from './hooks/useHeaderModals';
 
 export type User = {
   firstName: string;
@@ -18,27 +19,27 @@ interface NavbarDropdown {
 }
 
 const Header: React.FC = () => {
-  const { modals, closeAllModals } = useHeaderModals();
+  const { modals } = useHeaderModals();
 
   const user: User = {
     firstName: 'Alexandra',
     lastName: 'Rosália Umberto',
-    email: 'alexandra@example.com',
+    email: 'alexandra@example.com'
   };
 
   const navbarDropdowns: NavbarDropdown[] = [
     {
       title: 'Smart IZI',
-      icon: <Icon type="cellPhone" className="p-0 mr-[0.625rem]" />,
+      icon: <Icon type="cellPhone" className="p-0 mr-[0.625rem]" />
     },
     {
       title: 'Alertas',
-      icon: <Icon type="bell" className="p-0 mr-[0.625rem]" />,
+      icon: <Icon type="bell" className="p-0 mr-[0.625rem]" />
     },
     {
       title: 'Vendas',
-      icon: <Icon type="shoppingBag" className="p-0 mr-[0.625rem]" />,
-    },
+      icon: <Icon type="shoppingBag" className="p-0 mr-[0.625rem]" />
+    }
   ];
 
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -47,6 +48,7 @@ const Header: React.FC = () => {
 
   const handleNavClick = (title: string, event: React.MouseEvent) => {
     event.preventDefault();
+    console.log(`Navigating to ${title}`);
   };
 
   const toggleUserDropdown = () => {
@@ -103,6 +105,7 @@ const Header: React.FC = () => {
               {navbarDropdowns.map((item) => (
                 <li key={item.title} className="mx-2">
                   <button
+                    type="button"
                     className={`flex items-center text-zinc-700 text-xl font-medium hover:text-primary-500 px-2 rounded transition-colors ${
                       //isCurrentPage(item.title.toLowerCase()) ? 'bg-blue-100 text-blue-700' : ''
                       () => `bg-blue-100 text-blue-700`
@@ -125,6 +128,7 @@ const Header: React.FC = () => {
           {/* User dropdown */}
           <div className="relative">
             <button
+              type="button"
               className="w-[3.5rem] h-[3.5rem] rounded-md border border-primary-500 flex items-center"
               onClick={toggleUserDropdown}
             >
@@ -145,13 +149,22 @@ const Header: React.FC = () => {
                     </div>
                     <div className="text-gray-500">{user.email}</div>
                   </div>
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <button
+                    type="button"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
                     🌙 Dark Mode
                   </button>
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <button
+                    type="button"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
                     ⚙️ Settings
                   </button>
-                  <button className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <button
+                    type="button"
+                    className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  >
                     🚪 Logout
                   </button>
                 </div>
@@ -163,6 +176,7 @@ const Header: React.FC = () => {
           <div className="h-[3.5rem] ml-4 bg-primary-500 rounded-full p-[0.6425rem] flex items-center space-x-2 relative">
             {isPaused ? (
               <button
+                type="button"
                 className="relative w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
                 onClick={togglePausePlay}
                 title="Play"
@@ -174,6 +188,7 @@ const Header: React.FC = () => {
               </button>
             ) : (
               <button
+                type="button"
                 className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
                 onClick={togglePausePlay}
                 title="Pause"
@@ -182,6 +197,7 @@ const Header: React.FC = () => {
               </button>
             )}
             <button
+              type="button"
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Transfer"
               onClick={handleSendMessageClick}
@@ -189,6 +205,7 @@ const Header: React.FC = () => {
               <Icon type="send" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
+              type="button"
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Send Message"
               onClick={handleTransferClick}
@@ -196,6 +213,7 @@ const Header: React.FC = () => {
               <Icon type="share" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
+              type="button"
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Receive Call"
               onClick={handleOutboundClick}
@@ -203,6 +221,7 @@ const Header: React.FC = () => {
               <Icon type="callBack" rounded className="text-zinc-700 w-[50px] h-auto" />
             </button>
             <button
+              type="button"
               className="w-[2.1875rem] h-[2.1875rem] bg-white rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
               title="Phone"
               onClick={toggleDialCall}

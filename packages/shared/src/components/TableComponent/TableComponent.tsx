@@ -1,3 +1,7 @@
+/** biome-ignore-all lint/suspicious/noArrayIndexKey: for now no id is provided for columns, //TODO: add unique ids for each column and cells */
+/** biome-ignore-all lint/correctness/useUniqueElementIds: the id is used for custom events and css */
+import type { ReactNode } from 'react';
+import React from 'react';
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 import {
   Table,
@@ -5,11 +9,9 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
-import type { ReactNode } from 'react';
-import React from 'react';
 
 interface TableHeaderData {
   label: string;
@@ -51,6 +53,7 @@ const TableComponent: React.FC<TableComponentProps> = ({ headers, data }) => {
     }
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: avoids hook to trigger on each change
   React.useEffect(() => {
     updateHeight();
     window.addEventListener('resize', updateHeight);
@@ -64,7 +67,7 @@ const TableComponent: React.FC<TableComponentProps> = ({ headers, data }) => {
     <div className="mt-6 h-full">
       <div className="pb-4">Filter fields</div>
 
-      <ScrollArea id="detailsScrollArea" className="pr-4" style={{ height: tableHeight + 'px' }}>
+      <ScrollArea id="detailsScrollArea" className="pr-4" style={{ height: `${tableHeight}px` }}>
         <Table className="h-full">
           <TableHeader>
             <TableRow>

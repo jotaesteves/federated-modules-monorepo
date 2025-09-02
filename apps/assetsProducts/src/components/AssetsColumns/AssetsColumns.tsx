@@ -1,6 +1,6 @@
-import React from 'react';
-import { AssetsHeader } from '../AssetsHeader/AssetsHeader';
+import type React from 'react';
 import { ActivesSection } from '../ActivesSection/ActivesSection';
+import { AssetsHeader } from '../AssetsHeader/AssetsHeader';
 import { PassivesSection } from '../PassivesSection/PassivesSection';
 
 interface AssetsColumnsProps {
@@ -10,7 +10,7 @@ interface AssetsColumnsProps {
 
 export const AssetsColumns: React.FC<AssetsColumnsProps> = ({
   leftTitle = 'Ativos',
-  rightTitle = 'Passivos',
+  rightTitle = 'Passivos'
 }) => {
   return (
     <div className="col-span-14 grid grid-rows-[auto_1fr] gap-2 h-full relative content-start rounded-[20px] overflow-hidden">

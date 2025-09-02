@@ -1,6 +1,6 @@
 import { type LucideIcon } from 'lucide-react';
 export declare function NavProjects({
-  projects,
+  projects
 }: {
   projects: {
     name: string;

@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { CardTabs, LineBreak, Icon } from 'shared/components';
+import { CardTabs, Icon, LineBreak } from 'shared/components';
 import type { CardTabItem } from 'shared/components/CardTabs';
 
 import { CardAccordionItemContacts } from 'src/components/cards/LastContact/components/CardAccordionItemContacts';
+import { CardItemMessages } from 'src/components/cards/LastContact/components/CardItemMessages';
 import {
   CardAccordionItemContactsMapData,
-  CardItemMessagesMapData,
+  CardItemMessagesMapData
 } from 'src/components/cards/LastContact/mockData/mockData';
-import { CardItemMessages } from 'src/components/cards/LastContact/components/CardItemMessages';
 
 const tabs: CardTabItem[] = [
   {
@@ -17,13 +17,13 @@ const tabs: CardTabItem[] = [
     content: (
       <>
         {CardAccordionItemContactsMapData.map((props, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={`contact-${props.id}`}>
             <CardAccordionItemContacts {...props} />
             {index < CardAccordionItemContactsMapData.length - 1 && <LineBreak />}
           </React.Fragment>
         ))}
       </>
-    ),
+    )
   },
   {
     value: 'messages',
@@ -31,14 +31,14 @@ const tabs: CardTabItem[] = [
     content: (
       <>
         {CardItemMessagesMapData.map((props, index) => (
-          <React.Fragment key={index}>
+          <React.Fragment key={`message-${props.id}`}>
             <CardItemMessages {...props} />
             {index < CardItemMessagesMapData.length - 1 && <LineBreak />}
           </React.Fragment>
         ))}
       </>
-    ),
-  },
+    )
+  }
 ];
 
 const LastContact: React.FC = () => {

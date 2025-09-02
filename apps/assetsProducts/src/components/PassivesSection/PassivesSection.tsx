@@ -1,11 +1,10 @@
-import React from 'react';
+import type React from 'react';
 import { CardAccordion } from 'shared/components';
 import { Badge } from 'shared/components/ui';
-
-import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
-import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 import type { ItemData } from '../../context/AssetsContext';
 import { createUniqueId } from '../../context/AssetsContext';
+import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
+import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 
 interface LoanAccountData {
   id: string;
@@ -41,7 +40,7 @@ const loanAccountsDefault: LoanAccountData[] = [
     initialValue: '100.274,24',
     remainingValue: '50.000,24',
     currency: 'MZN',
-    status: 'active',
+    status: 'active'
   },
   {
     id: '736534723476',
@@ -50,8 +49,8 @@ const loanAccountsDefault: LoanAccountData[] = [
     initialValue: '5.000,00',
     remainingValue: '50.000,24',
     currency: 'MZN',
-    status: 'inactive',
-  },
+    status: 'inactive'
+  }
 ];
 
 const creditCardAccountsDefault: CreditCardData[] = [
@@ -63,7 +62,7 @@ const creditCardAccountsDefault: CreditCardData[] = [
     initialValue: '10.000,00',
     remainingValue: '10.000,00',
     currency: 'MZN',
-    status: 'blocked',
+    status: 'blocked'
   },
   {
     id: '2',
@@ -73,13 +72,13 @@ const creditCardAccountsDefault: CreditCardData[] = [
     initialValue: '10.000,00',
     remainingValue: '10.000,00',
     currency: 'MZN',
-    status: 'blocked',
-  },
+    status: 'blocked'
+  }
 ];
 
 export const PassivesSection: React.FC<PassivesSectionProps> = ({
   loanAccounts = loanAccountsDefault,
-  creditCards = creditCardAccountsDefault,
+  creditCards = creditCardAccountsDefault
 }) => {
   return (
     <div className="flex flex-col gap-2 overflow-y-auto h-full scroll-custom">
@@ -95,7 +94,7 @@ export const PassivesSection: React.FC<PassivesSectionProps> = ({
             type: 'loan',
             category: 'passives',
             name: account.name,
-            data: account,
+            data: account
           };
 
           return (
@@ -138,7 +137,7 @@ export const PassivesSection: React.FC<PassivesSectionProps> = ({
             type: 'credit-card',
             category: 'passives',
             name: account.name,
-            data: account,
+            data: account
           };
 
           return (

@@ -21,7 +21,7 @@ module.exports = {
 
     // Public HTML files
     '../../apps/*/public/index.html',
-    './public/index.html',
+    './public/index.html'
   ],
   darkMode: ['class', 'class'],
   theme: {
@@ -34,8 +34,8 @@ module.exports = {
           'sans-serif',
           'Apple Color Emoji"',
           'Segoe UI Emoji"',
-          'Segoe UI Symbol"',
-        ],
+          'Segoe UI Symbol"'
+        ]
       },
       colors: {
         primary: {
@@ -50,7 +50,7 @@ module.exports = {
           800: '#640334',
           900: '#3e0222',
           950: '#210112',
-          DEFAULT: '#d70664',
+          DEFAULT: '#d70664'
         },
         gray: {
           50: '#f3f3f8', // tooltip border
@@ -64,29 +64,29 @@ module.exports = {
           700: '#374151',
           800: '#2E3641', // font color primary
           900: '#111827',
-          DEFAULT: '#7C7F86',
+          DEFAULT: '#7C7F86'
         },
         green: {
           400: '#8CC63F',
           500: '#87D100',
-          DEFAULT: '#25B917',
+          DEFAULT: '#25B917'
         },
         blue: {
-          DEFAULT: '#0052B4',
+          DEFAULT: '#0052B4'
         },
         teal: {
-          DEFAULT: '#14A9B9',
+          DEFAULT: '#14A9B9'
         },
         orange: {
           500: '#FF810A',
-          DEFAULT: '#FF5900',
+          DEFAULT: '#FF5900'
         },
         purple: {
-          DEFAULT: '#9747FF',
-        },
+          DEFAULT: '#9747FF'
+        }
       },
       gridTemplateColumns: {
-        24: 'repeat(24, minmax(0, 1fr))',
+        24: 'repeat(24, minmax(0, 1fr))'
       },
       gridColumn: {
         'span-13': 'span 13 / span 13',
@@ -100,37 +100,37 @@ module.exports = {
         'span-21': 'span 21 / span 21',
         'span-22': 'span 22 / span 22',
         'span-23': 'span 23 / span 23',
-        'span-24': 'span 24 / span 24',
+        'span-24': 'span 24 / span 24'
       },
       keyframes: {
         'accordion-down': {
           from: {
-            height: '0',
+            height: '0'
           },
           to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+            height: 'var(--radix-accordion-content-height)'
+          }
         },
         'accordion-up': {
           from: {
-            height: 'var(--radix-accordion-content-height)',
+            height: 'var(--radix-accordion-content-height)'
           },
           to: {
-            height: '0',
-          },
-        },
+            height: '0'
+          }
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
       },
       fontSize: {
         base: '0.9375rem',
         '2xl': '1.5625rem',
         '2xs': '0.625rem',
-        '3xs': '0.5rem',
-      },
-    },
+        '3xs': '0.5rem'
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 };

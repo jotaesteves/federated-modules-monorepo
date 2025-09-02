@@ -1,11 +1,11 @@
-import React from 'react';
+import type React from 'react';
 import { useHistoryInteractions } from '../../context/HistoryInteractionsContext';
 import { CallDetails } from './CallDetails';
-import { SmsDetails } from './SmsDetails';
-import { EmailDetails } from './EmailDetails';
 import { ComplaintDetails } from './ComplaintDetails';
+import { EmailDetails } from './EmailDetails';
 import { IncidentDetails } from './IncidentDetails';
 import { MemoDetails } from './MemoDetails';
+import { SmsDetails } from './SmsDetails';
 
 export const DetailsRouter: React.FC = () => {
   const { activeItem } = useHistoryInteractions();

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface LoanData {
@@ -17,9 +17,9 @@ interface LoanDetailsProps {
 
 export const LoanDetails: React.FC<LoanDetailsProps> = ({ loan }) => {
   const progress =
-    ((parseFloat(loan.initialValue.replace(/[,\.]/g, '')) -
-      parseFloat(loan.remainingValue.replace(/[,\.]/g, ''))) /
-      parseFloat(loan.initialValue.replace(/[,\.]/g, ''))) *
+    ((parseFloat(loan.initialValue.replace(/[,.]/g, '')) -
+      parseFloat(loan.remainingValue.replace(/[,.]/g, ''))) /
+      parseFloat(loan.initialValue.replace(/[,.]/g, ''))) *
     100;
 
   return (
@@ -86,28 +86,31 @@ export const LoanDetails: React.FC<LoanDetailsProps> = ({ loan }) => {
         <div className="space-y-2">
           {[
             {
+              id: '1',
               date: '2024-01-15',
               amount: '4,523.50',
               principal: '3,200.00',
               interest: '1,323.50',
-              status: 'paid',
+              status: 'paid'
             },
             {
+              id: '2',
               date: '2023-12-15',
               amount: '4,523.50',
               principal: '3,180.00',
               interest: '1,343.50',
-              status: 'paid',
+              status: 'paid'
             },
             {
+              id: '3',
               date: '2023-11-15',
               amount: '4,523.50',
               principal: '3,160.00',
               interest: '1,363.50',
-              status: 'paid',
-            },
-          ].map((payment, index) => (
-            <div key={index} className="p-4 bg-white border rounded">
+              status: 'paid'
+            }
+          ].map((payment) => (
+            <div key={payment.id} className="p-4 bg-white border rounded">
               <div className="flex justify-between items-center mb-2">
                 <p className="font-medium">Payment - {payment.date}</p>
                 <Badge variant="active" className="text-xs">
@@ -146,13 +149,22 @@ export const LoanDetails: React.FC<LoanDetailsProps> = ({ loan }) => {
       </div>
 
       <div className="flex space-x-3">
-        <button className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+        >
           Make Payment
         </button>
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
           Payment Schedule
         </button>
-        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors"
+        >
           Download Statement
         </button>
       </div>

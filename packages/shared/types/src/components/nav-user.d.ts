@@ -1,5 +1,5 @@
 export declare function NavUser({
-  user,
+  user
 }: {
   user: {
     name: string;

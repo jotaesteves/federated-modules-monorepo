@@ -1,14 +1,14 @@
-import * as React from 'react';
+import type * as React from 'react';
+import { cn } from '@/lib/utils';
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
   DialogDescription,
-  DialogTrigger,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger
 } from '../ui/dialog';
-import { cn } from '@/lib/utils';
 
 export interface ModalProps {
   children: React.ReactNode;
@@ -30,7 +30,7 @@ const sizeClasses = {
   sm: 'max-w-md',
   md: 'max-w-lg',
   lg: 'max-w-2xl',
-  xl: 'max-w-4xl',
+  xl: 'max-w-4xl'
 };
 
 const Modal: React.FC<ModalProps> = ({
@@ -46,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({
   headerClassName,
   contentClassName,
   footerClassName,
-  size = 'md',
+  size = 'md'
 }) => {
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>

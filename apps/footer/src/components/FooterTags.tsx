@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { useNavigation } from '../store/microFrontendStore';
 import type { FooterTag, FooterTagsProps } from '../types';
 
@@ -29,17 +29,28 @@ const FooterTags: React.FC<FooterTagsProps> = ({ tags, onTagClose }) => {
   return (
     <div className="footer-tags">
       {tagsToDisplay.map((tag, index) => (
-        <span
+        <button
           key={tag.id}
           className={`footer-tag ${currentPage === tag.page ? 'active' : ''} ${
             tag.isFromHistory ? 'history-tag' : ''
           }`}
           onClick={(e) => handleFooterNavClick(tag.page, e as React.MouseEvent)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              handleFooterNavClick(tag.page, e as unknown as React.MouseEvent);
+            }
+          }}
+          type="button"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
             cursor: 'pointer',
             marginRight: index < tagsToDisplay.length - 1 ? '8px' : '0',
+            background: 'none',
+            border: 'none',
+            color: 'inherit',
+            font: 'inherit',
+            padding: 0
           }}
           title={tag.isFromHistory ? `From navigation history: ${tag.label}` : tag.label}
         >
@@ -53,20 +64,16 @@ const FooterTags: React.FC<FooterTagsProps> = ({ tags, onTagClose }) => {
               aria-label={`Close ${tag.label} tag`}
               type="button"
               style={{
-                marginLeft: '4px',
-                background: 'none',
-                border: 'none',
-                color: 'inherit',
-                cursor: 'pointer',
+                marginLeft: '8px',
                 fontSize: '14px',
                 opacity: 0.7,
-                padding: '0 2px',
+                padding: '0 2px'
               }}
             >
               ×
             </button>
           )}
-        </span>
+        </button>
       ))}
     </div>
   );

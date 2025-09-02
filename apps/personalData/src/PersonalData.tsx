@@ -1,12 +1,11 @@
-import * as React from 'react';
+import type * as React from 'react';
 import { Helmet } from 'react-helmet';
-
-import PersonalDataCard from './components/cards/PersonalData/PersonalData';
-import ClientDataCard from './components/cards/ClientData/ClientData';
 import AddressesCard from './components/cards/Addresses/Addresses';
+import ClientDataCard from './components/cards/ClientData/ClientData';
+import ContactsCard from './components/cards/Contacts/Contacts';
 import DocumentationCard from './components/cards/Documentation/Documentation';
 import FinancialDataCard from './components/cards/FinancialData/FinancialData';
-import ContactsCard from './components/cards/Contacts/Contacts';
+import PersonalDataCard from './components/cards/PersonalData/PersonalData';
 import RiskDataCard from './components/cards/RiskData/RiskData';
 
 const PersonalData: React.FC = () => {

@@ -12,7 +12,7 @@
     { "name": "HistoryInteractions (Remote)", "path": "apps/historyInteractions" },
     { "name": "Config (Webpack/TS/Biome/etc)", "path": "packages/@config" },
     { "name": "E2E (Playwright)", "path": "e2e" },
-    { "name": "(Root)", "path": "." },
+    { "name": "(Root)", "path": "." }
   ],
   "settings": {
     "workbench.startupEditor": "readme",
@@ -56,7 +56,7 @@
       "**/yarn.lock": true,
       "**/bun.lockb": true,
       "**/.bun-cache": true,
-      "**/.bun-cache/**": true,
+      "**/.bun-cache/**": true
     },
 
     // Reduce file watcher overhead in large workspaces
@@ -75,7 +75,7 @@
       "**/tmp/**": true,
       "**/temp/**": true,
       "**/.DS_Store": true,
-      "**/Thumbs.db": true,
+      "**/Thumbs.db": true
     },
 
     // Hide from Explorer across the workspace
@@ -105,14 +105,14 @@
       "**/tmp": true,
       "**/tmp/**": true,
       "**/temp": true,
-      "**/temp/**": true,
-    },
+      "**/temp/**": true
+    }
   },
   "extensions": {
     "recommendations": [
       "bradlc.vscode-tailwindcss",
       "dbaeumer.vscode-eslint",
-      "esbenp.prettier-vscode",
+      "biomejs.biome",
       "yoavbls.pretty-ts-errors",
       "mikestead.dotenv",
       "Orta.vscode-jest",
@@ -126,7 +126,7 @@
       "firsttris.vscode-jest-runner",
       "editorconfig.editorconfig",
       "wix.vscode-import-cost",
-      "usernamehw.errorlens",
-    ],
-  },
+      "usernamehw.errorlens"
+    ]
+  }
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface ComplaintData {
@@ -15,22 +15,26 @@ interface ComplaintData {
 }
 
 interface ComplaintDetailsProps {
-  complaint: ComplaintData | any; // Fallback to any for existing data structures
+  complaint: unknown; // Fallback to unknown for existing data structures
 }
 
 export const ComplaintDetails: React.FC<ComplaintDetailsProps> = ({ complaint }) => {
   // Fallback for existing data structures that might not match ComplaintData
+  const c = (complaint ?? {}) as Partial<ComplaintData> & Record<string, unknown>;
   const safeComplaint = {
-    id: complaint?.id || 'N/A',
-    title: complaint?.name || complaint?.title || 'Reclamação',
-    description: complaint?.description || 'Descrição não disponível',
-    category: complaint?.category || 'Geral',
-    status: complaint?.status || 'pending',
-    priority: complaint?.priority || 'medium',
-    createdDate: complaint?.createdDate || complaint?.date || new Date().toLocaleDateString(),
-    resolvedDate: complaint?.resolvedDate,
-    agent: complaint?.agent,
-    department: complaint?.department || 'Call Center',
+    id: (c.id as string | undefined) ?? 'N/A',
+    title: (c.name as string | undefined) || (c.title as string | undefined) || 'Reclamação',
+    description: (c.description as string | undefined) || 'Descrição não disponível',
+    category: (c.category as string | undefined) || 'Geral',
+    status: (c.status as string | undefined) || 'pending',
+    priority: (c.priority as string | undefined) || 'medium',
+    createdDate:
+      (c.createdDate as string | undefined) ||
+      (c as Record<string, unknown>).date?.toString?.() ||
+      new Date().toLocaleDateString(),
+    resolvedDate: c.resolvedDate as string | undefined,
+    agent: c.agent as string | undefined,
+    department: (c.department as string | undefined) || 'Call Center'
   };
 
   const getStatusBadgeVariant = (status: string) => {
@@ -40,7 +44,6 @@ export const ComplaintDetails: React.FC<ComplaintDetailsProps> = ({ complaint })
         return 'active';
       case 'in-progress':
         return 'default';
-      case 'pending':
       default:
         return 'inactive';
     }
@@ -53,7 +56,6 @@ export const ComplaintDetails: React.FC<ComplaintDetailsProps> = ({ complaint })
         return 'blocked';
       case 'medium':
         return 'default';
-      case 'low':
       default:
         return 'inactive';
     }

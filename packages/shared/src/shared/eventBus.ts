@@ -20,7 +20,9 @@ class EventBus {
 
   emit(event: MicroFrontendEvent) {
     const arr = this.listeners[event.type] || [];
-    arr.forEach((listener) => listener(event));
+    arr.forEach((listener) => {
+      listener(event);
+    });
   }
 }
 
@@ -45,12 +47,12 @@ if (typeof window !== 'undefined') {
   window.microFrontendEventBus = window.microFrontendEventBus || {
     on: (...args) => eventBus.on(...args),
     off: (...args) => eventBus.off(...args),
-    emit: (event) => eventBus.emit(event),
+    emit: (event) => eventBus.emit(event)
   };
 }
 
 export default {
   on: (...args: Parameters<EventBus['on']>) => eventBus.on(...args),
   off: (...args: Parameters<EventBus['off']>) => eventBus.off(...args),
-  emit: (...args: Parameters<EventBus['emit']>) => eventBus.emit(...args),
+  emit: (...args: Parameters<EventBus['emit']>) => eventBus.emit(...args)
 };

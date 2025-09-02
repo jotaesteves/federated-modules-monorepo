@@ -213,6 +213,6 @@ export {
   SidebarRail,
   SidebarSeparator,
   SidebarTrigger,
-  useSidebar,
+  useSidebar
 };
 //# sourceMappingURL=sidebar.d.ts.map

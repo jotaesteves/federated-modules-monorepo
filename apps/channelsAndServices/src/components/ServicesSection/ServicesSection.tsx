@@ -1,10 +1,9 @@
-import React from 'react';
+import type React from 'react';
 import { CardAccordion } from 'shared/components';
-
-import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
-import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 import type { ItemData } from '../../context/ChannelsServicesContext';
 import { createUniqueId } from '../../context/ChannelsServicesContext';
+import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
+import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 
 interface EnsuraceAccountData {
   id: string;
@@ -30,14 +29,14 @@ const EnsuranceAccountsDefault: EnsuraceAccountData[] = [
     id: '73653476234',
     policyNumber: '73653476234',
     name: 'Seguro em Paz',
-    subscriptionDate: '2025-01-15',
+    subscriptionDate: '2025-01-15'
   },
   {
     id: '736534723476',
     policyNumber: '736534723476',
     name: 'Seguro Vida',
-    subscriptionDate: '2025-02-20',
-  },
+    subscriptionDate: '2025-02-20'
+  }
 ];
 const ExtractsDataDefault: ExtractsData[] = [
   {
@@ -45,20 +44,20 @@ const ExtractsDataDefault: ExtractsData[] = [
     accountNumber: '1234567890',
     subscriptionDate: '2025-01-15',
     type: 'simples',
-    email: 'cliente1@example.com',
+    email: 'cliente1@example.com'
   },
   {
     id: '2',
     accountNumber: '0987654321',
     subscriptionDate: '2025-02-20',
     type: 'combinado',
-    email: 'cliente2@example.com',
-  },
+    email: 'cliente2@example.com'
+  }
 ];
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({
   accounts = EnsuranceAccountsDefault,
-  extracts = ExtractsDataDefault,
+  extracts = ExtractsDataDefault
 }) => {
   return (
     <div className="grid gap-2 content-start">
@@ -70,7 +69,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             type: 'insurance',
             category: 'other-services',
             name: account.name,
-            data: account,
+            data: account
           };
 
           return (
@@ -100,7 +99,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
             type: 'extracts',
             category: 'other-services',
             name: extract.email,
-            data: extract,
+            data: extract
           };
 
           return (

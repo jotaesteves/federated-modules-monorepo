@@ -1,12 +1,10 @@
-import React from 'react';
+import type React from 'react';
 import { CardAccordion } from 'shared/components';
 import { Badge } from 'shared/components/ui';
-
-import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
-import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
-
 import type { ItemData } from '../../context/ChannelsServicesContext';
 import { createUniqueId } from '../../context/ChannelsServicesContext';
+import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
+import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 
 interface AccountData {
   id: string;
@@ -36,12 +34,12 @@ const defaultMobileAccounts: AccountData[] = [
     transactionalLimit: '450.000,24',
     rechargeLimit: '2.000,24',
     currency: 'MZN',
-    name: 'Principal',
-  },
+    name: 'Principal'
+  }
 ];
 
 export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
-  accounts = defaultMobileAccounts,
+  accounts = defaultMobileAccounts
 }) => {
   return (
     <div className="grid gap-2 content-start">
@@ -53,7 +51,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
             type: 'mobile',
             category: 'channels',
             data: account,
-            name: account.name || '',
+            name: account.name || ''
           };
 
           return (
@@ -109,7 +107,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
             type: 'internet',
             category: 'channels',
             name: account.name || '',
-            data: account,
+            data: account
           };
 
           return (
@@ -162,7 +160,7 @@ export const ChannelsSection: React.FC<ChannelsSectionProps> = ({
             type: 'millennium-line',
             category: 'channels',
             name: account.name || '',
-            data: account,
+            data: account
           };
 
           return (

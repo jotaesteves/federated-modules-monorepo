@@ -11,6 +11,6 @@ export const useOccurrenceConfig = () => {
 
   return {
     configs,
-    getConfigByType,
+    getConfigByType
   };
 };

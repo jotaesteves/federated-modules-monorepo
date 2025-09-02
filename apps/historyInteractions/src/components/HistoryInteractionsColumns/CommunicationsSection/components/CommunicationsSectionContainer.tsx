@@ -1,8 +1,8 @@
-import React from 'react';
-import { CommunicationSection } from './containers/CommunicationSection';
+import type React from 'react';
 import { useCommunicationData } from '../hooks/useCommunicationData';
-import type { CallData, SmsData, EmailData } from '../types/communication.types';
-import { mockCallData, mockSmsData, mockEmailData } from '../mock-data/mock-communication-data';
+import { mockCallData, mockEmailData, mockSmsData } from '../mock-data/mock-communication-data';
+import type { CallData, EmailData, SmsData } from '../types/communication.types';
+import { CommunicationSection } from './containers/CommunicationSection';
 
 interface CommunicationsSectionContainerProps {
   calls?: CallData[];
@@ -13,12 +13,12 @@ interface CommunicationsSectionContainerProps {
 export const CommunicationsSectionContainer: React.FC<CommunicationsSectionContainerProps> = ({
   calls = mockCallData,
   smsPush = mockSmsData,
-  emails = mockEmailData,
+  emails = mockEmailData
 }) => {
   const { callsItems, smsItems, emailsItems } = useCommunicationData({
     calls,
     smsPush,
-    emails,
+    emails
   });
 
   return (
