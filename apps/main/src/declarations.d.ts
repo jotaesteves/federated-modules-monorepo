@@ -81,12 +81,12 @@ declare module 'records/Records' {
   const RecordsComponent: ComponentType<unknown>;
   export default RecordsComponent;
 
-  export interface RouteConfig {
+  export interface RecordsRouteConfig {
     path: string;
     component: ComponentType<unknown>;
     label: string;
   }
-  export function getRoutesForOutlet(): RouteConfig[];
+  export function getRecordsForOutlet(): RecordsRouteConfig[];
 }
 declare module 'sales/Sales' {
   import type { ComponentType } from 'react';
@@ -99,6 +99,13 @@ declare module 'documentation/Documentation' {
 
   const DocumentationComponent: ComponentType<unknown>;
   export default DocumentationComponent;
+
+  export interface DocumentationRouteConfig {
+    path: string;
+    component: ComponentType<unknown>;
+    label: string;
+  }
+  export function getDocumentationForOutlet(): DocumentationRouteConfig[];
 }
 declare module 'outbounds/Outbounds' {
   import type { ComponentType } from 'react';

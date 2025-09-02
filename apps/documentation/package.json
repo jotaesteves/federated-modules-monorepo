@@ -22,7 +22,8 @@
     "@tanstack/react-query": "^5.62.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "react-router": "^7.8.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
@@ -37,6 +38,7 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@types/react-helmet": "^6.1.6",
+    "@types/react-router": "^5.1.20",
     "@types/webpack": "^5.28.0",
     "babel-loader": "^9.1.2",
     "eslint": "^9.34.0",

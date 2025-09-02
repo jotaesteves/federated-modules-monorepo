@@ -29,8 +29,8 @@ export interface SubmenuLinkItemProps extends Omit<NavItemProps, 'icon'> {
 export interface SidebarItemProps {
   item: NavItemProps;
   expanded: boolean;
-  onOpenMenu: (label: string) => void;
-  onCloseMenu?: () => void;
+  onOpenMenu: (id: string) => void;
+  onCloseMenu: () => void;
   className?: string;
   isPendingActive: boolean;
   hasMenu: boolean;

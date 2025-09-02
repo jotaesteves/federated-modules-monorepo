@@ -35,12 +35,11 @@ const SidebarItem: React.FC<Omit<SidebarItemProps, 'isActive'>> = ({
   const isItemActive = item.path ? checkRouteMatch() : checkRouteMatch();
 
   const handleClick = () => {
-    if (onCloseMenu) {
-      onCloseMenu();
-    }
-
     if (hasMenu) {
-      onOpenMenu(item.label);
+      onOpenMenu(item.id);
+      return;
+    } else if (onCloseMenu) {
+      onCloseMenu();
     }
   };
 
@@ -114,9 +113,9 @@ const SideBarNav: React.FC = () => {
     handleCloseMenu();
   };
 
-  const handleOpenMenu = (label: string) => {
+  const handleOpenMenu = (id: string) => {
     setExpanded(true);
-    setActiveItem(label);
+    setActiveItem(id);
     setIsMenuOpen(true);
     setIsSubmenuOpen(false);
     setActiveSubmenuItem(null);
@@ -146,6 +145,10 @@ const SideBarNav: React.FC = () => {
     setActiveSubmenuItem(null);
   };
 
+  function handleCloseMenuAndSidebar(): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <nav
       className={cn(
@@ -165,9 +168,9 @@ const SideBarNav: React.FC = () => {
             key={item.id}
             item={item}
             expanded={expanded}
-            onOpenMenu={() => handleOpenMenu(item.label)}
-            onCloseMenu={handleCloseOnlyMenu}
-            isPendingActive={activeItem === item.label}
+            onOpenMenu={() => handleOpenMenu(item.id)}
+            onCloseMenu={handleCloseMenuAndSidebar}
+            isPendingActive={activeItem === item.id}
             hasMenu={!item.path}
           />
         ))}
@@ -179,9 +182,9 @@ const SideBarNav: React.FC = () => {
             key={item.id}
             item={item}
             expanded={expanded}
-            onOpenMenu={() => handleOpenMenu(item.label)}
-            onCloseMenu={handleCloseOnlyMenu}
-            isPendingActive={activeItem === item.label}
+            onOpenMenu={() => handleOpenMenu(item.id)}
+            onCloseMenu={handleCloseMenuAndSidebar}
+            isPendingActive={activeItem === item.id}
             hasMenu={!item.path}
           />
         ))}
