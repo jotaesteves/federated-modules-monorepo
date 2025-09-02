@@ -34,7 +34,6 @@
     "e2e:start": "turbo run e2e",
     "e2e": "bun run build:local && bun run e2e:start",
     "e2e:show-report": "turbo run e2e:show-report",
-    "format": "prettier --config ./.prettierrc.json --write .",
     "clean": "rimraf apps/*/node_modules packages/*/node_modules bun.lock node_modules",
     "prepare": "husky"
   },
@@ -46,7 +45,6 @@
     "cross-env": "^7.0.3",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
-    "prettier": "^3.6.2",
     "rimraf": "^6.0.1",
     "serve": "^14.2.4",
     "turbo": "^2.5.5"

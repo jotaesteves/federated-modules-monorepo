@@ -23,6 +23,7 @@
         "noNestedComponentDefinitions": "warn",
         "noUnusedImports": "error",
         "noUnusedVariables": "error",
+        "noUndeclaredVariables": "error",
         "useExhaustiveDependencies": "warn"
       }
     }
