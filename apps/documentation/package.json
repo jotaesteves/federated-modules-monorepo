@@ -38,7 +38,7 @@
     "@types/react": "^19.0.2",
     "@types/react-dom": "^19.0.2",
     "@types/react-helmet": "^6.1.6",
-    "@types/react-router": "^7.0.0",
+    "@types/react-router": "^5.1.20",
     "@types/webpack": "^5.28.0",
     "babel-loader": "^9.1.2",
     "eslint": "^9.34.0",
