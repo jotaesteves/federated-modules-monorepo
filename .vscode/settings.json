@@ -29,7 +29,6 @@
   "[html]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "prettier.requireConfig": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.preferences.importModuleSpecifier": "non-relative",
@@ -77,7 +76,11 @@
     "**/.env.*.local": true,
     "**/pnpm-lock.yaml": true,
     "**/package-lock.json": true,
-    "**/yarn.lock": true
+    "**/yarn.lock": true,
+    "**/types/**": true,
+    "**/*.d.ts": true,
+    "**/*.d.ts.map": true,
+    "**/*.tsbuildinfo": true
   },
   "files.watcherExclude": {
     "**/node_modules/**": true,
@@ -94,7 +97,11 @@
     "**/tmp/**": true,
     "**/temp/**": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true
+    "**/Thumbs.db": true,
+    "**/types/**": true,
+    "**/*.d.ts": true,
+    "**/*.d.ts.map": true,
+    "**/*.tsbuildinfo": true
   },
   "files.exclude": {
     "**/node_modules": true,
@@ -122,7 +129,11 @@
     "**/tmp": true,
     "**/tmp/**": true,
     "**/temp": true,
-    "**/temp/**": true
+    "**/temp/**": true,
+    "**/types/**": true,
+    "**/*.d.ts": true,
+    "**/*.d.ts.map": true,
+    "**/*.tsbuildinfo": true
   },
   "biome.configurationPath": "packages/@config/biome-config/biome.json",
   "biome.requireConfiguration": true
