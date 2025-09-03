@@ -1,6 +1,6 @@
-import React from 'react';
-import { ChannelsServicesHeader } from '../ChannelsServicesHeader/ChannelsServicesHeader';
+import type React from 'react';
 import { ChannelsSection } from '../ChannelsSection/ChannelsSection';
+import { ChannelsServicesHeader } from '../ChannelsServicesHeader/ChannelsServicesHeader';
 import { ServicesSection } from '../ServicesSection/ServicesSection';
 
 interface ChannelsServicesColumnsProps {
@@ -10,7 +10,7 @@ interface ChannelsServicesColumnsProps {
 
 export const ChannelsServicesColumns: React.FC<ChannelsServicesColumnsProps> = ({
   leftTitle = 'Canais',
-  rightTitle = 'Outros Serviços',
+  rightTitle = 'Outros Serviços'
 }) => {
   return (
     <div className="col-span-14 grid grid-cols-2 gap-2 overflow-y-auto h-full relative content-start">

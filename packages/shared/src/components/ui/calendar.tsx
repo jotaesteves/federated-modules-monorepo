@@ -1,10 +1,10 @@
-import * as React from 'react';
+/** biome-ignore-all lint/correctness/noNestedComponentDefinitions: this is a ui from a library */
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from 'lucide-react';
+import * as React from 'react';
 import type { DayButton } from 'react-day-picker';
 import { DayPicker, getDefaultClassNames } from 'react-day-picker';
-
-import { cn } from '@/lib/utils';
 import { Button, buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 function Calendar({
   className,
@@ -32,7 +32,7 @@ function Calendar({
       captionLayout={captionLayout}
       formatters={{
         formatMonthDropdown: (date) => date.toLocaleString('default', { month: 'short' }),
-        ...formatters,
+        ...formatters
       }}
       classNames={{
         root: cn('max-w-[200px] max-h-[180px] w-full overflow-auto', defaultClassNames.root),
@@ -101,7 +101,7 @@ function Calendar({
         ),
         disabled: cn('text-muted-foreground opacity-50', defaultClassNames.disabled),
         hidden: cn('invisible', defaultClassNames.hidden),
-        ...classNames,
+        ...classNames
       }}
       components={{
         Root: ({ className, rootRef, ...props }) => {
@@ -128,7 +128,7 @@ function Calendar({
             </td>
           );
         },
-        ...components,
+        ...components
       }}
       {...props}
     />

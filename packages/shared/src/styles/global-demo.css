@@ -116,8 +116,8 @@
 /* Print styles */
 @media print {
   .global-demo-card {
-    background: #666 !important;
-    box-shadow: none !important;
+    background: #666;
+    box-shadow: none;
   }
 }
 

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Route, Routes, Link, matchPath, useLocation } from 'react-router';
+import type * as React from 'react';
+import { Link, matchPath, Route, Routes, useLocation } from 'react-router';
 
 function useRouteMatch(patterns: readonly string[]) {
   const { pathname } = useLocation();
@@ -28,7 +28,7 @@ function MyTabs() {
     borderBottom: active ? '2px solid #1976d2' : '2px solid transparent',
     color: active ? '#1976d2' : 'inherit',
     textDecoration: 'none',
-    display: 'inline-block',
+    display: 'inline-block'
   });
 
   return (
@@ -40,7 +40,7 @@ function MyTabs() {
           gap: 16,
           padding: 0,
           margin: 0,
-          borderBottom: '1px solid #e0e0e0',
+          borderBottom: '1px solid #e0e0e0'
         }}
       >
         <li>

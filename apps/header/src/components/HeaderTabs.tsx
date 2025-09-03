@@ -1,27 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import type React from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 
 const tabs = [
   { value: 'vision360', label: 'Visao 360', path: '/vision-360' },
   { value: 'personalData', label: 'Dados Pessoais', path: '/personal-data' },
-  { value: 'assetsProducts', label: 'Patrimonio e Productos', path: '/assets-products' },
-  { value: 'channelsAndServices', label: 'Canais e Serviços', path: '/channels-and-services' },
-  { value: 'historyInteractions', label: 'Historico Interacões', path: '/history-interactions' },
+  {
+    value: 'assetsProducts',
+    label: 'Patrimonio e Productos',
+    path: '/assets-products'
+  },
+  {
+    value: 'channelsAndServices',
+    label: 'Canais e Serviços',
+    path: '/channels-and-services'
+  },
+  {
+    value: 'historyInteractions',
+    label: 'Historico Interacões',
+    path: '/history-interactions'
+  }
 ];
 
 const HeaderTabs: React.FC = () => {
   // Track location early so initial state can reflect the current route
   const location = useLocation();
 
-  // Access the global store from the host app
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const globalStore = (window as any)?.globalMicroFrontendStore;
+  // Access the global store from the host app with a minimal inferred type
+  type GlobalStore = {
+    getState: () => { currentPage: string; navigateTo?: (page: string) => void } & Record<
+      string,
+      unknown
+    >;
+    subscribe?: <T>(
+      selector: (state: ReturnType<GlobalStore['getState']>) => T,
+      listener: (value: T) => void
+    ) => () => void;
+  };
+  type WindowWithStore = Window & { globalMicroFrontendStore?: GlobalStore };
+  const globalStore = (window as WindowWithStore)?.globalMicroFrontendStore;
 
   // Compute initial active tab from global store or current URL
   const getInitialActiveTab = (): string | null => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const store = (window as any)?.globalMicroFrontendStore;
-    const storePage = store?.getState?.().currentPage;
+    const store = (window as WindowWithStore)?.globalMicroFrontendStore;
+    const storePage = store?.getState()?.currentPage;
     if (storePage && tabs.some((t) => t.value === storePage)) return storePage;
     const byPath = tabs.find((t) => t.path && location.pathname.startsWith(t.path));
     return byPath?.value ?? null; // no default selection if no match
@@ -31,6 +53,7 @@ const HeaderTabs: React.FC = () => {
 
   // Sync with global store if available
   useEffect(() => {
+    let cleanup: (() => void) | undefined;
     if (globalStore) {
       const currentPage = globalStore.getState().currentPage;
       if (tabs.some((tab) => tab.value === currentPage)) {
@@ -39,9 +62,8 @@ const HeaderTabs: React.FC = () => {
         setActiveTab(null);
       }
 
-      const unsubscribe = globalStore.subscribe(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (state: any) => state.currentPage,
+      cleanup = globalStore.subscribe?.(
+        (state) => state.currentPage,
         (currentPage: string) => {
           if (tabs.some((tab) => tab.value === currentPage)) {
             setActiveTab(currentPage);
@@ -50,9 +72,8 @@ const HeaderTabs: React.FC = () => {
           }
         }
       );
-
-      return unsubscribe;
     }
+    return cleanup;
   }, [globalStore]);
 
   // Fallback: derive active tab from URL when running inside host without global store
@@ -72,7 +93,7 @@ const HeaderTabs: React.FC = () => {
 
     // Update the global store in the host app
     if (globalStore) {
-      globalStore.getState().navigateTo(tabValue);
+      globalStore.getState().navigateTo?.(tabValue);
     }
   };
 

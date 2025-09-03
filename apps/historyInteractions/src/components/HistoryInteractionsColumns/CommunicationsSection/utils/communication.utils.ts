@@ -7,18 +7,18 @@ export const getCommunicationConfig = (): Record<CommunicationType, Communicatio
   calls: {
     type: 'calls',
     title: 'Mobile Banking',
-    icon: 'callDots',
+    icon: 'callDots'
   },
   'sms-push': {
     type: 'sms-push',
     title: 'SMS/Push',
-    icon: 'messageCircleDots',
+    icon: 'messageCircleDots'
   },
   emails: {
     type: 'emails',
     title: 'E-mails',
-    icon: 'email',
-  },
+    icon: 'email'
+  }
 });
 
 /**

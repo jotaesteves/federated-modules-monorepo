@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode, type FC } from 'react';
+import { createContext, type FC, type ReactNode, useContext, useState } from 'react';
 
 export interface ItemData {
   id: string; // This will be a unique identifier combining type, category, and original id
@@ -6,7 +6,7 @@ export interface ItemData {
   type: 'calls' | 'sms-push' | 'emails' | 'complains' | 'incidents' | 'memos';
   category: 'communications' | 'occurrences';
   name?: string; // Display name for the item
-  data?: any; // The actual data object for the item
+  data?: unknown; // The actual data object for the item
 }
 
 export interface BreadCrumbItem {
@@ -47,7 +47,7 @@ export const HistoryInteractionsProvider: FC<HistoryInteractionsProviderProps> =
   const getCategoryDisplayName = (category: ItemData['category']) => {
     const categoryMap: Record<ItemData['category'], string> = {
       communications: 'Comunicações',
-      occurrences: 'Ocorrências',
+      occurrences: 'Ocorrências'
     };
     return categoryMap[category];
   };
@@ -59,7 +59,7 @@ export const HistoryInteractionsProvider: FC<HistoryInteractionsProviderProps> =
       emails: 'E-mails',
       complains: 'Reclamações',
       incidents: 'Incidentes',
-      memos: 'Memos',
+      memos: 'Memos'
     };
     return typeMap[type];
   };
@@ -67,7 +67,7 @@ export const HistoryInteractionsProvider: FC<HistoryInteractionsProviderProps> =
   const updateBreadcrumbsForItem = (item: ItemData) => {
     const newBreadcrumbs: BreadCrumbItem[] = [
       { label: getCategoryDisplayName(item.category) },
-      { label: getTypeDisplayName(item.type) },
+      { label: getTypeDisplayName(item.type) }
     ];
 
     // Add item name if available
@@ -100,7 +100,7 @@ export const HistoryInteractionsProvider: FC<HistoryInteractionsProviderProps> =
         updateBreadcrumbsForItem,
         openItemDetails,
         closeItemDetails,
-        isItemDetailsOpen,
+        isItemDetailsOpen
       }}
     >
       {children}

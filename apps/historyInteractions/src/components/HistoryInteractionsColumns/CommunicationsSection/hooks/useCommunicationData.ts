@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import type { ItemData } from '../../../../context/HistoryInteractionsContext';
 import { createUniqueId } from '../../../../context/HistoryInteractionsContext';
-import type { CallData, SmsData, EmailData, CommunicationType } from '../types/communication.types';
+import type { CallData, CommunicationType, EmailData, SmsData } from '../types/communication.types';
 import { generateCallName, generateEmailName } from '../utils/communication.utils';
 
 interface UseCommunicationDataProps {
@@ -19,7 +19,7 @@ interface UseCommunicationDataReturn {
 export const useCommunicationData = ({
   calls = [],
   smsPush = [],
-  emails = [],
+  emails = []
 }: UseCommunicationDataProps): UseCommunicationDataReturn => {
   const callsItems = useMemo(
     () =>
@@ -30,7 +30,7 @@ export const useCommunicationData = ({
           type: 'calls' as CommunicationType,
           category: 'communications',
           name: generateCallName(call.direction, call.phoneNumber),
-          data: call,
+          data: call
         })
       ),
     [calls]
@@ -45,7 +45,7 @@ export const useCommunicationData = ({
           type: 'sms-push' as CommunicationType,
           category: 'communications',
           name: sms.title,
-          data: sms,
+          data: sms
         })
       ),
     [smsPush]
@@ -60,7 +60,7 @@ export const useCommunicationData = ({
           type: 'emails' as CommunicationType,
           category: 'communications',
           name: generateEmailName(email.title, email.email),
-          data: email,
+          data: email
         })
       ),
     [emails]
@@ -69,6 +69,6 @@ export const useCommunicationData = ({
   return {
     callsItems,
     smsItems,
-    emailsItems,
+    emailsItems
   };
 };

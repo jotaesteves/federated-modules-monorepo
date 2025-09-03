@@ -1,4 +1,5 @@
-import React, { type Dispatch } from 'react';
+import type React from 'react';
+import type { Dispatch } from 'react';
 import { Modal } from 'shared/components';
 import { schema, type schemaTypes } from '../schemas/modalSchemas';
 
@@ -15,9 +16,7 @@ const HeaderModal: React.FC<HeaderModalProps> = ({
   type,
   isOpen,
   onOpenChange,
-  onCloseOverride,
-  onSubmitOverride,
-  onErrorOverride,
+  onCloseOverride
 }) => {
   const config = schema[type];
 
@@ -30,20 +29,6 @@ const HeaderModal: React.FC<HeaderModalProps> = ({
       onCloseOverride();
     }
     onOpenChange(false);
-  };
-  const handleSubmit = () => {
-    if (onSubmitOverride) {
-      onSubmitOverride();
-    } else if (config.onSubmit) {
-      config.onSubmit();
-    }
-  };
-  const _handleError = () => {
-    if (onErrorOverride) {
-      onErrorOverride();
-    } else if (config.onError) {
-      config.onError();
-    }
   };
 
   return (

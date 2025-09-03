@@ -1,5 +1,6 @@
+import type React from 'react';
 import type { ReactNode } from 'react';
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export interface ItemData {
   id: string; // This will be a unique identifier combining type, category, and original id
@@ -7,7 +8,7 @@ export interface ItemData {
   type: 'account' | 'deposit' | 'debit-card' | 'loan' | 'credit-card';
   category: 'actives' | 'passives';
   name: string;
-  data: any; // The full data object for the item
+  data: unknown; // The full data object for the item
 }
 
 export interface BreadCrumbItem {
@@ -39,12 +40,14 @@ interface AssetsProviderProps {
 
 export const AssetsProvider: React.FC<AssetsProviderProps> = ({ children }) => {
   const [activeItem, setActiveItem] = useState<ItemData | null>(null);
-  const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbState>({ items: [] });
+  const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbState>({
+    items: []
+  });
 
   const getCategoryDisplayName = (category: ItemData['category']) => {
     const categoryMap: Record<ItemData['category'], string> = {
       actives: 'Ativos',
-      passives: 'Passivos',
+      passives: 'Passivos'
     };
     return categoryMap[category];
   };
@@ -55,7 +58,7 @@ export const AssetsProvider: React.FC<AssetsProviderProps> = ({ children }) => {
       deposit: 'Depósito a Prazo',
       'debit-card': 'Cartão de Débito',
       loan: 'Empréstimo',
-      'credit-card': 'Cartão de Crédito',
+      'credit-card': 'Cartão de Crédito'
     };
     return typeMap[type];
   };
@@ -63,7 +66,7 @@ export const AssetsProvider: React.FC<AssetsProviderProps> = ({ children }) => {
   const updateBreadcrumbsForItem = (item: ItemData) => {
     const newBreadcrumbs: BreadCrumbItem[] = [
       { label: getCategoryDisplayName(item.category) },
-      { label: getTypeDisplayName(item.type) },
+      { label: getTypeDisplayName(item.type) }
     ];
     setBreadcrumbs({ items: newBreadcrumbs });
   };
@@ -75,7 +78,7 @@ export const AssetsProvider: React.FC<AssetsProviderProps> = ({ children }) => {
         setActiveItem,
         breadcrumbs,
         setBreadcrumbs,
-        updateBreadcrumbsForItem,
+        updateBreadcrumbsForItem
       }}
     >
       {children}

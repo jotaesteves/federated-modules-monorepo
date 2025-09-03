@@ -1,6 +1,6 @@
 export declare const LogoIcon: ({
   width,
-  height,
+  height
 }: {
   width: string;
   height: string;

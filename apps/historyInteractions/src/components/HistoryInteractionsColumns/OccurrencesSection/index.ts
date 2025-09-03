@@ -1,38 +1,35 @@
 // Main components
-export { OccurrencesSectionContainer } from './components/OccurrencesSectionContainer';
+
 export { OccurrenceSection } from './components/containers/OccurrenceSection';
+export { OccurrencesSectionContainer } from './components/OccurrencesSectionContainer';
 
 // UI Components
 export { ComplaintCard } from './components/ui/ComplaintCard';
 export { IncidentCard } from './components/ui/IncidentCard';
 export { MemoCard } from './components/ui/MemoCard';
-
+export { useOccurrenceConfig } from './hooks/useOccurrenceConfig';
 // Hooks
 export { useOccurrenceData } from './hooks/useOccurrenceData';
-export { useOccurrenceConfig } from './hooks/useOccurrenceConfig';
-
-// Types
-export type {
-  ComplainsData,
-  IncidentsData,
-  MemosData,
-  OccurrenceType,
-  OccurrenceConfig,
-  BadgeVariant,
-  OccurrenceData,
-} from './types/occurrence.types';
-
-// Utils
-export {
-  getBadgeConfig,
-  getOccurrenceConfig,
-  formatCurrency,
-  generateMemoContent,
-} from './utils/occurrence.utils';
-
 // Mock Data
 export {
   mockComplainsData,
   mockIncidentsData,
-  mockMemosData,
+  mockMemosData
 } from './mock-data/mock-occurrences-data';
+// Types
+export type {
+  BadgeVariant,
+  ComplainsData,
+  IncidentsData,
+  MemosData,
+  OccurrenceConfig,
+  OccurrenceData,
+  OccurrenceType
+} from './types/occurrence.types';
+// Utils
+export {
+  formatCurrency,
+  generateMemoContent,
+  getBadgeConfig,
+  getOccurrenceConfig
+} from './utils/occurrence.utils';

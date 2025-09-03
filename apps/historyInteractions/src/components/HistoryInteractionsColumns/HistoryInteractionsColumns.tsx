@@ -1,6 +1,6 @@
 import { ColumnsHeader } from './ColumnsHeader/ColumnsHeader';
-import { OccurrencesSection } from './OccurrencesSection/OccurrencesSection';
 import { CommunicationsSection } from './CommunicationsSection/CommunicationsSection';
+import { OccurrencesSection } from './OccurrencesSection/OccurrencesSection';
 
 interface HistoryInteractionsColumnsProps {
   leftTitle?: string;
@@ -9,7 +9,7 @@ interface HistoryInteractionsColumnsProps {
 
 export const HistoryInteractionsColumns: React.FC<HistoryInteractionsColumnsProps> = ({
   leftTitle = 'Comunicações',
-  rightTitle = 'Ocorrências',
+  rightTitle = 'Ocorrências'
 }) => {
   return (
     <div className="col-span-14 grid grid-cols-2 gap-2 overflow-y-auto h-full relative content-start">

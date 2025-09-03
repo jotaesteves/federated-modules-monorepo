@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { LogoIcon } from 'shared/assets/icons';
 import type { SmsData } from '../../types/communication.types';
 
@@ -25,7 +25,7 @@ const SmsCardPreview = () => {
     id: '1',
     title: '03-04-2020 | 14h30',
     message:
-      'A conta 562401098 recebeu o valor de 1000.00 MZN as 10:53 do dia 14/05/25. Se desconhece a transaccao ligue para 8003500.',
+      'A conta 562401098 recebeu o valor de 1000.00 MZN as 10:53 do dia 14/05/25. Se desconhece a transaccao ligue para 8003500.'
   };
 
   return (

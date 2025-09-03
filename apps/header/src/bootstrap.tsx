@@ -8,7 +8,11 @@ import SideBarNav from './Sidebar';
 
 const container = document.getElementById('app');
 
-const root = createRoot(container!);
+if (!container) {
+  throw new Error('Root element with id "app" not found');
+}
+
+const root = createRoot(container);
 root.render(
   <>
     <Helmet>

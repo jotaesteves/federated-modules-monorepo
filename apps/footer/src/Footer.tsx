@@ -1,9 +1,9 @@
-import React from 'react';
+import type React from 'react';
 import './Footer.css';
-import { useTheme } from './store/microFrontendStore';
 import { FooterTags } from './components';
-import type { FooterTag } from './types';
 import { useNavigationHistory } from './hooks';
+import { useTheme } from './store/microFrontendStore';
+import type { FooterTag } from './types';
 
 interface FooterProps {
   customTags?: FooterTag[];
@@ -21,6 +21,7 @@ const Footer: React.FC<FooterProps> = ({ customTags, useHistory = true }) => {
       <FooterTags tags={tagsToUse} onTagClose={useHistory ? excludePageFromHistory : undefined} />
       <div className="footer-chat">
         <button
+          type="button"
           className="footer-chat-button"
           onClick={() => {
             // TODO: Handle chat button click logic here

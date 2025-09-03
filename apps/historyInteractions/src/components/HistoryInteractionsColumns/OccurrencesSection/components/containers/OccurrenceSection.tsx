@@ -1,20 +1,18 @@
-import React from 'react';
-import { CardAccordion } from 'shared/components';
-import { Icon } from 'shared/components';
-
+import type React from 'react';
+import { CardAccordion, Icon } from 'shared/components';
+import type { ItemData } from '../../../../../context/HistoryInteractionsContext';
 import { CardAccordionHeader } from '../../../../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../../../../CardAccordionItem/CardAccordionItem';
-import type { ItemData } from '../../../../../context/HistoryInteractionsContext';
+import { useOccurrenceConfig } from '../../hooks/useOccurrenceConfig';
 import type {
   ComplainsData,
   IncidentsData,
   MemosData,
-  OccurrenceType,
+  OccurrenceType
 } from '../../types/occurrence.types';
 import { ComplaintCard } from '../ui/ComplaintCard';
 import { IncidentCard } from '../ui/IncidentCard';
 import { MemoCard } from '../ui/MemoCard';
-import { useOccurrenceConfig } from '../../hooks/useOccurrenceConfig';
 
 interface OccurrenceSectionProps {
   type: OccurrenceType;
@@ -26,7 +24,7 @@ export const OccurrenceSection: React.FC<OccurrenceSectionProps> = ({ type, item
   const { getConfigByType } = useOccurrenceConfig();
   const config = getConfigByType(type);
 
-  const renderCard = (item: ItemData, originalData: ComplainsData | IncidentsData | MemosData) => {
+  const renderCard = (_item: ItemData, originalData: ComplainsData | IncidentsData | MemosData) => {
     switch (type) {
       case 'complains':
         return <ComplaintCard complaint={originalData as ComplainsData} />;

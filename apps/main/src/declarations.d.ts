@@ -150,5 +150,4 @@ declare module 'shared/components/ui' {
   export const CardContent: ComponentType<unknown>;
   export const CardFooter: ComponentType<unknown>;
   export const CardDescription: ComponentType<unknown>;
-  export const CardFooter: ComponentType<unknown>;
 }

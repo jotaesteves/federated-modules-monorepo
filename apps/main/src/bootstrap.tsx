@@ -1,10 +1,10 @@
+import { QueryClientProvider } from '@tanstack/react-query';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, useNavigate } from 'react-router';
-import { QueryClientProvider } from '@tanstack/react-query';
+import { MicroFrontendProvider } from 'shared/providers/MicroFrontendProvider';
 import queryClient from 'shared/queries/client';
 import GlobalStylesProvider from 'shared/styles/Global';
 import App from './App';
-import { MicroFrontendProvider } from 'shared/providers/MicroFrontendProvider';
 
 declare global {
   interface Window {
@@ -17,7 +17,10 @@ declare global {
 }
 
 const container = document.getElementById('app');
-const root = createRoot(container!);
+if (!container) {
+  throw new Error('Failed to find the root element');
+}
+const root = createRoot(container);
 
 function NavigationBridge({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
@@ -32,7 +35,7 @@ function NavigationBridge({ children }: { children: React.ReactNode }) {
           personalData: '/personal-data',
           assetsProducts: '/assets-products',
           channelsAndServices: '/channels-and-services',
-          historyInteractions: '/history-interactions',
+          historyInteractions: '/history-interactions'
         };
         return map[tab] ?? '/';
       },
@@ -42,11 +45,11 @@ function NavigationBridge({ children }: { children: React.ReactNode }) {
           ['/personal-data', 'personalData'],
           ['/assets-products', 'assetsProducts'],
           ['/channels-and-services', 'channelsAndServices'],
-          ['/history-interactions', 'historyInteractions'],
+          ['/history-interactions', 'historyInteractions']
         ];
         const match = pairs.find(([path]) => route.startsWith(path));
         return match ? match[1] : '';
-      },
+      }
     };
   }
 
@@ -54,17 +57,15 @@ function NavigationBridge({ children }: { children: React.ReactNode }) {
 }
 
 root.render(
-  <>
-    <GlobalStylesProvider>
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <MicroFrontendProvider>
-            <NavigationBridge>
-              <App />
-            </NavigationBridge>
-          </MicroFrontendProvider>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </GlobalStylesProvider>
-  </>
+  <GlobalStylesProvider>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <MicroFrontendProvider>
+          <NavigationBridge>
+            <App />
+          </NavigationBridge>
+        </MicroFrontendProvider>
+      </BrowserRouter>
+    </QueryClientProvider>
+  </GlobalStylesProvider>
 );

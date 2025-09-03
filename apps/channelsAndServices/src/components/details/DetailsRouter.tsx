@@ -1,10 +1,10 @@
-import React from 'react';
+import type React from 'react';
 import { useChannelsServices } from '../../context/ChannelsServicesContext';
-import { AccountDetails } from './MobileBankingDetails';
-import { DepositDetails } from './MillenniumLineDetails';
+import { CreditCardDetails } from './ExtractsDetails';
 import { DebitCardDetails } from './InsuranceDetails';
 import { LoanDetails } from './InternetBankingDetails';
-import { CreditCardDetails } from './ExtractsDetails';
+import { DepositDetails } from './MillenniumLineDetails';
+import { AccountDetails } from './MobileBankingDetails';
 
 export const DetailsRouter: React.FC = () => {
   const { activeItem } = useChannelsServices();

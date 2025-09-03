@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 // Global type declarations
 declare global {
@@ -42,14 +42,16 @@ const createLocalState = () => {
     user: { isAuthenticated: false },
     theme: 'dark',
     sharedData: {},
-    isLoading: false,
+    isLoading: false
   };
 
   const listeners: Array<() => void> = [];
 
   const setState = (newState: Partial<MicroFrontendState>) => {
     state = { ...state, ...newState };
-    listeners.forEach((listener) => listener());
+    listeners.forEach((listener) => {
+      listener();
+    });
   };
 
   const subscribe = (listener: () => void) => {
@@ -65,7 +67,7 @@ const createLocalState = () => {
   return {
     getState: () => state,
     setState,
-    subscribe,
+    subscribe
   };
 };
 
@@ -87,17 +89,17 @@ export const useMicroFrontendStore = () => {
 
   // Subscribe to store changes (either global or local)
   useEffect(() => {
-    if (isGlobalStoreAvailable) {
-      const globalStore = window.globalMicroFrontendStore!;
+    if (isGlobalStoreAvailable && window.globalMicroFrontendStore) {
+      const globalStore = window.globalMicroFrontendStore;
       return globalStore.subscribe(triggerUpdate);
     } else {
       return localStore.subscribe(triggerUpdate);
     }
   }, [triggerUpdate, isGlobalStoreAvailable]);
 
-  if (isGlobalStoreAvailable) {
+  if (isGlobalStoreAvailable && window.globalMicroFrontendStore) {
     // Access the shared global store directly
-    const globalStore = window.globalMicroFrontendStore!;
+    const globalStore = window.globalMicroFrontendStore;
     const state = globalStore.getState();
 
     // Return global store state and actions
@@ -110,7 +112,7 @@ export const useMicroFrontendStore = () => {
       setTheme: globalStore.getState().setTheme,
       setSharedData: globalStore.getState().setSharedData,
       getSharedData: globalStore.getState().getSharedData,
-      setLoading: globalStore.getState().setLoading,
+      setLoading: globalStore.getState().setLoading
     };
   }
 
@@ -129,7 +131,7 @@ export const useMicroFrontendStore = () => {
       if (typeof window !== 'undefined' && window.microFrontendEventBus) {
         window.microFrontendEventBus.emit({
           type: 'NAVIGATION_CHANGE',
-          payload: { page },
+          payload: { page }
         });
       }
     },
@@ -137,7 +139,7 @@ export const useMicroFrontendStore = () => {
     setUser: (userData: Partial<MicroFrontendState['user']>) => {
       const currentState = localStore.getState();
       localStore.setState({
-        user: { ...currentState.user, ...userData },
+        user: { ...currentState.user, ...userData }
       });
     },
 
@@ -148,7 +150,7 @@ export const useMicroFrontendStore = () => {
     setSharedData: (key: string, value: unknown) => {
       const currentState = localStore.getState();
       localStore.setState({
-        sharedData: { ...currentState.sharedData, [key]: value },
+        sharedData: { ...currentState.sharedData, [key]: value }
       });
     },
 
@@ -158,7 +160,7 @@ export const useMicroFrontendStore = () => {
 
     setLoading: (isLoading: boolean) => {
       localStore.setState({ isLoading });
-    },
+    }
   };
 
   return { ...state, ...actions };
@@ -171,7 +173,7 @@ export const useNavigation = () => {
   return {
     currentPage: store.currentPage,
     navigateTo: store.navigateTo,
-    isCurrentPage: (page: string) => store.currentPage === page,
+    isCurrentPage: (page: string) => store.currentPage === page
   };
 };
 
@@ -183,7 +185,7 @@ export const useTheme = () => {
     theme: store.theme,
     setTheme: store.setTheme,
     isDark: store.theme === 'dark',
-    isLight: store.theme === 'light',
+    isLight: store.theme === 'light'
   };
 };
 

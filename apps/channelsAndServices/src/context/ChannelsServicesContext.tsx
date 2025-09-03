@@ -1,5 +1,6 @@
+import type React from 'react';
 import type { ReactNode } from 'react';
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export interface ItemData {
   id: string; // This will be a unique identifier combining type, category, and original id
@@ -7,7 +8,7 @@ export interface ItemData {
   type: 'mobile' | 'internet' | 'millennium-line' | 'insurance' | 'extracts';
   category: 'channels' | 'other-services';
   name: string;
-  data: any; // The full data object for the item
+  data: unknown; // The full data object for the item
 }
 
 // Helper function to create unique IDs
@@ -37,15 +38,17 @@ interface ChannelsServicesContextProviderProps {
 }
 
 export const ChannelsServicesProvider: React.FC<ChannelsServicesContextProviderProps> = ({
-  children,
+  children
 }) => {
   const [activeItem, setActiveItem] = useState<ItemData | null>(null);
-  const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbState>({ items: [] });
+  const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbState>({
+    items: []
+  });
 
   const getCategoryDisplayName = (category: ItemData['category']) => {
     const categoryMap: Record<ItemData['category'], string> = {
       channels: 'Canais',
-      'other-services': 'Outros Serviços',
+      'other-services': 'Outros Serviços'
     };
     return categoryMap[category];
   };
@@ -56,7 +59,7 @@ export const ChannelsServicesProvider: React.FC<ChannelsServicesContextProviderP
       internet: 'Internet Banking',
       'millennium-line': 'Linha millennium bim',
       insurance: 'Seguros',
-      extracts: 'Extratos',
+      extracts: 'Extratos'
     };
     return typeMap[type];
   };
@@ -64,14 +67,20 @@ export const ChannelsServicesProvider: React.FC<ChannelsServicesContextProviderP
   const updateBreadcrumbsForItem = (item: ItemData) => {
     const newBreadcrumbs: BreadCrumbItem[] = [
       { label: getCategoryDisplayName(item.category) },
-      { label: getTypeDisplayName(item.type) },
+      { label: getTypeDisplayName(item.type) }
     ];
     setBreadcrumbs({ items: newBreadcrumbs });
   };
 
   return (
     <ChannelsServicesContext.Provider
-      value={{ activeItem, setActiveItem, breadcrumbs, setBreadcrumbs, updateBreadcrumbsForItem }}
+      value={{
+        activeItem,
+        setActiveItem,
+        breadcrumbs,
+        setBreadcrumbs,
+        updateBreadcrumbsForItem
+      }}
     >
       {children}
     </ChannelsServicesContext.Provider>

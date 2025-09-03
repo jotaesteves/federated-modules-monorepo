@@ -11,7 +11,7 @@ import {
   Separator,
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
+  SidebarTrigger
 } from 'shared/components/ui';
 
 export default function Page() {

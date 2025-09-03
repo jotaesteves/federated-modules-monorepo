@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { FooterTag } from '../types';
 import { getGlobalStore } from '../utils/navigationUtils';
 
@@ -18,7 +18,7 @@ const getPageLabel = (page: string): string => {
     home: 'Home',
     about: 'Sobre',
     contact: 'Contato',
-    services: 'Serviços',
+    services: 'Serviços'
   };
   return pageLabels[page] || page.charAt(0).toUpperCase() + page.slice(1);
 };
@@ -75,7 +75,7 @@ export function useNavigationHistory() {
           id: `history-${page}`,
           label: getPageLabel(page),
           page,
-          isFromHistory: true,
+          isFromHistory: true
         }));
 
         setHistoryTags(newHistoryTags);
@@ -85,20 +85,26 @@ export function useNavigationHistory() {
       updateHistoryTags();
 
       // Subscribe to navigation changes using the shared store's subscribe method
-      const unsubscribe = globalStore.subscribe(
-        (state: any) => state.navigationHistory,
-        updateHistoryTags
-      );
+      if (typeof globalStore.subscribe === 'function') {
+        const unsubscribe = globalStore.subscribe(
+          (state) => state.navigationHistory,
+          updateHistoryTags
+        );
+        return unsubscribe;
+      }
 
-      return unsubscribe;
+      // Fallback: poll for changes if subscribe is not available
+      const intervalId = setInterval(updateHistoryTags, 1000);
+      return () => clearInterval(intervalId);
     } else {
       // Fallback: if not in host environment, provide empty array
       setHistoryTags([]);
+      return undefined;
     }
   }, [excludedPages, lastHistoryLength]); // Re-run when excluded pages or history length change
 
   return {
     historyTags,
-    excludePageFromHistory,
+    excludePageFromHistory
   };
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 
 interface AccountData {
@@ -43,16 +43,29 @@ export const AccountDetails: React.FC<AccountDetailsProps> = ({ account }) => {
         <div className="space-y-2">
           {[
             {
+              id: '1',
               date: '2024-01-15',
               description: 'Direct Deposit',
               amount: '+2,500.00',
-              type: 'credit',
+              type: 'credit'
             },
-            { date: '2024-01-14', description: 'ATM Withdrawal', amount: '-100.00', type: 'debit' },
-            { date: '2024-01-13', description: 'Online Purchase', amount: '-45.50', type: 'debit' },
-          ].map((transaction, index) => (
+            {
+              id: '2',
+              date: '2024-01-14',
+              description: 'ATM Withdrawal',
+              amount: '-100.00',
+              type: 'debit'
+            },
+            {
+              id: '3',
+              date: '2024-01-13',
+              description: 'Online Purchase',
+              amount: '-45.50',
+              type: 'debit'
+            }
+          ].map((transaction) => (
             <div
-              key={index}
+              key={transaction.id}
               className="flex justify-between items-center p-3 bg-white border rounded"
             >
               <div>
@@ -72,10 +85,16 @@ export const AccountDetails: React.FC<AccountDetailsProps> = ({ account }) => {
       </div>
 
       <div className="flex space-x-3">
-        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
+        >
           Transfer Money
         </button>
-        <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors">
+        <button
+          type="button"
+          className="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors"
+        >
           View Statement
         </button>
       </div>

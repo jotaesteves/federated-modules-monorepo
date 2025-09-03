@@ -5,7 +5,7 @@ import type {
   ComplainsData,
   IncidentsData,
   MemosData,
-  OccurrenceType,
+  OccurrenceType
 } from '../types/occurrence.types';
 import { generateMemoContent } from '../utils/occurrence.utils';
 
@@ -24,7 +24,7 @@ interface UseOccurrenceDataReturn {
 export const useOccurrenceData = ({
   complains = [],
   incidents = [],
-  memos = [],
+  memos = []
 }: UseOccurrenceDataProps): UseOccurrenceDataReturn => {
   const complainsItems = useMemo(
     () =>
@@ -36,8 +36,8 @@ export const useOccurrenceData = ({
           category: 'occurrences',
           name: '',
           data: {
-            ...complain,
-          },
+            ...complain
+          }
         })
       ),
     [complains]
@@ -53,8 +53,8 @@ export const useOccurrenceData = ({
           category: 'occurrences',
           name: '',
           data: {
-            ...incident,
-          },
+            ...incident
+          }
         })
       ),
     [incidents]
@@ -77,8 +77,8 @@ export const useOccurrenceData = ({
             category: 'Seguros',
             priority: 'normal',
             status: 'sent',
-            createdDate: '2024-01-17',
-          },
+            createdDate: '2024-01-17'
+          }
         })
       ),
     [memos]
@@ -87,6 +87,6 @@ export const useOccurrenceData = ({
   return {
     complainsItems,
     incidentsItems,
-    memosItems,
+    memosItems
   };
 };

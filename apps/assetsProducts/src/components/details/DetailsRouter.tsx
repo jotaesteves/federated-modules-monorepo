@@ -1,10 +1,10 @@
-import React from 'react';
+import type React from 'react';
 import { useAssets } from '../../context/AssetsContext';
 import { AccountDetails } from './AccountDetails';
-import { DepositDetails } from './DepositDetails';
-import { DebitCardDetails } from './DebitCardDetails';
-import { LoanDetails } from './LoanDetails';
 import { CreditCardDetails } from './CreditCardDetails';
+import { DebitCardDetails } from './DebitCardDetails';
+import { DepositDetails } from './DepositDetails';
+import { LoanDetails } from './LoanDetails';
 
 export const DetailsRouter: React.FC = () => {
   const { activeItem } = useAssets();

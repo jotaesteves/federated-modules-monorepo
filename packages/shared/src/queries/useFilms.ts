@@ -21,7 +21,7 @@ const useFilms = (): {
     queryFn: () =>
       api('/api/films/')
         .then((res) => res.json())
-        .then((json) => ({ ...json, randomNumber: Math.random() })),
+        .then((json) => ({ ...json, randomNumber: Math.random() }))
   });
 };
 

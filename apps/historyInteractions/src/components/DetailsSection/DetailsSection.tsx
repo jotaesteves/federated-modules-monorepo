@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
 
 interface DetailsSectionProps {
@@ -13,6 +13,7 @@ export const DetailsSection: React.FC<DetailsSectionProps> = ({ title = 'Detalhe
         <h2 className="text-lg font-semibold text-left">{title}</h2>
       </div>
       <Breadcrumbs />
+      {/** biome-ignore lint/correctness/useUniqueElementIds: //TODO: maybe change this one */}
       <section className="bg-white flex-1 overflow-y-auto min-h-0" id="detailsRef">
         {children}
       </section>

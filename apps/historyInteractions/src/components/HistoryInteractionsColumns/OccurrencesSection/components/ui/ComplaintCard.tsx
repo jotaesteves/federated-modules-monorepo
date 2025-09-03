@@ -1,8 +1,8 @@
-import React from 'react';
-import { Badge } from 'shared/components/ui';
+import type React from 'react';
 import { LogoIcon } from 'shared/assets/icons';
+import { Badge } from 'shared/components/ui';
 import type { ComplainsData } from '../../types/occurrence.types';
-import { getBadgeConfig, formatCurrency } from '../../utils/occurrence.utils';
+import { formatCurrency, getBadgeConfig } from '../../utils/occurrence.utils';
 
 interface ComplaintCardProps {
   complaint: ComplainsData;
@@ -50,7 +50,7 @@ const ComplaintCardPreview = () => {
     transferName: 'Transferência Internacional',
     transferValue: '25,000.00',
     startDate: '15/08/2024',
-    endDate: '20/08/2024',
+    endDate: '20/08/2024'
   };
 
   return (

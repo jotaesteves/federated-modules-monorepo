@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 interface ChannelsServicesHeaderProps {
   leftTitle: string;
@@ -7,7 +7,7 @@ interface ChannelsServicesHeaderProps {
 
 export const ChannelsServicesHeader: React.FC<ChannelsServicesHeaderProps> = ({
   leftTitle,
-  rightTitle,
+  rightTitle
 }) => {
   return (
     <div className="col-span-2 mb-2 sticky top-0 left-0 right-0 z-10">

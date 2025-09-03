@@ -4,30 +4,26 @@ export { CommunicationSection } from './components/containers/CommunicationSecti
 
 // UI Components
 export { CallCard } from './components/ui/CallCard';
-export { SmsCard } from './components/ui/SmsCard';
 export { EmailCard } from './components/ui/EmailCard';
-
+export { SmsCard } from './components/ui/SmsCard';
+export { useCommunicationConfig } from './hooks/useCommunicationConfig';
 // Hooks
 export { useCommunicationData } from './hooks/useCommunicationData';
-export { useCommunicationConfig } from './hooks/useCommunicationConfig';
-
+// Mock Data
+export { mockCallData, mockEmailData, mockSmsData } from './mock-data/mock-communication-data';
 // Types
 export type {
   CallData,
-  SmsData,
-  EmailData,
-  CommunicationType,
   CommunicationConfig,
   CommunicationData,
+  CommunicationType,
+  EmailData,
+  SmsData
 } from './types/communication.types';
-
 // Utils
 export {
-  getCommunicationConfig,
   formatCallDirection,
   generateCallName,
   generateEmailName,
+  getCommunicationConfig
 } from './utils/communication.utils';
-
-// Mock Data
-export { mockCallData, mockSmsData, mockEmailData } from './mock-data/mock-communication-data';

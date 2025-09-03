@@ -1,6 +1,8 @@
-import * as React from 'react';
+/** biome-ignore-all lint/a11y/useFocusableInteractive: this is from a library */
+/** biome-ignore-all lint/a11y/useSemanticElements: this is from a library */
 import { Slot } from '@radix-ui/react-slot';
 import { MoreHorizontal } from 'lucide-react';
+import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -97,5 +99,5 @@ export {
   BreadcrumbLink,
   BreadcrumbPage,
   BreadcrumbSeparator,
-  BreadcrumbEllipsis,
+  BreadcrumbEllipsis
 };

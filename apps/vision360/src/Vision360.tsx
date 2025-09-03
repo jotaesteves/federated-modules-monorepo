@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Helmet } from 'react-helmet';
 import { Suspense } from 'react';
+import { Helmet } from 'react-helmet';
 // TODO: move the ErrorBoundary to the app shell
 import { ErrorBoundary } from 'shared/components';
 
@@ -23,7 +23,7 @@ const LazyPersonalData = React.lazy(() =>
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Personal Data component
       </div>
-    ),
+    )
   }))
 );
 
@@ -33,7 +33,7 @@ const LazyEstateAndProducts = React.lazy(() =>
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Estate and Products component
       </div>
-    ),
+    )
   }))
 );
 
@@ -43,7 +43,7 @@ const LazyLastContact = React.lazy(() =>
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Last Contact component
       </div>
-    ),
+    )
   }))
 );
 
@@ -53,7 +53,7 @@ const LazyChannelsAndServices = React.lazy(() =>
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Channels and Services component
       </div>
-    ),
+    )
   }))
 );
 
@@ -63,7 +63,7 @@ const LazyIncidents = React.lazy(() =>
       <div className="bg-white rounded-lg p-4 text-center text-red-500">
         Failed to load Incidents component
       </div>
-    ),
+    )
   }))
 );
 

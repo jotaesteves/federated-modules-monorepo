@@ -1,17 +1,16 @@
+import {
+  type DocumentationRouteConfig,
+  getDocumentationForOutlet
+} from 'documentation/Documentation';
 import * as React from 'react';
-import { Routes, Route, Navigate } from 'react-router';
-
-// Layouts
-import DashboardLayout from './layouts/DashboardLayout';
-import BaseLayout from './layouts/BaseLayout';
-import SidebarLayout from './layouts/SidebarLayout';
-
+import { Navigate, Route, Routes } from 'react-router';
 // Rotas de Registos
 import { getRecordsForOutlet, type RecordsRouteConfig } from 'records/Records';
-import {
-  getDocumentationForOutlet,
-  type DocumentationRouteConfig,
-} from 'documentation/Documentation';
+import BaseLayout from './layouts/BaseLayout';
+// Layouts
+import DashboardLayout from './layouts/DashboardLayout';
+import SidebarLayout from './layouts/SidebarLayout';
+
 // Rotas de Documentação
 
 // Dashboard Pages

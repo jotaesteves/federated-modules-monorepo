@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 // Tailwind v3 entry + theme tokens
 import './global-import';
 

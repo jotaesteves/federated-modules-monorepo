@@ -3,10 +3,17 @@ import type { FooterTag } from '../types';
 /**
  * Interface for the global micro frontend store
  */
-interface GlobalMicroFrontendStore {
+export interface GlobalMicroFrontendStore {
   getState(): {
+    navigationHistory?: string[];
     removeFromHistory?: (page: string) => void;
+    currentPage?: string;
+    navigateTo?: (page: string) => void;
   };
+  subscribe?<T>(
+    selector: (state: ReturnType<GlobalMicroFrontendStore['getState']>) => T,
+    listener: (value: T) => void
+  ): () => void;
 }
 
 /**
@@ -26,7 +33,7 @@ export const getPageLabel = (page: string): string => {
     home: 'Home',
     about: 'About',
     services: 'Services',
-    contact: 'Contact',
+    contact: 'Contact'
   };
 
   return pageLabels[page] || page.charAt(0).toUpperCase() + page.slice(1);
@@ -49,7 +56,7 @@ export const historyToFooterTags = (history: string[], maxTags = 5): FooterTag[]
     id: page,
     label: getPageLabel(page),
     page,
-    isFromHistory: true,
+    isFromHistory: true
   }));
 };
 
@@ -65,7 +72,10 @@ export const isGlobalStoreAvailable = (): boolean => {
  */
 export const getGlobalStore = (): GlobalMicroFrontendStore | null => {
   if (isGlobalStoreAvailable()) {
-    return window.globalMicroFrontendStore as GlobalMicroFrontendStore;
+    return (
+      (window as Window & { globalMicroFrontendStore?: GlobalMicroFrontendStore })
+        .globalMicroFrontendStore ?? null
+    );
   }
   return null;
 };

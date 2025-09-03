@@ -1,12 +1,12 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from '../ui';
-import { cn } from '@/lib/utils';
 
 export type BreadcrumbsProps = {
   items: { label: string }[];

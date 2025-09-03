@@ -1,12 +1,12 @@
-import React from 'react';
-import { OccurrenceSection } from './containers/OccurrenceSection';
+import type React from 'react';
 import { useOccurrenceData } from '../hooks/useOccurrenceData';
-import type { ComplainsData, IncidentsData, MemosData } from '../types/occurrence.types';
 import {
   mockComplainsData,
   mockIncidentsData,
-  mockMemosData,
+  mockMemosData
 } from '../mock-data/mock-occurrences-data';
+import type { ComplainsData, IncidentsData, MemosData } from '../types/occurrence.types';
+import { OccurrenceSection } from './containers/OccurrenceSection';
 
 interface OccurrencesSectionContainerProps {
   complains?: ComplainsData[];
@@ -17,12 +17,12 @@ interface OccurrencesSectionContainerProps {
 export const OccurrencesSectionContainer: React.FC<OccurrencesSectionContainerProps> = ({
   complains = mockComplainsData,
   incidents = mockIncidentsData,
-  memos = mockMemosData,
+  memos = mockMemosData
 }) => {
   const { complainsItems, incidentsItems, memosItems } = useOccurrenceData({
     complains,
     incidents,
-    memos,
+    memos
   });
 
   return (

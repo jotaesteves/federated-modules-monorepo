@@ -1,5 +1,5 @@
-import Icon from '@/components/Icon';
 import React from 'react';
+import Icon from '@/components/Icon';
 
 interface TextareaProps {
   name?: string;

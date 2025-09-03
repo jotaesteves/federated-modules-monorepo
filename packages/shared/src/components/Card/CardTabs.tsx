@@ -1,9 +1,10 @@
+/** biome-ignore-all lint/correctness/useUniqueElementIds: is is being used statically */
+import { ScrollArea, ScrollBar } from '@ui/scroll-area';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@ui/tabs';
 import React from 'react';
+import { cn } from '@/lib/utils';
 import type { CardProps } from './Card';
 import Card from './Card';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@ui/tabs';
-import { ScrollArea, ScrollBar } from '@ui/scroll-area';
-import { cn } from '@/lib/utils';
 
 export interface CardTabItem {
   value: string;

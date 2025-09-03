@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { cn } from 'shared/lib/utils';
 import type { ItemData } from '../../context/AssetsContext';
 import { useAssets } from '../../context/AssetsContext';
@@ -25,8 +25,9 @@ export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, 
   };
 
   return (
-    <div
+    <button
       onClick={handleClick}
+      type="button"
       className={cn(
         'relative px-4 py-2 flex items-center justify-between w-full border border-gray-100 transition-all duration-200 rounded-[10px] cursor-pointer outline-none',
         // Pseudo-element base
@@ -40,6 +41,6 @@ export const CardAccordionItem: React.FC<CardAccordionItemProps> = ({ children, 
       )}
     >
       <div className="flex items-center justify-between w-full">{children}</div>
-    </div>
+    </button>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { LogoIcon } from 'shared/assets/icons';
 import type { EmailData } from '../../types/communication.types';
 
@@ -32,7 +32,7 @@ const EmailCardPreview = () => {
     title: 'Contrato Digital Microcrédito',
     email: 'notificações@millenniumbim.co.mz',
     date: '25/04/2025',
-    time: '15:35:02',
+    time: '15:35:02'
   };
 
   return (

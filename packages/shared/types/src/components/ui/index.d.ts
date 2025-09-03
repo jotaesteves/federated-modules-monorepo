@@ -6,7 +6,7 @@ export {
   SidebarHeader,
   SidebarFooter,
   SidebarInset,
-  SidebarTrigger,
+  SidebarTrigger
 } from './sidebar';
 export {
   Breadcrumb,
@@ -14,7 +14,7 @@ export {
   BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from './breadcrumb';
 export { Separator } from './separator';
 export { Badge, badgeVariants } from './badge';

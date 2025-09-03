@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Badge } from 'shared/components/ui';
 import type { IncidentsData } from '../../types/occurrence.types';
 import { getBadgeConfig } from '../../utils/occurrence.utils';
@@ -30,7 +30,7 @@ const IncidentCardPreview = () => {
     id: '1',
     name: 'Falha no Sistema de Pagamentos',
     accountNumber: '1234567890',
-    status: 'active',
+    status: 'active'
   };
 
   return (

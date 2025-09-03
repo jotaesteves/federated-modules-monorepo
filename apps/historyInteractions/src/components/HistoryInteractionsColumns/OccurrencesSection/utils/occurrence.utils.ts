@@ -8,22 +8,22 @@ export const getBadgeConfig = (status: string, type: OccurrenceType): BadgeVaria
     case 'complains':
       return {
         variant: status === 'SUBMITED' ? 'blocked' : 'active',
-        label: status === 'SUBMITED' ? 'SUBMETIDO' : 'COMPLETA',
+        label: status === 'SUBMITED' ? 'SUBMETIDO' : 'COMPLETA'
       };
     case 'incidents':
       return {
         variant: status as 'blocked' | 'active',
-        label: status === 'active' ? 'ALTA' : 'BAIXA',
+        label: status === 'active' ? 'ALTA' : 'BAIXA'
       };
     case 'memos':
       return {
         variant: 'active',
-        label: 'NORMAL',
+        label: 'NORMAL'
       };
     default:
       return {
         variant: 'active',
-        label: 'DEFAULT',
+        label: 'DEFAULT'
       };
   }
 };
@@ -35,18 +35,18 @@ export const getOccurrenceConfig = (): Record<OccurrenceType, OccurrenceConfig> 
   complains: {
     type: 'complains',
     title: 'Reclamações',
-    iconType: 'complains',
+    iconType: 'complains'
   },
   incidents: {
     type: 'incidents',
     title: 'Incidentes',
-    iconType: 'alertFolder',
+    iconType: 'alertFolder'
   },
   memos: {
     type: 'memos',
     title: 'Memos',
-    iconType: 'packageWarning',
-  },
+    iconType: 'packageWarning'
+  }
 });
 
 /**

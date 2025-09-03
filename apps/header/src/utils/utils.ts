@@ -1,9 +1,9 @@
 import {
-  menuMapData,
-  submenuLinks,
-  submenuMapData,
-  sidebarMapData,
   bottomSidebarMapData,
+  menuMapData,
+  sidebarMapData,
+  submenuLinks,
+  submenuMapData
 } from 'src/data/menuData';
 import type { MenuItem, SubmenuItem, SubmenuLinkItemProps } from 'src/types/types';
 

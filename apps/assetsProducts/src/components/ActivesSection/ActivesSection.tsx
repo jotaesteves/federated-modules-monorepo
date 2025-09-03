@@ -1,12 +1,10 @@
-import React from 'react';
+import type React from 'react';
 import { CardAccordion } from 'shared/components';
 import { Badge } from 'shared/components/ui';
-
-import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
-import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
-
 import type { ItemData } from '../../context/AssetsContext';
 import { createUniqueId } from '../../context/AssetsContext';
+import { CardAccordionHeader } from '../CardAccordionHeader/CardAccordionHeader';
+import { CardAccordionItem } from '../CardAccordionItem/CardAccordionItem';
 
 interface AccountData {
   id: string;
@@ -26,15 +24,15 @@ const defaultAccounts: AccountData[] = [
     name: 'Conta Salário',
     balance: '0.24',
     currency: 'MZN',
-    status: 'active',
+    status: 'active'
   },
   {
     id: '736534723476',
     name: 'Conta Jovem',
     balance: '10.272.00',
     currency: 'MZN',
-    status: 'inactive',
-  },
+    status: 'inactive'
+  }
 ];
 
 export const ActivesSection: React.FC<ActivesSectionProps> = ({ accounts = defaultAccounts }) => {
@@ -57,7 +55,7 @@ export const ActivesSection: React.FC<ActivesSectionProps> = ({ accounts = defau
             type: 'account',
             category: 'actives',
             name: account.name,
-            data: account,
+            data: account
           };
 
           return (
@@ -100,7 +98,7 @@ export const ActivesSection: React.FC<ActivesSectionProps> = ({ accounts = defau
             type: 'deposit',
             category: 'actives',
             name: account.name,
-            data: account,
+            data: account
           };
 
           return (
@@ -134,7 +132,7 @@ export const ActivesSection: React.FC<ActivesSectionProps> = ({ accounts = defau
             type: 'debit-card',
             category: 'actives',
             name: account.name,
-            data: account,
+            data: account
           };
 
           return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 interface SelectItemType {
@@ -19,7 +19,7 @@ const SelectComponent: React.FC<SelectProps> = ({
   placeholder,
   value,
   onValueChange,
-  items,
+  items
 }) => {
   return (
     <Select name={name} value={value} onValueChange={onValueChange}>

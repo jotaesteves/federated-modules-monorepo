@@ -4,7 +4,7 @@ import {
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
+  BreadcrumbSeparator
 } from 'shared/components/ui';
 import { useHistoryInteractions } from '../../context/HistoryInteractionsContext';
 

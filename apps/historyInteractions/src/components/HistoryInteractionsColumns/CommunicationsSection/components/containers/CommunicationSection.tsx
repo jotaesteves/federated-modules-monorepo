@@ -1,21 +1,18 @@
-import React from 'react';
-
-import { CardAccordion } from 'shared/components';
-import { Icon } from 'shared/components';
-
+import type React from 'react';
+import { CardAccordion, Icon } from 'shared/components';
+import type { ItemData } from '../../../../../context/HistoryInteractionsContext';
 import { CardAccordionHeader } from '../../../../CardAccordionHeader/CardAccordionHeader';
 import { CardAccordionItem } from '../../../../CardAccordionItem/CardAccordionItem';
-import type { ItemData } from '../../../../../context/HistoryInteractionsContext';
+import { useCommunicationConfig } from '../../hooks/useCommunicationConfig';
 import type {
   CallData,
-  SmsData,
-  EmailData,
   CommunicationType,
+  EmailData,
+  SmsData
 } from '../../types/communication.types';
 import { CallCard } from '../ui/CallCard';
-import { SmsCard } from '../ui/SmsCard';
 import { EmailCard } from '../ui/EmailCard';
-import { useCommunicationConfig } from '../../hooks/useCommunicationConfig';
+import { SmsCard } from '../ui/SmsCard';
 
 interface CommunicationSectionProps {
   type: CommunicationType;
@@ -26,13 +23,13 @@ interface CommunicationSectionProps {
 export const CommunicationSection: React.FC<CommunicationSectionProps> = ({
   type,
   items,
-  data,
+  data
 }) => {
   const { getConfigByType } = useCommunicationConfig();
   const config = getConfigByType(type);
 
   const renderCard = (
-    item: ItemData,
+    _item: ItemData,
     originalData: CallData | SmsData | EmailData,
     index: number
   ) => {

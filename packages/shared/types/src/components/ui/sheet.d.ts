@@ -58,6 +58,6 @@ export {
   SheetHeader,
   SheetFooter,
   SheetTitle,
-  SheetDescription,
+  SheetDescription
 };
 //# sourceMappingURL=sheet.d.ts.map

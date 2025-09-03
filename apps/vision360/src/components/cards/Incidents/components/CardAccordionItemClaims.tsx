@@ -1,6 +1,7 @@
 import { CardAccordion } from 'shared/components';
 
 export interface CardAccordionItemClaimsProps {
+  id: string;
   number: string;
   registerDate: string;
   deadlineDate: string;
@@ -15,13 +16,16 @@ export const CardAccordionItemClaims: React.FC<CardAccordionItemClaimsProps> = (
   deadlineDate,
   status,
   amount,
-  type,
+  type
 }) => {
   const infoItems = [
-    { label: 'Data Registro | Prazo', value: `${registerDate} | ${deadlineDate}` },
+    {
+      label: 'Data Registro | Prazo',
+      value: `${registerDate} | ${deadlineDate}`
+    },
     { label: 'Estado', value: status },
     { label: 'Montante', value: amount },
-    { label: 'Tipo', value: type },
+    { label: 'Tipo', value: type }
   ];
 
   return (
