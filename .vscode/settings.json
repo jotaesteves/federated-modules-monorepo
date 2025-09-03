@@ -135,6 +135,5 @@
     "**/*.d.ts.map": true,
     "**/*.tsbuildinfo": true
   },
-  "biome.configurationPath": "packages/@config/biome-config/biome.json",
   "biome.requireConfiguration": true
 }
